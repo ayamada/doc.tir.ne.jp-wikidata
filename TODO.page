@@ -9,7 +9,7 @@ toc: yes
 # 全般的なTODO
 
 - 各cgiを作成
-    - deploy.cgi(intraからdocへ内容反映、プレビューあり)
+    - deploy.cgi(intraからdocへ内容反映、プレビュー(diff形式？)あり)
     - push.cgi(githubかどこかの外部リポジトリにpush、シェルからも実行可能)
 - gititそのものについての導入メモ/解説ページを作成
 - 最低限必要なコンテンツの作成
