@@ -27,7 +27,7 @@ toc: yes
     - 他にも変数で変更したい部分はあるので調査自体は行う。面倒ならもう「\$if(feed)\$」等の他の用途の変数を流用する事を考える
     - これはpandocのtemplate機能らしい→ http://johnmacfarlane.net/pandoc/README.html#templates
 - ExportのSlidyを動くようにする。それができないなら「\$exportbox\$」から抜く方法を考える
-- 新規ページ作成時に、最初から「＜!-- vim:set ft=markdown: --＞」のコメントが入っている状態になるようにしたい(初期ドキュメントテンプレ機能)
+- 新規ページ作成時に、最初から「\<!-- vim:set ft=markdown: --\>」のコメントが入っている状態になるようにしたい(初期ドキュメントテンプレ機能)
     - 他にもtoc等、デフォルトで入ってるとよさそうな設定があるなら入れたいので優先度高
 - hoge.st内における、httpからはじまるfull urlの出し方を調べ、pagetool.stのbingのところに反映
     - 調べた結果、取れるインターフェースはないようだ…
