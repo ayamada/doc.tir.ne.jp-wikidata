@@ -23,7 +23,7 @@ toc: yes
 
 # 一般的な情報
 
-- gititで利用できるmarkdown書式は通常のものよりも拡張された [Pandoc's markdown](http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown) との事。
+- gititで利用できるmarkdown書式は、通常のものよりも拡張された [Pandoc's markdown](http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown) との事。
 
 続きはあとで
 
