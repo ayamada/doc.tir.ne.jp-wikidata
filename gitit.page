@@ -2,7 +2,12 @@
 toc: yes
 ...
 
-このページには、このdoc.tir.ne.jpの構築に利用している [gitit](http://gitit.net/) のノウハウやメモを書きます。
+このdoc.tir.ne.jpは、[gitit]を使って構築しています。
+
+このページでは、その[gitit]のノウハウやメモを書いていきます。
+
+[gitit]: http://gitit.net/
+
 
 # doc.tir.ne.jp 固有の情報
 
@@ -53,6 +58,7 @@ toc: yes
 # 完了したTODO
 
 あとで
+
 
 
 <!-- vim:set ft=markdown: -->
