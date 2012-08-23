@@ -13,7 +13,12 @@ toc: yes
 
 - 今入っているgititのバージョンは、 gitit version 0.10.0.1 +plugins
 
+## 構成
+
+書き込み可能な内部用gititと、readonlyな公開用gititの2サービス構成です。
+
 続きはあとで
+
 
 
 # 一般的な情報
