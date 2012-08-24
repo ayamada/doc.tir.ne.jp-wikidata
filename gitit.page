@@ -22,7 +22,7 @@ title: gititメモ
 
 
 - gititで利用できるmarkdown書式は、通常のものよりも拡張された [Pandoc's markdown](http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown) との事。
-    - なので、エディタの書式設定も、通常のmarkdownではなく、pandoc用のものを設定できるなら、そのようにした方がいい。
+    - なので、エディタの書式設定も、通常のmarkdownではなく、pandoc用のものがベター。
 
 - gitit.confで use-cache: yes にすると、リポジトリ直更新による内容更新がキャッシュに反映されない。
     - 「expireGititCache」コマンドが、gititコマンドと同じ場所にインストールされているので、それを叩くようにすればok
