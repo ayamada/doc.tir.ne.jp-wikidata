@@ -64,8 +64,8 @@ categories: gitit
     - これも可能なら自分で調べて直して、pull-requestを送る
 - wikinameの末尾「.jp」とかのページでカテゴリ設定を行い、対応するカテゴリを見ると、一覧中のwikinameの末尾が切れてしまい、リンク切れを起こす
     - これも可能なら自分で調べて直して、pull-requestを送る
-    - とりあえずdropExtensionしすぎなのが原因という事で、以下で直った。pull-requestは面倒でない時に送る予定
         - 送った→[https://github.com/jgm/gitit/pull/310]()
+    - とりあえずdropExtensionしすぎなのが原因という事で、以下で直った。
 
 ~~~~~~{.diff .numberLines}
 diff --git a/Network/Gitit/Handlers.hs b/Network/Gitit/Handlers.hs
