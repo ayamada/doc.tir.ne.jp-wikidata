@@ -10,5 +10,7 @@ title: doc.tir.ne.jpの構成
 - 書き込み可能な内部用gititと、readonlyな公開用gititの2サービス構成です。
 - 続きはあとで
 
+- [../todo]()に、gitit関連で行うべき残り作業もあります。
+
 
 <!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
