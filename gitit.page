@@ -61,6 +61,8 @@ categories: gitit
 - gitit.confで use-cache: yes にすると、リポジトリ直更新による内容更新がキャッシュに反映されない。
     - 「expireGititCache」コマンドが、gititコマンドと同じ場所にインストールされているので、それを叩くようにすればok
         - しかしこれ、各ページを個別に指定する必要があるのでちょっと面倒。もっと簡単にできないか考えたい
+    - > The cache is persistent through restarts of gitit. To expire all cached pages, simply remove the cache directory.
+        - …との事なので、直にcacheディレクトリを削除していいようだ。
 
 - どうも、ページ編集時に一回余分にhtml実体参照のアンエスケープ処理が入っているらしく、「＆ａｍｐ；ａｍｐ；ａｍｐ；ａｍｐ；ａｍｐ；」のように書いておいて別のところを編集していくと、徐々に短くなっていき最終的には「＆」だけになってしまう
     - この問題は他の「＆＊＊＊＊＊；」や「＆＃ｎｎ；」でも発生する
