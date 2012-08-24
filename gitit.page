@@ -65,7 +65,7 @@ categories: gitit
     - これも可能なら自分で調べて直して、pull-requestを送る
     - とりあえずdropExtensionしすぎなのが原因という事で、以下で直った。pull-requestは面倒でない時に送る予定
 
-~~~~~~{.numberLines}
+~~~~~~{.diff .numberLines}
 diff --git a/Network/Gitit/Handlers.hs b/Network/Gitit/Handlers.hs
 index cc0251e..020dd78 100644
 --- a/Network/Gitit/Handlers.hs
