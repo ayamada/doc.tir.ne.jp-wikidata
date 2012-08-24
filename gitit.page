@@ -61,8 +61,25 @@ categories: gitit
         - 可能なら自分で調べて直して、pull-requestを送る
 - リスト項目の中で「￥＜！－－　　－－￥＞」を書くと、それ以降の文章がリスト項目の子要素にされてしまう
     - これも可能なら自分で調べて直して、pull-requestを送る
-- 長いwikinameでカテゴリ設定を行い、対応するカテゴリを見ると、一覧中のwikinameの末尾が切れてしまい、リンク切れを起こす
+- wikinameの末尾「.jp」とかのページでカテゴリ設定を行い、対応するカテゴリを見ると、一覧中のwikinameの末尾が切れてしまい、リンク切れを起こす
     - これも可能なら自分で調べて直して、pull-requestを送る
+    - とりあえずdropExtensionしすぎなのが原因という事で、以下で直った。pull-requestは面倒でない時に送る予定
+
+~~~~~~{.numberLines}
+diff --git a/Network/Gitit/Handlers.hs b/Network/Gitit/Handlers.hs
+index cc0251e..020dd78 100644
+--- a/Network/Gitit/Handlers.hs
++++ b/Network/Gitit/Handlers.hs
+@@ -704,7 +704,7 @@ categoryPage = do
+              forM pages $ \f -> do
+                categories <- liftIO $ readCategories $ repoPath </> f
+                return $ if category `elem` categories
+-                           then Just $ dropExtension f
++                           then Just f
+                            else Nothing
+   base' <- getWikiBase
+   let toMatchListItem file = li <<
+~~~~~~
 
 
 # 導入手順など
