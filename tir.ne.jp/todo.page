@@ -31,6 +31,7 @@ title: TODO
 - 各cgiを作成
     - deploy.cgi(intraからdocへ内容反映、プレビュー(diff形式？)あり)
     - push.cgi(githubかどこかの外部リポジトリにpush、シェルからも実行可能)
+        - この時のpush元は、内部編集用ではなく、公開側からとする事
 - 最低限必要なコンテンツの作成
 
 
