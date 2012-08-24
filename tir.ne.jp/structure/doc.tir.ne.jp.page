@@ -1,0 +1,14 @@
+---
+toc: no
+categories: gitit
+title: doc.tir.ne.jpの構成
+...
+
+あとでかく
+
+- 今入っているgititのバージョンは、 gitit version 0.10.0.1 +plugins
+- 書き込み可能な内部用gititと、readonlyな公開用gititの2サービス構成です。
+- 続きはあとで
+
+
+<!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
