@@ -48,12 +48,10 @@ c-a-g.tir.jp, mmotdd.tir.jp
 :    各種サービスを提供しています。
 
 
-# doc.tir.ne.jp の構成
-この項目はあとで子ページを作って移動させます。
+# doc.tir.ne.jpの構成
 
-- 今入っているgititのバージョンは、 gitit version 0.10.0.1 +plugins
-- 書き込み可能な内部用gititと、readonlyな公開用gititの2サービス構成です。
-- 続きはあとで
+- [structure/doc.tir.ne.jp]() にあります。
+
 
 
 <!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
