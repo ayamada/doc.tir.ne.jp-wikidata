@@ -25,9 +25,9 @@ categories: gitit
 - wikinameはそのままページのURLになってしまうので、これはURL encodeされない文字だけで構成するのがいいようだ。
     - ページのメタ情報のところに「title: ページのタイトル」と入れておけば、このタイトルがwikinameの代わりに正式なタイトルとして使われるので、この機能を多用する。
 
-
 - gititで利用できるmarkdown書式は、通常のものよりも拡張された [Pandoc's markdown](http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown) との事。
     - なので、エディタの書式設定も、通常のmarkdownではなく、pandoc用のものがベター。
+        - vimだと [https://github.com/vim-pandoc/vim-pandoc]() だが、デフォルトだとかなり癖の強い設定になってるので人によっては調整が必要。
 
 - /\_reloadTemplates にアクセスすると、サーバを再起動しなくてもページテンプレート(\*.st)が再読込される。よく変更するならsitenavi.stあたりに含めておくと便利
 
@@ -93,4 +93,4 @@ index cc0251e..020dd78 100644
 
 
 
-<!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
