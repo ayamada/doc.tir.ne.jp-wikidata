@@ -1,6 +1,6 @@
 ---
 toc: no
-categories: gitit
+categories: gitit postponed
 title: doc.tir.ne.jpの構成
 ...
 
@@ -13,4 +13,4 @@ title: doc.tir.ne.jpの構成
 - [../todo]()に、gitit関連で行うべき残り作業もあります。
 
 
-<!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
