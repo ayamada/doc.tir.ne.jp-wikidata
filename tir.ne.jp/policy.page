@@ -1,5 +1,12 @@
+---
+toc: no
+categories: postponed
+...
+
 あとでかきます。
 
 
 
 基本的には「ガラス張り運営」「ソースコード、ドキュメントはオープン」「データはクローズド」的な感じを目指します。
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
