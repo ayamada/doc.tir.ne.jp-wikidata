@@ -1,5 +1,5 @@
 ---
-toc: no
+toc: yes
 categories: 
 ...
 
@@ -13,6 +13,16 @@ categories:
 
 - \$SIG\$ -> -- yamada (Wed Aug 29 07:57:30 UTC 2012)
 - \$DATE\$ -> Wed Aug 29 07:57:30 UTC 2012
+
+
+# リスト項目内に「￥＜！－－　　－－￥＞」を書くと、それ以降がずれてしまう件
+
+- 1
+- 2
+- \<!--  --\> ←ずれるエスケープされたコメントタグ
+- 4
+
+# ずれるヘッダ(tocに出ない)
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
