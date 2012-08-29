@@ -64,6 +64,9 @@ categories: gitit postponed
     - > The cache is persistent through restarts of gitit. To expire all cached pages, simply remove the cache directory.
         - …との事なので、直にcacheディレクトリを削除していいようだ。
 
+- リスト項目の中で「￥＜！－－　　－－￥＞」を書くと、それ以降の文章がリスト項目の子要素にされてしまう
+    - 「！」もエスケープしましょう。「￥＜￥！－－　　－－￥＞」ならずれない。
+
 - どうも、ページ編集時に一回余分にhtml実体参照のアンエスケープ処理が入っているらしく、「＆ａｍｐ；ａｍｐ；ａｍｐ；ａｍｐ；ａｍｐ；」のように書いておいて別のところを編集していくと、徐々に短くなっていき最終的には「＆」だけになってしまう
     - 上記のテスト領域→ &amp;amp;amp;amp;amp;
     - この問題は他の「＆＊＊＊＊＊；」や「＆＃ｎｎ；」でも発生する
@@ -87,9 +90,6 @@ index a8d7bcf..6e8fe2b 100644
           pw <- look' "password"       `mplus` return ""
           p2 <- look' "password2"      `mplus` return ""
 ~~~~~~
-
-- リスト項目の中で「￥＜！－－　　－－￥＞」を書くと、それ以降の文章がリスト項目の子要素にされてしまう
-    - これも可能なら自分で調べて直して、pull-requestを送る
 
 - wikinameの末尾「.jp」とかのページでカテゴリ設定を行い、対応するカテゴリを見ると、一覧中のwikinameの末尾が切れてしまい、リンク切れを起こす
     - これも可能なら自分で調べて直して、pull-requestを送る
