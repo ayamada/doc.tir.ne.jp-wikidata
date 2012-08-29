@@ -117,7 +117,7 @@ index cc0251e..020dd78 100644
 
 そのうち、上の不具合と一緒にまとめてgithubに保存します。あとで。
 
-- 差分表示時に、新規作成等でfromのrevisionが空の場合は、toのrevisionを代わりに使うパッチ
+- 差分表示時に、新規作成等でfromのrevisionが空の場合は、代わりにtoのrevisionを、 \$revision\$ として使うパッチ
 
 ~~~~~~{.diff .numberLines}
 --- Network/Gitit/Handlers.hs.orig      2012-08-29 13:33:28.000000000 +0900
