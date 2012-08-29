@@ -65,11 +65,32 @@ categories: gitit postponed
         - …との事なので、直にcacheディレクトリを削除していいようだ。
 
 - どうも、ページ編集時に一回余分にhtml実体参照のアンエスケープ処理が入っているらしく、「＆ａｍｐ；ａｍｐ；ａｍｐ；ａｍｐ；ａｍｐ；」のように書いておいて別のところを編集していくと、徐々に短くなっていき最終的には「＆」だけになってしまう
+    - 上記のテスト領域→ &amp;amp;amp;amp;amp;
     - この問題は他の「＆＊＊＊＊＊；」や「＆＃ｎｎ；」でも発生する
-    - 可能なら自分で調べて直して、pull-requestを送る
     - 調べた結果、 Network/Gitit/Types.hs の「instance FromData Params where」のところで fromEntities をかけているが、これが原因のような気がする。あとでもう少し調べる
+    - 調べた結果、 Network/Gitit/Types.hs の「instance FromData Params where」のところで fromEntities をかけているが、これが原因のような気がする。あとでもう少し調べる
+        - 調べた。以下のパッチで直ったが、そもそもどうしてここでunescapeしてるのか不明なので、他のところで不具合が出る可能性が高い。手元でしばらく運用してみて、問題がない事を確認してからpull-requestを送る
+            - おそらく、非utf-8環境でのutf-8文字実体参照回りの対応の為っぽそうだが…
+
+~~~~~~{.diff .numberLines}
+diff --git a/Network/Gitit/Types.hs b/Network/Gitit/Types.hs
+index a8d7bcf..6e8fe2b 100644
+--- a/Network/Gitit/Types.hs
++++ b/Network/Gitit/Types.hs
+@@ -300,7 +300,7 @@ instance FromReqURI [String] where
+
+ instance FromData Params where
+      fromData = do
+-         let look' = liftM fromEntities . look
++         let look' = look
+          un <- look' "username"       `mplus` return ""
+          pw <- look' "password"       `mplus` return ""
+          p2 <- look' "password2"      `mplus` return ""
+~~~~~~
+
 - リスト項目の中で「￥＜！－－　　－－￥＞」を書くと、それ以降の文章がリスト項目の子要素にされてしまう
     - これも可能なら自分で調べて直して、pull-requestを送る
+
 - wikinameの末尾「.jp」とかのページでカテゴリ設定を行い、対応するカテゴリを見ると、一覧中のwikinameの末尾が切れてしまい、リンク切れを起こす
     - これも可能なら自分で調べて直して、pull-requestを送る
         - 送った→[https://github.com/jgm/gitit/pull/310]()
