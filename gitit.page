@@ -112,6 +112,28 @@ index cc0251e..020dd78 100644
 ~~~~~~
 
 
+# その他パッチ
+ここには、不具合という程ではないけど自分が手を入れたパッチを置きます。
+
+そのうち、上の不具合と一緒にまとめてgithubに保存します。あとで。
+
+- 差分表示時に、新規作成等でfromのrevisionが空の場合は、toのrevisionを代わりに使うパッチ
+
+~~~~~~{.diff .numberLines}
+--- Network/Gitit/Handlers.hs.orig      2012-08-29 13:33:28.000000000 +0900
++++ Network/Gitit/Handlers.hs   2012-08-29 14:12:05.000000000 +0900
+@@ -460,7 +460,7 @@
+        Left e         -> liftIO $ throwIO e
+        Right htmlDiff -> formattedPage defaultPageLayout{
+                                           pgPageName = page,
+-                                          pgRevision = from',
++                                          pgRevision = from' `mplus` to,
+                                           pgMessages = pMessages params,
+                                           pgTabs = DiffTab :
+                                                    pgTabs defaultPageLayout,
+~~~~~~
+
+
 # 導入手順など
 
 あとで！
