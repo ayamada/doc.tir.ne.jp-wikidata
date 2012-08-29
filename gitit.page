@@ -68,7 +68,6 @@ categories: gitit postponed
     - 上記のテスト領域→ &amp;amp;amp;amp;amp;
     - この問題は他の「＆＊＊＊＊＊；」や「＆＃ｎｎ；」でも発生する
     - 調べた結果、 Network/Gitit/Types.hs の「instance FromData Params where」のところで fromEntities をかけているが、これが原因のような気がする。あとでもう少し調べる
-    - 調べた結果、 Network/Gitit/Types.hs の「instance FromData Params where」のところで fromEntities をかけているが、これが原因のような気がする。あとでもう少し調べる
         - 調べた。以下のパッチで直ったが、そもそもどうしてここでunescapeしてるのか不明なので、他のところで不具合が出る可能性が高い。手元でしばらく運用してみて、問題がない事を確認してからpull-requestを送る
             - おそらく、非utf-8環境でのutf-8文字実体参照回りの対応の為っぽそうだが…
 
