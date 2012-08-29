@@ -1,0 +1,18 @@
+---
+toc: no
+categories: 
+...
+
+このページはgititそのものの動作確認をする為の、内部用ページです。
+
+# 見出し
+
+
+
+# プラグインテスト
+
+- \$SIG\$ -> -- yamada (Wed Aug 29 07:57:30 UTC 2012)
+- \$DATE\$ -> Wed Aug 29 07:57:30 UTC 2012
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
