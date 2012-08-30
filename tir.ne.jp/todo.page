@@ -149,7 +149,7 @@ title: TODO
 - 日本語のmarkdown記法の解説ページ(可能ならpandoc版のもの)へのリンクを、編集画面内の左サイドバーに追加する
     - 英語版のリンクはもう入っている
     - 探したがpandoc版はなかった。
-    - リンクつけるとしたら、 [wikipediaのmarkdown項目](http://ja.wikipedia.org/wiki/Markdown)、[全訳](http://blog.2310.net/archives/6)、[チートシート](http://qiita.com/items/c686397e4a0f4f11683d)ぐらいだが、どれも微妙な気がする
+    - リンクつけるとしたら、 [wikipediaのmarkdown項目](http://ja.wikipedia.org/wiki/Markdown)、[全訳](http://blog.2310.net/archives/6)、[チートシート](http://qiita.com/items/c686397e4a0f4f11683d)ぐらいだが、どれも微妙な感じ
         - これを必要とするのは新しくメンバーになる人ぐらいなので、そのタイミングで入れるかどうか検討する事にする
 
 
