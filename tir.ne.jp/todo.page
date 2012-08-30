@@ -43,7 +43,18 @@ title: TODO
 - plugins/PigLatin.hs を参考に、costを合計するプラグインも作る事
 
 
+# メタTODO
+
+- [Categories: postponed](/_category/postponed)なページを完成させましょう。
+
+
 # 全般的なTODO
+
+## 残りページ作成
+- 「doc.tir.ne.jpのドキュメントのライセンス」のページ
+- 「doc.tir.ne.jpのドキュメント作成ルール」のページ
+    - 要は、カテゴリどうするかとか(特にpostponedの扱いとか)、wikinameはこういう命名基準にするとか、そういう話を書くページ
+
 
 ## githubにリポジトリ作成など
 - テンプレート類の保存と、コンテンツの保存と、技情研ネットで手を入れたgititのfork版の保存
@@ -58,9 +69,6 @@ title: TODO
 - deploy.cgi(intraからdocへ内容反映、プレビュー(diff形式？)あり)
 - push.cgi(githubかどこかの外部リポジトリにpush、シェルからも実行可能)
     - この時のpush元は、内部編集用ではなく、公開側からとする事
-
-## 「doc.tir.ne.jpのドキュメントのライセンス」のページ作成
-
 
 
 # gitit本体をいじる必要のあるTODO
