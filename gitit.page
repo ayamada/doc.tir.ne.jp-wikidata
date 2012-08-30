@@ -154,7 +154,12 @@ index cc0251e..020dd78 100644
 
 # 外部リンク
 
-- [http://utotch.blogspot.jp/2011/12/pandoc-blogger.html]() pandocについての記事
+- [http://utotch.blogspot.jp/2011/12/pandoc-blogger.html]()
+    - pandocについての記事
+- [http://www.slideshare.net/master_q/20110528-qpstudy]() 
+    - gititプレゼン
+- [http://hackage.haskell.org/packages/archive/gitit/latest/doc/html/Network-Gitit-Interface.html]()
+    - 本家のプラグイン解説ドキュメント
 
 
 
