@@ -12,10 +12,10 @@ categories:
 - \$SIG\$ -> -- yamada (Wed Aug 29 07:57:30 UTC 2012)
 - \$DATE\$ -> Wed Aug 29 07:57:30 UTC 2012
 
-- \$SIG\$ -> $SIG$
-- \$DATE\$ -> $DATE$
+- \$SIG\$ -> -- yamada (Thu Aug 30 16:15:12 UTC 2012)
+- \$DATE\$ -> Thu Aug 30 16:15:12 UTC 2012
 
-
+test
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
