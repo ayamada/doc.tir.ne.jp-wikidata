@@ -137,6 +137,7 @@ title: TODO
 - Signature.hs と Date.hs
     - プレビュー時に機能していないのを直す
         - なおした。あとでgithubにテンプレートと一緒に保存する
+        - PreCommitTransform と PreParseTransform の両方にプラグイン設定しないといけないので二つプラグインを書く事で対応した
     - 日付を日本式の書式にする(Recent Changesのページ等の、他のところと共通？)
 
 
