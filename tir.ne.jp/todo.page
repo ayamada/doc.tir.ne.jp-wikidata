@@ -11,9 +11,19 @@ title: TODO
 
 # 優先TODO
 
-## 「..」モジュールを作る
-- サブディレクトリなwikinameのところに「..」相当のリンクをつけたい
-    - gititのモジュール書いてやってみる
+## 自分で新たに「\$hoge\$」タグを追加する
+- これはpandocのtemplate機能らしい→ http://johnmacfarlane.net/pandoc/README.html#templates
+- 調べた結果、この機能はないようだ。しかしこの機能は今回の用途では必須なので、自分で拡張して追加する事を考える
+    - プラグインの一種として追加(現状あるTypes.hs内の data Plugin = PageTransform | PreParseTransform | PreCommitTransform に追加するイメージ)
+- この機能は以下を実現するのに使う
+    - docとintraのテンプレートの共通化(\$hoge\$を見て切り換える等をできるようにする)
+    - LastModified.hsの位置をfootnoteの下になるように移動(\$lastmodified\$とか作る)
+    - 下記の「..」機能
+
+## 「..」機能
+- サブディレクトリなwikinameのところに「..」相当のリンク、もしくは各ディレクトリへ移動するリンクをつけたい
+    - gititの標準のプラグインでは実現不可？
+        - タイトルの上に出したいなら実現不可。タイトルとTOCよりも下でいいならプラグインでも可能。でも可能ならタイトルの上に出したい
     - しかしどうも、gititでは「/dir」と「/dir/」の扱いが違い、「/dir/child」があるからといって「/dir」があるとは限らないので(「/dir/」はあるが)、安易に「..」相当のリンクを貼れないっぽいようだ。モジュール作らずに手で貼った方がいい？
         - しかし、doc.tir.ne.jpに限れば、「/dir/child」を書く時は「/dir」も書くルールで運用する、という事なら、モジュール作ってしまった方がいいと思う
             - 「/dir」があるなら「/dir」に、ないなら「/dir/」にリンクする、という挙動がベスト
@@ -104,14 +114,6 @@ title: TODO
         - なので、可能ならLOCALEとかLC_TIMEとかで対応できればいいんだけど
 - Signature.hs と Date.hs の方もJSTにする必要があるが、こっちは `formatDateTime "%c" datetime` で行っているので、ここを Data.DateTime のドキュメント見ながら書き換えればok
 
-
-## 自分で新たに「\$hoge\$」タグを追加する
-- これはpandocのtemplate機能らしい→ http://johnmacfarlane.net/pandoc/README.html#templates
-- 調べた結果、この機能はないようだ。しかしこの機能は今回の用途では必須なので、自分で拡張して追加する事を考える
-    - プラグインの一種として追加(現状あるTypes.hs内の data Plugin = PageTransform | PreParseTransform | PreCommitTransform に追加するイメージ)
-- この機能は以下を実現するのに使う
-    - docとintraのテンプレートの共通化(\$hoge\$を見て切り換える等をできるようにする)
-    - LastModified.hsの位置をfootnoteの下になるように移動(\$lastmodified\$とか作る)
 
 ## ExportのSlidyを動くようにする。それができないなら「\$exportbox\$」から抜く方法を考える
 
