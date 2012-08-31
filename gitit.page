@@ -66,7 +66,7 @@ categories: gitit postponed
 ## gitリポジトリのカスケード式反映時の注意点
 - gitで普通に「親リポジトリ→子リポジトリ→孫リポジトリ」という構造にすると、孫から子へのpush時に、以下のエラーが出てしまう。
 
-    error: refusing to update checked out branch: refs/heads/master
+        error: refusing to update checked out branch: refs/heads/master
 
     - このエラー後の文章の内容はだいたい以下のような内容。
         - > デフォルトでは、非bareなリポジトリかつ選択中のブランチへのpushは禁止されている。何故ならそこにpushするとindexとワークツリーに不整合が発生し、「git reset \-\-hard」を実行してワークツリーをHEADに合わせなくてはならなくなるからだ。
@@ -74,7 +74,7 @@ categories: gitit postponed
           > (以下省略)
     - これを回避するには、エラー内で表示されている通り、子リポジトリ側で以下のコマンドを実行すればよい。
 
-        git config \-\-add receive.denyCurrentBranch ignore
+            git config --add receive.denyCurrentBranch ignore
 
     - これで孫から子へpush可能になる。勿論、上記に書いてある通り、pushした後は子で「git reset \-\-hard」を実行するのを忘れないようにする事。
 
