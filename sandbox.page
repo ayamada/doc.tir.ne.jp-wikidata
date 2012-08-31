@@ -19,7 +19,9 @@ hoge: テスト
 
 test
 
-# footnotes
+test2
+
+# note of foot
 
 Here is a footnote reference,[^1] and another.[^longnote]
 
