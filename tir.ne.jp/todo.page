@@ -72,6 +72,7 @@ title: TODO
 
 ## githubにテンプレート類を保存する
 - 先にdocとintraのテンプレート類の統合を行いたいが、時間がかかるので、現段階ではintraのみ保存する
+- 具体的に保存する対象は、plugins, static, templates、それから /etc/init.d/gitit-daemon あたり。
 
 
 ## githubにパッチ類を保存する
@@ -99,9 +100,6 @@ title: TODO
 
 ## Recent changes とかの日時をUTCじゃなくJSTにしたい
 - やりかた不明…通常だとLOCALEとかいじると思うのだけど
-
-## doc.tir.ne.jp向けのカスタマイズを行ったテンプレート等も、githubにリポジトリを作って、保存しても問題ない部分については保存してしまう
-- 勿論、パスワード等の設定部分は除外する
 
 ## 自分で新たに「\$hoge\$」タグを追加する
 - これはpandocのtemplate機能らしい→ http://johnmacfarlane.net/pandoc/README.html#templates
@@ -143,7 +141,7 @@ title: TODO
 
 - Signature.hs と Date.hs
     - プレビュー時に機能していないのを直す
-        - なおした。あとでgithubにテンプレートと一緒に保存する
+        - なおした。あとでgithubにテンプレート類と一緒に保存する
         - PreCommitTransform と PreParseTransform の両方にプラグイン設定しないといけないので二つプラグインを書く事で対応した
     - 日付を日本式の書式にする(Recent Changesのページ等の、他のところと共通？)
 
