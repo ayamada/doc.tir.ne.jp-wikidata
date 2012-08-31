@@ -99,7 +99,11 @@ title: TODO
 
 ## Recent changes とかの日時をUTCじゃなくJSTにしたい
 - やりかた不明…通常だとLOCALEとかいじると思うのだけど
-- 上記の修正ができたら、同じようにして、 Signature.hs と Date.hs も直す事
+    - Network/Gitit/Handlers.hs の showActivity のところを見ると、直に `show $ revDateTime rev` でリポジトリから読んでいる。
+    - Recent changes以外にもUTCで出している箇所はそこそこあるので、パッチとして修正する場合は全部まとめて対応する必要あり
+        - なので、可能ならLOCALEとかLC_TIMEとかで対応できればいいんだけど
+- Signature.hs と Date.hs の方もJSTにする必要があるが、こっちは `formatDateTime "%c" datetime` で行っているので、ここを Data.DateTime のドキュメント見ながら書き換えればok
+
 
 ## 自分で新たに「\$hoge\$」タグを追加する
 - これはpandocのtemplate機能らしい→ http://johnmacfarlane.net/pandoc/README.html#templates
