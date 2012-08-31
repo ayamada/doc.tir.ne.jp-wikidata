@@ -11,17 +11,8 @@ hoge: テスト
 
 # プラグインテスト
 
-- ＄SIG＄ -> -- yamada (Wed Aug 29 07:57:30 UTC 2012)
-- ＄DATE＄ -> Wed Aug 29 07:57:30 UTC 2012
-
-- ＄SIG＄ -> -- yamada (Thu Aug 30 16:15:12 UTC 2012)
-- ＄DATE＄ -> Thu Aug 30 16:15:12 UTC 2012
-
--- yamada (2012-08-31 20:29:23.183524 UTC) 2012-08-31 20:29:23.184099 UTC
-
-test
-
-test2
+- ＄SIG＄ → -- yamada (2012-09-01 08:25:56.838844 JST)
+- ＄DATE＄ → 2012-09-01 08:25:56.839397 JST
 
 # note of foot
 
