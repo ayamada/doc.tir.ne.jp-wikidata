@@ -13,8 +13,9 @@ title: TODO
 
 ## 「\$hoge\$」タグを好きに追加できるようにする
 - パッチとして作成する
-    - ブランチ名は pandoc-variable-plugins とする(仮)
-- この \$hoge$ タグの機能を実現しているのはpandocのtemplate機能らしい→ http://johnmacfarlane.net/pandoc/README.html#templates
+    - ブランチ名は stmp-plugins とする(仮)
+- この \$hoge$ タグの機能を実現しているのはpandocのtemplate機能らしい→ [http://johnmacfarlane.net/pandoc/README.html#templates]()
+    - しかしこの機能は更にさかのぼるとHStringTemplateの機能らしい→ [http://www.haskell.org/haskellwiki/HStringTemplate]()
 - プラグインの一種として追加する
     - 現状あるTypes.hs内の data Plugin = PageTransform | PreParseTransform | PreCommitTransform のところに追加するイメージ
 - なお、github上のgititのソースは少し古い(0.10。現時点での最新は0.10.0.1)ので、実サーバにインストールする時は、差分だけ取って、hackageにある最新のアーカイブに適用する事。
@@ -95,6 +96,7 @@ title: TODO
             - gititが標準で提供しているpandoc変数も、ほとんど英小文字のみで構成されているが、例外が一つだけあり、何故か「\$pageUrl$」だけlowerCamelCaseになっている。
         - writerマクロ(\2012-09-01 22:23:37.168512 JSTのように、本文内に書くと別の文字列に置換されてから保存されるマクロ)は、全て「英大文字」のタグとする。これによって上記のpandoc変数と区別する。
         - readerマクロ(通常のpandoc変数同様、表示時に別の文字列に置換される)は、上記のpandoc変数と同じく、英小文字はじまりのタグとする。英大文字は使わない(lowerCamelCase等にはしない)方針とする。記号もなるべく使わないようにする。
+        - TODO: 上記で「pandoc変数」と呼んでいるものの名称を考えなおす(大元の由来はHStringTemplateなため)
     - その他、ページ記入上でのルール
 
 
