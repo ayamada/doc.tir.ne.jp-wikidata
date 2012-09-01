@@ -16,6 +16,8 @@ hoge: テスト
 ＄DATE＄
 :   2012-09-01 08:25:56.839397 JST
 
+hoge
+
 # note of foot
 
 Here is a footnote reference,[^1] and another.[^longnote]
