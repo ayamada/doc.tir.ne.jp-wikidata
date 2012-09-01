@@ -124,6 +124,10 @@ title: TODO
         <pre class="diff"><span> ... </span></pre>
 
 
+## 本番環境であるdocのsitenav.stにも、簡易リンクメニューをつける
+- これはdocとintraのテンプレ統合が終わってから行う方が面倒でない
+
+
 ## ExportのSlidyを動くようにする。それができないなら「\$exportbox\$」から抜く方法を考える
 
 ## \*.st内における、httpからはじまるfull urlの出し方を調べ、pagetool.stのbingのところに反映
