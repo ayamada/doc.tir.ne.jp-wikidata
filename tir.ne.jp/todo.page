@@ -142,6 +142,15 @@ title: TODO
     - ただしCategoryは「id="categoryList"」で判定しており、他の非表示になっている部分のクラスから取る必要がある
     - static/css/print.css を見て、適当に不可視になりそうなクラスを選ぶ
 
+## コードブロックのインデント量がコードブロックも横幅に依存しているのを直す
+- 以下のようなコードブロックが、コードブロック内の横幅(文字数)によってインデント位置が変わる。おそらくcssで直せる。
+
+~~~~~{.pandoc}
+~~~{.haskell .numberLines}
+(show $ revDateTime rev)
+~~~
+~~~~~
+
 
 # 終了したTODO
 
@@ -189,6 +198,7 @@ title: TODO
 
 ~~~{.haskell .numberLines}
 (show $ revDateTime rev)
+                                                        
 ~~~
 
 - 「自分が書いた、IOで返す関数」：
