@@ -12,13 +12,17 @@ title: TODO
 # 優先TODO
 
 ## 自分で新たに「\$hoge\$」タグを追加する
-- これはpandocのtemplate機能らしい→ http://johnmacfarlane.net/pandoc/README.html#templates
-- 調べた結果、この機能はないようだ。しかしこの機能は今回の用途では必須なので、自分で拡張して追加する事を考える
-    - プラグインの一種として追加(現状あるTypes.hs内の data Plugin = PageTransform | PreParseTransform | PreCommitTransform に追加するイメージ)
-- この機能は以下を実現するのに使う
-    - docとintraのテンプレートの共通化(\$hoge$を見て切り換える等をできるようにする)
-    - LastModified.hsの位置をfootnoteの下になるように移動(\$lastmodified$とか作る)
+- パッチとして作成する
+    - ブランチ名は pandoc-variable-plugins とする(仮)
+- この \$hoge$ タグの機能を実現しているのはpandocのtemplate機能らしい→ http://johnmacfarlane.net/pandoc/README.html#templates
+- プラグインの一種として追加する
+    - 現状あるTypes.hs内の data Plugin = PageTransform | PreParseTransform | PreCommitTransform のところに追加するイメージ
+- なお、github上のgititのソースは少し古い(0.10。現時点での最新は0.10.0.1)ので、実サーバにインストールする時は、差分だけ取って、hackageにある最新のアーカイブに適用する事。
+- この機能が完成したら、以下のTODOも行う事
     - 下記の「..」機能
+    - docとintraのテンプレートの共通化( \$hoge$ を見て切り換える等をできるようにする)
+    - LastModified.hsの位置をfootnoteの下になるように移動(LastModified.hsは、 \$lastmodified$ に反映するものとして作り直す)
+
 
 ## 「..」機能
 - サブディレクトリなwikinameのところに「..」相当のリンク、もしくは各ディレクトリへ移動するリンクをつけたい
@@ -92,14 +96,6 @@ title: TODO
 ## githubにテンプレート類を保存する
 - 先にdocとintraのテンプレート類の統合を行いたいが、時間がかかるので、現段階ではintraのみ保存する
 - 具体的に保存する対象は、plugins, static, templates、それから /etc/init.d/gitit-daemon あたり。
-
-
-## githubにパッチ類を保存する
-- 技情研ネットで手を入れたgititのソースは、ブランチを変更してあとで保存する事
-    - バージョンが上がったらgit rebaseで対応する
-    - 問題は、github上のgititはバージョンが少し古い事
-        - ワークツリー上で直にmakeせず、ブランチが分かれている事を利用してブランチ間の差分だけ取り出し、それをhackageにある最新のgititに適用してビルドする、という手順とする方向で
-            - 煩雑なので面倒だが仕方がない
 
 
 ## 各cgiを作成
