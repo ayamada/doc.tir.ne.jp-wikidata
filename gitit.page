@@ -44,6 +44,10 @@ categories: gitit postponed
 - wikinameはそのままページのURLになってしまうので、これはURL encodeされない文字だけで構成するのがいいようだ。
 - ページのメタ情報のところに「title: ページのタイトル」と入れておけば、このタイトルがwikinameの代わりに正式なタイトルとして使われるので、この機能を多用する。
 
+## ページ移動などの複雑な変更
+- 一旦gititサーバを停止させて、コマンドラインから「git mv ...」等のようにいじってコミットし、またgititサーバを起動させる。
+    - gititサーバを停止させているのは、gitのワークツリーがwebフロントエンドから同時に変更されないようにする為。
+
 ## 書式
 - gititで利用できるmarkdown書式は、通常のものよりも拡張された [Pandoc's markdown](http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown) との事。
     - なので、エディタの書式設定も、通常のmarkdownではなく、pandoc用のものがベター。
