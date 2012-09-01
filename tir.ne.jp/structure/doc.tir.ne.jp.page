@@ -7,7 +7,7 @@ title: doc.tir.ne.jpの構成
 あとでかく
 
 - 今入っているgititのバージョンは、 gitit version 0.10.0.1 +plugins
-- 書き込み可能な内部用gititと、readonlyな公開用gititの2サービス構成です。
+- 書き込み可能な内部用gititと、readonlyな公開用gititに加え、githubの公開リポジトリへとデータのバックアップを行う、2サービス+1バックアップ構成です。
 - 続きはあとで
     - 利用プラグインとかも書く
 
