@@ -11,18 +11,13 @@ title: TODO
 
 # 優先TODO
 
-## UTCではなく適切なタイムゾーンで出力するパッチを作成する事
-- なんでこれが優先なのかというと、下のTODOを行う為に、一旦ここまで作成したパッチ類をgititのリポジトリにブランチ変更してコミットする必要がある、という事。
-- で、上記だけ途中でまだパッチ化していない為。
-
-
 ## 自分で新たに「\$hoge\$」タグを追加する
 - これはpandocのtemplate機能らしい→ http://johnmacfarlane.net/pandoc/README.html#templates
 - 調べた結果、この機能はないようだ。しかしこの機能は今回の用途では必須なので、自分で拡張して追加する事を考える
     - プラグインの一種として追加(現状あるTypes.hs内の data Plugin = PageTransform | PreParseTransform | PreCommitTransform に追加するイメージ)
 - この機能は以下を実現するのに使う
-    - docとintraのテンプレートの共通化(\$hoge\$を見て切り換える等をできるようにする)
-    - LastModified.hsの位置をfootnoteの下になるように移動(\$lastmodified\$とか作る)
+    - docとintraのテンプレートの共通化(\$hoge$を見て切り換える等をできるようにする)
+    - LastModified.hsの位置をfootnoteの下になるように移動(\$lastmodified$とか作る)
     - 下記の「..」機能
 
 ## 「..」機能
@@ -71,15 +66,24 @@ title: TODO
 
 # 全般的なTODO
 
-## カテゴリ命名基準の決定
-- 現在のところ、カテゴリはなんとなく「英小文字のみ」のルールにしているが、これ別に日本語とかでもいいと思うので、ちょっとルールを考え直す事
-    - 今あるカテゴリは「gitit」「journal」「postponed」「todo」
-
-
 ## 残りページ作成
-- 「doc.tir.ne.jpのドキュメントのライセンス」のページ
-- 「doc.tir.ne.jpのドキュメント作成ルール」のページ
-    - 要は、カテゴリどうするかとか(特にpostponedの扱いとか)、wikinameはこういう命名基準にするとか、そういう話を書くページ
+
+### 「doc.tir.ne.jpのドキュメントのライセンス」ページ
+- あと「無保証です」「EULAっぽいもの」とかのページも必要
+
+### 「doc.tir.ne.jpのドキュメント作成ルール」ページ
+- 以下のルールを決定し、仕様化する必要がある
+    - 仕訳帳ルール
+        - 「journalのwikinameの日時はJSTです」とかもここに書く
+    - カテゴリルール
+        - カテゴリ命名基準の考え直し
+            - 現在のところ、カテゴリはなんとなく「英小文字のみ」のルールにしているが、これ別に日本語とかでもいいと思うので考え直す
+        - 以下の件のメモ書き
+            - 今は、「技情研ネット関連のコンテンツ」は[/tir.ne.jp/]()配下に設置する、というルールでやっているが、これはカテゴリの方がいいかどうか考える → とりあえずこれに限っては、カテゴリでない方がいい、という事になった
+                - 一覧を見た時に畳み込まれて、ちらかる事がない、という理由
+                - 他の技術情報([/gitit]())とかもディレクトリ掘るべきかも
+    - wikiname命名基準の確定
+    - その他、ページ記入上でのルール
 
 
 ## githubにテンプレート類を保存する
@@ -107,7 +111,7 @@ title: TODO
 
 
 ## LastModified.hs が、過去のrevisionを見ている時でも最新ページのタイムスタンプを表示するのを直す
-- \$revision\$ がある時は、それを使って日時を引くようにする
+- \$revision$ がある時は、それを使って日時を引くようにする
 
 
 ## 差分表示の時に一行の長さが長すぎてはみでるのをどうにかする
@@ -115,14 +119,6 @@ title: TODO
 - preだから。あとでcodeとbrにするパッチを作る。実際には以下のタグになっている
 
         <pre class="diff"><span> ... </span></pre>
-
-
-## Recent changes とかの日時をUTCじゃなくJSTにしたい
-- やりかた不明…通常だとLOCALEとかいじると思うのだけど
-    - Network/Gitit/Handlers.hs の showActivity のところを見ると、直に `show $ revDateTime rev` でリポジトリから読んでいる。
-    - Recent changes以外にもUTCで出している箇所はそこそこあるので、パッチとして修正する場合は全部まとめて対応する必要あり
-        - なので、可能ならLOCALEとかLC_TIMEとかで対応できればいいんだけど
-- Signature.hs と Date.hs の方もJSTにする必要があるが、こっちは `formatDateTime "%c" datetime` で行っているので、ここを Data.DateTime のドキュメント見ながら書き換えればok
 
 
 ## ExportのSlidyを動くようにする。それができないなら「\$exportbox\$」から抜く方法を考える
@@ -149,19 +145,62 @@ title: TODO
 
 # 終了したTODO
 
-- 今は、「技情研ネット関連のコンテンツ」は[/tir.ne.jp/]()配下に設置する、というルールでやっているが、これはカテゴリの方がいいかどうか考える
-    - とりあえずこれに限っては、カテゴリでない方がいい、という事になった(一覧を見た時に畳み込まれて、ちらかる事がない、という理由により)
-
+## markdown記法の解説ページへのリンク追加の件
 - 日本語のmarkdown記法の解説ページ(可能ならpandoc版のもの)へのリンクを、編集画面内の左サイドバーに追加する
     - 英語版のリンクはもう入っている
     - 探したがpandoc版はなかった。
     - リンクつけるとしたら、 [wikipediaのmarkdown項目](http://ja.wikipedia.org/wiki/Markdown)、[全訳](http://blog.2310.net/archives/6)、[チートシート](http://qiita.com/items/c686397e4a0f4f11683d)ぐらいだが、どれも微妙な感じ
         - これを必要とするのは新しくメンバーになる人ぐらいなので、そのタイミングで入れるかどうか検討する事にする
 
+## 見出しリンクの件
 - 各見出しのリンク先は#TOCだが、それよりは自分自身を指した方が便利なので変更する
     - もしくは、見出しの末尾に自分自身を指す、リンク取得用のhrefを入れておくか
     - この処理はpandocが行っているようで、gititだけでは直せないっぽいので諦める事に
 
+## UTC問題
+タイムスタンプがUTCになっている問題は延期とする(UTCのままでokとする)。
+ただし将来に対応作業を再開する可能性がある為、メモを残す。
+
+尚、延期にする理由は「よく考えたら、あるタイムスタンプが日本の何時に書かれたものなのかパッと分かりづらいが、それが分からなくても困る人は別にいない」為。
+また、万が一、技情研ネットが国際的に発展するような事になった時の事を考えると、JSTにこだわる意味もない為。
+
+- この修正を行うべき対象は以下の通り。
+    - Network/Gitit/Handlers.hs 内の showActivity と showHistory の revDateTime のある辺り
+        - リビジョン情報からUTCTimeを得て、それを単にshowしているだけ。後述の問題あり
+    - LastModified.hs
+        - 根本的には同上。しかしプラグインなのでバリバリに手を入れて直してしまっても別に問題はない
+    - Signature.hs SignatureParse.hs Date.hs DateParse.hs
+        - これは現在の日時を埋め込むので個別対応してもokだし簡単にできる
+
+- UTC問題の本質
+    - gitのリビジョン情報内の日時にはタイムゾーン情報が含まれている。しかし Data.FileStore から得られるリビジョン情報はUTCTimeで日時を返している。そしてUTCTimeはタイムゾーン情報を含んでいない。
+        - ここで可能な選択は二択。
+            (@) 諦めてUTC固定とする
+            (@) 任意のタイムゾーン(サーバに設定されているタイムゾーン)に変換する
+        - 今回は前者を選んだが、後者を選んだ場合にどうなるかを記す。
+            - doc.tir.ne.jp的にはJSTのみ対応でいいが、パッチとしてpull-reqするのであれば、夏時間ありのタイムゾーンにも対応させないとまずい。またpull-reqする内容が大きくなるのもよくない
+            - 夏時間ありのタイムゾーン判定は面倒な事に一律で決定せず、たとえUTCであってもその日時によってタイムゾーンが変化する。これを求める方法は二つある。
+                (@) Data.Time.LocalTime の utcToLocalZonedTime。これはIOとして、システムにタイムゾーンを問い合わせを行う為、現状だと純粋関数で記述されてる箇所に詰め込むのが面倒。
+                (@) Data.Time.LocalTime.TimeZone.Series。これはIOではないが別途モジュールをインストールする必要があり、これを利用する場合はgitit.cabal等にも追加が必要で面倒。
+
+- 実際にJSTにする為に書いたコードサンプル：元のコード
+
+~~~{.haskell .numberLines}
+(show $ revDateTime rev)
+~~~
+
+- 実際にJSTにする為に書いたコードサンプル：上記のコードに対応して作った関数(IOを返す点に注意)
+
+~~~{.haskell .numberLines}
+import Data.FileStore (revDateTime)
+import Data.Time.LocalTime (getTimeZone, utcToZonedTime)
+
+revToDateTimeString :: Revision -> IO String
+revToDateTimeString rev = do
+  let dt = revDateTime rev
+  tz <- getTimeZone dt
+  show $ utcToZonedTime tz dt
+~~~
 
 
-<!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
