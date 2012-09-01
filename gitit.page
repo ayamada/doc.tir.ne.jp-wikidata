@@ -110,9 +110,13 @@ categories: gitit postponed
     - > The cache is persistent through restarts of gitit. To expire all cached pages, simply remove the cache directory.
         - …との事なので、直にcacheディレクトリを削除していいようだ。
 
+
 ## なんかずれた
-- リスト項目の中で「￥＜！－－　　－－￥＞」を書くと、それ以降の文章がリスト項目の子要素にされてしまう
-    - 「！」も忘れずエスケープしましょう。「￥＜￥！－－　　－－￥＞」ならずれない。
+- 例えば、リスト項目の中で「￥＜！－－　　－－￥＞」を書くと、それ以降の文章がリスト項目の子要素にされてしまった
+    - ずれた時は、「！」等の他の記号も忘れずエスケープしてみましょう。「￥＜￥！－－　　－－￥＞」ならずれない。
+- [pandocのドキュメント](http://johnmacfarlane.net/pandoc/README.html#backslash-escapes)によると、「\\」でエスケープする必要のある記号は「\\\`\*\_\{\}\[\]\(\)\>\#\+\-\.\!」との事。
+    - これ以外の記号をエスケープしてしまっても別に問題になる事はないようなので、プレビュー等でなんかずれたり、エディタのpandoc用syntax色付け判定が怪しい時は、とにかくエスケープしてしまっていいようだ。
+
 
 ## 「`'`」を含むwikinameがwikilink化された時にページが見付からなくなる
 - デフォルトで作られるトップページ内の「Gitit User's Guide」というwikilinkが既にその状態になってる。おそらく仕様。
