@@ -1,12 +1,16 @@
 ---
 toc: yes
 categories: sandbox
+title: テストページ
 hoge: テスト
 ...
 
 このページはgititそのものの動作確認をする為の、内部用ページです。
 
 # タグテスト
+- $toc$
+- $categories$
+- $title$
 - $hoge$
 
 # プラグインテスト
