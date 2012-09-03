@@ -46,6 +46,9 @@ categories: gitit postponed
 
 # ノウハウ/メモ
 
+## テンプレに任意のタグを追加したい
+- 標準機能ではできないのでパッチ作りました。 [/gitit/patch/hstmp-plugin]() に置いてます。
+
 ## gititの読み方は「ぎちっと」
 - …でいいのか？
 
