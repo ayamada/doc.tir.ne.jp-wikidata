@@ -134,7 +134,7 @@ categories: gitit postponed
     - ずれた時は、「！」等の他の記号も忘れずエスケープしてみましょう。「￥＜￥！－－　　－－￥＞」ならずれない。
 - [pandocのドキュメント](http://johnmacfarlane.net/pandoc/README.html#backslash-escapes)によると、「`\`」でのエスケープが必要になる可能性のある記号は「``\ ` * _ { } [ ] ( ) > # + - . !``」との事(記述状況によってはエスケープ無しでも問題ない)。
     - 上記には書かれてないが「`&`」もエスケープが必要な場面があると思う
-        - 「`&`」のような、実体参照の文字列をそのまま書きたい時とか
+        - 「`＆ａｍｐ；`」のような、html実体参照の文字列をそのまま書きたい時とか
     - これ以外の記号をエスケープしてしまっても別に問題になる事はないようなので、プレビュー等でなんかずれたり、エディタのpandoc用syntax色付け判定が怪しい時は、とにかくエスケープしてしまっていいようだ。
         - ただし一部の記法の内部([コードブロック](http://johnmacfarlane.net/pandoc/README.html#verbatim-code-blocks)や[Verbatim](http://johnmacfarlane.net/pandoc/README.html#verbatim)内)ではそもそもエスケープ不要。よく分からなくなった時はプレビューに頼る。
 
