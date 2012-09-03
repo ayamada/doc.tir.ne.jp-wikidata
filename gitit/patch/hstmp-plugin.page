@@ -12,10 +12,11 @@ gititにこのパッチを適用する事で、プラグイン種別(`data Plugi
 # リポジトリ＆差分
 
 - [https://github.com/ayamada/gitit/commit/029faf21f311a391552eb04a822a05c057968762]()
+- [/gitit/patch/hstmp-plugin/gitit-0.10-hstmp-plugin.patch]()
 
 # ダウンロード
 
-- [/gitit/patch/hstmp-plugin/gitit-0.10-hstmp-plugin.patch]()
+- [/_showraw/gitit/patch/hstmp-plugin/gitit-0.10-hstmp-plugin.patch]()
 
 続きはあとで書きます。
 
