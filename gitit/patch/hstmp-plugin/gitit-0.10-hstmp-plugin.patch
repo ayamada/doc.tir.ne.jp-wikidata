@@ -1,0 +1,137 @@
+diff --git a/Network/Gitit/ContentTransformer.hs b/Network/Gitit/ContentTransformer.hs
+index a436620..1c49861 100644
+--- a/Network/Gitit/ContentTransformer.hs
++++ b/Network/Gitit/ContentTransformer.hs
+@@ -35,6 +35,7 @@ module Network.Gitit.ContentTransformer
+   , showFile
+   , preview
+   , applyPreCommitPlugins
++  , applyHSTMPPlugins
+   -- * Cache support for transformers
+   , cacheHtml
+   , cachedHtml
+@@ -90,6 +91,7 @@ import Text.Highlighting.Kate
+ import Text.Pandoc hiding (MathML, WebTeX, MathJax)
+ import Text.Pandoc.Shared (ObfuscationMethod(..))
+ import Text.XHtml hiding ( (</>), dir, method, password, rev )
++import Text.StringTemplate (StringTemplate)
+ #if MIN_VERSION_blaze_html(0,5,0)
+ import Text.Blaze.Html.Renderer.String as Blaze ( renderHtml )
+ #else
+@@ -108,7 +110,12 @@ runTransformer :: ToMessage a
+                => (String -> String)
+                -> ContentTransformer a
+                -> GititServerPart a
+-runTransformer pathFor xform = withData $ \params -> do
++runTransformer = runTransformer'
++
++runTransformer' :: (String -> String)
++               -> ContentTransformer a
++               -> GititServerPart a
++runTransformer' pathFor xform = withData $ \params -> do
+   page <- getPage
+   cfg <- getConfig
+   evalStateT xform  Context{ ctxFile = pathFor page
+@@ -139,6 +146,11 @@ runFileTransformer :: ToMessage a
+                    -> GititServerPart a
+ runFileTransformer = runTransformer id
+ 
++-- | Converts a @ContentTransformer@ into a @GititServerPart@;
++-- specialized to StringTemplate.
++runHSTMPTransformer :: ContentTransformer a -> GititServerPart a
++runHSTMPTransformer = runTransformer' id
++
+ --
+ -- Gitit responders
+ --
+@@ -182,6 +194,11 @@ preview = runPageTransformer $
+ applyPreCommitPlugins :: String -> GititServerPart String
+ applyPreCommitPlugins = runPageTransformer . applyPreCommitTransforms
+ 
++-- | Applies HStringTemplate plugins to template, possibly
++-- modifying it.
++applyHSTMPPlugins :: StringTemplate String -> GititServerPart (StringTemplate String)
++applyHSTMPPlugins = runHSTMPTransformer . applyHSTMPTransforms
++
+ --
+ -- Top level, composed transformers
+ --
+@@ -395,6 +412,12 @@ getPreCommitTransforms = liftM (mapMaybe preCommitTransform) $
+   where preCommitTransform (PreCommitTransform x) = Just x
+         preCommitTransform _                      = Nothing
+ 
++getHSTMPTransforms :: ContentTransformer [StringTemplate String -> PluginM (StringTemplate String)]
++getHSTMPTransforms = liftM (mapMaybe hSTMPTransform) $
++                          queryGititState plugins
++  where hSTMPTransform (HSTMPTransform x) = Just x
++        hSTMPTransform _                  = Nothing
++
+ -- | @applyTransform a t@ applies the transform @t@ to input @a@.
+ applyTransform :: a -> (a -> PluginM a) -> ContentTransformer a
+ applyTransform inp transform = do
+@@ -426,6 +449,10 @@ applyPreParseTransforms page' = getPreParseTransforms >>= foldM applyTransform (
+ applyPreCommitTransforms :: String -> ContentTransformer String
+ applyPreCommitTransforms c = getPreCommitTransforms >>= foldM applyTransform c
+ 
++-- | Applies all the HStringTemplate transform plugins to a template.
++applyHSTMPTransforms :: StringTemplate String -> ContentTransformer (StringTemplate String)
++applyHSTMPTransforms st = getHSTMPTransforms >>= foldM applyTransform st
++
+ --
+ -- Content or context augmentation combinators
+ --
+diff --git a/Network/Gitit/ContentTransformer.hs-boot b/Network/Gitit/ContentTransformer.hs-boot
+new file mode 100644
+index 0000000..c867942
+--- /dev/null
++++ b/Network/Gitit/ContentTransformer.hs-boot
+@@ -0,0 +1,6 @@
++{-# LANGUAGE CPP #-}
++module Network.Gitit.ContentTransformer where
++import Network.Gitit.Types
++import Text.StringTemplate (StringTemplate)
++
++applyHSTMPPlugins :: StringTemplate String -> GititServerPart (StringTemplate String)
+diff --git a/Network/Gitit/Layout.hs b/Network/Gitit/Layout.hs
+index 3c4f3d5..8171775 100644
+--- a/Network/Gitit/Layout.hs
++++ b/Network/Gitit/Layout.hs
+@@ -31,6 +31,7 @@ import Network.Gitit.Server
+ import Network.Gitit.Framework
+ import Network.Gitit.State
+ import Network.Gitit.Types
++import {-# SOURCE #-} Network.Gitit.ContentTransformer (applyHSTMPPlugins)
+ import Network.Gitit.Export (exportFormats)
+ import Network.HTTP (urlEncodeVars)
+ import qualified Text.StringTemplate as T
+@@ -66,8 +67,9 @@ defaultRenderPage :: T.StringTemplate String -> PageLayout -> Html -> Handler
+ defaultRenderPage templ layout htmlContents = do
+   cfg <- getConfig
+   base' <- getWikiBase
++  appliedTmpl <- applyHSTMPPlugins templ
+   ok . setContentType "text/html; charset=utf-8" . toResponse . T.render .
+-       filledPageTemplate base' cfg layout htmlContents $ templ
++       filledPageTemplate base' cfg layout htmlContents $ appliedTmpl
+ 
+ -- | Returns a page template with gitit variables filled in.
+ filledPageTemplate :: String -> Config -> PageLayout -> Html ->
+diff --git a/Network/Gitit/Types.hs b/Network/Gitit/Types.hs
+index a8d7bcf..6f57d85 100644
+--- a/Network/Gitit/Types.hs
++++ b/Network/Gitit/Types.hs
+@@ -29,6 +29,7 @@ import Control.Monad (liftM)
+ import System.Log.Logger (Priority(..))
+ import Text.Pandoc.Definition (Pandoc)
+ import Text.XHtml (Html)
++import Text.StringTemplate (StringTemplate)
+ import qualified Data.Map as M
+ import Data.List (intersect)
+ import Data.Time (parseTime)
+@@ -193,6 +194,7 @@ type ContentTransformer = StateT Context GititServerPart
+ data Plugin = PageTransform (Pandoc -> PluginM Pandoc)
+             | PreParseTransform (String -> PluginM String)
+             | PreCommitTransform (String -> PluginM String)
++            | HSTMPTransform (StringTemplate String -> PluginM (StringTemplate String))
+ 
+ data PluginData = PluginData { pluginConfig    :: Config
+                              , pluginUser      :: Maybe User
