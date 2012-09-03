@@ -138,6 +138,12 @@ title: TODO
 ~~~
 ~~~~~
 
+- 調べたところ、以下のようなタグになっていた。このクラスを調べる事。
+
+~~~~~{.html}
+<table class="sourceCode haskell numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>
+~~~~~
+
 
 # 終了したTODO
 
