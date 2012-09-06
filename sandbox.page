@@ -33,7 +33,7 @@ hoge
 
 ## graphvizテスト
 
-~~~ {.dot name="グラフテスト"}
+~~~ {.dot name="graph test"}
 digraph G {Hello->World}
 
 graph test123 {
