@@ -46,7 +46,7 @@ categories: gitit postponed
 
 # ノウハウ/メモ
 
-## テンプレに任意のタグを追加したい
+## テンプレに任意のStringTemplate変数を追加したい
 - 標準機能ではできないのでパッチ作りました。 [/gitit/patch/hstmp-plugin]() に置いてます。
 
 ## gititの読み方は「ぎちっと」
