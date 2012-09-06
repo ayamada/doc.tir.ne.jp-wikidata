@@ -33,8 +33,15 @@ hoge
 
 ## graphvizテスト
 
-~~~ {.dot name="diagram1"}
+~~~ {.dot name="グラフテスト"}
 digraph G {Hello->World}
+
+graph ほげ123 {
+       a -- b -- c;
+       a -- {x y};
+       x -- c [w=10.0];
+       x -- y [w=5.0,len=3];
+}
 ~~~
 
 # note of foot
