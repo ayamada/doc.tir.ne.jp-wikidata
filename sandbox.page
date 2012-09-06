@@ -31,12 +31,6 @@ hoge: テスト
 hoge
 
 
-## graphvizテスト
-
-~~~ {.dot name="graph test"}
-digraph G {Hello->World}
-~~~
-
 # note of foot
 
 Here is a footnote reference,[^1] and another.[^longnote]
