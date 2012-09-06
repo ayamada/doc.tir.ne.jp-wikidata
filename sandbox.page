@@ -33,6 +33,12 @@ hoge
 
 ## graphvizテスト
 
+<<<<<<< edited
+~~~ {.dot name="graph test"}
+digraph G {Hello->World}
+
+graph test123 {
+=======
 ~~~ {.dot name="グラフテスト"}
 digraph G {Hello->World}
 
@@ -41,6 +47,7 @@ graph test123 {
 =======
 graph ほげ123 {
 >>>>>>> 0e626d14376e3803b8536cebd449178b583c0bd1
+>>>>>>> a400c6057ef3951ad04955857b79425e60cd9623
        a -- b -- c;
        a -- {x y};
        x -- c [w=10.0];
