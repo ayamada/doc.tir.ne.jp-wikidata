@@ -36,7 +36,11 @@ hoge
 ~~~ {.dot name="グラフテスト"}
 digraph G {Hello->World}
 
+<<<<<<< edited
+graph test123 {
+=======
 graph ほげ123 {
+>>>>>>> 0e626d14376e3803b8536cebd449178b583c0bd1
        a -- b -- c;
        a -- {x y};
        x -- c [w=10.0];
