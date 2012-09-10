@@ -7,6 +7,10 @@ hoge: テスト
 
 このページはgititそのものの動作確認をする為の、内部用ページです。
 
+# Issue 311
+- [Some text](http://a/place/file&name.doc)
+- [Some other text](http://alinkwith;semicolon)
+
 # タグテスト
 - $toc$
 - $categories$
