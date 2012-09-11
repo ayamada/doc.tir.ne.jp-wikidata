@@ -11,6 +11,18 @@ title: TODO
 
 # 優先TODO
 
+## gitit.conf内の情報を参照できるHSTMPTransformプラグイン作成
+- これを行わないと、docとintraのテンプレ統合ができない為。
+- 書式を考える必要がある。もしくは書式を考えずに、直に「`repository-type`→`$repository-type$`」のように反映してもよい(既存のStringTemplate変数と衝突がない場合のみ)
+- これが完了次第、次のTODOも行う事
+
+### githubにテンプレート類を保存する
+- 具体的に保存する対象は、plugins, static, templates、それから /etc/init.d/gitit-daemon あたり。
+
+### 本番環境であるdocのsitenav.stにも、簡易リンクメニューをつける
+- 内容を考える事
+
+
 ## 必要な成果物ページを作成
 - 「いわゆる人工知能(仮)」を完成させる為に必要な各モジュールの一覧、および、それのプロトタイプ成果物とかを木構造で示したり具体的にどんなの作るのかの概要とか書いたりするページを作る事。
     - とりあえず、androidアプリとしてワールドシミュレータをまず作る予定なので、その成果物ページと、開発環境構築手順ページは必要。
@@ -123,11 +135,6 @@ title: TODO
 - ghcおよびcabalモジュール導入あたりのメモを忘れない内に書く
 
 
-## githubにテンプレート類を保存する
-- 先にdocとintraのテンプレート類の統合を行いたいが、時間がかかるので、現段階ではintraのみ保存する
-- 具体的に保存する対象は、plugins, static, templates、それから /etc/init.d/gitit-daemon あたり。
-
-
 ## 各cgiを作成
 - deploy.cgi(intraからdocへ内容反映、プレビュー(diff形式？)あり)
 - push.cgi(githubかどこかの外部リポジトリにpush、シェルからも実行可能)
@@ -173,10 +180,6 @@ title: TODO
 - preだから。あとでcodeとbrにするパッチを作る。実際には以下のタグになっている
 
         <pre class="diff"><span> ... </span></pre>
-
-
-## 本番環境であるdocのsitenav.stにも、簡易リンクメニューをつける
-- これはdocとintraのテンプレ統合が終わってから行う方が面倒でない
 
 
 ## ExportのSlidyを動くようにする。それができないなら「\$exportbox\$」から抜く方法を考える
