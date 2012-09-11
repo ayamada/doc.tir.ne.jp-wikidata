@@ -13,7 +13,7 @@ title: TODO
 
 ## gitit.conf内の情報を参照できるHSTMPTransformプラグイン作成
 - これを行わないと、docとintraのテンプレ統合ができない為。
-- 書式を考える必要がある。もしくは書式を考えずに、直に「`repository-type`→`$repository-type$`」のように反映してもよい(既存のStringTemplate変数と衝突がない場合のみ)
+- 書式(prefix等)を考える必要がある。もしくは書式を考えずに、直に「`repository-type`→`$repository-type$`」のように反映してもよい(既存のStringTemplate変数と衝突がない場合のみ)
 - これが完了次第、次のTODOも行う事
 
 ### githubにテンプレート類を保存する
