@@ -14,10 +14,16 @@ title: TODO
 ## gitit.conf内の情報を参照できるHSTMPTransformプラグイン作成
 - これを行わないと、docとintraのテンプレ統合ができない為。
 - 書式(prefix等)を考える必要がある。もしくは書式を考えずに、直に「`repository-type`→`$repository-type$`」のように反映してもよい(既存のStringTemplate変数と衝突がない場合のみ)
-- これが完了次第、次のTODOも行う事
+    - StringTemplateの書式を見て考える事→[サンプル](http://www.stringtemplate.org/about.html)
+
+これが完了次第、次のTODOも行う事
+
+### docとintraのテンプレートの統合
+- 上記の通り。
+- ついでに後述のplugins, static等も統合する事
 
 ### githubにテンプレート類を保存する
-- 具体的に保存する対象は、plugins, static, templates、それから /etc/init.d/gitit-daemon あたり。
+- 具体的に保存する対象は、plugins, static, templates、それから /etc/init.d/gitit-daemon あたり。これらは現状docとintraでバラバラなので先に統合する必要がある
 
 ### 本番環境であるdocのsitenav.stにも、簡易リンクメニューをつける
 - 内容を考える事
