@@ -15,6 +15,7 @@ title: TODO
 - これを行わないと、docとintraのテンプレ統合ができない為。
 - 書式(prefix等)を考える必要がある。もしくは書式を考えずに、直に「`repository-type`→`$repository-type$`」のように反映してもよい(既存のStringTemplate変数と衝突がない場合のみ)
     - StringTemplateの書式を見て考える事→[サンプル](http://www.stringtemplate.org/about.html)
+- これが完成したら、gititのforkしたリポジトリのhstmp-pluginブランチのpluginsディレクトリに、プラグインのサンプルとして放り込んでおく事
 
 これが完了次第、次のTODOも行う事
 
