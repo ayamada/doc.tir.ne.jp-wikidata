@@ -213,6 +213,8 @@ title: TODO
 <table class="sourceCode haskell numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>
 ~~~~~
 
+- 空行を入れる等して複数行にする事で、インデント量が一定になるようだ。htmlレベルで差異が出ているのかどうかは不明。
+
 
 # 終了したTODO
 
