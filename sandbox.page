@@ -7,6 +7,12 @@ hoge: テスト
 
 このページはgititそのものの動作確認をする為の、内部用ページです。
 
+# single-quotが「＆＃３９；」ではなく「＆＃８２１７；」になる件
+- '
+
+# 一回余計にアンエスケープされてしまう件
+- &amp;amp;amp;amp;
+
 # Issue 311
 - [Some text](http://a/place/file&name.doc)
 - [Some other text](http://alinkwith;semicolon)
