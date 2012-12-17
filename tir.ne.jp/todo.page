@@ -16,7 +16,7 @@ title: TODO
 - 書式(prefix等)を考える必要がある。もしくは書式を考えずに、直に「`repository-type`→`$repository-type$`」のように反映してもよい(既存のStringTemplate変数と衝突がない場合のみ)
     - StringTemplateの書式を見て考える事→[サンプル](http://www.stringtemplate.org/about.html)
     - [https://sites.google.com/site/klovelab/Home/hstringtemplate]() を見ながら、代数データ型変数(`$config.hoge$`書式)とする方針とする
-- これが完成したら、gititのforkしたリポジトリのhstmp-pluginブランチのpluginsディレクトリに、プラグインのサンプルとして放り込んでおく事
+    - なんか意外と面倒なようなので、他の情報(path等)から判別する方向に変更。とにかくdocとintraの区別をStringTemplate変数からできればokなので。
 
 これが完了次第、次のTODOも行う事
 
@@ -168,6 +168,35 @@ title: TODO
 ## 技情研ネットのバナー作成
 - 200x40サイズのもの。内容は、三匹のアイコンのみ。「技情研ネット」とかの文字もなし。
 
+## テンプレをいじって、 http://doc.tir.ne.jp/_activity が空の時にメッセージを出すようにする
+- 現状だと一ヶ月更新がないと空の表示になってしまい、ユーザに不審がられる恐れがある為。「最近一ヶ月は更新がありませんでした」程度は出したい
+
+## 以下のメモを整形してどこか適当な場所に移動させる
+
+~~~~~
+ghcいれなおし手順
+laymanの設定を行う
+layman -S
+layman -a haskell
+layman -s haskell
+なんかエラーが出る時は、一度layman -d haskellしてやり直す事(haskell-updaterがlaymanの中を書き換える為、git pullがうまくいかなくなってしまう様子)
+vim /etc/make.conf # CABAL_EXTRA_CONFIGURE_FLAGS=--enable-shared
+emerge -av ghc
+emerge -av haskell-platform
+emerge -av haskell-updater
+haskell-updater
+emerge -av cabal-dev
+なお、パッケージがおかしくなった時は、 haskell-updater -c -u を実行する
+また haskell-updater -c -u --all で、全パッケージの再構築ができる
+~~~~~
+
+構築ポリシーおよび手順
+- hackageにあるモジュールの内、gentooにあるものはcabalで入れずにemergeで入れる。
+- hackageにあるモジュールの内、emergeにないパッケージはcabalで ~/.cabal にインストールする。rootでglobalインストールはしない(これで入れてしまうと困る場面が多かった為)。
+- 上記以外で、例えば、ここで利用しているgititのように、gentooにあるけど、敢えて手動構築したいものは、一旦普通にemergeで依存物ごと入れてから--unmergeで本体だけ削除し(依存物は残し)、改めて本体を ~/.cabal に構築する
+- なお、「emerge --depclean package」で依存するものごと削除らしい。-p -vをつけて事前に確認する事！
+
+
 
 # gitit本体をいじる必要のあるTODO
 
@@ -181,11 +210,10 @@ title: TODO
 
 ## LastModified.hs が、過去のrevisionを見ている時でも最新ページのタイムスタンプを表示するのを直す
 - \$revision$ がある時は、それを使って日時を引くようにする
-
+    - 意外と面倒なので、`$reveision$`のある時はLast-Modifiedを出さないようにするだけにする事に
 
 ## LastModified.hs の、 HSTMPTransform 化
 - ついでに他の問題にも対応する事
-
 
 ## 差分表示の時に一行の長さが長すぎてはみでるのをどうにかする
 
@@ -216,7 +244,6 @@ title: TODO
 ~~~~~
 
 - 空行を入れる等して複数行にする事で、インデント量が一定になるようだ。htmlレベルで差異が出ているのかどうかは不明。
-
 
 # 終了したTODO
 
