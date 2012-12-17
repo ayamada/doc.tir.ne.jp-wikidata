@@ -192,10 +192,10 @@ emerge -av cabal-dev
 ~~~~~
 
 構築ポリシーおよび手順
-- hackageにあるモジュールの内、gentooにあるものはcabalで入れずにemergeで入れる。
-- hackageにあるモジュールの内、emergeにないパッケージはcabalで ~/.cabal にインストールする。rootでglobalインストールはしない(これで入れてしまうと困る場面が多かった為)。
-- 上記以外で、例えば、ここで利用しているgititのように、gentooにあるけど、敢えて手動構築したいものは、一旦普通にemergeで依存物ごと入れてから--unmergeで本体だけ削除し(依存物は残し)、改めて本体を ~/.cabal に構築する
-- なお、「emerge --depclean package」で依存するものごと削除らしい。-p -vをつけて事前に確認する事！
+* hackageにあるモジュールの内、gentooにあるものはcabalで入れずにemergeで入れる。
+* hackageにあるモジュールの内、emergeにないパッケージはcabalで ~/.cabal にインストールする。rootでglobalインストールはしない(これで入れてしまうと困る場面が多かった為)。
+* 上記以外で、例えば、ここで利用しているgititのように、gentooにあるけど、敢えて手動構築したいものは、一旦普通にemergeで依存物ごと入れてから--unmergeで本体だけ削除し(依存物は残し)、改めて本体を ~/.cabal に構築する
+* なお、「emerge --depclean package」で依存するものごと削除らしい。-p -vをつけて事前に確認する事！
 
 
 
