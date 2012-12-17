@@ -179,7 +179,8 @@ laymanの設定を行う
 layman -S
 layman -a haskell
 layman -s haskell
-なんかエラーが出る時は、一度layman -d haskellしてやり直す事(haskell-updaterがlaymanの中を書き換える為、git pullがうまくいかなくなってしまう様子)
+なんかエラーが出る時は、一度layman -d haskellしてやり直す事
+(haskell-updaterがlaymanの中を書き換える為、git pullがうまくいかなくなってしまう様子)
 vim /etc/make.conf # CABAL_EXTRA_CONFIGURE_FLAGS=--enable-shared
 emerge -av ghc
 emerge -av haskell-platform
