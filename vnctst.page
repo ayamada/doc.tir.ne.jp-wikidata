@@ -7,7 +7,7 @@ title: vnctst
 # vnctstとは
 virtual nested cartesian-theater simulator terminal(仮想入れ子デカルト劇場シミュレータ端末)の略。
 
-ワールドシミュレータ的ゲームのクライアントおよびサーバを実装する事を目指します。
+ワールドシミュレータ的ゲームのクライアントを実装する事を目指します。
 
 # 目的
 - AIに必要となる、多重入れ子構造が可能な環境を構築します。
