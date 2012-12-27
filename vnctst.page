@@ -21,6 +21,7 @@ virtual nested cartesian-theater simulator terminal(仮想入れ子デカルト�
 - サーバ部は未定。
     - Clojureが有望だがもうちょっと考える。
     - とりあえずは汎用ストレージを構築する。
+- 通信プロトコルは今のところ、jsonベースを想定(確定ではない。Clojureとか入れたら普通にS式で送るかも)。
 
 
 # その他のメモ
