@@ -41,9 +41,12 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
  0. mingw/msys導入
     - [http://d.hatena.ne.jp/bellbind/20110612/1307848645]() あたりを見ながら適当に導入し、PATHを通し、更に右クリックでどこからでもコンソール(山田はckw利用)を起動できるように設定しておく。またここにあるようにwgetのcertを更新しておく事。 .bash_login 等は以前に自分が使っていたものを持ってくる。
         - 山田はvimは香り屋版を使う為、香り屋版の方にPATHを通した上で mingw-get remove msys-vim を行った
+        - $HOMEを設定しておく事！
  1. git導入
     - [http://msysgit.github.com/]() から「Git for Windows」の方をインストールした(msysGitの方はなんかうまく入らなかった)
     - gui操作とかはいらないので、とにかくPATHを通しておく
+    - .gitconfigを他のマシンから持ってくる
+    - ssh-keygenして公開鍵をgithubに登録
  2. jdk導入
     - まぎらわしくならないように、既にjreが入っている場合は、アンインストールして再起動して完全に削除しておく(結構前にそれではまった)。
     - oracleのサイトから適当にダウンロードしてインストールする
