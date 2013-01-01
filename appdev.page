@@ -9,8 +9,6 @@ title: アプリ開発環境構築
 山田の環境がベースなので、それに準じた手順となる。
 また、ここで扱う要素はどれもこれも進化/変化が非常に早い為、常に最新の状況を確認する必要がある。
 
-(TODO: あとで子ページ作って分割した方がいいかも)
-
 # 要件
 - 開発機は古めのwindowsマシン(しかしwindows以外でも似た手順になる筈、しかもwindowsよりも楽に！)。
 - 手軽にandroidアプリを作成する。
@@ -19,7 +17,7 @@ title: アプリ開発環境構築
     - 今回はclojureを採用する。lisp just sucks less.
 - また、できれば同じコードでwindowsでも動かしたい。
     - これを実現する「androidゲーム用フレームワーク」として、以下の二つを検討した。
-        - [playN](https://developers.google.com/playn/)
+        - [PlayN](https://developers.google.com/playn/)
             - googleがメンテしている(元は[googleの20%ルール](https://www.google.com/search?nfpr=1&q=google%2020%25%E3%83%AB%E3%83%BC%E3%83%AB)から生まれたプロジェクトらしい)
             - android, PC(java), html5, flash, iOSに対してdeploy可能
             - OpenGLES 2.0相当以上の機能が必須
@@ -27,9 +25,9 @@ title: アプリ開発環境構築
         - [libgdx](http://libgdx.badlogicgames.com/)
             - 書籍[Androidゲームプログラミング A to Z](http://www.impressjapan.jp/books/3113)([amazon](http://www.amazon.co.jp/dp/4844331132))(これは非常に良い本だった)の著者が主メンテナ
             - android, PC(java), html5に対してdeploy可能。iOSは将来対応予定らしい
-            - playNよりも(C的な意味で)自由度が高い(libgdxのポリシーについては前述の書籍参照)
+            - PlayNよりも(C的な意味で)自由度が高い(libgdxのポリシーについては前述の書籍参照)
             - OpenGLES 2.0相当以上の機能を使うかどうかは選択可能
-    - 今回は古いPC(というか山田のPC。OpenGL2.0うごかない！)でも動かしたいのでlibgdxを選択した。しかしplayNで開発する場合でも環境構築手順自体はほぼ変わらないのは確認済。
+    - 今回は古いPC(というか山田のPC。OpenGL2.0うごかない！)でも動かしたいのでlibgdxを選択した。しかしPlayNで開発する場合でも環境構築手順自体はほぼ変わらないのは確認済。
 
 
 # 事前準備
@@ -59,7 +57,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
     - 設置した中の conf/settings.xml を開き、ローカルリポジトリの場所を変更しておく。そうしないとシステムドライブにローカルリポジトリ作られて容量を食われる！
         - コメントアウトされてる中から `<localRepository>d:/maven_repos</localRepository>` みたいな箇所を探し出して書き換える
  4. android sdk導入
-    - [http://developer.android.com/sdk/index.html]() から「USE AN EXISTING IDE」の方のをダウンロードする
+    - [http://developer.android.com/sdk/index.html]() から「USE AN EXISTING IDE」の方のをダウンロード、インストールする
     - 「USE AN EXISTING IDE」じゃない方はeclipse同梱版。eclipseは今回は使わないし、eclipse使う場合でもandroid sdkとは別に入れた方がトラブルになった時に入れ直ししやすいと思う
     - 一旦android sdk managerを起動し、必要なパッケージの更新および追加を行う
         - ここで必ずusb driverを入れる事
@@ -69,6 +67,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
     - 実際にusb接続を行い、ドライバをインストールする。基本的にはこのページの通りに選択すればok [http://moon.ap.teacup.com/shelter9/178.html]() なお、このページでは「ハードウェアIDが公式サイトのものと違う」と書いてあるが、山田の端末では公式サイトと同じだった。何らかの差異がある様子。
  5. GWT導入(optional?)
     - メモがどっかいった…あとで調べ直す事
+    - html5デプロイ用なのでなくてもいい筈
  6. eclipse導入(optional)
     - [http://www.eclipse.org/downloads/]() から "Eclipse IDE for Java Developers" をダウンロード、展開、適当な場所に設置
     - eclipse起動
@@ -82,12 +81,13 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
  7. bmfont.exe導入
     - libgdxが使うビットマップフォントを生成するのに使うので、 [http://www.angelcode.com/products/bmfont/]() を入れておく
         - フォント画像はpngで生成し、*.pngが一個だけになるように画像サイズを調整する必要あり
+        - `CJK Unified Ideographs Extension B` 系の文字を含めて生成しようとするとbmfont.exeがエラー終了する？フォントによる？とりあえず含めない方がよさげ
  8. libgdxを導入
     - 普通にサイトみながらセットアップするとeclipse向けになり、それはよろしくない。今回は [http://code.google.com/p/libgdx/wiki/MavenProjectSetup]() を見ながらmaven使用のセットアップを行う
         - [http://code.google.com/p/libgdx/wiki/MavenProjectSetup#Maven_Archetype]() にある通り、git clone, cd, mvn installするだけ
-        - ちなみにplayNもほぼ同様の手順(というかこのlibgdxのmaven対応自体がplayN由来らしい)。playNの場合の詳細は [http://code.google.com/p/playn/wiki/GettingStarted]() 参照
+        - ちなみにPlayNもほぼ同様の手順(というかこのlibgdxのmaven対応自体がPlayN由来らしい)。PlayNの場合の詳細は [http://code.google.com/p/playn/wiki/GettingStarted]() 参照
  9. lein導入(optional?)
-    - `wget https://raw.github.com/technomancy/leiningen/preview/bin/lein` したものを、PATHの通ったbinに放り込む。(必要なら)実行権限もつける
+    - `wget https://raw.github.com/technomancy/leiningen/preview/bin/lein` したものを、PATHの通ったbinに放り込む。実行権限もつける
         - このURLはプレビュー版。リリース版がいい場合は別のところから取る事(でもこれを行った時点では「プレビュー版推奨」ってあった気がする)
     - `lein --version` で自動的にダウンロード構築が実行され、その後にバージョン情報が表示される
 10. clojure導入
@@ -103,14 +103,14 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 
 ## libgdxプロジェクト生成
 
-- [http://code.google.com/p/libgdx/wiki/MavenProjectSetup]()にある通り、 `mvn archetype:generate ...` を実行し、プロジェクトのテンプレートを生成する。
+- [http://code.google.com/p/libgdx/wiki/MavenProjectSetup#Maven_Archetype]()にある通り、 `mvn archetype:generate ...` を実行し、プロジェクトのテンプレートを生成する。
     - 上記の内、 `mvn archetype:generate -DarchetypeGroupId=com.badlogic.gdx -DarchetypeArtifactId=gdx-archetype -DarchetypeVersion=0.9.8-SNAPSHOT` のところまでは固定。それ以降の`groupId, artifactId, version, package, JavaGameClassName`はプロジェクト毎に適切に設定する。というか引数に渡さなければ対話入力モードになるのでそこで個別に入力すればよい。
 - この状態で `mvn -Pdesktop package` とするとPC向けの実行可能*.jarが生成される。その後、 `java -jar desktop/target/...-with-dependencies.jar` とかで実行できる。
     - …んだが、2013/01/01現在、デフォルトで入ってるサンプルの画像が適当なせいで、何もいじらずに実行すると「テクスチャの大きさは2のpowerじゃないと駄目」ランタイムエラーが発生する。画像サイズを適当に256x256に変更するなり、コードの方をいじるなりするとよい。サンプルだから今は無視して先に進めてもok。
     - あと、上記wikiのページに書いてあるpathとは微妙に違っていた。まだ試行錯誤中のようなのでまた将来変更とかされてそう。
-- 同様に、 `mvn -Pandroid install` で、署名なしapkが生成されて、usb接続されているandroid端末にインストールされる。インストールだけしかされないので実行は手で行う事。
+- 同様に、 `mvn -Pandroid install` で、署名なしapkが生成されて、usb接続されているandroid端末にインストールされる。インストールだけしかされないので実行するには更に手で端末を操作する必要がある。
     - 実際にgoogle playで配布する為の、署名付きapkを生成するには、Maven Android Pluginが必要らしい [http://code.google.com/p/maven-android-plugin/]() あとでしらべる
-- ここまでで生成した `(JavaGameClassName).java` ファイルが一番にいじるべきファイルになる。この中に、まずスプラッシュスクリーンを出すコードをJavaで書き、その後で別途clojureで書いたクラスに制御を渡すようにする。
+- ここまでで生成した `(JavaGameClassName).java` ファイルが一番にいじるべきファイルになる。この中に、まずスプラッシュスクリーンだかnow-loadingだかを出すコードをjavaで書き、その後で別途clojureで書いたクラスに制御を渡すようにする。
     - 何故スプラッシュスクリーンを出すのかというと、clojureの初期化に結構時間がかかる為！余裕があるならプログレッシブバー類も実装したいところ
     - このクラスは `implements ApplicationListener` なので、 `create() resize() render() pause() resume() dispose()` を実装する必要があり、この各methodの中から適切にclojure側クラスを呼ぶ必要がある。このクラス自体をclojureで書く事は可能だが、前述の通りスプラッシュスクリーン類を出したいので、ここぐらいは我慢してjavaで書く事。
 - ここまで書いたら、まだclojure側ができていないので、ビルドできない状態になる。この状態で一旦放置する。
@@ -139,7 +139,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
   [batch texture]
   (. batch draw texture (float 100) (float 100)))
 
-;; 呼び出し側のJavaコードは以下のようになる。
+;; 呼び出し側のjavaコードは以下のようになる。
 ;; import jp.ne.tir.clojure.hello;
 ;; jp.ne.tir.clojure.hello.fuge(batch, texture);
 ;; // ↑の呼び出しで、clojure側で batch.draw(texture 100f, 100f); が実行される
@@ -173,7 +173,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 	</dependencies>
 ~~~~~~
 
-- これでビルドできるようになった。ビルドし、動作確認する。
+- これでビルドできるようになった。ビルドし、PCおよびandroid端末で動作確認する。
 
 # まとめ
 
