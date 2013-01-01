@@ -182,6 +182,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 - しかもおなじものがwindowsでもうごく！
 - clojure初期化処理じかんかかる！
 - 誰かmavenの扱いに長けた人たすけて！
+    - たすけてくれる方は[@rnkv](https://twitter.com/rnkv)あたりへ連絡を…
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
