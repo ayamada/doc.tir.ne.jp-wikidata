@@ -10,7 +10,7 @@ title: アプリ開発環境構築
 また、ここで扱う要素はどれもこれも進化/変化が非常に早い為、常に最新の状況を確認する必要がある。
 
 # 要件
-- 開発機は古めのwindowsマシン(しかしwindows以外でも似た手順になる筈、しかもwindowsよりも楽に！)。
+- 開発機は古めのwindowsマシン(しかし開発環境構築手順はwindows以外でも似た手順になる筈、しかもwindowsよりも楽に！)。
 - 手軽にandroidアプリを作成する。
     - 山田はandroidアプリの開発/検証に[sony tablet S](http://www.sony.jp/tablet/products/S1/)を使用する。
 - しかしjavaコードはなるべく書きたくない。java sucks.
