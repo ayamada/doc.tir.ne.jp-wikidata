@@ -122,7 +122,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
     - まだ山田がmavenの扱いに慣れてないのでここはTODO…。どうにかして以下の処理を自動化したいところだが
     - とりあえず、 `src/...` に `*.clj` があるものとする。
     - また、空の `classes/` ディレクトリを作成しておく
-- ここでは以下のようなコードを書いた。
+- ここでは以下のようなコードを `src/jp/ne/tir/clojure/hello.clj` として書いた。
 
 ~~~~~~ { .clojure .numberLines }
 (ns jp.ne.tir.clojure.hello
