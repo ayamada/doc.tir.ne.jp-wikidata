@@ -142,7 +142,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 ;; 呼び出し側のjavaコードは以下のようになる。
 ;; import jp.ne.tir.clojure.hello;
 ;; jp.ne.tir.clojure.hello.fuge(batch, texture);
-;; // ↑の呼び出しで、clojure側で batch.draw(texture 100f, 100f); が実行される
+;; // ↑の呼び出しで、clojure側で batch.draw(texture, 100f, 100f); が実行される
 ~~~~~~
 
 - コンパイルしてjar化する。
