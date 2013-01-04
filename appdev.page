@@ -175,6 +175,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 
 - これでビルドできるようになった。ビルドし、PCおよびandroid端末で動作確認する。
 
+
 # まとめ
 
 - うごいた！
@@ -183,6 +184,15 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 - clojure初期化処理じかんかかる！
 - 誰かmavenの扱いに長けた人たすけて！
     - たすけてくれる方は[@rnkv](https://twitter.com/rnkv)あたりへ連絡を…
+
+
+# TODO
+
+- この部分を ClojureBootLoader クラス化し、任意のアプリを作成する際に利用できるようにし、プロジェクトはほぼcojureコードだけですむようにする
+    - とは言え、libgdxの真のmain()はjavaで書いてあり、そこである程度のconfigを設定する必要はある
+- mavenが生成したlibgdxのプロジェクトテンプレートに、*.cljを書いてデプロイまでできるようにする手順を確立する
+    - 現状ではclojureコード部は完全に別パッケージで扱う手順になっているが、このclojureコードは前述のmain()やAndroidManifest.xml等と一緒に管理すべきだと思うので
+
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
