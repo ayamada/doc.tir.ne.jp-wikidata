@@ -17,7 +17,9 @@ gititにこのパッチを適用する事で、プラグイン種別(`data Plugi
 - [https://github.com/ayamada/gitit/commit/029faf21f311a391552eb04a822a05c057968762]()
 - [/gitit/patch/hstmp-plugin/gitit-0.10-hstmp-plugin.patch]()
 
-pull-reqしました。これは山田が行ったgititへの他のpull-reqとは違い、不具合修正ではなく機能拡張なのと、おそらく名前付け等があまり良くないのとで、取り込み延期にされてるっぽい。
+pull-reqしました。
+これは山田が行ったgititへの他のpull-reqとは違い、不具合修正ではなく機能拡張なのと、おそらく名前付け等があまり良くないのとで、取り込み延期にされてるっぽい。
+
 - [https://github.com/jgm/gitit/pull/333]()
 
 # ダウンロード
