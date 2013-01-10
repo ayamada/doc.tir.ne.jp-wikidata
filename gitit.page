@@ -193,70 +193,13 @@ categories: gitit postponed
 # 不具合対策(パッチ有り)
 
 ## 余分にアンエスケープされてしまう
-- どうも、ページ編集時に一回余分にhtml実体参照のアンエスケープ処理が入っているらしく、「＆ａｍｐ；ａｍｐ；ａｍｐ；ａｍｐ；ａｍｐ；」のように書いておいて別のところを編集していくと、徐々に短くなっていき最終的には「＆」だけになってしまう
-    - 上記のテスト領域→ &amp;amp;amp;amp;
-    - この問題は他の「＆＊＊＊＊＊；」や「＆＃ｎｎ；」でも発生する
-    - この問題はページ編集時以外にも、検索欄等でも同じように一回余分にアンエスケープ処理が入っている
-    - 調べた結果、 Network/Gitit/Types.hs の「instance FromData Params where」のところで fromEntities をかけているが、これが原因のような気がする。あとでもう少し調べる
-        - 調べた。以下のパッチで直ったが、そもそもどうしてここでunescapeしてるのか不明なので、他のところで不具合が出る可能性が高い。手元でしばらく運用してみて、問題がない事を確認してからpull-requestを送る
-            - おそらく、非utf-8環境でのutf-8文字実体参照回りの対応の為っぽそうだが…
-
-~~~~~~{.diff .numberLines}
-diff --git a/Network/Gitit/Types.hs b/Network/Gitit/Types.hs
-index a8d7bcf..6e8fe2b 100644
---- a/Network/Gitit/Types.hs
-+++ b/Network/Gitit/Types.hs
-@@ -300,7 +300,7 @@ instance FromReqURI [String] where
-
- instance FromData Params where
-      fromData = do
--         let look' = liftM fromEntities . look
-+         let look' = look
-          un <- look' "username"       `mplus` return ""
-          pw <- look' "password"       `mplus` return ""
-          p2 <- look' "password2"      `mplus` return ""
-~~~~~~
+- pull-reqして本家に取り込まれました。→[https://github.com/jgm/gitit/pull/330]()
 
 ## カテゴリページで正しくリンクが表示されないページがある
-- wikinameの末尾「.jp」とかのページでカテゴリ設定を行い、対応するカテゴリを見ると、一覧中のwikinameの末尾が切れてしまい、リンク切れを起こす
-    - これも可能なら自分で調べて直して、pull-requestを送る
-        - 送った→[https://github.com/jgm/gitit/pull/310]()
-    - とりあえずdropExtensionしすぎなのが原因という事で、以下で直った。
-
-~~~~~~{.diff .numberLines}
-diff --git a/Network/Gitit/Handlers.hs b/Network/Gitit/Handlers.hs
-index cc0251e..020dd78 100644
---- a/Network/Gitit/Handlers.hs
-+++ b/Network/Gitit/Handlers.hs
-@@ -704,7 +704,7 @@ categoryPage = do
-              forM pages $ \f -> do
-                categories <- liftIO $ readCategories $ repoPath </> f
-                return $ if category `elem` categories
--                           then Just $ dropExtension f
-+                           then Just f
-                            else Nothing
-   base' <- getWikiBase
-   let toMatchListItem file = li <<
-~~~~~~
-
+- pull-reqして本家に取り込まれました。→[https://github.com/jgm/gitit/pull/310]()
 
 ## ページ新規作成の差分表示時に、\$revision\$が無い扱いになってしまう
-- 差分表示時に、新規作成等でfromのrevisionが空の場合は、代わりにtoのrevisionを、 \$revision\$ として使うパッチ
-
-~~~~~~{.diff .numberLines}
---- Network/Gitit/Handlers.hs.orig      2012-08-29 13:33:28.000000000 +0900
-+++ Network/Gitit/Handlers.hs   2012-08-29 14:12:05.000000000 +0900
-@@ -460,7 +460,7 @@
-        Left e         -> liftIO $ throwIO e
-        Right htmlDiff -> formattedPage defaultPageLayout{
-                                           pgPageName = page,
--                                          pgRevision = from',
-+                                          pgRevision = from' `mplus` to,
-                                           pgMessages = pMessages params,
-                                           pgTabs = DiffTab :
-                                                    pgTabs defaultPageLayout,
-~~~~~~
-
+- pull-reqして本家に取り込まれました。→[https://github.com/jgm/gitit/pull/331]()
 
 # 導入手順など
 
