@@ -95,6 +95,9 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
     - 設置した場所で `mvn install` を実行する。
         - もしtestが通らない場合は、 `mvn install -Dmaven.test.skip=true` としてtestをスキップする
     - 尚、mavenからこのclojureを指定する際にgroupIdとかversion指定が必要になる為、「どのバージョンを入れたか」忘れないようにメモしておく事
+11. exewrap導入(optional)
+    - [http://code.google.com/p/exewrap/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに *.jar を *.exe にする為に使う
+        - 今回、配布物として、google playでの*.apk配布、windows向けの*.exe配布、非windows PC向けの*.jar配布の三通りを想定
 
 
 # 開発
