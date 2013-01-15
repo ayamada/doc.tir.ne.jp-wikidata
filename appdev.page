@@ -80,7 +80,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
         - eclipseのpreferenceの関連付けあたりで変更する
  7. bmfont.exe導入
     - libgdxが使うビットマップフォントを生成するのに使うので、 [http://www.angelcode.com/products/bmfont/]() を入れておく
-        - フォント画像はpngで生成し、*.pngが一個だけになるように画像サイズを調整する必要あり
+        - フォント画像はpngで生成し、`*.png`が一個だけになるように画像サイズを調整する必要あり
         - `CJK Unified Ideographs Extension B` 系の文字を含めて生成しようとするとbmfont.exeがエラー終了する？フォントによる？とりあえず含めない方がよさげ
  8. libgdxを導入
     - 普通にサイトみながらセットアップするとeclipse向けになり、それはよろしくない。今回は [http://code.google.com/p/libgdx/wiki/MavenProjectSetup]() を見ながらmaven使用のセットアップを行う
@@ -91,13 +91,13 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
         - このURLはプレビュー版。リリース版がいい場合は別のところから取る事(でもこれを行った時点では「プレビュー版推奨」ってあった気がする)
     - `lein --version` で自動的にダウンロード構築が実行され、その後にバージョン情報が表示される
 10. clojure導入
-    - *.zipを取ってきて展開し、適当な場所に設置
+    - `*.zip`を取ってきて展開し、適当な場所に設置
     - 設置した場所で `mvn install` を実行する。
         - もしtestが通らない場合は、 `mvn install -Dmaven.test.skip=true` としてtestをスキップする
     - 尚、mavenからこのclojureを指定する際にgroupIdとかversion指定が必要になる為、「どのバージョンを入れたか」忘れないようにメモしておく事
 11. exewrap導入(optional)
-    - [http://code.google.com/p/exewrap/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに *.jar を *.exe にする為に使う
-        - 今回、配布物として、google playでの*.apk配布、windows向けの*.exe配布、非windows PC向けの*.jar配布の三通りを想定
+    - [http://code.google.com/p/exewrap/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに `*.jar` を `*.exe` にする為に使う
+        - 今回、配布物として、google playでの`*.apk`配布、windows向けの`*.exe`配布、非windows PC向けの`*.jar`配布の三通りを想定
 
 
 # 開発
@@ -108,7 +108,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 
 - [http://code.google.com/p/libgdx/wiki/MavenProjectSetup#Maven_Archetype]()にある通り、 `mvn archetype:generate ...` を実行し、プロジェクトのテンプレートを生成する。
     - 上記の内、 `mvn archetype:generate -DarchetypeGroupId=com.badlogic.gdx -DarchetypeArtifactId=gdx-archetype -DarchetypeVersion=0.9.8-SNAPSHOT` のところまでは固定。それ以降の`groupId, artifactId, version, package, JavaGameClassName`はプロジェクト毎に適切に設定する。というか引数に渡さなければ対話入力モードになるのでそこで個別に入力すればよい。
-- この状態で `mvn -Pdesktop package` とするとPC向けの実行可能*.jarが生成される。その後、 `java -jar desktop/target/...-with-dependencies.jar` とかで実行できる。
+- この状態で `mvn -Pdesktop package` とするとPC向けの実行可能`*.jar`が生成される。その後、 `java -jar desktop/target/...-with-dependencies.jar` とかで実行できる。
     - …んだが、2013/01/01現在、デフォルトで入ってるサンプルの画像が適当なせいで、何もいじらずに実行すると「テクスチャの大きさは2のpowerじゃないと駄目」ランタイムエラーが発生する。画像サイズを適当に256x256に変更するなり、コードの方をいじるなりするとよい。サンプルだから今は無視して先に進めてもok。
     - あと、上記wikiのページに書いてあるpathとは微妙に違っていた。まだ試行錯誤中のようなのでまた将来変更とかされてそう。
 - 同様に、 `mvn -Pandroid install` で、署名なしapkが生成されて、usb接続されているandroid端末にインストールされる。インストールだけしかされないので実行するには更に手で端末を操作する必要がある。
@@ -193,7 +193,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 
 - この部分を ClojureBootLoader クラス化し、任意のアプリを作成する際に利用できるようにし、プロジェクトはほぼcojureコードだけですむようにする
     - とは言え、libgdxの真のmain()はjavaで書いてあり、そこである程度のconfigを設定する必要はある
-- mavenが生成したlibgdxのプロジェクトテンプレートに、*.cljを書いてデプロイまでできるようにする手順を確立する
+- mavenが生成したlibgdxのプロジェクトテンプレートに、`*.clj`を書いてデプロイまでできるようにする手順を確立する
     - 現状ではclojureコード部は完全に別パッケージで扱う手順になっているが、このclojureコードは前述のmain()やAndroidManifest.xml等と一緒に管理すべきだと思うので
 
 
