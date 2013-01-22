@@ -66,9 +66,8 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
     - 同様に、環境変数ANDROID_HOMEに `...\Android\android-sdk` を追加
     - [http://www.sony.jp/support/tablet/products/info/sdk.html]() にある通りにファイルを書き換える。ファイルがロックされていて書き換えができない時は「adb kill-server」で一旦プロセスを止める事。
     - 実際にusb接続を行い、ドライバをインストールする。基本的にはこのページの通りに選択すればok [http://moon.ap.teacup.com/shelter9/178.html]() なお、このページでは「ハードウェアIDが公式サイトのものと違う」と書いてあるが、山田の端末では公式サイトと同じだった。何らかの差異がある様子。
- 5. GWT導入(optional?)
-    - メモがどっかいった…あとで調べ直す事
-    - html5デプロイ用なのでなくてもいい筈
+ 5. GWT導入(optional)
+    - html5デプロイ用なので、今回は省略
  6. eclipse導入(optional)
     - [http://www.eclipse.org/downloads/]() から "Eclipse IDE for Java Developers" をダウンロード、展開、適当な場所に設置
     - eclipse起動
