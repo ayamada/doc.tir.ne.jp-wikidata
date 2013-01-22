@@ -87,11 +87,11 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
         - [http://code.google.com/p/libgdx/wiki/MavenProjectSetup#Maven_Archetype]() にある通り、git clone, cd, mvn installするだけ
         - ちなみにPlayNもほぼ同様の手順(というかこのlibgdxのmaven対応自体がPlayN由来らしい)。PlayNの場合の詳細は [http://code.google.com/p/playn/wiki/GettingStarted]() 参照
  9. lein導入
-    - `wget https://raw.github.com/technomancy/leiningen/preview/bin/lein` したものを、PATHの通ったbinに放り込む。実行権限もつける
-        - このURLはプレビュー版。リリース版がいい場合は別のところから取る事(でもこれを行った時点では「プレビュー版推奨」ってあった気がする)
+    - [https://github.com/technomancy/leiningen#installation]() を見て、最新のスクリプトをwgetし、PATHの通ったbinに放り込み、実行権限もつける
+        - その時によってプレビュー版推奨だったりリリース版推奨だったりまちまちなので毎回上のページを確認する事
     - `lein --version` で自動的にダウンロード構築が実行され、その後にバージョン情報が表示される
-    - なお、windowsの制約によって「実行中のファイルを消せない」ので、「lein upgrade」が実行できない。必要なら自分でバージョンアップしなくてはならない
-        - 自分でバージョンアップするには、 `~/.lein` を削除し、leinのスクリプト本体をwgetし直し、 `lein --version` をまた実行すればよい
+    - なお、windowsの制約によって「実行中のファイルを消せない」ので、「lein upgrade」が実行できない。バージョンアップが必要なら手でバージョンアップしなくてはならない
+        - 手でバージョンアップするには、 `~/.lein` を削除し、leinのスクリプト本体をwgetし直し、 `lein --version` をまた実行すればよい
 10. clojure導入
     - `*.zip`を取ってきて展開し、適当な場所に設置
     - 設置した場所で `mvn install` を実行する。
