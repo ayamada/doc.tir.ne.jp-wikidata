@@ -100,6 +100,9 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 11. exewrap導入(optional)
     - [http://code.google.com/p/exewrap/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに `*.jar` を `*.exe` にする為に使う
         - 今回、配布物として、google playでの`*.apk`配布、windows向けの`*.exe`配布、非windows PC向けの`*.jar`配布の三通りを想定
+12. ant導入(optional)
+    - clojureを使う上で、antが必要な場面がそれなりにあるようなので、このタイミングで一緒に入れておく
+    - [http://ant.apache.org/bindownload.cgi]() から取得し、適当に配置し、pathを通しておく
 
 
 # 開発
