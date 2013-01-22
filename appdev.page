@@ -56,6 +56,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
     - 例によって、PATHにbinを追加
     - 設置した中の conf/settings.xml を開き、ローカルリポジトリの場所を変更しておく。そうしないとシステムドライブにローカルリポジトリ作られて容量を食われる！
         - コメントアウトされてる中から `<localRepository>d:/maven_repos</localRepository>` みたいな箇所を探し出して書き換える
+    - 日本語文字化け対策として、 `MAVEN_OPTS="-Duser.language=en"` を設定し、エラーを英語表示させる。
  4. android sdk導入
     - [http://developer.android.com/sdk/index.html]() から「USE AN EXISTING IDE」の方のをダウンロード、インストールする
     - 「USE AN EXISTING IDE」じゃない方はeclipse同梱版。eclipseは今回は使わないし、eclipse使う場合でもandroid sdkとは別に入れた方がトラブルになった時に入れ直ししやすいと思う
