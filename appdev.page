@@ -203,8 +203,10 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 
 - この部分を ClojureBootLoader クラス化し、任意のアプリを作成する際に利用できるようにし、プロジェクトはほぼcojureコードだけですむようにする
     - とは言え、libgdxの真のmain()はjavaで書いてあり、そこである程度のconfigを設定する必要はある
+    - これ一応完成した。コード公開はそのうちgithubで。先にandroidアプリ作る
 - mavenが生成したlibgdxのプロジェクトテンプレートに、`*.clj`を書いてデプロイまでできるようにする手順を確立する
     - 現状ではclojureコード部は完全に別パッケージで扱う手順になっているが、このclojureコードは前述のmain()やAndroidManifest.xml等と一緒に管理すべきだと思うので
+    - 完全にmaven管理にするのは諦め、一旦、親ディレクトリにMakefileを置き、その子ディレクトリでmaven管理のjava部分と、それ以外のclojure部分管理にした。が、clojure部分はやっぱlein管理にしたい。lein-droidをあとで試す。うまくいったらそっちに移行。
 - evalが動くようにする
 
 
