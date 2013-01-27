@@ -47,10 +47,13 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
     - ssh-keygenして公開鍵をgithubに登録
  2. jdk導入
     - まぎらわしくならないように、既にjreが入っている場合は、アンインストールして再起動して完全に削除しておく(結構前にそれではまった)。
-    - oracleのサイトから適当にダウンロードしてインストールする
-    - PATHに、jdkのbinを追加する
+    - ※2013年1月現在、android sdkはjava7には正式対応していない。しかし同時に2013年1月現在、最新でないjavaはセキュリティ的に問題がある。よって、jreは7を、jdkは6を入れるようにする。
+    - [http://www.oracle.com/technetwork/java/javase/downloads/index.html]() から、最新のjreと、jdkの6をダウンロードする
+    - 最新のjreをインストールする。インストール先を変更して、スペースを含まないpathにしておく事。
+    - jdkの6をインストールする。これもインストール先を変更して、スペースを含まないpathにしておく事。また、同梱のjreとjava DBはインストールしない事。
+    - PATHに、jdkのbinを追加する。jreは追加しなくてもいいようだ
     - 環境変数JAVA_HOMEに、jdkのbinより前部分を追加しておく(maven用)
-        - PATHと同じようにbinを追加すると、bin/binを探されてしまう
+        - PATHと同じようにbin含むpathを追加すると、bin/binを探されてしまう為
  3. maven導入
     - ダウンロードして適当な場所に設置
     - 例によって、PATHにbinを追加
