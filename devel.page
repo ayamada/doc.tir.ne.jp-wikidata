@@ -3,11 +3,13 @@ toc: no
 title: 技情研ネットの開発関連
 ...
 
-- [gititメモ](dev/gitit) - 当サイト(doc.tir.ne.jp)は[gitit](dev/gitit)を使って構築しています。
+- [gititメモ](devel/gitit) - 当サイト(doc.tir.ne.jp)は[gitit](devel/gitit)を使って構築しています。
 
-- [環境構築](dev/env)
-    - [環境構築/windows](dev/env/windows)
-    - [環境構築/android](dev/env/android)
-    - [環境構築/clojure](dev/env/clojure)
+- [環境構築](devel/env)
+    - [環境構築/windows](devel/env/windows)
+    - [環境構築/android](devel/env/android)
+    - [環境構築/clojure](devel/env/clojure)
+
+- [古くなった情報](devel/old)
 
 <!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
