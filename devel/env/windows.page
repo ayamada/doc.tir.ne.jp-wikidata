@@ -1,0 +1,132 @@
+---
+toc: yes
+title: 開発環境構築/windows
+...
+
+windows機を開発マシンにせざるをえない場合の手順。
+
+他osを使える場合は、このページの項目だけ見て、適当に対応するパッケージをインストールするだけで問題はないだろう(windowsではそういう訳にはいかない)。
+
+
+# 前準備
+windowsマシンをまともに使えるようにする作業その一。
+
+- 更新要求が完全に出なくなるまで、windows-updateと再起動の繰り返し
+- Users, tempディレクトリ等のドライブ移動(optionalだが、システムドライブの容量が小さい場合は必須になる)
+- ファイルの拡張子表示の有効化、システムファイル非表示設定の解除など
+- 不要なサービスの停止
+- 不要アプリのアンインストール
+
+
+# 必要ソフトのインストール
+windowsマシンをまともに使えるようにする作業その二。
+
+開発で使うソフトの内、開発以外でも使用する可能性のあるものはここに含めておく(具体的にはメディアファイル操作系ソフトなど)。
+
+
+- [skkfep](http://coexe.web.fc2.com/skkfep.html)、もしくはそれに準じる日本語入力ソフト
+    - 自分の好きなものを使う事。だがSKK派なら一度はskkfepを試す事、補完機能等も追加され素晴らしい出来
+
+- まともなブラウザのインストールおよび設定
+    - 「textarea内の編集時に外部エディタを起動できる」拡張が利用可能なブラウザが望ましい。
+
+- [unlocker](http://www.emptyloop.com/unlocker/)、もしくはそれに準じるソフト
+    - これがないとロックされる度に再起動する羽目に。windows sucks
+
+- [Defraggler](http://www.piriform.com/defraggler/download)
+    - vistaあたりからwindows標準のデフラグが糞になった為、状況に応じて手で実行する。普段は使わない
+
+- [lhaz](http://chitora.com/lhaz.html), [7zip](http://www.7-zip.org/download.html)類
+    - ファイル解凍用
+
+- [LibreOffice](http://ja.libreoffice.org/download/)、もしくはそれに準じるソフト
+    - ゴミのようなmicrosoft office系ファイルの閲覧/作成用
+
+- dropbox、もしくはそれに準じるソフト
+    - 開発でも利用する為、後から変更差分が確認できるものを選択する事
+    - 無視ファイルが指定できるものを選択する事。dropboxは標準ではこの機能がないが、 [DropBoxFilter](http://code.google.com/p/dropboxfilter/) を使えば実現可能。
+
+- Audacity, kwave, swave, LabChirp, sfxr類
+    - 音声作成用
+
+- teraterm, winscp類
+    - リモートサーバでの日常作業用
+
+- IrfanView, GIMP類
+    - 画像確認/作成用
+
+- MPC-HC, VLC, Mediainfo類
+    - 音声/動画確認用
+
+- ffmpegもしくはlibav, oggenc類
+    - 音声/動画の変換用
+    - これらはcuiからも使う為、インストールしたらPATHを通しておく事
+
+
+# 開発用ソフトのインストール
+選択の余地があるものをここに列挙。選択の余地がないものについては後述の項目参照。
+
+- 愛用しているエディタのインストールおよび設定。
+    - エディタの選択基準は「自分の手で拡張可能である事」。エディタの挙動に問題があった時に、自分の手でそれを直せなくては仕事にならない。
+
+- [yamy](http://sourceforge.jp/projects/yamy/) もしくはそれに準じるキーバインディングカスタマイズソフト
+    - 頻繁に行う操作は「このキーとこのキーとこのキーを押したら、このプロセス起動」のようにどんどん登録していき、既定作業は素早く行えるようにする。
+
+- [c-a-g](https://github.com/ayamada/c-a-g) もしくはそれに準じるネット検索ディスパッチャの登録および設定
+    - リファレンス検索等を高速に行えるようにする。
+
+- ckw改造版、もしくはそれに準じるコンソールソフト
+    - windowsであってもコンソールベースの作業を主に行う為。
+    - ckwは本家がなくなり、色々な人が改造版を出していて、どれがいいのかはよく分からないが、基本機能は同じ筈
+
+- [Ultimate Windows Context Menu Customizer](http://www.door2windows.com/ultimate-windows-context-menu-customizer-customize-context-menu-in-windows-xp-vista-7/)
+    - これを使って、どこからでもckwを開けるようにしておく
+
+- [Link Shell Extension](http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html)
+    - windows sucksはハードリンク、ジャンクション、シンボリックリンク(7のみ)の機能を持っているにも関わらず、標準のexplore.exeは使わせてくれない。これを入れると右クリックから作成できるようになると共にアイコンにも反映され分かりやすく超便利
+
+
+## mingw/msys
+これがないと始まらない。
+cygwinの方がいい人はそっちでもいける筈。
+
+- まず最初に、osの環境変数設定の方から `$HOME` を設定しておく
+- [http://d.hatena.ne.jp/bellbind/20110612/1307848645]() あたりを見ながら適当に導入し、PATHを通しておく
+    - またここにあるようにwgetのcertを更新しておく事。意外と重要
+- ckw.cfg(もしくはckw以外のコンソールソフトの設定ファイル)にて、cmd.exeではなくbash.exeが起動するように設定しておく
+- もしエディタにvi系を選択した場合は、mingwのviは邪魔になるので、エディタにPATHを通した上で、 `mingw-get remove msys-vim` しておくとよい。
+- .bash_login 等は以前に自分が使っていたものを持ってくる。 .bash_login で重要なのは以下の点なので、以下が反映されているか確認する事
+    - mingwのshからはバッチファイルを直に実行できない為、以下のエイリアスを設定しておき、バッチファイルを実行する時は `c hoge.bat args ...` のようにする
+        - `alias c='cmd.exe //c'`
+    - windowsではアルファベット大文字小文字の区別がないので、 `bind 'set completion-ignore-case on'` しておく
+    - `export PATH="$PATH:$HOME/bin"`
+    - `export LANG=C`
+    - zsh的なリアルタイムのコマンド履歴同期を行う為に、以下を設定する
+
+        ~~~~
+        function share_history {
+            history -a
+            history -c
+            history -r
+        }
+        export PROMPT_COMMAND='share_history'
+        shopt -u histappend
+        export HISTSIZE=9999
+        ~~~~
+
+
+## git
+- [http://msysgit.github.com/]() から「Git for Windows」の方をインストールした(msysGitの方はなんかうまく入らなかった)
+- gui操作とかはいらないので、とにかくPATHを通しておく。ただしgitのbinにはmsysが同梱されておりこれがまざるとよろしくないので、binではなくcmdの方にPATHを通す事
+    - インストール時に自動的に設定される？
+- 自分の .gitconfig を他のマシンから持ってくる
+- ssh-keygenして公開鍵をgithubに登録し、push可能状態にしておく
+
+
+
+
+
+
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
