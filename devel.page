@@ -10,6 +10,6 @@ title: 技情研ネットの開発関連
     - [環境構築/android](devel/env/android)
     - [環境構築/clojure](devel/env/clojure)
 
-- [古くなった情報](devel/old)
+- [古くなった情報](devel/old/)
 
 <!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
