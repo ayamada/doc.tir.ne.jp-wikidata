@@ -28,8 +28,8 @@ title: 開発環境構築/clojure
 - 日本語文字化け対策として、 .bash_login あたりで `export MAVEN_OPTS="-Duser.language=en"` しておき、エラー内容を英語表示させるようにする。
 
 ## exewrap
-- [http://code.google.com/p/exewrap/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに *.jar を *.exe にする為に使う
-    - 今回、配布物として、google playでの*.apk配布、windows向けの*.exe配布、非windows PC向けの*.jar配布の三通りを想定
+- [http://code.google.com/p/exewrap/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに `*.jar` を `*.exe` にする為に使う
+    - 今回、配布物として、google playでの`*.apk`配布、windows向けの`*.exe`配布、非windows PC向けの`*.jar`配布の三通りを想定
 
 
 # clojureの部
