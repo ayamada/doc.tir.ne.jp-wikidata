@@ -14,8 +14,9 @@ title: doc.tir.ne.jp: 技情研ネットの文書公開サイト
 - [技情研ネットの本棚](library)
 - [技情研ネットでの用語定義](terms)
 
-- [gititメモ](gitit) - 当サイトは[gitit]()を使って構築しています。
-- [アプリ開発環境構築](appdev) - android(とwindows含むjava環境)で動くアプリをclojureで開発する環境の構築手順メモです。
+- [技情研ネットの開発関連](dev)
+    - [gititメモ](gitit) - 当サイトは[gitit]()を使って構築しています。
+    - [アプリ開発環境構築](appdev) - android(とwindows含むjava環境)で動くアプリをclojureで開発する環境の構築手順メモです。
 
 
 <!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
