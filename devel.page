@@ -1,6 +1,6 @@
 ---
 toc: no
-title: 技情研ネットの開発関連
+title: 技情研ネットの開発情報
 ...
 
 - [gititメモ](devel/gitit) - 当サイト(doc.tir.ne.jp)は[gitit](devel/gitit)を使って構築しています。
