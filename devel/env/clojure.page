@@ -1,0 +1,58 @@
+---
+toc: yes
+title: 開発環境構築/clojure
+...
+
+[開発環境構築/windows](windows)の続き。
+
+# javaの部
+
+## jdk
+※2013年1月現在、android sdkはjava7には正式対応していない。しかし同時に2013年1月現在、最新でないjavaはセキュリティ的に問題がある。よって、jreは7を、jdkは6を入れるようにする。
+
+- まぎらわしくならないように、既によく分からないjreが入っている場合は、アンインストールして再起動して完全に削除しておく(結構前にそれではまった)。
+- [http://www.oracle.com/technetwork/java/javase/downloads/index.html]() から、jreの7の最新版と、jdkの6をダウンロードする
+- jreの7をインストールする。インストール先を変更して、スペースを含まないpathにしておく事。
+- jdkの6をインストールする。これもインストール先を変更して、スペースを含まないpathにしておく事。また、同梱のjreとjava DBはインストールしない事。
+- PATHに、jdkのbinを普通に追加する。
+- 環境変数JAVA_HOMEに、jdkのbinより前部分を設定しておく(maven用)
+    - PATHと同じようにbin含むpathを追加すると、bin/binを探されてしまう為
+
+## ant
+- [http://ant.apache.org/bindownload.cgi]() から取得し、適当に配置し、pathを通しておく
+
+## maven
+- [http://maven.apache.org/download.cgi]() から取得し、適当に配置し、pathを通しておく
+- 設置した中の conf/settings.xml を開き、ローカルリポジトリの場所を変更しておく。そうしないとシステムドライブにローカルリポジトリ作られて容量を食われる！
+    - コメントアウトされてる中から `<localRepository>d:/maven_repos</localRepository>` みたいな箇所を探し出して書き換え有効にする
+- 日本語文字化け対策として、 .bash_login あたりで `export MAVEN_OPTS="-Duser.language=en"` しておき、エラー内容を英語表示させるようにする。
+
+## exewrap
+- [http://code.google.com/p/exewrap/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに *.jar を *.exe にする為に使う
+    - 今回、配布物として、google playでの*.apk配布、windows向けの*.exe配布、非windows PC向けの*.jar配布の三通りを想定
+
+
+# clojureの部
+今回、clojureはleinもしくはmavenリポジトリからのみの使用を前提とする。
+
+clojureのreplをちょっと動かしたくなった時は、どこからでも `lein repl` で利用できる。
+
+## lein
+- [https://github.com/technomancy/leiningen#installation]() を見て、最新のスクリプトをwgetし、PATHの通ったbinに放り込み、実行権限もつける
+    - その時によってプレビュー版推奨だったりリリース版推奨だったりまちまちなので毎回上のページを確認する事
+- `lein --version` で自動的にダウンロード構築が実行され、その後にバージョン情報が表示される
+- なお、windowsの制約によって「実行中のファイルを消せない」ので、「lein upgrade」が実行できない。バージョンアップが必要なら手でバージョンアップしなくてはならない
+    - 手でバージョンアップするには、 `~/.lein/self-installs/` を削除し、leinのスクリプト本体をwgetし直し、 lein --version をまた実行すればよい
+
+
+## lein-droid
+試行錯誤してみたが、windowsで動かすにはまだ困難なようだ。
+
+`apkbuilder.bat` のところでギブアップしたので、 `apkbuilder.bat` が使われなくなったらまた再挑戦する。
+
+挑戦する場合は、READMEには「Current version of lein-droid is 0.1.0-beta1.」ってなってるが、これは古いので注意。本当の最新バージョンはコミットログあたりから探す事
+
+
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
