@@ -1,0 +1,52 @@
+---
+toc: yes
+title: 開発環境構築/android
+...
+
+[開発環境構築/clojure](clojure)の続き。
+
+実機として[sony tablet S](http://www.sony.jp/tablet/products/S1/)を使用する前提とする。
+
+androidアプリ開発の為のライブラリとして、libgdx+android向けclojure+nekoを選択。これらはmaven経由で導入を行う。
+
+- android向けclojureおよびnekoは、clojarsにてmaven形式で利用可能
+- libgdxは公式サイトにてSNAPSHOT版のみがmaven形式で提供されているが、リリース版を利用したいのでローカルリポジトリにインストールする。
+
+
+
+# android sdk
+- [http://developer.android.com/sdk/index.html]() から「USE AN EXISTING IDE」の方のをダウンロード、インストールする
+    - 「USE AN EXISTING IDE」じゃない方はeclipse同梱版
+- まず一度android sdk managerを起動し、必要なパッケージの更新および追加を行う
+    - ここで必ずusb driverを入れる事
+- PATHを通す。 `...\Android\android-sdk\platform-tools` と `...\Android\android-sdk\tools` の二つを追加する必要がある
+- 同様に、環境変数ANDROID_HOMEに `...\Android\android-sdk` を追加
+- [http://www.sony.jp/support/tablet/products/info/sdk.html]() にある通りにファイルを書き換える。ファイルがロックされていて書き換えができない時は「adb kill-server」で一旦プロセスを止める事。
+- 実際にusb接続を行い、ドライバをインストールする。基本的にはこのページの通りに選択すればok [http://moon.ap.teacup.com/shelter9/178.html]() なお、このページでは「ハードウェアIDが公式サイトのものと違う」と書いてあるが、山田の端末では公式サイトと同じだった。端末によっては何らかの差異がある様子。
+
+# bmfont.exe
+libgdxが使うビットマップフォントを生成するのに使う
+
+- [http://www.angelcode.com/products/bmfont/]() からダウンロード、インストール
+
+使用上の注意点
+
+- フォント画像はpngで生成し、*.pngが一個だけになるように画像サイズを調整する必要あり
+- CJK Unified Ideographs Extension B 系の文字を含めて生成しようとするとbmfont.exeがエラー終了する？フォントによる？とりあえず含めない方がよさげ
+
+
+# libgdx
+
+TODO: あとで
+
+
+
+
+
+
+
+
+
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
