@@ -114,6 +114,8 @@ cygwinの方がいい人はそっちでもいける筈。
         export HISTSIZE=9999
         ~~~~
 
+- 最後に、 `mingw-get list|less` を見ながら、必要そうなものを追加しておく。
+    - 今回はlibgdxのアーカイブを解凍する必要があるので、 `mingw-get install msys-unzip` を行った。
 
 ## git
 - [http://msysgit.github.com/]() から「Git for Windows」の方をインストールした(msysGitの方はなんかうまく入らなかった)
