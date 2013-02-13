@@ -189,17 +189,31 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 追記:
 
 - 基本的な機能は動いたものの、eval回りがエラー例外を投げてしまう。調べたところ、clojureのandroid向けブランチでないと、compileを使う機能は動かないらしい。
-- あとでやりなおす
+- evalが動くようになった。詳細についてはあとで別ページにまとめるが、とりあえず以下を行えばよい。
+    - clojureは [https://clojars.org/android/clojure]() を入れる。
+    - 一緒に [neko](https://clojars.org/neko) を入れる。
+    - clojureのloadやevalを呼ぶ「前に」、以下のコードを実行する。
+
+        ~~~
+        import clojure.lang.RT;
+        import clojure.lang.Symbol;
+        RT.var("clojure.core", "require").invoke(Symbol.intern("neko.compilation"));
+        RT.var("neko.compilation", "init").invoke(context, "classes");
+        // ↑のcontextはandroid.content.Context。this.getApplicationContext()とかで取る
+        ~~~
+
+    - 詳細は[neko.compilation](http://alexander-yakushev.github.com/neko/#neko.compilation)を参照。
+
 
 # まとめ
 
 - うごいた！
 - androidゲームをlisp(clojure)で作れる！
-    - しかし現状ではevalが動かない…
 - しかもおなじものがwindowsでもうごく！
 - clojure初期化処理じかんかかる！
 - 誰かmavenの扱いに長けた人たすけて！
     - たすけてくれる方は[@rnkv](https://twitter.com/rnkv)あたりへ連絡を…
+    - もうmavenは諦めて、Makefileを使う事に…
 
 
 # TODO
@@ -210,7 +224,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 - mavenが生成したlibgdxのプロジェクトテンプレートに、`*.clj`を書いてデプロイまでできるようにする手順を確立する
     - 現状ではclojureコード部は完全に別パッケージで扱う手順になっているが、このclojureコードは前述のmain()やAndroidManifest.xml等と一緒に管理すべきだと思うので
     - mavenでの管理で完結させるのは諦め、一旦、親ディレクトリにMakefileを置き、その子ディレクトリでmaven管理のjava部分と、それ以外のclojure部分管理にした。が、clojure部分はやっぱlein管理にしたい。lein-droidをあとで試す。うまくいったらそっちに移行。それができたらこのページにも反映する。
-- evalが動くようにする
+        - lein-droidはwindowsではうまく動かないようだ。かなり試行錯誤した後で諦め。
 
 
 
