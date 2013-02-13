@@ -194,6 +194,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 - evalが動くようになった。詳細についてはあとで別ページにまとめるが、とりあえず以下を行えばよい。
     - clojureは [https://clojars.org/android/clojure]() を入れる。
     - 一緒に [neko](https://clojars.org/neko) を入れる。
+        - これはきちんとコンパイルされた形で含めないと駄目な様子…あとで正式なやり方を調べる。
     - clojureのloadやevalを呼ぶ「前に」、以下のコードを実行する。
 
         ~~~
