@@ -194,7 +194,7 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
 - evalが動くようになった。詳細についてはあとで別ページにまとめるが、とりあえず以下を行えばよい。
     - clojureは [https://clojars.org/android/clojure]() を入れる。
     - 一緒に [neko](https://clojars.org/neko) を入れる。
-        - これは単にmavenにdependency指定するだけでは駄目で(それだと*.classにコンパイルされないっぽい)、きちんとコンパイルされた形で含めないと駄目な様子…あとで正式なやり方を調べる。
+        - これは単にmavenにdependency指定するだけでは駄目で(それだと `*.class` にコンパイルされないっぽい)、きちんと `*.class` にコンパイルされた形で含めないと駄目な様子。あとで正式なやり方を調べる。
     - clojureのloadやevalを呼ぶ「前に」、以下のコードを実行する。
 
         ~~~
@@ -204,6 +204,8 @@ windowsマシンをandroid開発向けにセットアップし、次いで今回
         RT.var("neko.compilation", "init").invoke(context, "classes");
         // ↑のcontextはandroid.content.Context。this.getApplicationContext()とかで取る
         ~~~
+
+        - 先に書いてる通り、nekoが `*.class` になってないと、↑のrequireの内部でevalが実行され、まだneko.compilationのinitが実行されていない為にエラー例外が投げられてしまう。
 
     - 詳細は[neko.compilation](http://alexander-yakushev.github.com/neko/#neko.compilation)を参照。
 
