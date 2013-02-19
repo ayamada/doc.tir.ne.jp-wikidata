@@ -126,7 +126,9 @@ cygwinの方がいい人はそっちでもいける筈。
 - ssh-keygenして公開鍵をgithubに登録し、push可能状態にしておく
 
 
+# 次
 
+- [clojure]()編に続く。
 
 
 
