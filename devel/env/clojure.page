@@ -53,6 +53,10 @@ clojureのreplをちょっと動かしたくなった時は、どこからでも
 挑戦する場合は、READMEには「Current version of lein-droid is 0.1.0-beta1.」ってなってるが、これは古いので注意。本当の最新バージョンはコミットログあたりから探す事
 
 
+# 次
+
+- [android]()編に続く。
+
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
