@@ -99,13 +99,6 @@ cygwinの方がいい人はそっちでもいける筈。
     - windowsではアルファベット大文字小文字の区別がないので、 `bind 'set completion-ignore-case on'` しておく
     - `export PATH="$PATH:$HOME/bin"`
     - `export LANG=C`
-    - mingwのshからはバッチファイルを直に実行できない為、以下のスクリプトを設置しておき、バッチファイルを実行する時は `c hoge.bat args ...` のようにする
-
-        ~~~~
-        mkdir -p ~/bin
-        /bin/echo -e '#!/bin/sh\ncmd.exe /c "$*"' > ~/bin/c
-        ~~~~
-
     - zsh的なリアルタイムのコマンド履歴同期を行う為に、以下を設定する
 
         ~~~~
@@ -118,6 +111,13 @@ cygwinの方がいい人はそっちでもいける筈。
         shopt -u histappend
         export HISTSIZE=9999
         ~~~~
+
+- mingwのshからはバッチファイルを直に実行できない為、以下のコマンドを実行して `~/bin/c` スクリプトを設置しておき、バッチファイルを実行する時は `c hoge.bat args ...` のようにする
+
+    ~~~~
+    mkdir -p ~/bin
+    /bin/echo -e '#!/bin/sh\ncmd.exe /c "$*"' > ~/bin/c
+    ~~~~
 
 - 最後に、 `mingw-get list|less` を見ながら、必要そうなものを追加しておく。
     - 今回はlibgdxのアーカイブを解凍する必要があるので、 `mingw-get install msys-unzip` を行った。
