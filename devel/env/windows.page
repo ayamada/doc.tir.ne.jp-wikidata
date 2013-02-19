@@ -96,11 +96,16 @@ cygwinの方がいい人はそっちでもいける筈。
     - またここにあるようにwgetのcertを更新しておく事。意外と重要
 - ckw.cfg(もしくはckw以外のコンソールソフトの設定ファイル)にて、cmd.exeではなくbash.exeが起動するように設定しておく
 - .bash_login 等は以前に自分が使っていたものを持ってくる。 .bash_login で重要なのは以下の点なので、以下が反映されているか確認する事
-    - mingwのshからはバッチファイルを直に実行できない為、以下のエイリアスを設定しておき、バッチファイルを実行する時は `c hoge.bat args ...` のようにする
-        - `alias c='cmd.exe //c'`
     - windowsではアルファベット大文字小文字の区別がないので、 `bind 'set completion-ignore-case on'` しておく
     - `export PATH="$PATH:$HOME/bin"`
     - `export LANG=C`
+    - mingwのshからはバッチファイルを直に実行できない為、以下のスクリプトを設置しておき、バッチファイルを実行する時は `c hoge.bat args ...` のようにする
+
+        ~~~~
+        mkdir -p ~/bin
+        /bin/echo -e '#!/bin/sh\ncmd.exe /c "$*"' > ~/bin/c
+        ~~~~
+
     - zsh的なリアルタイムのコマンド履歴同期を行う為に、以下を設定する
 
         ~~~~
