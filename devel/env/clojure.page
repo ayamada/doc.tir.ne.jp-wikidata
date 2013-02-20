@@ -25,7 +25,8 @@ title: 開発環境構築/clojure
 - [http://maven.apache.org/download.cgi]() から取得し、適当に配置し、pathを通しておく
 - 設置した中の conf/settings.xml を開き、ローカルリポジトリの場所を変更しておく。そうしないとシステムドライブにローカルリポジトリ作られて容量を食われる！
     - コメントアウトされてる中から `<localRepository>d:/maven_repos</localRepository>` みたいな箇所を探し出して書き換え有効にする
-- 日本語文字化け対策として、 .bash_login あたりで `export MAVEN_OPTS="-Duser.language=en"` しておき、エラー内容を英語表示させるようにする。
+- `~/.bash_login` に `export MAVEN_OPTS="-Duser.language=en -Dfile.encoding=utf-8"` を追加する。前者は日本語文字化け対策。後者は、これを設定しておかないと、utf-8の `*.clj` ファイルがコンパイル対象とみなされない！
+    - clojure-maven-plugin (の内部で実行されるスキャナ)がコンパイル対象ファイルを探す時に、encodingが一致していないものを勝手に除外してしまう為。javaはこんなのばっかりだ！
 
 ## exewrap
 - [http://code.google.com/p/exewrap/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに `*.jar` を `*.exe` にする為に使う
