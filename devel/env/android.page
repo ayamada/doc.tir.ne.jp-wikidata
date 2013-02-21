@@ -6,6 +6,7 @@ title: 開発環境構築/android
 [開発環境構築/clojure](clojure)の続き。
 
 実機として[sony tablet S](http://www.sony.jp/tablet/products/S1/)を使用する前提とする。
+この部分は各々で自分の機種の該当情報を調べて、適宜読みかえてください。
 
 androidアプリ開発の為のライブラリとして、libgdx+android向けclojure+nekoを選択。これらはmaven経由で導入を行う。
 
@@ -35,19 +36,9 @@ libgdxが使うビットマップフォントを生成するのに使う
 - CJK Unified Ideographs Extension B 系の文字を含めて生成しようとするとbmfont.exeがエラー終了する？フォントによる？とりあえず含めない方がよさげ
 
 
-# libgdx
+# 次
 
-TODO: あとで
-
-ここから先はとりあえず[古い記事](/old/appdev)を参照してみてください。
-
-
-
-
-
-
-
-
+- [CLANによるandroidアプリ開発](/devel/clan)
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
