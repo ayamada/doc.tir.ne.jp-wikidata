@@ -6,13 +6,9 @@ title: 技情研ネットの開発情報
 
 - [gititメモ](devel/gitit) - 当サイト(doc.tir.ne.jp)は[gitit](devel/gitit)を使って構築しています。
 
-- [環境構築](devel/env) - 各種の開発環境の構築手順メモをここに置きます。今のところ、androidアプリ開発を想定しています。
-
-(TODO: 「環境構築」の「目的」のページを追加する。そこに「libgdxとPlayNの比較」とか、そういう話も書く)
-
-
-
-
+- androidアプリ開発
+    - [環境構築](devel/env)
+    - [CLANによるandroidアプリ開発](devel/clan)
 
 
 <!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
