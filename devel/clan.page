@@ -62,7 +62,7 @@ title: CLANによるandroidアプリ開発
 とりあえず「libgdx+clojureでandroidアプリを作る」という方向で試行錯誤した結果、以下が判明した。
 
 - libgdxは素晴らしい。javaは素晴らしくない。
-- clojureはそのままでは動的コンパイル(スクリプトのロードやeval)が動かない。
+- clojureはandroid上でも動くが、そのままでは動的コンパイル(スクリプトのロードやeval)回りが動かない。
     - android向けforkのclojureを使い、その上でneko.compilationのinitを実行する事で動的コンパイルが動くようになる。
         - なお、内部でdx.jarを呼んで`*.class`を`*.dex`に変換しているので非常に時間がかかる。
             - 一旦変換が済んでしまえば、あとは普通の速度で動く
