@@ -119,6 +119,8 @@ cygwinの方がいい人はそっちでもいける筈。
     /bin/echo -e '#!/bin/sh\ncmd.exe /c "$*"' > ~/bin/c
     ~~~~
 
+- `~/.ssh` を適切に設定する。
+- `~/bin` に常用しているスクリプトを設置。
 - 最後に、 `mingw-get list|less` を見ながら、必要そうなものを追加しておく。
     - 今回はlibgdxのアーカイブを解凍する必要があるので、 `mingw-get install msys-unzip` を行った。
     - もしエディタにvimを選択している場合は、自動的に入れられるmingw付属のvimは邪魔になるので、 `mingw-get remove msys-vim` しておくとよい。
