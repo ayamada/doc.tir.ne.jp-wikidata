@@ -1,0 +1,36 @@
+---
+toc: no
+categories: postponed
+title: CLANによるandroidアプリ開発一時メモ
+...
+
+今のところ、完全に雑多なメモです。
+
+# プロファイルを取る
+
+- [http://labs.techfirm.co.jp/android/iguchi/2262]() を参考にした。
+
+0. AndroidManifest.xml に以下がある事を確認
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+0. `(import '(android.os Debug))` する(この段階でPCでは動かなくなるので注意)
+
+0. create に以下を入れる
+
+    (Debug/startMethodTracing "appname")
+
+0. dispose に以下を入れる
+
+    (Debug/stopMethodTracing)
+
+0. `adb pull /mnt/sdcard/appname.trace .` もしくはmonitor.bat等でローカルにコピーする
+    - sdcardのpathは違う可能性がある。以下で調べられる。
+
+        (import '(android.os Environment))
+        (.getPath (Environment/getExternalStorageDirectory))
+
+0. monitor.bat のメニューの「File」→「Open File」から、 appname.trace を開いて内容を確認する。
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
