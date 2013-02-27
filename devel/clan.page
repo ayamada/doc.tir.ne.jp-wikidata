@@ -84,6 +84,9 @@ CLANは、 [https://github.com/ayamada/clan]() にある。
 続きはあとで。
 
 
+# CLANによるandroidアプリ開発一時メモ
+
+- 雑多なメモは今はとりあえず全部 [clan/memo]() に書く。あとで分類などする予定。
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
