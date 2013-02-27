@@ -26,11 +26,13 @@ title: 開発環境構築/clojure
 - 設置した中の conf/settings.xml を開き、ローカルリポジトリの場所を変更しておく。そうしないとシステムドライブにローカルリポジトリ作られて容量を食われる！
     - コメントアウトされてる中から `<localRepository>d:/maven_repos</localRepository>` みたいな箇所を探し出して書き換え有効にする
 - `~/.bash_login` に `export MAVEN_OPTS="-Duser.language=en -Dfile.encoding=utf-8"` を追加する。前者は日本語文字化け対策。後者は、これを設定しておかないと、utf-8の `*.clj` ファイルがコンパイル対象とみなされない！
-    - clojure-maven-plugin (の内部で実行されるスキャナ)がコンパイル対象ファイルを探す時に、encodingが一致していないものを勝手に除外してしまう為。javaはこんなのばっかりだ！
+    - clojure-maven-plugin (の内部で実行されるスキャナ)がコンパイル対象ファイルを探す時に、encodingが一致していないものを勝手に除外してしまうのが原因のようだ。javaはこんなのばっかりだ！
 
-## exewrap
-- [http://code.google.com/p/exewrap/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに `*.jar` を `*.exe` にする為に使う
+## launch4j
+- [http://launch4j.sourceforge.net/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに `*.jar` を `*.exe` にする為に使う
     - 今回、配布物として、google playでの`*.apk`配布、windows向けの`*.exe`配布、非windows PC向けの`*.jar`配布の三通りを想定
+
+なお、この項目では以前は [exewrap](http://code.google.com/p/exewrap/) を利用していた。 exewrap は実行ファイル圧縮やログ出力の機能があり便利だったが、実行時にjar内のリソースを全てオンメモリで保持してしまう性質があり(これを一時ディレクトリに吐き出すオプションはない様子)、これがリソースを全てパッケージに含めてしまうandroidやlibgdxと相性が悪く、非常にメモリを消費してしまう為、今回は exewrap ではなく launch4j を使用する事とした。
 
 
 # clojureの部
