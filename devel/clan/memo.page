@@ -1,6 +1,5 @@
 ---
 toc: yes
-categories: postponed
 title: CLAN一時メモ
 ...
 
@@ -69,7 +68,7 @@ title: CLAN一時メモ
 - 別スレッドでevalがうごかないかもしれない。
     - 何故なら、evalをするにはneko.compilation/initを呼ぶ必要があるが、そこではvarにパラメータを保存している為。
     その場合は別スレッドでevalするまえにneko.compilation/initを呼ぶようにすれば動くと思うが、その際にディレクトリ指定はclasses以外にする事。
-        - classesはCLANが自動的に設定している為。neko.compilation/initは指定されたディレクトリを消すので、衝突すると多分動かなくなる
+        - classesはCLANが利用するデフォルト値の為(MainActivity.javaから変更可)。neko.compilation/initは指定されたディレクトリを消すので、衝突すると多分動かなくなる
 
 
 
