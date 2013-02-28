@@ -7,7 +7,9 @@ title: CLAN一時メモ
 今のところ、完全に雑多なメモです。
 
 
-# プロファイルを取る
+# android関連
+
+## プロファイルを取る
 
 [http://labs.techfirm.co.jp/android/iguchi/2262]() を参考にした。
 
@@ -32,6 +34,62 @@ title: CLAN一時メモ
         (.getPath (Environment/getExternalStorageDirectory))
 
 0. monitor.bat のメニューの「File」→「Open File」から、 appname.trace を開いて内容を確認する。
+
+
+### プロファイル結果
+
+どうもプロファイルが取れるのはcpu秒で数秒だけらしい。
+
+とりあえず取ってみた結果、実機では以下が重いようだ。
+
+- 超おもい
+    - clojure/lang/Reflector.invokeInstanceMethod
+    - clojure/lang/Reflector.invokeNoArgInstanceMember
+    - これらの中にて、 clojure/lang/Reflector.getMethods が50%程度を占めており、また、 java/lang/reflect/ReflectionAccessImpl.clone は20%程度なものの、実行回数がむちゃくちゃ多かった
+
+- おもい
+    - clojure/core$dorun.invoke なぜか重い。loopとrecurにすべきっぽい
+
+
+## コンテキストの喪失
+
+- android実機でのみ、アプリ起動中に別アプリを開き、その後にまた戻ってきた時に、pause()→resume()が発生し、AndroidゲームプログラミングA to Zのp.270に書いてあった「GLコンテキストの喪失」が起こる。
+    - この時に、ファイルからコンストラクトしたTextureは自動的に再生成されるようになっているが、そうでない動的に生成したTextureは再生成されない。
+    - またこの時に、Texture内部idの再配布(再利用あり)が行われる為、前述の「再生成されなかったTexture」は、再読み込みされたTextureのどれかが割り当たる現象が起こる
+        - 正確には違うかも。しかしとにかく内部のtexture idがおかしくなる
+    - 何も考えずに、「なくなったならdispose()してもいいよね」と考えてdispose()してしまうと、前述の別のTextureがdispose()されてしまい、おかしくなる。なのでdispose()してはいけない。
+        - 正しくdispose()する事にこだわるなら、pause()時にすべきなのか？
+        - これでメモリリークになるのかどうかは未調査
+
+
+# clojure関連
+
+## マクロ
+
+- clojureのマクロは、classファイルへコンパイルする場合は、そのコンパイル時にマクロが評価される事に注意が必要！classファイルのロード時とかではないので注意する(下手すると開発環境の値固定になってしまったりする)
+
+
+# libgdx関連
+
+- libgdxでは基本的に小数は全部floatなので、引数エラーになったら数値を(float x)してみる
+
+
+# java関連
+
+- jarの仕様で、 assets 内のファイルもコンパイルしたファイルもいっしょくたに同じディレクトリに入れられてしまうので、これらの名前が衝突しないようにした方がいいです(いっしょくたになっても別にいいなら気にしなくてもいいですが…)。java sucks.
+    - この為、clojureのパッケージであっても、java風の「jp.ne.example...」とか「com.example...」みたいなパッケージ名にした方がいいです。assets内に「jp」とか「com」とかのディレクトリを掘る事はまず無いと思うので。
+    - またassets内にファイルを直置きせずに、ディレクトリを一段掘ってその中に入れるとよいでしょう。
+    - 作ったjarが具体的にどういう構造になってるかは、 `jar tf path/to/xxx.jar` もしくは `mkdir hoge && cd hoge && jar xf path/to/xxx.jar` してみると確認できます。
+
+
+# maven関連
+
+## pom.xmlのディレクトリ区切り文字
+
+- 正式には、 `${file.separator}` 。
+    - 「/」でも大体問題はないが、windowsではapk生成等の一部でこけるので、その時はこれに直す事。
+
+
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
