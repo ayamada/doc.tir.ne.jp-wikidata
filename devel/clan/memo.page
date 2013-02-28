@@ -6,9 +6,10 @@ title: CLAN一時メモ
 
 今のところ、完全に雑多なメモです。
 
+
 # プロファイルを取る
 
-- [http://labs.techfirm.co.jp/android/iguchi/2262]() を参考にした。
+[http://labs.techfirm.co.jp/android/iguchi/2262]() を参考にした。
 
 0. AndroidManifest.xml に以下がある事を確認
 
