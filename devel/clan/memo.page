@@ -145,9 +145,9 @@ TODO: あとでリンク化する事
 
 - 基本的に画像と同じ。背景が白でも黒でも認識できる必要あり。
 - 必要とされる状況とサイズは以下の通り
-    - android向け(res/drawable-*): 96x96, 72x72, 48x48, 36x36
-    - desktop向け起動後プロセスアイコン(サンプルではassets/icon): 128x128, 32x32, 16x16
-    - desktop向けexeアイコン(l4j/windows.ico): 48x48, 32x32, 16x16
+    - android向け(`res/drawable-*`): 96x96, 72x72, 48x48, 36x36
+    - desktop向け起動後プロセスアイコン(`assets/icon`): 128x128, 32x32, 16x16
+    - desktop向けexeアイコン(`l4j/windows.ico`): 48x48, 32x32, 16x16
 - windows向けのicoはgimpのエクスポートで作る。 [http://osima.jp/blog/windows-icon/index.html]()
 
 BGM
