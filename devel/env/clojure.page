@@ -29,7 +29,9 @@ title: 開発環境構築/clojure
     - clojure-maven-plugin (の内部で実行されるスキャナ)がコンパイル対象ファイルを探す時に、encodingが一致していないものを勝手に除外してしまうのが原因のようだ。javaはこんなのばっかりだ！
 
 ## launch4j
-- [http://launch4j.sourceforge.net/]() から取得し、適当に設置し、pathを通しておく、これはwindows向けに `*.jar` を `*.exe` にする為に使う
+- [http://launch4j.sourceforge.net/]() から取得し、適当に設置し、pathを通しておく
+    - ※注意：pathを通すのはbinではなく、 launch4j.jar の置いてあるディレクトリ！ここに入ってるbin類はlaunch4jがwindows向けバイナリを生成する為に使うもの。
+- これはwindows向けに `*.jar` を `*.exe` にする為に使う
     - 今回、配布物として、google playでの`*.apk`配布、windows向けの`*.exe`配布、非windows PC向けの`*.jar`配布の三通りを想定
 
 なお、この項目では以前は [exewrap](http://code.google.com/p/exewrap/) を利用していた。 exewrap は実行ファイル圧縮やログ出力の機能があり便利だったが、実行時にjar内のリソースを全てオンメモリで保持してしまう性質があり(これを一時ディレクトリに吐き出すオプションはない様子)、これがリソースを全てパッケージに含めて扱うlibgdxと相性が悪く、メモリを大量消費してしまう為、今回は exewrap ではなく launch4j を使用する事とした。
