@@ -16,8 +16,8 @@ androidアプリ開発の為のライブラリとして、libgdx+android向けcl
 
 
 # android sdk
-- [http://developer.android.com/sdk/index.html]() から「USE AN EXISTING IDE」の方のをダウンロード、インストールする
-    - 「USE AN EXISTING IDE」じゃない方はeclipse同梱版
+- [http://developer.android.com/sdk/index.html]() から「USE AN EXISTING IDE」の方(windows以外の人は「SDK Tools Only」の方)をダウンロード、インストールする
+    - 「USE AN EXISTING IDE」じゃない方(「ADT Bundle」の方)はeclipse同梱版
 - まず一度android sdk managerを起動し、必要なパッケージの更新および追加を行う
     - ここで必ずusb driverを入れる事
 - PATHを通す。 `...\Android\android-sdk\platform-tools` と `...\Android\android-sdk\tools` の二つを追加する必要がある
