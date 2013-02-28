@@ -133,5 +133,37 @@ CLANで何か作って配布する場合、それにはclojureやらlibgdxやら
     - [http://launch4j.sourceforge.net/]() の一番下
 
 
+## 素材、assets回り
+TODO: あとでリンク化する事
+
+画像
+- カメラで家の中にあるものを撮影してgimpで加工(肖像権とか権利ありそうなものには注意)
+- gimpで一からドット絵作成
+- 保存はgimpのxcf、エクスポートはpngで透過あり(libgdxでいうところのRGBA8888)
+
+アイコン
+- 基本的に画像と同じ。背景が白でも黒でも認識できる必要あり。
+- 必要とされる状況とサイズは以下の通り
+    - android向け(res/drawable-*): 96x96, 72x72, 48x48, 36x36
+    - desktop向け起動後プロセスアイコン(サンプルではassets/icon): 128x128, 32x32, 16x16
+    - desktop向けexeアイコン(l4j/windows.ico): 48x48, 32x32, 16x16
+- windows向けのicoはgimpのエクスポートで作る。 [http://osima.jp/blog/windows-icon/index.html]()
+
+BGM
+- midiシーケンサで適当に作る
+- kaosillatorにたよる
+- 自分で楽器をひいて録音する等
+- audacityで編集、調整
+- ogg一択
+
+効果音
+- libgdxでは、長さは最大で5秒程度らしい
+- mp3は不具合があるとの事、oggかwavかで(最近のバージョンでは直った？)
+- 暇な時にsfxrとlabChirpで大量生産し、「このアクションのSEが欲しいな」と必要になった時に、大量生産した奴を順番に再生し、それっぽい奴を選ぶ
+- BGMと同様に録音してもよい
+- audacityで音量、時間、フェードアウト等を最終調整
+
+
+
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
