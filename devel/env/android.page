@@ -22,7 +22,8 @@ androidアプリ開発の為のライブラリとして、libgdx+android向けcl
 - まず一度android sdk managerを起動し、必要なパッケージの更新および追加を行う
     - ここで必ずusb driverを入れる事
 - PATHを通す。 `...\Android\android-sdk\platform-tools` と `...\Android\android-sdk\tools` の二つを追加する必要がある
-- 同様に、環境変数ANDROID_HOMEに `...\Android\android-sdk` を追加
+- 同様に、環境変数ANDROID_HOMEに `...\Android\android-sdk` を追加。これを忘れるとmavenからandroid sdkが認識されない。
+    - windows以外だと、 android-sdk ではなく、単に sdk というディレクトリの様子。とにかく、「platform-tools」と「tools」の入っているディレクトリを指定する。
 - [http://www.sony.jp/support/tablet/products/info/sdk.html]() にある通りにファイルを書き換える。ファイルがロックされていて書き換えができない時は「adb kill-server」で一旦プロセスを止める事。
 - 実際にusb接続を行い、ドライバをインストールする。基本的にはこのページの通りに選択すればok [http://moon.ap.teacup.com/shelter9/178.html]() なお、このページでは「ハードウェアIDが公式サイトのものと違う」と書いてあるが、山田の端末では公式サイトと同じだった。端末によっては何らかの差異がある様子。
 
