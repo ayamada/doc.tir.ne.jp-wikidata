@@ -34,12 +34,18 @@ title: CLAN一時メモ
 
 0. monitor.bat のメニューの「File」→「Open File」から、 appname.trace を開いて内容を確認する。
 
-
-### プロファイル結果
-
 どうもプロファイルが取れるのはcpu秒で数秒だけらしい。
 
-とりあえず取ってみた結果、実機では以下が重いようだ。
+
+### パフォーマンスチューニングメモ
+
+#### android & java
+
+TODO: この部分についてはあちこちにノウハウがある筈。だが今の山田にはないのであとで集める。
+
+#### android & clojure
+
+とりあえずプロファイル取ってみた結果、実機では以下が重いようだ。
 
 - 超おもい
     - clojure/lang/Reflector.invokeInstanceMethod
@@ -47,7 +53,8 @@ title: CLAN一時メモ
     - これらの中にて、 clojure/lang/Reflector.getMethods が50%程度を占めており、また、 java/lang/reflect/ReflectionAccessImpl.clone は20%程度なものの、実行回数がむちゃくちゃ多かった
 
 - おもい
-    - clojure/core$dorun.invoke なぜか重い。loopとrecurにすべきっぽい
+    - dorun と doall は普通に重い。loopとrecurにすべき
+        - おそらくだが、clojureでは(無名)関数一つにつき一つのクラスが作られ、androidでは別クラスのmethod呼び出しはそこそこ高価なのが原因。
 
 
 ## コンテキストの喪失
@@ -69,8 +76,6 @@ title: CLAN一時メモ
     - 何故なら、evalをするにはneko.compilation/initを呼ぶ必要があるが、そこではvarにパラメータを保存している為。
     その場合は別スレッドでevalするまえにneko.compilation/initを呼ぶようにすれば動くと思うが、その際にディレクトリ指定はclasses以外にする事。
         - classesはCLANが利用するデフォルト値の為(MainActivity.javaから変更可)。neko.compilation/initは指定されたディレクトリを消すので、衝突すると多分動かなくなる
-
-
 
 
 # libgdx関連
