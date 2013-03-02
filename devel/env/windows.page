@@ -32,6 +32,7 @@ windowsマシンをまともに使えるようにする作業その二。
 
 - [unlocker](http://www.emptyloop.com/unlocker/)、もしくはそれに準じるソフト
     - これがないとロックされる度に再起動する羽目に。windows sucks
+    - 今回は特に、adbがロックする事が多い。知っていれば単に `adb kill-server` するだけだが、それを調査する意味でも入れておいて損はない
 
 - [Defraggler](http://www.piriform.com/defraggler/download)
     - vistaあたりからwindows標準のデフラグが糞になった為、状況に応じて手で実行する。普段は使わない
