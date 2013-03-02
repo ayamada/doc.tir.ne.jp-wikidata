@@ -17,6 +17,7 @@ androidアプリ開発の為のライブラリとして、libgdx+android向けcl
 
 # android sdk
 - [http://developer.android.com/sdk/index.html]() から「USE AN EXISTING IDE」の方をダウンロード、インストールする
+    - windowsでは、これをCドライブにインストールしないとandroidエミュレータが動かないという情報あり。しかしエミュレータを使わない人はC以外に入れて全く問題ない。
     - 「USE AN EXISTING IDE」じゃない方はeclipse同梱版
     - ただし、windows以外の人は、eclipseを使うつもりがなくても、「ADT Bundle」の方をダウンロードする事。これは何故かというと、「SDK Tools Only」の方には後述のplatform-toolsが入っていない為。
 - まず一度android sdk managerを起動し、必要なパッケージの更新および追加を行う
