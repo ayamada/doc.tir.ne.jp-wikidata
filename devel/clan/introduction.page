@@ -1,0 +1,77 @@
+---
+toc: no
+title: CLANによるandroidアプリ開発
+...
+
+# 前置き
+
+このページは面倒なら読まなくていいです(読まない人は [../clan]() に戻る)。
+
+
+## 要求
+
+ 1. androidアプリを作って利益を出したい。
+ 2. できれば既存の(ゲーム向け)フレームワークを利用して、楽にすごい奴を作りたい。
+ 3. 可能なら同時にPC向け*.jarも生成できるとうれしい。
+ 4. また、今すぐは必要ないが、将来に向けてiOS向けデプロイもできるとうれしい。
+ 5. だが、javaでの開発は嫌だ。lisp系言語が望ましい。
+
+
+## 選択肢
+
+前述の1-4を満たすフレームワークとして、以下を検討した。
+
+- [PlayN](https://developers.google.com/playn/)
+    - googleがメンテしている(元は[googleの20%ルール](https://www.google.com/search?nfpr=1&q=google%2020%25%E3%83%AB%E3%83%BC%E3%83%AB)から生まれたプロジェクトらしい)
+    - android, PC(java), html5, flash, iOSに対してdeploy可能
+    - 3D方面はまだ開発途上らしいという話
+    - OpenGLES 2.0相当以上の機能が必須
+        - うちのPCではOpenGL 2.0うごかん。それでもandroid向けデプロイには別に問題はないが、今回はパスする事に
+
+- [libgdx](http://libgdx.badlogicgames.com/)
+    - 書籍[Androidゲームプログラミング A to Z](http://www.impressjapan.jp/books/3113)([amazon](http://www.amazon.co.jp/dp/4844331132))(これは非常に良い本だった)の著者が主メンテナ
+    - android, PC(java), html5に対してdeploy可能。iOSは現在開発中(かつ別途MonoTouchライセンスが必要)
+    - PlayNよりも(C的な意味で)自由度が高い(libgdxのポリシー等については前述の書籍参照)
+    - OpenGLES 2.0相当以上の機能を使うかどうかは選択可能
+        - うちのPCでもうごく
+    - コミュニティが活発に動いている
+        - 変動の激しい世界なので、開発側のactivityが悪いと取り残される恐れが
+
+- unity
+    - android/iOS向けのデプロイをするには有償ライセンスが必要
+    - うちのPCではOpenGL 2.0うごかんので(ry
+
+- html5系フレームワーク
+    - 今回は利益を出したいので、google play経由で公開できるものが望ましいのでパス
+        - 広告収入も考慮はしたが「駄目そう」という結論に
+
+- PhoneGap
+    - 思っていたよりも色々と面倒そうだったので(特にデプロイ部)、今回はパスした
+
+- Monaca, Corona
+    - 未調査
+
+結果として、libgdxを使う事に。
+
+また、前述の5は「clojureでコードを書く」事で回避する事とした。
+
+
+## CLANプロジェクトの設立
+
+とりあえず「libgdx+clojureでandroidアプリを作る」という方向で試行錯誤した結果、以下が判明した。
+
+- libgdxは素晴らしい。javaは素晴らしくない。
+- clojureはandroid上でも動くが、そのままでは動的コンパイル(スクリプトのロードやeval)回りが動かない。
+    - android向けforkのclojureを使い、その上でneko.compilationのinitを実行する事で動的コンパイルが動くようになる。
+        - なお、内部でdx.jarを呼んで`*.class`を`*.dex`に変換しているので非常に時間がかかる。
+            - 一旦変換が済んでしまえば、あとは普通の速度で動く
+        - このneko.compilationは、パッケージング前にコンパイルしておく必要がある(そうしないと缶詰の中に缶切りがある状態に)。clojarsに置いてあるnekoのjarは `*.clj` は未コンパイル状態なので注意が必要。
+            - 元々、nekoはフレームワーク的な立ち位置なので、こういう使い方(neko.compilationのinitだけ呼ぶ)は考慮されていない様子。
+- clojureの初期化にかなり時間がかかる。なのでclojureの初期化中はスプラッシュスクリーンを出す必要がある。勿論その部分はclojureでは書けないので、スプラッシュスクリーンはjavaで書かなくてはならない。
+
+上記の部分が結構な分量あるので、この部分は分離し、
+「clojureのコード書くだけでlibgdx使用androidアプリができるフレームワーク」
+とする事にした。これがCLAN。
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
