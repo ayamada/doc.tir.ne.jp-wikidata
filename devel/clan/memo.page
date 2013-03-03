@@ -8,6 +8,9 @@ title: CLAN一時メモ
 
 # android関連
 
+- clojureのdefで定義した(static？)変数は、前回起動時の値が残っている時があるようだ。つまりspeedycgi的な事ができると同時に、speedycgi的な問題もありうる。
+
+
 ## プロファイルを取る
 
 [http://labs.techfirm.co.jp/android/iguchi/2262]() を参考にした。
@@ -81,6 +84,8 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 # libgdx関連
 
 - libgdxでは基本的に小数は全部floatなので、引数エラーになったら数値を(float x)してみる
+- render()内でエラー例外が投げられて終了する際に、pause()呼ばれない可能性がある。もしそうならば、エラー終了した時はセーブされなかったりしてきっと困る。catchしてpause()を呼んでからrethrowすべきか、とか後で検証したり考えたりしてみる
+
 
 
 # java関連
