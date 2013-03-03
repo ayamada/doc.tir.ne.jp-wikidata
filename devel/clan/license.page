@@ -1,0 +1,59 @@
+---
+toc: yes
+title: CLANライセンス解説
+...
+
+CLAN本体のライセンスはApache License 2.0です。
+
+しかし、CLANはclojure, libgdx等たくさんのソフトを利用しており、最終生成物にもそれらを含みます。
+
+よって、自作アプリをどういうライセンスにするかに関わらず、それら全てのライセンスを満たす必要があります。
+
+# ライセンス一覧
+
+- clojure
+    - Eclipse Public License 1.0 + BSD(ASMライブラリ部)
+- clojure(for android)
+    - Eclipse Public License 1.0 + BSD + Apache License 2.0(dex.jar部)
+- libgdx
+    - Apache License 2.0
+- android
+    - バイナリとして含まれるのは前述のdex.jar部分のみなので、clojure(for android)に組込み済
+- neko:
+    - Eclipse Public License 1.0
+- launch4j:
+    - BSD + MIT
+- clan:
+    - Apache License 2.0
+
+# まとめ
+
+- GPL的に感染する条項はどれもなし
+    - つまり、自作アプリのソースは開示とかしなくていい
+
+- ただし、上記の内のEPLのもののコードに手を加えた場合、そのパッケージに関してはソースを開示しないといけない
+    - たとえば自作アプリの為にnekoのソースいじって変更したら、そのneko部分に関してはソースを開示しないといけない。しかし自作アプリ部分のソースは開示しなくていい
+
+- バイナリ配布時は、上記の著作権表示およびライセンス文面を適切に明記する必要がある
+    - Apache License 2.0 は、 [http://www.apache.org/licenses/LICENSE-2.0#apply]() のようなライセンス文がどっかに入っているので、それを明記する
+    - BSD+MIT も同じく、ライセンス文をそのまま明記すればよい
+    - Eclipse Public License 1.0 は、ライセンス文の明記(eclipse.orgに置いてある長い奴じゃなく個別の奴)と、本家のソース入手元(githubのurlでいいでしょう)の明記の両方が必要なようだ
+
+- 量多いよ！しかもapk/jar/exeによって含まれるものが違うから三種類配布するなら三種類用意しないといけない！
+    - apkはclojure(for android) + libgdx + neko + clan
+    - jarはclojure + libgdx + clan
+    - exeはclojure + libgdx + clan + launch4j
+
+- jar/exe配布の時はライセンスファイルを配布物に一緒に含めるだけで何も問題ないが、androidの場合、apkに同梱しても普通には見られないので、起動したandroidアプリからこれらの情報を見れるようにする機能が必要。なんてこった！
+    - 先駆者であるClojure REPLを見たところ、「ライセンス詳細」を選んだら、特定URLを開いて、そこに上記ライセンスの詳細がびっしり書いてある、という形態で問題ないようだ
+
+- あとでサンプルアプリにこれらを実装するので、そこを参考にすればいいと思う
+
+
+# リンク
+
+- [http://www.atmarkit.co.jp/flinux/rensai/osslc02/osslc02a.html]() 分かりやすい
+- [http://www.tldrlegal.com/compare]() 便利。しかし自動生成なので、細かいところまで正しいかどうかはちょっと怪しい部分あり
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
