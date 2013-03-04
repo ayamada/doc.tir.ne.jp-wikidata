@@ -48,7 +48,7 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 
 ### android & clojure
 
-- [*warn-on-reflection*](http://clojure.org/java_interop#Java%20Interop-Type%20Hints) をつけて、警告をつぶす
+- [`*warn-on-reflection*`](http://clojure.org/java_interop#Java%20Interop-Type%20Hints) をつけて、警告をつぶす
     - 最重要。これをしないと実機でまともなパフォーマンスが出ない。
 
 - dorun と doall は重い。loopとrecurにすべき
