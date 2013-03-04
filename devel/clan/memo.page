@@ -48,17 +48,15 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 
 ### android & clojure
 
-とりあえずプロファイル取ってみた結果、実機では以下が重いようだ。
+- [*warn-on-reflection*](http://clojure.org/java_interop#Java%20Interop-Type%20Hints) をつけて、警告をつぶす
+    - 最重要。これをしないと実機でまともなパフォーマンスが出ない。
 
-- 超おもい
-    - clojure/lang/Reflector.invokeInstanceMethod
-    - clojure/lang/Reflector.invokeNoArgInstanceMember
-    - これらの中にて、 clojure/lang/Reflector.getMethods が50%程度を占めており、また、 java/lang/reflect/ReflectionAccessImpl.clone は20%程度なものの、実行回数がむちゃくちゃ多かった
+- dorun と doall は重い。loopとrecurにすべき
+    - おそらくだが、clojureでは(無名)関数一つにつき一つのクラスが作られ、androidでは別クラスのmethod呼び出しはそこそこ高価なのが原因。
+    - ただし doall を何も考えずに loop にすると、結果が逆順になる事に注意。
 
-- おもい
-    - dorun と doall は普通に重い。loopとrecurにすべき
-        - おそらくだが、clojureでは(無名)関数一つにつき一つのクラスが作られ、androidでは別クラスのmethod呼び出しはそこそこ高価なのが原因。
-
+- defn じゃなく defmacro もしくは definline を使うとわずかにパフォーマンスが向上する。が、マクロとして書かないといけなくなるのでメンテ性が下がる。実行回数が非常に多い関数だけにすべき。
+    - 実行回数が多いかどうかは前述のプロファイリングで調査…
 
 ## コンテキストの喪失
 
@@ -84,8 +82,17 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 # libgdx関連
 
 - libgdxでは基本的に小数は全部floatなので、引数エラーになったら数値を(float x)してみる
+
 - render()内でエラー例外が投げられて終了する際に、pause()呼ばれない可能性がある。もしそうならば、エラー終了した時はセーブされなかったりしてきっと困る。catchしてpause()を呼んでからrethrowすべきか、とか後で検証したり考えたりしてみる
 
+- Preferences のデータの保存先
+    - androidでは、androidのpreferences内。
+        - 仕様上では最大8kとなっているが、実質的には最大2k程度。
+    - windowsでは、 `C:\Users\{USERNAME}\.prefs\{PREFNAME}\` 内。
+        - androidとは違い、他のlibgdx利用アプリと共通なので、
+          PREFNAMEはきちんとuniqueな名前にする必要がある！
+    - windows以外のdesktopでは、 `~/.prefs/{PREFNAME}/` 内。
+        - PREFNAMEについてはwindowsと同じ注意が必要！
 
 
 # java関連
@@ -102,6 +109,11 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 
 - 正式には、 `${file.separator}` 。
     - 「/」でも大体問題はないが、windowsではapk生成等の一部でこけるので、その時はこれに直す事。
+
+## clojure-maven-plugin のコンパイル対象認識
+
+- ソースディレクトリ内に `*.clj` を置いていてもコンパイルされない時は、中のファイルの文字コードをシステム文字コードと一致させるか、環境変数MAVEN_OPTSに `-Dfile.encoding=utf-8` 的な指定を追加してみる。
+    - これは、 clojure-maven-plugin が内部で使っている `org.codehaus.plexus.compiler.util.scan.*` あたりの仕様のようだ。
 
 
 # その他
