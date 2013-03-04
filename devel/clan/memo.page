@@ -17,23 +17,31 @@ title: CLAN一時メモ
 
 0. AndroidManifest.xml に以下がある事を確認
 
+    ~~~
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    ~~~
 
 0. `(import '(android.os Debug))` する(この段階でPCでは動かなくなるので注意)
 
 0. create に以下を入れる
 
+    ~~~
     (Debug/startMethodTracing "appname")
+    ~~~
 
 0. dispose に以下を入れる
 
+    ~~~
     (Debug/stopMethodTracing)
+    ~~~
 
 0. `adb pull /mnt/sdcard/appname.trace .` もしくはmonitor.bat等でローカルにコピーする
     - sdcardのpathは違う可能性がある。以下で調べられる。
 
+        ~~~
         (import '(android.os Environment))
         (.getPath (Environment/getExternalStorageDirectory))
+        ~~~
 
 0. monitor.bat のメニューの「File」→「Open File」から、 appname.trace を開いて内容を確認する。
 
