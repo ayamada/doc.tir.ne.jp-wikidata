@@ -94,7 +94,7 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 - render()内でエラー例外が投げられて終了する際に、pause()呼ばれない可能性がある。もしそうならば、エラー終了した時はセーブされなかったりしてきっと困る。catchしてpause()を呼んでからrethrowすべきか、とか後で検証したり考えたりしてみる
 
 - Preferences のデータの保存先
-    - androidでは、androidのpreferences内。
+    - androidでは、androidのSharedPreferences内。
         - 仕様上では最大8kとなっているが、実質的には最大2k程度。
     - windowsでは、 `C:\Users\{USERNAME}\.prefs\{PREFNAME}\` 内。
         - androidとは違い、他のlibgdx利用アプリと共通なので、
