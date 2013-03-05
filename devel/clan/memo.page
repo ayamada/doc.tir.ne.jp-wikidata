@@ -100,6 +100,8 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
     その場合は別スレッドでevalするまえにneko.compilation/initを呼ぶようにすれば動くと思うが、その際にディレクトリ指定はclasses以外にする事。
         - classesはCLANが利用するデフォルト値の為(MainActivity.javaから変更可)。neko.compilation/initは指定されたディレクトリを消すので、衝突すると多分動かなくなる
 
+- android版clojureでは、definlineがマクロと同時に定義する関数の方は動かないっぽい？要調査
+
 
 # libgdx関連
 
