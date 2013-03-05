@@ -88,7 +88,7 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
         - 正確には違うかも。しかしとにかく内部のtexture idがおかしくなる
     - 何も考えずに、「なくなったならdispose()してもいいよね」と考えてdispose()してしまうと、前述の別のTextureがdispose()されてしまい、おかしくなる。なのでdispose()してはいけない。
         - 正しくdispose()する事にこだわるなら、pause()時にすべき。
-            - ただしこの時、[ApplicationLifeCycle](http://code.google.com/p/libgdx/wiki/ApplicationLifeCycle)では「復帰時はpause()→resize()」と書いてあるが、実機ではどうもここが逆順になる事があるっぽい。よってresize()内ではこれらのTextureを参照しないようにした方がよい。
+            - ただしこの時、[ApplicationLifeCycle](http://code.google.com/p/libgdx/wiki/ApplicationLifeCycle)では「復帰時はpause()→resume()」で、間に何も呼ばれなさそうな風に書いてあるが、実機ではどうもここの間で、resize()がresume()よりも先に呼ばれる事があるっぽい。よってresize()内ではこれらのTextureを参照しないようにした方がよい。
 
 
 # clojure関連
@@ -124,6 +124,15 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
           PREFNAMEはきちんとuniqueな名前にする必要がある！
     - windows以外のdesktopでは、 `~/.prefs/{PREFNAME}/` 内。
         - PREFNAMEについてはwindowsと同じ注意が必要！
+
+
+## ApplicationLifeCycle補足
+
+[ApplicationLifeCycle](http://code.google.com/p/libgdx/wiki/ApplicationLifeCycle)
+
+- この図では「復帰時はpause()→resume()」で、間に何も呼ばれなさそうな風に書いてあるが、実機ではどうもここの間で、resize()がresume()よりも先に呼ばれる事があるようだ。なので、resize()内で行う操作は、resume()に依存してはならない。
+
+- create()とresume()で共通する操作がある場合は、resume()の中にだけそれを書いてしまい、create()の最後でresume()を呼ぶとよい。
 
 
 # java関連
