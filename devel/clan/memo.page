@@ -158,42 +158,6 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 
 # その他
 
-## ライセンスについて
-
-CLANで何か作って配布する場合、それにはclojureやらlibgdxやらを含むので、それら全部のライセンスをチェックする必要がある。
-
-- clojure(オリジナル)
-    - Eclipse Public License 1.0
-    - Copyright (c) Rich Hickey. All rights reserved.
-    - [http://clojure.org/license]()
-
-- clojure(android版)
-    - Eclipse Public License 1.0 + Apache License 2.0
-    - Copyright (c) Rich Hickey. All rights reserved.
-    - [https://github.com/sattvik/clojure]()
-    - http://www.tldrlegal.com/compare?a=Apache+License+2.0+(Apache-2.0)&b=Eclipse+Public+License+1.0+(EPL-1.0)
-
-- libgdx
-    - Apache License 2.0
-    - copyrightは誰にしておけばいいのかは不明、[AUTHORS](https://github.com/libgdx/libgdx/blob/master/gdx/AUTHORS)では、Mario Zechnerと Nathan Sweet になっている
-    - [http://www.badlogicgames.com/wordpress/?p=777]()
-
-- android
-    - 通常のapkはこれは含まない(実機に入ってるライブラリを使う)が、clojureのandroid版が動的コンパイルの為にandroid由来のdx.jarを含む為、CLANで作ったものにもdx.jarが含まれる。
-    - Apache License 2.0
-    - copyrightはgoogleでいいのか？
-
-- neko:
-    - Eclipse Public License 1.0
-    - Copyright (c) 2011 Sattvik Software & Technology Resources, Ltd. Co.
-    - Forked by Alexander Yakushev as part of Google Summer of Code 2012 participation project.
-
-- launch4j
-    - BSD + MIT
-    - Copyright c 2005-2012 Grzegorz Kowal
-    - [http://launch4j.sourceforge.net/]() の一番下
-
-
 ## 素材、assets回り
 TODO: あとでリンク化する事
 
