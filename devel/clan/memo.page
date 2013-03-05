@@ -206,6 +206,8 @@ TODO: あとでリンク化する事
 アイコン
 
 - 基本的に画像と同じ。背景が白でも黒でも認識できる必要あり。
+    - [http://developer.android.com/intl/ja/guide/practices/ui_guidelines/icon_design_launcher.html]() の「良い例」「悪い例」を見ておく事。
+- xcfの正方形のでかい原版を作り、そこから各サイズを生成するようにする
 - 必要とされる状況とサイズは以下の通り
     - android向け(`res/drawable-*`): 96x96, 72x72, 48x48, 36x36
     - desktop向け起動後プロセスアイコン(`assets/icon`): 128x128, 32x32, 16x16
@@ -228,7 +230,16 @@ BGM
 - BGMと同様に録音してもよい
 - audacityで音量、時間、フェードアウト等を最終調整
 
+google play登録用
 
+- [http://support.google.com/googleplay/android-developer/answer/1078870?hl=ja]()
+- 以下を用意すれば最低限の条件を満たす
+    - スクリーンショットを二枚
+        - サイズは 320x480, 480x800, 480x854, 1280x720, 1280x800 のどれか
+        - 非透過で24bitのpngかjpgで
+        - 画像内に余分な余白や枠を入れてはならない(純粋なスクリーンショットにしろという事だと思う)
+        - ddms経由で実機で撮ってもいいし、サイズ調整可能なPCで撮ってもいいと思う
+    - アプリアイコンの高画質版。サイズは512x512、32bitの透過ありpngで。
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
