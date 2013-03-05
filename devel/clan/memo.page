@@ -87,8 +87,8 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
     - またこの時に、Texture内部idの再配布(再利用あり)が行われる為、前述の「再生成されなかったTexture」は、再読み込みされたTextureのどれかが割り当たる現象が起こる
         - 正確には違うかも。しかしとにかく内部のtexture idがおかしくなる
     - 何も考えずに、「なくなったならdispose()してもいいよね」と考えてdispose()してしまうと、前述の別のTextureがdispose()されてしまい、おかしくなる。なのでdispose()してはいけない。
-        - 正しくdispose()する事にこだわるなら、pause()時にすべきなのか？
-        - これでメモリリークになるのかどうかは未調査
+        - 正しくdispose()する事にこだわるなら、pause()時にすべき。
+            - ただしこの時、[ApplicationLifeCycle](http://code.google.com/p/libgdx/wiki/ApplicationLifeCycle)では「復帰時はpause()→resize()」と書いてあるが、実機ではどうもここが逆順になる事があるっぽい。よってresize()内ではこれらのTextureを参照しないようにした方がよい。
 
 
 # clojure関連
@@ -102,6 +102,11 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 
 
 # libgdx関連
+
+分からない事があれば、とりあえず[Wiki](http://code.google.com/p/libgdx/wiki/TableOfContents)に該当記事がないか探してみる。それなりに頻繁に更新されている。
+
+時間がある時に一度、どんな機能があるかを[API](http://libgdx.badlogicgames.com/nightlies/docs/api/)のところから目を通しておいた方がいい。必要な機能が既に実装されている事は多い。
+
 
 - Gdx.input.justTouched() と Gdx.input.isTouched() は、実機では稀に不整合状態になるタイミングがあるようだ。
     - おそらくだが、どちらかもしくは両方がリアルタイムでの判定の為、実際にそれぞれの結果を取得/変数保存するタイミングにずれがあり、その間に状態が変化すると、不整合状態になるのではと思う。
