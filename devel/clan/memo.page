@@ -103,10 +103,10 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 
 # libgdx関連
 
-分からない事があれば、とりあえず[Wiki](http://code.google.com/p/libgdx/wiki/TableOfContents)に該当記事がないか探してみる。それなりに頻繁に更新されている。
+- 分からない事があれば、とりあえず[Wiki](http://code.google.com/p/libgdx/wiki/TableOfContents)に該当記事がないか探してみる。それなりに頻繁に更新されている。
 
-時間がある時に一度、どんな機能があるかを[API](http://libgdx.badlogicgames.com/nightlies/docs/api/)のところから目を通しておいた方がいい。必要な機能が既に実装されている事は多い。
-
+- 時間がある時に一度、どんな機能があるかを[API](http://libgdx.badlogicgames.com/nightlies/docs/api/)のところから目を通しておいた方がいい。必要な機能が既に実装されている事は多い。
+    - また、[検索ディスパッチャ](http://doc.intra.tir.ne.jp/devel/env/windows#%E9%96%8B%E7%99%BA%E7%94%A8%E3%82%BD%E3%83%95%E3%83%88%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)にも、このAPIからの検索を登録しておく事。頻繁に使う事になる。
 
 - Gdx.input.justTouched() と Gdx.input.isTouched() は、実機では稀に不整合状態になるタイミングがあるようだ。
     - おそらくだが、どちらかもしくは両方がリアルタイムでの判定の為、実際にそれぞれの結果を取得/変数保存するタイミングにずれがあり、その間に状態が変化すると、不整合状態になるのではと思う。
