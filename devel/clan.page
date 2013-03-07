@@ -771,6 +771,7 @@ What is assets of sample game?
 Etc...
 :   see [clan/memo]().
 
+
 お願い
 ------
 
@@ -803,8 +804,6 @@ Link
 
 - [launch4j](http://launch4j.sourceforge.net/)
 
-- [CLANによるandroidアプリ開発](http://doc.tir.ne.jp/devel/clan): 俺が書いてる。まだ途中。
-
 
 License
 -------
@@ -814,6 +813,7 @@ CLAN have [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 Which can be found in the file [LICENSE](https://github.com/ayamada/clan/blob/master/LICENSE).
 
 see [clan/license]().
+
 
 TODO
 ----
