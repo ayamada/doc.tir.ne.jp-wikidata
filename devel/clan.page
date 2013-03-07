@@ -615,7 +615,9 @@ cp -a Makefile.in android assets cal configure.ac desktop l4j layout res clan/sa
 8. git push
 9. git push origin --tags
 
-時間があればもう少し今風に改善したいところだが…
+時間があればリリースブランチを使う等、もう少し今風に改善したいところだが…
+
+上記が完了したら、[http://doc.tir.ne.jp/devel/clan]()も更新を行う事。
 
 
 FAQ
