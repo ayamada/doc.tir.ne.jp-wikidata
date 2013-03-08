@@ -11,7 +11,7 @@ CLAN : Clojure, LibGDX, Android, Neko application construct kit
 CLAN supply to an environment that construct android application using
 libgdx by only clojure code. You must understand to clojure and libgdx.
 
-WARNING: This package version is 0.0.2-EXPERIMENTAL. It cannot upgrade
+WARNING: This package version is 0.0.3-EXPERIMENTAL. It cannot upgrade
 to future version 1.0.0 . Please try to CLAN if you still OK.
 
 * * * * *
@@ -22,9 +22,9 @@ to future version 1.0.0 . Please try to CLAN if you still OK.
 実現する為のアプリ構築キットです。
 別途、clojureとlibgdxの知識が必要です。
 
-注意：現在のバージョンは 0.0.2-EXPERIMENTAL です。
+注意：現在のバージョンは 0.0.3-EXPERIMENTAL です。
 TODOにある「lein化」と「platform別ライブラリ化」が完了した時点で
-バージョン 1.0.0 とします。 この 0.0.2 から 1.0.0
+バージョン 1.0.0 とします。 この 0.0.3 から 1.0.0
 へのアップデートは非常に困難ですが、
 それでもいい人は試してみてください。
 
@@ -118,7 +118,7 @@ On 2013/02/28, CLAN is required to ...
 
 - jre 1.6 or 1.7
 - jdk 1.6 (not supported jdk 1.7)
-- clojure 1.4.0 or greater (but not tested clojure 1.5.0 yet)
+- clojure 1.4.0 or greater(use clojue 1.5.0 on default)
 - libgdx 0.9.7
 - android-2.3 (API LEVEL 9) or greater
 
@@ -136,7 +136,7 @@ CLANは、2013/02/28現在、以下の環境を要求します。
 
 - jre 1.6 もしくは 1.7
 - jdk 1.6 (jdk 1.7 は未サポート)
-- clojure 1.4.0 以上(まだ clojure 1.5.0 は未テスト)
+- clojure 1.4.0 以上(use clojue 1.5.0 on default)
 - libgdx 0.9.7
 - android-2.3 (API LEVEL 9) 以上
 
@@ -629,7 +629,9 @@ cp -a Makefile.in android assets cal configure.ac desktop l4j layout res clan/sa
 
 時間があればリリースブランチを使う等、もう少し今風に改善したいところだが…
 
-上記が完了したら、[http://doc.tir.ne.jp/devel/clan]()も更新を行う事。
+上記が完了したら、[http://doc.tir.ne.jp/devel/clan]()、つまりこのページ自体も更新を行う事。
+
+- 具体的には、上の方の「現在のバージョン」を変更する。またバージョンアップに伴い仕様が変更したなら、該当箇所を忘れずに変更する。
 
 
 FAQ
