@@ -810,24 +810,7 @@ Etc...
 Link
 ----
 
-- [Clojure](http://clojure.org/)
-    - [CheatSheet](http://clojure.org/cheatsheet)
-    - [ClojureDocs](http://clojuredocs.org/)
-    - [Clojure for Android](https://github.com/sattvik/clojure)
-
-- [LibGDX](http://libgdx.badlogicgames.com/)
-    - [libgdx API](http://libgdx.badlogicgames.com/nightlies/docs/api/overview-summary.html)
-    - [Wiki](http://code.google.com/p/libgdx/wiki/TableOfContents)
-    - [Androidゲームプログラミング A to Z](http://www.impressjapan.jp/books/3113)([amazon](http://www.amazon.co.jp/dp/4844331132)): [Beginning Android Games](http://www.apress.com/9781430230427)の日本語訳版。良書。ただし本家の方は[2nd Edition](http://www.apress.com/9781430246770)が出てるが日本語訳版は初版ベース。
-
-- [Android](http://developer.android.com/index.html)
-    - [ProGuard](http://proguard.sourceforge.net/), [ProGuard(Android Developers)](http://developer.android.com/tools/help/proguard.html)([日本語訳](http://www.techdoctranslator.com/android/developing/tools/proguard))
-
-- [Neko(forked by Alexander Yakushev)](https://github.com/alexander-yakushev/neko)
-    - [reference](http://alexander-yakushev.github.com/neko/)
-    - [Clojure Development on Android](http://clojure-android.blogspot.jp/): nekoのメンテナの人の解説ブログ。
-
-- [launch4j](http://launch4j.sourceforge.net/)
+- move to [https://github.com/ayamada/clan#link]().
 
 
 License
