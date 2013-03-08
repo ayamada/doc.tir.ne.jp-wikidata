@@ -48,6 +48,16 @@ clojureのreplをちょっと動かしたくなった時は、どこからでも
 - `lein --version` で自動的にダウンロード構築が実行され、その後にバージョン情報が表示される
 - なお、windowsの制約によって「実行中のファイルを消せない」ので、「lein upgrade」が実行できない。バージョンアップが必要なら手でバージョンアップしなくてはならない
     - 手でバージョンアップするには、 `~/.lein/self-installs/` を削除し、leinのスクリプト本体をwgetし直し、 lein --version をまた実行すればよい
+        - 自分は以下を用意した
+
+            ~~~{.bash .numberLines}
+            cat ~/bin/lein-upgrade
+            #!/bin/sh
+            rm -rf ~/.lein/self-installs
+            rm -f ~/bin/lein
+            wget https://raw.github.com/technomancy/leiningen/stable/bin/lein -O ~/bin/lein
+            lein --version
+            ~~~
 
 
 ## lein-droid
