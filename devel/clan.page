@@ -136,7 +136,7 @@ CLANは、2013/02/28現在、以下の環境を要求します。
 
 - jre 1.6 もしくは 1.7
 - jdk 1.6 (jdk 1.7 は未サポート)
-- clojure 1.4.0 以上(use clojue 1.5.0 on default)
+- clojure 1.4.0 以上(デフォルトではclojure 1.5.0を自動的に使用)
 - libgdx 0.9.7
 - android-2.3 (API LEVEL 9) 以上
 
