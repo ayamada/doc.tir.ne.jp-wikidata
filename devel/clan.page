@@ -159,10 +159,13 @@ sorry, currently only japanese.
 mkdir -p package/projname
 cd package/projname
 git clone git://github.com/ayamada/clan.git
+(cd clan && git checkout 0.0.3-EXPERIMENTAL)
 sh clan/script/spread_current_dir.sh
 ~~~
 
 - `package` と `projname` は自分で好きなように決めてください。
+- チェックアウトする対象は [git tag](https://github.com/ayamada/clan/tags)
+  を見て決めてください。
 - 最後の `clan/script/spread_current_dir.sh` によって、
   package/projname 内に、各サンプルファイルが設置されます。
 
