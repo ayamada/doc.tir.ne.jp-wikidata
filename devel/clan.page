@@ -66,6 +66,11 @@ Didvantages
     - But we have macro! Maybe CLAN will be provided many macros in future.
 
 - Deploy for GWT and iOS were not supported yet
+    - I support to iOS in future.
+      But it is needed to mac, iOS-machine, developer license,
+      and MonoTouch license, etc ...
+      Now I have no money, and no income.
+      I start to support iOS in CLAN when I get constantly income.
 
 Miscellaneous
 
@@ -84,10 +89,17 @@ Miscellaneous
 
 - でかい(jar:8.3M～, exe:8.4M～, apk:2.5M～)
 - 起動が遅い
-- android向けに特化したclojureコードを書かなくてはいけない(普通の書き方のclojureコードは、PCでは問題なく動くがandroid上で速度が出ない)
+- android向けに特化したclojureコードを書かなくてはいけない
+  (普通の書き方のclojureコードは、PCでは問題なく動くがandroid上で速度が出ない)
     - だが我々にはマクロがある。時の経過と共にCLAN向けマクロは充実する予定
 
 - libgdxはGWTとiOSへのデプロイにも対応しているが、これらはCLANでは未対応
+    - iOSについては将来対応したいと思っているが、これには、
+      mac本体, iOS入りマシン, developer license, MonoTouch license,
+      等を購入しなくてはならず、現在のayamadaの資金では無理。
+      ayamadaがコンスタントな収入を得られるようになってから
+      対応が開始される予定。
+
 - libgdxは日本語のドキュメントや解説がほとんどない
 
 その他の特徴
