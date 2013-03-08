@@ -106,7 +106,7 @@ On 2013/02/28, CLAN is required to ...
 
 - jre 1.6 or 1.7
 - jdk 1.6 (not supported jdk 1.7)
-- clojure 1.4.0 (not supported clojure 1.5.0)
+- clojure 1.4.0 or greater (but not tested clojure 1.5.0 yet)
 - libgdx 0.9.7
 - android-2.3 (API LEVEL 9) or greater
 
@@ -124,7 +124,7 @@ CLANは、2013/02/28現在、以下の環境を要求します。
 
 - jre 1.6 もしくは 1.7
 - jdk 1.6 (jdk 1.7 は未サポート)
-- clojure 1.4.0 (clojure 1.5.0 は未サポート)
+- clojure 1.4.0 以上(まだ clojure 1.5.0 は未テスト)
 - libgdx 0.9.7
 - android-2.3 (API LEVEL 9) 以上
 
