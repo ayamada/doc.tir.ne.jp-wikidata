@@ -80,16 +80,6 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 - defn じゃなく defmacro もしくは definline を使うとわずかにパフォーマンスが向上する。が、マクロとして書かないといけなくなるのでメンテ性が下がる。実行回数が非常に多い関数だけにすべき。
     - 実行回数が多いかどうかは前述のプロファイリングで調査…
 
-## コンテキストの喪失
-
-- android実機でのみ、アプリ起動中に別アプリを開き、その後にまた戻ってきた時に、pause()→resume()が発生し、AndroidゲームプログラミングA to Zのp.270に書いてあった「GLコンテキストの喪失」が起こる。
-    - この時に、ファイルからコンストラクトしたTextureは自動的に再生成されるようになっているが、そうでない動的に生成したTextureは再生成されない。
-    - またこの時に、Texture内部idの再配布(再利用あり)が行われる為、前述の「再生成されなかったTexture」は、再読み込みされたTextureのどれかが割り当たる現象が起こる
-        - 正確には違うかも。しかしとにかく内部のtexture idがおかしくなる
-    - 何も考えずに、「なくなったならdispose()してもいいよね」と考えてdispose()してしまうと、前述の別のTextureがdispose()されてしまい、おかしくなる。なのでdispose()してはいけない。
-        - 正しくdispose()する事にこだわるなら、pause()時にすべき。
-            - ただしこの時、[ApplicationLifeCycle](http://code.google.com/p/libgdx/wiki/ApplicationLifeCycle)では「復帰時はpause()→resume()」で、間に何も呼ばれなさそうな風に書いてあるが、実機ではどうもここの間で、resize()がresume()よりも先に呼ばれる事があるっぽい。よってresize()内ではこれらのTextureを参照しないようにした方がよい。
-
 
 # clojure関連
 
@@ -101,47 +91,6 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
         - classesはCLANが利用するデフォルト値の為(MainActivity.javaから変更可)。neko.compilation/initは指定されたディレクトリを消すので、衝突すると多分動かなくなる
 
 - android版clojureでは、definlineがマクロと同時に定義する関数の方は動かないっぽい？要調査
-
-
-# libgdx関連
-
-## 基本
-
-- 分からない事があれば、とりあえず[Wiki](http://code.google.com/p/libgdx/wiki/TableOfContents)に該当記事がないか探してみる。それなりに頻繁に更新されている。
-
-- 時間がある時に一度、どんな機能があるかを[API](http://libgdx.badlogicgames.com/nightlies/docs/api/)のところから目を通しておいた方がいい。必要な機能が既に実装されている事は多い。
-    - また、[検索ディスパッチャ](http://doc.intra.tir.ne.jp/devel/env/windows#%E9%96%8B%E7%99%BA%E7%94%A8%E3%82%BD%E3%83%95%E3%83%88%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)にも、このAPIからの検索を登録しておく事。頻繁に使う事になる。
-
-
-## その他
-
-- Gdx.input.justTouched() と Gdx.input.isTouched() は、実機では稀に不整合状態になるタイミングがあるようだ。
-    - おそらくだが、どちらかもしくは両方がリアルタイムでの判定の為、実際にそれぞれの結果を取得/変数保存するタイミングにずれがあり、その間に状態が変化すると、不整合状態になるのではと思う。
-    - 対策は色々あると思うが「ある一つの判定処理内にて、両方を同時に使う事がないようにコードを組む」のが一番簡単だと思う。
-
-- libgdxでは基本的に小数は全部floatなので、引数エラーになったら数値を(float x)してみる
-
-- render()内でエラー例外が投げられて終了すると、pause()やdispose()は呼ばれない！
-    - 強制終了時にデータが保存されないと、きっとユーザは困るので、多少コストがかかっても、きちんと例外補足し、適切な保存処理を行ってからrethrowする。
-        - 「そもそも例外投げるようなコードが残っている状況でリリースすべきではない」という意見もあるだろうが、我々は完璧ではないのだから仕方がない。
-
-- Preferences のデータの保存先
-    - androidでは、androidのSharedPreferences内。
-        - 仕様上では最大8kとなっているが、実質的には最大2k程度。
-    - windowsでは、 `C:\Users\{USERNAME}\.prefs\{PREFNAME}\` 内。
-        - androidとは違い、他のlibgdx利用アプリと共通なので、
-          PREFNAMEはきちんとuniqueな名前にする必要がある！
-    - windows以外のdesktopでは、 `~/.prefs/{PREFNAME}/` 内。
-        - PREFNAMEについてはwindowsと同じ注意が必要！
-
-
-## ApplicationLifeCycle補足
-
-[ApplicationLifeCycle](http://code.google.com/p/libgdx/wiki/ApplicationLifeCycle)
-
-- この図では「復帰時はpause()→resume()」で、間に何も呼ばれなさそうな風に書いてあるが、実機ではどうもここの間で、resize()がresume()よりも先に呼ばれる事があるようだ。なので、resize()内で行う操作は、resume()に依存してはならない。
-
-- create()とresume()で共通する操作がある場合は、resume()の中にだけそれを書いてしまい、create()の最後でresume()を呼ぶとよい。
 
 
 # java関連
@@ -163,56 +112,6 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 
 - ソースディレクトリ内に `*.clj` を置いていてもコンパイルされない時は、中のファイルの文字コードをシステム文字コードと一致させるか、環境変数MAVEN_OPTSに `-Dfile.encoding=utf-8` 的な指定を追加してみる。
     - これは、 clojure-maven-plugin が内部で使っている `org.codehaus.plexus.compiler.util.scan.*` あたりの仕様のようだ。
-
-
-# その他
-
-## 素材、assets回り
-TODO: あとでリンク化する事
-
-### 画像
-
-- カメラで家の中にあるものを撮影してgimpで加工(デザインとか肖像権とか権利ありそうなものには注意)
-- gimpで一からドット絵作成
-- 保存はgimpのxcf、エクスポートはpngで透過あり(libgdxでいうところのRGBA8888)
-
-### アイコン
-
-- 基本的に画像と同じ。背景が白でも黒でも認識できる必要あり。また透過pngでなくてはならない。
-    - [http://developer.android.com/intl/ja/guide/practices/ui_guidelines/icon_design_launcher.html]() の「良い例」「悪い例」を見ておく事。
-- xcfの正方形のでかい原版を作り、そこから各サイズを生成するようにする
-- 必要とされる状況とサイズは以下の通り
-    - android向け(`res/drawable-*`): 96x96, 72x72, 48x48, 36x36
-    - desktop向け起動後プロセスアイコン(`assets/icon`): 128x128, 32x32, 16x16
-    - desktop向けexeアイコン(`l4j/windows.ico`): 48x48, 32x32, 16x16
-- windows向けのicoはgimpのエクスポートで作る。 [http://osima.jp/blog/windows-icon/index.html]()
-
-### BGM
-
-- midiシーケンサで適当に作る
-- kaosillatorにたよる
-- 自分で楽器をひいて録音する等
-- audacityで編集、調整
-- ogg一択
-
-### 効果音
-
-- libgdxでは、長さは最大で5秒程度らしい
-- mp3は不具合があるとの事、oggかwavかで(最近のバージョンでは直った？)
-- 暇な時にsfxrとlabChirpで大量生産し、「このアクションのSEが欲しいな」と必要になった時に、大量生産した奴を順番に再生し、それっぽい奴を選ぶ
-- BGMと同様に録音してもよい
-- audacityで音量、時間、フェードアウト等を最終調整
-
-### google play登録用
-
-- [http://support.google.com/googleplay/android-developer/answer/1078870?hl=ja]()
-- 以下を用意すれば最低限の条件を満たす
-    - スクリーンショットを二枚
-        - サイズは 320x480, 480x800, 480x854, 1280x720, 1280x800 のどれか
-        - 非透過のpngかjpgで
-        - 画像内に余分な余白や枠を入れてはならない(純粋なスクリーンショットにしろという事だと思う)
-        - ddms経由で実機で撮ってもいいし、サイズ調整可能なPCで撮ってもいいと思う
-    - アプリアイコンの高画質版。サイズは512x512、透過pngで。
 
 
 # はまりポイントまとめ
