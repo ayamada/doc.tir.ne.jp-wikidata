@@ -70,8 +70,9 @@ title: libgdx
     - windows以外のdesktopでは、 `~/.prefs/{PREFNAME}/` 内。
         - PREFNAMEについてはwindowsと同じ注意が必要！
 
+- [assets]() にも少し関連情報を書いた
 
-余裕があればチュートリアル的なものも書きたいが…余裕はない！
+余裕があればチュートリアル的なものも書きたいが…そんな余裕はない！
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
