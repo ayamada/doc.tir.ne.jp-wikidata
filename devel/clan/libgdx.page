@@ -8,6 +8,8 @@ title: libgdx
 
 # 基本
 
+- [http://libgdx.badlogicgames.com/features.html]() によると、「Libgdx tries not be the "end all, be all" solution. It does not force a specific design on you. Pick and choose from the features below.」との事。この方針によって、同様の他のフレームワークよりもずっと自由度が高い。しかしこの自由度の高さには勿論「自分の足を撃つ自由」も含まれている為、注意すべき点も結構ある(「安全の為に、こういう操作はできないようにしよう」という事ではないのだから)。それでも「clojure経由でlibgdxを使おう」みたいな事を考える者にとってはこの自由度は本当に重要なものである。
+
 - 分からない事があれば、とりあえず[Wiki](http://code.google.com/p/libgdx/wiki/TableOfContents)に該当記事がないか探してみる。それなりに頻繁に更新されている。
 
 - 時間がある時に一度、どんな機能があるかを[API](http://libgdx.badlogicgames.com/nightlies/docs/api/)のところから目を通しておいた方がいい。必要な機能が既に実装されている事は多い。
@@ -18,8 +20,8 @@ title: libgdx
 
 - androidの[Activity Lifecycle](http://developer.android.com/intl/ja/reference/android/app/Activity.html#ActivityLifecycle)はかなり複雑。しかしandroidアプリを作る上で避けては通れない。
 
-- libgdxの[ApplicationLifeCycle](http://code.google.com/p/libgdx/wiki/ApplicationLifeCycle)はandroidのlifecycleを扱いやすいようにある程度簡潔化してある。しかしこれはこれで不完全な部分があり注意しなくてはならない。
-    - この図ではrender()とひとくくりにされているが、この中では「(タッチスクリーンや各種センサーによる)外部入力からの状態変更」「外部入力によらない、計算もしくは時間経過からの状態変更」「スクリーン(もしくはサウンド等も含む)への出力」の三種別の処理を行う必要がある。いっしょくたでも別に動作に問題はないが分けた方がコーディングしやすいと思う。
+- libgdxの[ApplicationLifeCycle](http://code.google.com/p/libgdx/wiki/ApplicationLifeCycle)は上記androidのlifecycleを扱いやすいようにシンプルにされている(それでいて必要最小限の分離が保たれている)。しかしその代償として分かりにくい部分が増えている箇所があるのと、元々分かりにくい部分も多い為、以下に注意点をまとめてみた。
+    - この図ではrender()とひとくくりにされているが、この中では「タッチスクリーンや各種センサーによる、ユーザ操作由来の外部入力からの状態変更」「前述の外部入力によらない、内部処理や時間経過からの状態変更」「スクリーン(もしくはサウンド等も含む)への出力」の三種別の処理を行う必要がある。これらがいっしょくたでも別に動作に問題はないが分けた方がコードのメンテがしやすいと思う。
     - render()内で補足されない例外が発生した場合、pause()もdispose()も呼ばれない。これは普通によろしくないので、render()内で例外が発生したら一旦catchし、pause()とdispose()を実行してからrethrowするようにした方がいいと思う。
     - PCではpause()→resume()の流れは絶対に起きない為、この部分の動作検証は実機もしくはエミュレータで行うしかない。
     - resume()は一見、特に処理がいらないように見えるが、このタイミングにて後述の「GLコンテキストの喪失」が起こる為、普通に考えたらcreate()内で確保すればよさそうに思えるインスタンスであっても、「GLコンテキストの喪失」の影響を受けるインスタンスはresume()内で生成するようにし、そして「create()の最後でresume()を呼ぶ」ようにした方がよい！またそれに伴い、これらのインスタンスはdispose()時ではなく、pause()時に破棄すべき。
