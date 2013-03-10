@@ -8,12 +8,12 @@ title: libgdx
 
 # 基本
 
-- [http://libgdx.badlogicgames.com/features.html]() によると、「Libgdx tries not be the "end all, be all" solution. It does not force a specific design on you. Pick and choose from the features below.(以下の表は省略)」との事。この方針によって、同様の他のフレームワークよりもずっと自由度が高い。しかしこの自由度の高さには勿論「自分の足を撃つ自由」も含まれている為、注意すべき点も結構ある(「安全の為に、こういう操作はできないようにしよう」という事ではないのだから)。それでも「clojure経由でlibgdxを使おう」みたいな事を考える者にとってはこの自由度は本当に重要なものである。
+- [http://libgdx.badlogicgames.com/features.html]() によると、「Libgdx tries not be the "end all, be all" solution. It does not force a specific design on you. Pick and choose from the features below.(以下の表は省略)」との事。この方針によって、同様の他のフレームワークやゲームエンジンよりもずっと自由度が高い。しかしこの自由度の高さには勿論「自分の足を撃つ自由」も含まれている為、注意すべき点も結構ある。それでも「clojure経由でlibgdxを使おう」みたいな事を考える者にとってはこの自由度は本当に重要だ。他の「全部入り」指向のフレームワークは(たとえそれが安全の為であっても)制限が多い。
 
 - 分からない事があれば、とりあえず[Wiki](http://code.google.com/p/libgdx/wiki/TableOfContents)に該当記事がないか探してみる。それなりに頻繁に更新されている。
 
 - 時間がある時に一度、どんな機能があるかを[API](http://libgdx.badlogicgames.com/nightlies/docs/api/)のところから目を通しておいた方がいい。必要な機能が既に実装されている事は多い。
-    - また、[検索ディスパッチャ](http://doc.intra.tir.ne.jp/devel/env/windows#%E9%96%8B%E7%99%BA%E7%94%A8%E3%82%BD%E3%83%95%E3%83%88%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)にも、このAPIからの検索を登録しておく事。頻繁に使う事になる。
+    - 勿論、エディタのリファレンス機能もしくは[検索ディスパッチャ](http://doc.intra.tir.ne.jp/devel/env/windows#%E9%96%8B%E7%99%BA%E7%94%A8%E3%82%BD%E3%83%95%E3%83%88%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)にも、このAPIからの検索を登録しておく事。頻繁に使う事になる。
 
 
 # ライフサイクル
