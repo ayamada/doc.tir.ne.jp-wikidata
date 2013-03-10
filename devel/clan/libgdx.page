@@ -8,7 +8,7 @@ title: libgdx
 
 # 基本
 
-- [http://libgdx.badlogicgames.com/features.html]() によると、「Libgdx tries not be the "end all, be all" solution. It does not force a specific design on you. Pick and choose from the features below.」との事。この方針によって、同様の他のフレームワークよりもずっと自由度が高い。しかしこの自由度の高さには勿論「自分の足を撃つ自由」も含まれている為、注意すべき点も結構ある(「安全の為に、こういう操作はできないようにしよう」という事ではないのだから)。それでも「clojure経由でlibgdxを使おう」みたいな事を考える者にとってはこの自由度は本当に重要なものである。
+- [http://libgdx.badlogicgames.com/features.html]() によると、「Libgdx tries not be the "end all, be all" solution. It does not force a specific design on you. Pick and choose from the features below.(以下の表は省略)」との事。この方針によって、同様の他のフレームワークよりもずっと自由度が高い。しかしこの自由度の高さには勿論「自分の足を撃つ自由」も含まれている為、注意すべき点も結構ある(「安全の為に、こういう操作はできないようにしよう」という事ではないのだから)。それでも「clojure経由でlibgdxを使おう」みたいな事を考える者にとってはこの自由度は本当に重要なものである。
 
 - 分からない事があれば、とりあえず[Wiki](http://code.google.com/p/libgdx/wiki/TableOfContents)に該当記事がないか探してみる。それなりに頻繁に更新されている。
 
