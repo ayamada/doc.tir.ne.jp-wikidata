@@ -81,6 +81,9 @@ title: libgdx
     - windows以外のdesktopでは、 `~/.prefs/{PREFNAME}/` 内。
         - PREFNAMEについてはwindowsと同じ注意が必要！
 
+- 上記の通り、Preferencesの保存先はPCでは面倒事があるので、PC向けデプロイを考えているなら、Preferencesを全く使わずに自前でセーブファイルを管理した方がいい。
+    - しかしこの場合も、何も考えずに Gdx.files.local() に書き出すと、PCでは(jarのあるディレクトリではなく)jarを起動したカレントディレクトリに書き出されてしまうので、結局、 Gdx.app.getType() を見て、自分でセーブロードの保存先を変更する必要がある。
+
 - [assets]() にも少し関連情報を書いた
 
 余裕があればチュートリアル的なものも書きたいが…そんな余裕はない！
