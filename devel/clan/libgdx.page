@@ -1,9 +1,11 @@
 ---
 toc: yes
-title: libgdx
+title: libgdxメモ
 ...
 
-ここは [../clan]() の子ページですが、Javaのlibgdxユーザにも有益だと思うので、コード類はJava表現で書くようにします。
+このページには、山田が[libgdx](http://libgdx.badlogicgames.com/)を使って得た各種のノウハウをメモしていきます。
+
+ここは [../clan]() の子ページですが、javaのlibgdxユーザにも有益だと思うので、コード類はなるべくjava表現で書くようにします。
 
 
 # 基本
