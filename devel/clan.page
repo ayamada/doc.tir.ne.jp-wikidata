@@ -54,7 +54,8 @@ Advantages / Disadvantages
 
 Advantages
 
-- LibGDX get the power of Lisp
+- Android get the power of LibGDX and Lisp
+    - Java dont have macro, but Clojure have macro
 - Can deploy to apk for Android, exe for Windows, jar for other desktop OS
     - But `*.exe` need Java Runtime Environment
     - If you dont have android-sdk, still you can build only jar
@@ -83,6 +84,8 @@ Miscellaneous
 長所
 
 - libgdxとlispが両方そなわり最強に見える
+    - android上でのアセンブラであるところのjavaの為に、「マクロ付きjava」としてもclojureは利用できる
+    - マクロ無しにjavaだけで最適化をやろうとすると頭がおかしくなって死ぬ
 - android向けapk、windows向けexe、その他デスクトップos向けjar、を生成可能
     - ただし `*.exe` は実行にjavaインストールが必要
     - android-sdkを入れずに `*.jar` だけ生成する事もできます
