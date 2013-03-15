@@ -51,7 +51,7 @@ title: libgdxメモ
     - [http://mobileapplication.blog.fc2.com/blog-entry-2.html]()
     - [http://mobileapplication.blog.fc2.com/blog-entry-3.html]()
     - [http://mobileapplication.blog.fc2.com/blog-entry-4.html]()
-    - これについて自分が実機で調べた限りでは、task killerで殺した場合は create()のところからやり直しになるので、きちんと create() 内でstatic変数等の初期化をしていれば大丈夫なようだ。
+    - これについて自分が実機で調べた限りでは、task killerで殺した場合は create()のところからやり直しになるので、きちんと create() 内で変数やオブジェクトの初期化をしていれば大丈夫なようだ。
         - ただ自分の調査はandroid-3.2.1で調べたので、それ以前のバージョンでも create() のところからやり直しになるのかは不安なところ…
 
 
