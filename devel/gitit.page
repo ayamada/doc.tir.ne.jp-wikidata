@@ -190,6 +190,12 @@ categories: gitit postponed
 - gitit.confのno-deleteに消したいページが設定されてないかを確認
     - エラーメッセージ等は別に出ないので非常に分かりにくい
 
+
+## `[http://domain/path/to/url.html]()` が内部リンク判定になる
+- これにより困る点は、aタグに`title=Go to wiki page`属性が付与されてしまうぐらい。しかし紛らわしい。
+- これの判定を行っているのは、 Network/Gitit/ContentTransformer.hs の convertWikiLinks 。正しく直すのは面倒だが、とりあえずここを直せば常にtitle属性を付与しないようにはできる
+
+
 # 不具合対策(パッチ有り)
 
 ## 余分にアンエスケープされてしまう
