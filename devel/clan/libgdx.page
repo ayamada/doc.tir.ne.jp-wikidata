@@ -77,8 +77,8 @@ title: libgdxメモ
         - PREFNAMEについてはwindowsと同じ注意が必要！
 
 - 上記の通り、Preferencesの保存先はandroid以外では面倒事があるので、PC向けデプロイを考えているなら、Preferencesを全く使わずに自前でセーブファイルを管理した方がいい。
-    - しかしこの場合も、何も考えずに Gdx.files.internal() 等に書き出すと、PCでは(jarのあるディレクトリではなく)jarを起動した時のカレントディレクトリに書き出されてしまい位置が固定にならないので、結局、 Gdx.app.getType() を見た上で、自分でセーブロードの保存先を適切に判定する必要がある。
-        - androidは、そのまま Gdx.files.internal() でよい
+    - しかしこの場合も、何も考えずに Gdx.files.local() 等に書き出すと、PCでは(jarのあるディレクトリではなく)jarを起動した時のカレントディレクトリに書き出されてしまい位置が固定にならないので、結局、 Gdx.app.getType() を見た上で、自分でセーブロードの保存先を適切に判定する必要がある。
+        - androidは、そのまま Gdx.files.local() でよい
         - windowsは、jarの置いてあるディレクトリに。 `System.getProperty("java.class.path")` を元にディレクトリを求める
         - windows以外のPCは、 `System.getProperty("user.home")+"/.appname/"` あたりで。
             - windowsかどうかの判定は `System.getProperty("file.separator")` から判定するのが手軽("os.name"だと微妙に不安がある)
