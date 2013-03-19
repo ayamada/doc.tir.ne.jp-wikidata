@@ -29,20 +29,6 @@ androidアプリ開発の為のライブラリとして、libgdx+android向けcl
 - 実際にusb接続を行い、ドライバをインストールする。基本的にはこのページの通りに選択すればok [http://moon.ap.teacup.com/shelter9/178.html]() なお、このページでは「ハードウェアIDが公式サイトのものと違う」と書いてあるが、山田の端末では公式サイトと同じだった。端末によっては何らかの差異がある様子。
 
 
-# bmfont.exe
-libgdxが使うビットマップフォントを生成するのに使う。
-
-- [http://www.angelcode.com/products/bmfont/]() からダウンロード、インストール
-
-使用上の注意点
-
-- フォント画像はpngで生成し、*.pngが一個だけになるように画像サイズを調整する必要あり
-- CJK Unified Ideographs Extension B 系の文字を含めて生成しようとするとbmfont.exeがエラー終了する？フォントによる？とりあえず含めない方がよさげ
-    - [https://code.google.com/p/libgdx/wiki/Hiero#BMFont]() に書いてあった。空白の文字をexportする時におかしくなるらしい。
-
-bmfont.exeはwindows用だが、他にもjava製のビットマップフォント変換ツール等が色々あるようだ。[https://code.google.com/p/libgdx/wiki/Hiero]()あたりから探す。
-
-
 # 次
 
 - [CLANによるandroidアプリ開発](/devel/clan)
