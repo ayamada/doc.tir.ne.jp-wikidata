@@ -16,7 +16,7 @@ TODO: あとでリンク化する事
 
 - ビットマップ化は[Hiero](https://code.google.com/p/libgdx/wiki/Hiero)にやらせる。
     - ダウンロードは[libgdx公式のダウンロード一覧](http://code.google.com/p/libgdx/downloads/list)から可能。
-    - 事前に、ビットマップ化したい文字の一覧のテキストファイルを用意しておく。
+    - 事前に、ビットマップ化したい文字の一覧のテキストファイルを用意しておき、コピペでtextareaに貼り付ける。
     - 漢字を網羅するには、よっぽどサイズを小さくするか、素直にfreetypeを使う方がいいようだ
 
 
