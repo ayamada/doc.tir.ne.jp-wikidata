@@ -38,8 +38,9 @@ libgdxが使うビットマップフォントを生成するのに使う。
 
 - フォント画像はpngで生成し、*.pngが一個だけになるように画像サイズを調整する必要あり
 - CJK Unified Ideographs Extension B 系の文字を含めて生成しようとするとbmfont.exeがエラー終了する？フォントによる？とりあえず含めない方がよさげ
+    - [https://code.google.com/p/libgdx/wiki/Hiero#BMFont]() に書いてあった。空白の文字をexportする時におかしくなるらしい。
 
-bmfont.exeはwindows用だが、他にもjava製のビットマップフォント変換ツール等が色々あるようだ
+bmfont.exeはwindows用だが、他にもjava製のビットマップフォント変換ツール等が色々あるようだ。[https://code.google.com/p/libgdx/wiki/Hiero]()あたりから探す。
 
 
 # 次
