@@ -90,6 +90,17 @@ title: libgdxメモ
             - windowsかどうかの判定は `System.getProperty("file.separator")` から判定するのが手軽("os.name"だと微妙に不安がある)
 
 
+# 端末の向き
+
+基本的に AndroidManifest.xml で指定するだけだが、ちょっと癖がある。
+
+- android:screenOrientation を portrait もしくは landscape にすると縦固定もしくは横固定になる、通常はこれでok
+- 縦横を柔軟にしたい場合は、 android:screenOrientation を unspecified user behind sensor のどれかにする(詳細は[http://developer.android.com/intl/ja/guide/topics/manifest/activity-element.html#screen]()でも参照)。
+    - しかしこれだけでは、画面の向きが変更になる度にlibgdxのcreate()からやり直しになってしまうので、これと同時に、 android:configChanges に screenSize を足す([詳細](http://developer.android.com/intl/ja/guide/topics/manifest/activity-element.html#config))。
+        - なお、この状態でまた android:screenOrientation を portrait や landscape に戻しても、画面は固定にならない。その時はまた android:configChanges から screenSize を抜く。
+            - これの原因はlibgdxが勝手にscreenSizeイベントに反応して向きを変更している為だと思う
+
+
 # その他
 
 - assetsディレクトリに置いたファイルは、apkやjarに固められる際に、jarのrootに配置されてしまうので、クラス名と衝突しなさそうな名前のディレクトリを掘って、そこに入れた方がいい
