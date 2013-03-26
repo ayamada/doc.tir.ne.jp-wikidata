@@ -14,6 +14,8 @@ title: CLAN一時メモ
     - `03-04 23:32:19.181: E/dalvikvm(4943): Can't open dex cache '/data/data/{package}/app_classes/repl-2128511998.dex': Too many open files`
     - 大きすぎるスクリプトをロードすると起こる？しかし同じスクリプトを読み込んでも再現する時としない時とがある
 
+- プロジェクトのサイズが大きくなると、dxコンパイルに失敗する時がある。その時は、 android/pom.xml.in の `<jvmArgument>-Xmx1024m</jvmArgument>` を適当に増やしてから autoconf しなおす。
+
 
 ## プロファイルを取る
 
