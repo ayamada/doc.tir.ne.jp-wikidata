@@ -89,6 +89,9 @@ title: libgdxメモ
         - windows以外のPCは、 `System.getProperty("user.home")+"/.appname/"` あたりで。
             - windowsかどうかの判定は `System.getProperty("file.separator")` から判定するのが手軽("os.name"だと微妙に不安がある)
 
+- android実機では「電話がかかってきて中断→そのまま電源オフ」の即死コンボがある為、「セーブポイントでのみセーブ可能」のような状況はまずい！
+    - ほとんどすべてのゲーム用データを保持している変数/構造体は、pause()時にシリアライズして上記通りのディレクトリに書き出し、create()/resume()時に読み込むぐらいの気がまえが必要なようだ。
+
 
 # 端末の向き
 
