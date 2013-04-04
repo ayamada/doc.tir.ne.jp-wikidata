@@ -68,7 +68,7 @@ Didvantages
 - Boot slowly
 
 - You must write specialized clojure-code for Android
-  (typical clojure-code work better on PC, but it work slowly on Android)
+  (typical clojure-code work better on PC, but it has problems on Android)
     - But we have macro! Maybe CLAN will be provided many macros in future.
 
 - Deploy for GWT and iOS were not supported yet
@@ -106,7 +106,7 @@ Miscellaneous
 - 起動が遅い
 
 - android向けに特化したclojureコードを書かなくてはいけない
-  (普通の書き方のclojureコードは、PCでは問題なく動くがandroid上で速度が出ない)
+  (普通の書き方のclojureコードは、PCでは問題なく動くがandroid上で色々と問題がある)
     - だが我々にはマクロがある。時の経過と共にCLAN向けマクロは充実する予定
 
 - libgdxはGWTとiOSへのデプロイにも対応しているが、これらはCLANでは未対応
