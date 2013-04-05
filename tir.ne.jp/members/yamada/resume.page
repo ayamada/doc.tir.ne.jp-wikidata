@@ -60,7 +60,7 @@ Sorry, now preparing ...
     - [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
     - [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Apacheモジュール (2003年)
 - D
-    - [http://legacy.e.tir.jp/wiliki?D%2bSDL]() D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
+    - [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
 - php
     - 某サイト(現在非公開)の、wordpressの設置およびカスタマイズ
 - Erlang
@@ -88,7 +88,7 @@ Sorry, now preparing ...
     - 商用の大規模メール配信ミドルウェアの通信APIに使用→[#業務経歴]()
 - SDL
     - [http://legacy.e.tir.jp/wiliki?hdn]() Haskell+SDLによる極簡単なwindows向けゲーム作成 (2008年)
-    - [http://legacy.e.tir.jp/wiliki?D%2bSDL]() D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
+    - [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
 - maven
     - [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
 
@@ -111,8 +111,8 @@ Sorry, now preparing ...
 - aviutl
     - [http://www.nicovideo.jp/watch/sm20266312]() 等の動画作成
 - vim
-    - [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim]() - vimscriptとperlで書かれたvim用ircクライアントを、vim7系列でも動くようにする為のパッチの作成
-    - [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim]() - 汎用のscheme.vimをベースとした、Gauche向けのsyntaxファイル (2012年)
+    - [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim) - vimscriptとperlで書かれたvim用ircクライアントを、vim7系列でも動くようにする為のパッチの作成
+    - [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim) - 汎用のscheme.vimをベースとした、Gauche向けのsyntaxファイル (2012年)
 - git, hg
     - [https://github.com/ayamada]() - githubアカウント
     - hgは、某社勤務時にメインリポジトリ(非公開)として、6年程度の使用経験有り
