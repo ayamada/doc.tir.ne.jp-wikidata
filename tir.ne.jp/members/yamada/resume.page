@@ -31,102 +31,103 @@ TODO: resumeとするには量が多くなってしまったので、あとで�
 
 ### 使用可能言語とその実績
 
-- Scheme
-    - [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
-    - [https://github.com/ayamada/c-a-g]() - 単純だが有用なwebアプリ
-- Haskell
-    - [gititメモ](/devel/gitit) - gititの極簡単な不具合の修正を何個かpull-reqしてmergeされた→[#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331)
-    - [http://legacy.e.tir.jp/wiliki?hdn]() - Haskell+SDLによる極簡単なwindows向けゲーム作成 (2008年)
-- Clojure
-    - [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
-    - [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
-- Java
-    - [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
-- GNU autotools, Makefile, sh
-    - [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
-- Perl
-    - 商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発
-        - 某社の内製Perlフレームワーク、MySQL、PostgreSQL、FastCGI使用
-        - 詳細は[#業務経歴]()参照
-- MySQL, PostgreSQL
-    - 商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発→[#業務経歴]()
-- HTML, CSS, Markdown, reStructuredText
-    - [http://tir.jp/]() および、ここから辿れる各サイト全般
-- JavaScript, jQuery
-    - 商用の大規模メール配信ミドルウェアのwebフロントエンド開発→[#業務経歴]()
-- C
-    - [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
-    - [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Apacheモジュール (2003年)
-- D
-    - [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
-- php
-    - 某サイト(現在非公開)の、wordpressの設置およびカスタマイズ
-- Erlang
-    - 商用の大規模メール配信ミドルウェアの改修→[#業務経歴]()
-    - [http://legacy.e.tir.jp/wiliki?LFE]() Lisp Flavoured Erlang 試用メモ (2010年)
-- Python
-    - hg付属のhgwebdir.cgiの極簡単な改修など(某社社内向け)
-- Z80アセンブラ
+Scheme
+:   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
+:   [https://github.com/ayamada/c-a-g]() - 単純だが有用なwebアプリ
+Haskell
+:   [gititメモ](/devel/gitit) - gititの極簡単な不具合の修正を何個かpull-reqしてmergeされた→[#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331)
+:   [http://legacy.e.tir.jp/wiliki?hdn]() - Haskell+SDLによる極簡単なwindows向けゲーム作成 (2008年)
+Clojure
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
+Java
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+GNU autotools, Makefile, sh
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+Perl
+:   商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発
+    - 某社の内製Perlフレームワーク、MySQL、PostgreSQL、FastCGI使用
+    - 詳細は[#業務経歴]()参照
+MySQL, PostgreSQL
+:   商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発→[#業務経歴]()
+HTML, CSS, Markdown, reStructuredText
+:   [http://tir.jp/]() および、ここから辿れる各サイト全般
+JavaScript, jQuery
+:   商用の大規模メール配信ミドルウェアのwebフロントエンド開発→[#業務経歴]()
+C
+:   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
+:   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Apacheモジュール (2003年)
+D
+:   [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
+php
+:   某サイト(現在非公開)の、wordpressの設置およびカスタマイズ
+Erlang
+:   商用の大規模メール配信ミドルウェアの改修→[#業務経歴]()
+:   [http://legacy.e.tir.jp/wiliki?LFE]() Lisp Flavoured Erlang 試用メモ (2010年)
+Python
+:   hg付属のhgwebdir.cgiの極簡単な改修など(某社社内向け)
+Z80アセンブラ
+:   MSX2向けゲーム作成(1990年頃)
 
 
 ### 上記言語以外の、使用可能プロトコル/フォーマット/ライブラリ類とその実績
 
-- libgdx
-    - [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
-    - [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
-- Android SDK
-    - [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
-- HTTP
-    - [http://legacy.e.tir.jp/wiliki?tcpcgi]() - 自作のhttpd
-- SMTP
-    - 商用の大規模メール配信ミドルウェア関連→[#業務経歴]()
-- IRC
-    - [http://legacy.e.tir.jp/wiliki?pib]() - 自作のircボット
-- XML, JSON
-    - 商用の大規模メール配信ミドルウェアの通信APIに使用→[#業務経歴]()
-- SDL
-    - [http://legacy.e.tir.jp/wiliki?hdn]() Haskell+SDLによる極簡単なwindows向けゲーム作成 (2008年)
-    - [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
-- maven
-    - [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+libgdx
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
+Android SDK
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+HTTP
+:   [http://legacy.e.tir.jp/wiliki?tcpcgi]() - 自作のhttpd
+SMTP
+:   商用の大規模メール配信ミドルウェア関連→[#業務経歴]()
+IRC
+:   [http://legacy.e.tir.jp/wiliki?pib]() - 自作のircボット
+XML, JSON
+:   商用の大規模メール配信ミドルウェアの通信APIに使用→[#業務経歴]()
+SDL
+:   [http://legacy.e.tir.jp/wiliki?hdn]() Haskell+SDLによる極簡単なwindows向けゲーム作成 (2008年)
+:   [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
+maven
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+
 
 ### 上記以外の、使用可能ソフトウェア類とその実績
 
-- Apache
-    - [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Apacheモジュール (2003年)
-- GIMP
-    - [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
-- DJB tools
-    - daemontools, qmail, djbdns, ucspi-tcp を、後述のサーバ運用に使用
-- Graphviz
-    - [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]()→[https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() 等々
-- squid
-    - さくらてぃるキャッシュサーバ([技情研ネットの沿革](/tir.ne.jp/history)参照)にて利用 (2001年)
-    - [https://github.com/ayamada/copy-of-svn.tir.jp/tree/master/nekoie/misc/squid]() - さくら大阪ラック(現在は廃止)にて利用していたsquid設定ファイル/リダイレクタスクリプト/カスタマイズ済テンプレート類
-- delegated
-    - 某社特定サーバ管理情報閲覧用に設置および設定を行う (2002年)
-    - リバースプロキシとして、各種の個人用途に使用
-- aviutl
-    - [http://www.nicovideo.jp/watch/sm20266312]() 等の動画作成
-- vim
-    - [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim) - vimscriptとperlで書かれたvim用ircクライアントを、vim7系列でも動くようにする為のパッチの作成
-    - [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim) - 汎用のscheme.vimをベースとした、Gauche向けのsyntaxファイル (2012年)
-- git, hg
-    - [https://github.com/ayamada]() - githubアカウント
-    - hgは、某社勤務時にメインリポジトリ(非公開)として、6年程度の使用経験有り
-    - [http://d.hatena.ne.jp/ranekov/20110201]() - 便利設定
-    - svn, cvs, rcsも過去に使っていたので使用可能、しかしもう細かい使い方忘れてるかも
+Apache
+:   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Apacheモジュール (2003年)
+GIMP
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
+DJB tools
+:   daemontools, qmail, djbdns, ucspi-tcp を、後述のサーバ運用に使用
+Graphviz
+:   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]()→[https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() 等々
+squid
+:   さくらてぃるキャッシュサーバ([技情研ネットの沿革](/tir.ne.jp/history)参照)にて利用 (2001年)
+:   [https://github.com/ayamada/copy-of-svn.tir.jp/tree/master/nekoie/misc/squid]() - さくら大阪ラック(現在は廃止)にて利用していたsquid設定ファイル/リダイレクタスクリプト/カスタマイズ済テンプレート類
+delegated
+:   某社特定サーバ管理情報閲覧用に設置および設定を行う (2002年)
+:   リバースプロキシとして、各種の個人用途に使用
+aviutl
+:   [http://www.nicovideo.jp/watch/sm20266312]() 等の動画作成
+vim
+:   [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim) - vimscriptとperlで書かれたvim用ircクライアントを、vim7系列でも動くようにする為のパッチの作成
+:   [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim) - 汎用のscheme.vimをベースとした、Gauche向けのsyntaxファイル (2012年)
+git, hg
+:   [https://github.com/ayamada]() - githubアカウント
+:   hgは、某社勤務時にメインリポジトリ(非公開)として、6年程度の使用経験有り
+:   [http://d.hatena.ne.jp/ranekov/20110201]() - 便利設定
+:   svn, cvs, rcsも過去に使っていたので使用可能、しかしもう細かい使い方忘れてるかも
 
 
 ### その他の実績など
 
-- 2000年より、AT-LINKの占有サーバ、大阪堂島の某データセンターの1/8ラック、[さくらのクラウド](http://cloud.sakura.ad.jp/)の仮想サーバにて、Slackware Linux, Linux From Scratch, Gentoo Linuxの運用
-    - [技情研ネットの沿革](/tir.ne.jp/history)
-    - [大阪堂島の某データセンターの1/8ラックを運用していた頃のメモ](http://sakura.tir.jp/so.cgi)
-    - メールチェックや開発などの日常作業は手元のPCではなく、これらのリモートサーバにて、ssh越しに行っている
-
-- 翻訳など
-    - [http://legacy.e.tir.jp/wiliki#H-z89wkt]()
+2000年より、AT-LINKの占有サーバ、大阪堂島の某データセンターの1/8ラック、[さくらのクラウド](http://cloud.sakura.ad.jp/)の仮想サーバにて、Slackware Linux, Linux From Scratch, Gentoo Linuxの運用
+:   [技情研ネットの沿革](/tir.ne.jp/history)
+:   [大阪堂島の某データセンターの1/8ラックを運用していた頃のメモ](http://sakura.tir.jp/so.cgi)
+:   メールチェックや開発などの日常作業は手元のPCではなく、これらのリモートサーバにて、ssh越しに行っている
+翻訳など
+:   [http://legacy.e.tir.jp/wiliki#H-z89wkt]()
 
 
 ## 業務経歴
