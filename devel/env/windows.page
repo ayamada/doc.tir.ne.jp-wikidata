@@ -79,9 +79,7 @@ windowsマシンをまともに使えるようにする作業その二。
 
 - ckw改造版、もしくはそれに準じるコンソールソフト
     - windowsであってもコンソールベースの作業を主に行う為。
-    - ckwは本家がなくなり、色々な人が改造版を出していて、どれがいいのかはよく分からないが、基本機能は同じ筈
-    - ここにまとめがあった→[Where is ckw ?](http://www.nyaos.org/index.cgi?p=Where+is+ckw+%3F)
-        - 理由は分からないが、最近のckwはどこもバイナリ公開はされてない様子。古いckwでもそんなに困らないと思うので、バイナリ配布しているところからもらってくる。
+    - [http://ckw-mod.github.com/]()
 
 - [Ultimate Windows Context Menu Customizer](http://www.door2windows.com/ultimate-windows-context-menu-customizer-customize-context-menu-in-windows-xp-vista-7/)
     - これを使って、どこからでもckwを開けるようにしておく
