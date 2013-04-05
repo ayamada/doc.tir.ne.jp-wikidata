@@ -8,7 +8,7 @@ title: 技情研ネットの開発情報
 
 - androidアプリ開発
     - [環境構築](devel/env)
-    - [CLANによるandroidアプリ開発](devel/clan)
+    - [CLAN解説ページ](devel/clan)
 
 
 <!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
