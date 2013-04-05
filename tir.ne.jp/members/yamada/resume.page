@@ -46,7 +46,7 @@ GNU autotools, Makefile, sh
 :   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
 Perl
 :   商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発
-:   - 某社の内製Perlフレームワーク、MySQL、PostgreSQL、FastCGI使用
+    - 某社の内製Perlフレームワーク、MySQL、PostgreSQL、FastCGI使用
     - 詳細は[#業務経歴]()参照
 MySQL, PostgreSQL
 :   商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発→[#業務経歴]()
@@ -194,7 +194,7 @@ git, hg
 
 - [CLAN](/devel/clan)を用いた、Android/デスクトップOS向けの、アプリ/ゲーム開発
     - 個人からの依頼、歓迎します。代金は要相談
-    - CLANは癖の強い開発環境なので、 [Advantages / Disadvantags](/devel/clan#advantages-disadvantages) を確認してください。
+    - CLANは癖の強い開発環境なので、 [Advantages / Disadvantages](/devel/clan#advantages-disadvantages) を確認してください。
 
 - Haskellの仕事
 
