@@ -94,30 +94,30 @@ maven
 
 ### 上記以外の、使用可能ソフトウェア類とその実績
 
+git, hg
+:   [https://github.com/ayamada]() - githubアカウント
+:   hgは、某社勤務時にメインリポジトリ(非公開)として、6年程度の使用経験有り
+:   [http://d.hatena.ne.jp/ranekov/20110201]() - 便利設定
+:   svn, cvs, rcsも過去に使っていたので使用可能、しかしもう細かい使い方忘れてる
 Apache
-:   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Apacheモジュール (2003年)
-GIMP
-:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
+:   後述のサーバ運用に使用
 DJB tools
 :   daemontools, qmail, djbdns, ucspi-tcp を、後述のサーバ運用に使用
-Graphviz
-:   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]()→[https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() 等々
 squid
 :   さくらてぃるキャッシュサーバ([技情研ネットの沿革](/tir.ne.jp/history)参照)にて利用 (2001年)
 :   [https://github.com/ayamada/copy-of-svn.tir.jp/tree/master/nekoie/misc/squid]() - さくら大阪ラック(現在は廃止)にて利用していたsquid設定ファイル/リダイレクタスクリプト/カスタマイズ済テンプレート類
 delegated
 :   某社特定サーバ管理情報閲覧用に設置および設定を行う (2002年)
 :   リバースプロキシとして、各種の個人用途に使用
+GIMP
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
+Graphviz
+:   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]()→[https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() 等々
 aviutl
 :   [http://www.nicovideo.jp/watch/sm20266312]() 等の動画作成
 vim
 :   [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim) - vimscriptとperlで書かれたvim用ircクライアントを、vim7系列でも動くようにする為のパッチの作成
 :   [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim) - 汎用のscheme.vimをベースとした、Gauche向けのsyntaxファイル (2012年)
-git, hg
-:   [https://github.com/ayamada]() - githubアカウント
-:   hgは、某社勤務時にメインリポジトリ(非公開)として、6年程度の使用経験有り
-:   [http://d.hatena.ne.jp/ranekov/20110201]() - 便利設定
-:   svn, cvs, rcsも過去に使っていたので使用可能、しかしもう細かい使い方忘れてるかも
 
 
 ### その他の実績など
