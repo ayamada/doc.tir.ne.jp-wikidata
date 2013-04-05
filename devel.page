@@ -1,7 +1,7 @@
 ---
 toc: no
 categories: postponed
-title: 技情研ネットの開発情報
+title: 技情研ネットの技術情報
 ...
 
 - [gititメモ](devel/gitit) - 当サイト(doc.tir.ne.jp)は[gitit](devel/gitit)を使って構築しています。
