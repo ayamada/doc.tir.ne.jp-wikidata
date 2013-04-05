@@ -103,7 +103,7 @@ Sorry, now preparing ...
 - Graphviz
     - [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]()→[https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() 等々
 - squid
-    - さくらてぃるキャッシュサーバ([技情研ネットの沿革](http://doc.tir.ne.jp/tir.ne.jp/history)参照)にて利用 (2001年)
+    - さくらてぃるキャッシュサーバ([技情研ネットの沿革](/tir.ne.jp/history)参照)にて利用 (2001年)
     - [https://github.com/ayamada/copy-of-svn.tir.jp/tree/master/nekoie/misc/squid]() - さくら大阪ラック(現在は廃止)にて利用していたsquid設定ファイル/リダイレクタスクリプト/カスタマイズ済テンプレート類
 - delegated
     - 某社特定サーバ管理情報閲覧用に設置および設定を行う (2002年)
@@ -123,7 +123,7 @@ Sorry, now preparing ...
 ### その他の実績など
 
 - 2000年より、AT-LINKの占有サーバ、大阪堂島の某データセンターの1/8ラック、[さくらのクラウド](http://cloud.sakura.ad.jp/)の仮想サーバにて、Slackware Linux, Linux From Scratch, Gentoo Linuxの運用
-    - [技情研ネットの沿革](http://doc.tir.ne.jp/tir.ne.jp/history)
+    - [技情研ネットの沿革](/tir.ne.jp/history)
     - [大阪堂島の某データセンターの1/8ラックを運用していた頃のメモ](http://sakura.tir.jp/so.cgi)
     - メールチェックや開発などの日常作業は手元のPCではなく、これらのリモートサーバにて、ssh越しに行っている
 
@@ -193,9 +193,9 @@ Sorry, now preparing ...
 
 ----
 
-- [CLAN](http://doc.tir.ne.jp/devel/clan)を用いた、Android/デスクトップOS向けの、アプリ/ゲーム開発
+- [CLAN](/devel/clan)を用いた、Android/デスクトップOS向けの、アプリ/ゲーム開発
     - 個人からの依頼、歓迎します。代金は要相談
-    - CLANは癖の強い開発環境なので、 [Advantages / Disadvantags](http://doc.tir.ne.jp/devel/clan#advantages-disadvantages) を確認してください。
+    - CLANは癖の強い開発環境なので、 [Advantages / Disadvantags](/devel/clan#advantages-disadvantages) を確認してください。
 
 - Haskellの仕事
 
