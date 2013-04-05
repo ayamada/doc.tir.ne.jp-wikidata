@@ -29,7 +29,7 @@ TODO: resumeとするには量が多くなってしまったので、あとで�
 
 - [https://github.com/ayamada]()
 
-### 使用可能言語とその実績
+### 使用可能言語とその主な実績
 
 Scheme
 :   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
@@ -70,7 +70,7 @@ Z80アセンブラ
 :   MSX2向けゲーム作成(1990年頃)
 
 
-### 上記言語以外の、使用可能プロトコル/フォーマット/ライブラリ類とその実績
+### 上記言語以外の、使用可能プロトコル/フォーマット/ライブラリ類とその主な実績
 
 libgdx
 :   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
@@ -92,7 +92,7 @@ maven
 :   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
 
 
-### 上記以外の、使用可能ソフトウェア類とその実績
+### 上記以外の、使用可能ソフトウェア類とその主な実績
 
 git, hg
 :   [https://github.com/ayamada]() - githubアカウント
