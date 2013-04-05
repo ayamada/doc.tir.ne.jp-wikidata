@@ -48,7 +48,7 @@ Sorry, now preparing ...
     - [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
 - Perl
     - 商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発
-        - 某社の内製Perlフレームワーク、MySQL、FastCGI使用
+        - 某社の内製Perlフレームワーク、MySQL、PostgreSQL、FastCGI使用
         - 詳細は[#業務経歴]()参照
 - MySQL, PostgreSQL
     - 商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発→[#業務経歴]()
