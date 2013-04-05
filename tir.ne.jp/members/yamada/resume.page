@@ -37,7 +37,7 @@ Sorry, now preparing ...
     - [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
     - [https://github.com/ayamada/c-a-g]() - 単純だが有用なwebアプリ
 - Haskell
-    - [gititメモ](/devel/gitit) - 簡単な修正を何個かpull-reqしてmergeされた→[#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331)
+    - [gititメモ](/devel/gitit) - gititの極簡単な不具合の修正を何個かpull-reqしてmergeされた→[#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331)
     - [http://legacy.e.tir.jp/wiliki?hdn]() Haskell+SDLによる極簡単なwindows向けゲーム作成 (2008年)
 - Clojure
     - [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
