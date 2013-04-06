@@ -3,13 +3,11 @@ toc: yes
 title: 山田の仕事募集用resume
 ...
 
-ここには、山田が仕事を募集する為の、自分自身のresumeの簡易版を書きます。
+**最終更新日時：2013年4月**
+
+これは、山田が仕事を募集する為の、自分自身のresumeです。
 
 ただし、ここは公開されている領域なので、一部の情報は伏せています。
-
-TODO: resumeとするには量が多くなってしまったので、あとで技能概要と業務経歴は別ページに移動し、ここには要約のみ書くように直す事
-
-- 最終更新日時：2013年4月
 
 - [#日本語版]()
 - [#English]()
@@ -45,12 +43,10 @@ Java
 GNU autotools, Makefile, sh
 :   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
 Perl
-:   商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発
-    - 某社の内製Perlフレームワーク、MySQL、PostgreSQL、FastCGI使用
-    - 詳細は[#業務経歴]()参照
+:   商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発(某社内製Perlフレームワークを使用)→[#業務経歴]()
 MySQL, PostgreSQL
 :   商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発→[#業務経歴]()
-HTML, CSS, Markdown, reStructuredText
+HTML, CSS, Markdown
 :   [http://tir.jp/]() および、ここから辿れる各サイト全般
 JavaScript, jQuery
 :   商用の大規模メール配信ミドルウェアのwebフロントエンド開発→[#業務経歴]()
