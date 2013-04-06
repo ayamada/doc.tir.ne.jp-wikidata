@@ -124,7 +124,7 @@ vim
 2000年より、AT-LINKの占有サーバ、大阪堂島の某データセンターの1/8ラック、[さくらのクラウド](http://cloud.sakura.ad.jp/)の仮想サーバにて、Slackware Linux, Linux From Scratch, Gentoo Linuxの運用
 :   [技情研ネットの沿革](/tir.ne.jp/history)
 :   [大阪堂島の某データセンターの1/8ラックを運用していた頃のメモ](http://sakura.tir.jp/so.cgi)
-:   メールチェックや開発などの日常作業は手元のPCではなく、これらのリモートサーバにて、ssh越しに行っている
+:   メールチェックや開発などの日常作業の大部分は手元のPCではなく、これらのリモートサーバにて、ssh越しに行っている
 翻訳など
 :   [http://legacy.e.tir.jp/wiliki#H-z89wkt]()
 
