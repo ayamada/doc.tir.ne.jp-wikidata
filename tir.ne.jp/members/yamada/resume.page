@@ -52,7 +52,7 @@ JavaScript, jQuery
 :   商用の大規模メール配信ミドルウェアのwebフロントエンド開発→[#業務経歴]()
 C
 :   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
-:   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Apacheモジュール (2003年)
+:   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - 極簡単なApacheモジュールの作成 (2003年)
 D
 :   [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
 php
@@ -94,16 +94,19 @@ git, hg
 :   [https://github.com/ayamada]() - githubアカウント
 :   hgは、某社勤務時にメインリポジトリ(非公開)として、6年程度の使用経験有り
 :   [http://d.hatena.ne.jp/ranekov/20110201]() - 便利設定
-:   svn, cvs, rcsも過去に使っていたので使用可能、しかしもう細かい使い方忘れてる
+:   svn, cvs, rcsも過去に使っていたので一応使用可能
 Apache
-:   後述のサーバ運用に使用
+:   後述の個人サーバ/ラック運用にて使用
+:   某社社内向けの大量サーバ向け設置ツールの作成→[#業務経歴]()
+:   某社社内向けの、複数ip/portにそれぞれhttpsを動的に割り当てる為の ip based virtual-host 設定ファイル生成ツール→[#業務経歴]()
+:   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - 極簡単なApacheモジュールの作成 (2003年)
 DJB tools
-:   daemontools, qmail, djbdns, ucspi-tcp を、後述のサーバ運用に使用
+:   daemontools, qmail, djbdns, ucspi-tcp を、後述のサーバ/ラック運用にて使用
 squid
 :   さくらてぃるキャッシュサーバ([技情研ネットの沿革](/tir.ne.jp/history)参照)にて利用 (2001年)
 :   [https://github.com/ayamada/copy-of-svn.tir.jp/tree/master/nekoie/misc/squid]() - さくら大阪ラック(現在は廃止)にて利用していたsquid設定ファイル/リダイレクタスクリプト/カスタマイズ済テンプレート類
 delegated
-:   某社特定サーバ管理情報閲覧用に設置および設定を行う (2002年)
+:   某社社内向けの、特定サーバ管理情報閲覧用に設置および設定を行う (2002年)
 :   リバースプロキシとして、各種の個人用途に使用
 GIMP
 :   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
@@ -142,6 +145,7 @@ vim
     :   Erlangによる、大規模メール配信ミドルウェアC(仮名)のMIME処理モジュールの改修
 :   2004年
     :   Perlによる、自社保有の大量のサーバに対してApache(HTTPサーバ)と関連モジュールおよび関連ツール(cronolog等)の導入/バージョンアップ/基本設定を行う為のパッケージの作成およびメンテナンス
+    :   Perlによる、複数ip/portにそれぞれhttpsを動的に割り当てる為の ip based virtual-host 設定ファイル生成ツールの作成およびメンテナンス
 :   2003～2004年
     :   PerlとMySQLによる、大規模メール配信ミドルウェアA(仮名)と連携を行う、中規模アンケートシステムの設計および開発
 :   2002年～2003年
