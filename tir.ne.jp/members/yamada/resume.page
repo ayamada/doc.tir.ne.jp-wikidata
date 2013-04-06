@@ -73,11 +73,11 @@ libgdx
 :   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
 Android SDK
 :   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
-HTTP
+HTTP (TCP)
 :   [http://legacy.e.tir.jp/wiliki?tcpcgi]() - 自作のhttpd
-SMTP
+SMTP (TCP)
 :   商用の大規模メール配信ミドルウェア関連→[#業務経歴]()
-IRC
+IRC (TCP)
 :   [http://legacy.e.tir.jp/wiliki?pib]() - 自作のircボット
 XML, JSON
 :   商用の大規模メール配信ミドルウェアの通信APIに使用→[#業務経歴]()
