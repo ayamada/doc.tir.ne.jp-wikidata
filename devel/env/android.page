@@ -22,6 +22,7 @@ androidアプリ開発の為のライブラリとして、libgdx+android向けcl
     - ただし、windows以外の人は、eclipseを使うつもりがなくても、「ADT Bundle」の方をダウンロードする事。これは何故かというと、「SDK Tools Only」の方には後述のplatform-toolsが入っていない為。
 - まず一度android sdk managerを起動し、必要なパッケージの更新および追加を行う
     - ここで必ずusb driverを入れる事
+    - guiを使わない場合は、 `android` コマンドに-uをつけて、managerを起動する。具体的には、「`android update sdk -u`」を実行する。詳細は --help を参照。
 - PATHを通す。 **`...\Android\android-sdk\platform-tools` と `...\Android\android-sdk\tools` の二つを追加する**必要がある
 - 同様に、**環境変数ANDROID_HOMEに `...\Android\android-sdk` を設定**。これを忘れるとmavenからandroid sdkが認識されない。
     - windows以外だと、 android-sdk ではなく、単に sdk というディレクトリの様子。とにかく、「platform-tools」と「tools」の入っているディレクトリを指定する。
