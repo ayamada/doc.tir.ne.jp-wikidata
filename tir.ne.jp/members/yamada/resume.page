@@ -91,7 +91,7 @@ maven
 
 git, hg
 :   [https://github.com/ayamada]() - githubアカウント
-:   hgは、某社勤務時にメインリポジトリ(非公開)として、6年程度の使用経験有り
+:   hgは、某社勤務時にメインリポジトリ(非公開)として、6年程度の実務使用経験有り
 :   [http://d.hatena.ne.jp/ranekov/20110201]() - 便利設定
 :   svn, cvs, rcsも過去に使っていたので一応使用可能
 Linux
