@@ -29,18 +29,18 @@ title: 山田の仕事募集用resume
 ### 使用可能言語とその主な実績
 
 Scheme
-:   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
-:   [https://github.com/ayamada/c-a-g]() - 単純だが有用なwebアプリ
+:   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの (2007-2011年)
+:   [https://github.com/ayamada/c-a-g]() - 自分用検索ディスパッチャ (2011-2013年)
 Haskell
-:   [gititメモ](/devel/gitit) - gititの極簡単な不具合の修正を何個かpull-reqしてmergeされた→[#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331)
+:   [gititメモ](/devel/gitit) - gititの極簡単な不具合の修正を何個かpull-reqしてmergeされた→[#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331) (2012-2013年)
 :   [http://legacy.e.tir.jp/wiliki?hdn]() - Haskellによる極簡単なwindows向けゲーム作成 (2008年)
 Clojure
-:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
-:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット (2013年)
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム (2013年)
 Java
-:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット (2013年)
 GNU autotools, Makefile, sh
-:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット (2013年)
 Perl
 :   商用の大規模メール配信ミドルウェアおよびそのwebフロントエンド開発(某社内製Perlフレームワークを使用)→[#業務経歴]()
 MySQL, PostgreSQL
@@ -50,7 +50,7 @@ HTML, CSS, Markdown
 JavaScript, jQuery
 :   商用の大規模メール配信ミドルウェアのwebフロントエンド開発→[#業務経歴]()
 C
-:   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの
+:   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの (2007-2011年)
 :   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - 極簡単なApacheモジュールの作成 (2003年)
 D
 :   [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
@@ -68,23 +68,23 @@ Z80アセンブラ
 ### 上記言語以外の、使用可能プロトコル/フォーマット/ライブラリ類とその主な実績
 
 libgdx
-:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
-:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット (2013年)
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム (2013年)
 Android SDK
-:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット (2013年)
 HTTP (RFC 2616)
-:   [http://legacy.e.tir.jp/wiliki?tcpcgi]() - 自作のhttpd
+:   [http://legacy.e.tir.jp/wiliki?tcpcgi]() - 自作のhttpd (2005年)
 SMTP, MIME (RFC 5321, 5322, etc...)
 :   商用の大規模メール配信ミドルウェア関連→[#業務経歴]()
 IRC
-:   [http://legacy.e.tir.jp/wiliki?pib]() - 自作のircボット
+:   [http://legacy.e.tir.jp/wiliki?pib]() - 自作のircボット (2008-2009年)
 XML, JSON
 :   商用の大規模メール配信ミドルウェアの通信APIに使用→[#業務経歴]()
 SDL
 :   [http://legacy.e.tir.jp/wiliki?hdn%3asdl](http://legacy.e.tir.jp/wiliki?hdn%3asdl) Haskell+SDLによる極簡単なwindows向けゲーム作成 (2008年)
 :   [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
 maven
-:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
+:   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット (2013年)
 
 
 ### 上記以外の、使用可能ソフトウェア類とその主な実績
@@ -95,7 +95,7 @@ git, hg
 :   [http://d.hatena.ne.jp/ranekov/20110201]() - 便利設定
 :   svn, cvs, rcsも過去に使っていたので一応使用可能
 Linux
-:   Slackware Linux, Linux From Scratch, Gentoo Linux を、後述の個人サーバ/ラックにて長期運用実績あり
+:   Slackware Linux, Linux From Scratch, Gentoo Linux を、後述の個人サーバ/ラックにて長期運用実績あり (2000-2013年)
 :   *BSD系OSおよびRedhat系distributionも利用可能だが、本格的な運用実績はなし
 Apache
 :   後述の個人サーバ/ラックにて長期運用実績あり
@@ -111,14 +111,14 @@ delegated
 :   某社社内向けの、特定サーバ管理情報閲覧用に設置および設定を行う (2002年)
 :   リバースプロキシとして、各種の個人用途に使用
 GIMP
-:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム (2013年)
 Graphviz
 :   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]()→[https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() 等々
 aviutl
 :   [http://www.nicovideo.jp/watch/sm20266312]() 等の動画作成
 vim
 :   [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim) - vimscriptとperlで書かれたvim用ircクライアントを、vim7系列でも動くようにする為のパッチの作成
-:   [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim) - 汎用のscheme.vimをベースとした、Gauche向けのsyntaxファイル (2011年)
+:   [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim) - 汎用のscheme.vimをベースとした、Gauche向けのsyntaxファイル (2004-2011年)
 
 
 ### その他の実績など
