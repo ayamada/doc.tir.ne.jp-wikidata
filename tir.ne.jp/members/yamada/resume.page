@@ -72,11 +72,11 @@ libgdx
 :   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]() - Androidおよびwindows向けゲーム
 Android SDK
 :   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット
-HTTP (TCP)
+HTTP (RFC 2616)
 :   [http://legacy.e.tir.jp/wiliki?tcpcgi]() - 自作のhttpd
-SMTP (TCP)
+SMTP, MIME (RFC 5321, 5322, etc...)
 :   商用の大規模メール配信ミドルウェア関連→[#業務経歴]()
-IRC (TCP)
+IRC
 :   [http://legacy.e.tir.jp/wiliki?pib]() - 自作のircボット
 XML, JSON
 :   商用の大規模メール配信ミドルウェアの通信APIに使用→[#業務経歴]()
@@ -238,6 +238,8 @@ vim
 料金についてはご相談ください。[誠実なお店の看板](http://labs.cybozu.co.jp/blog/akky/archives/2007/10/good-cheap-fast.html)の範囲にて、柔軟に対応させていただきます。
 
 企業様からのお話もお待ちしております。
+
+ただし、前勤務会社との約束により、前勤務会社と直接の競合関係にある会社への勤務はお断りさせていたく事になっています。ご了承ください。
 
 
 ## プロフィール
