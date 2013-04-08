@@ -259,9 +259,9 @@ vim
 電話
 :   XXX-XXX-XXXX
 メール
-:   `uint4096 ＠ gmail.com`
+:   `XXXXXXXX@XXXXXX` (公開アドレス : `uint4096 ＠ gmail.com`)
 
-- ※メールがスパム判定された場合に山田が気付かない場合があります。返事が来ない場合は [`@rnkv`](https://twitter.com/rnkv) まで連絡をおねがいします。
+- ※公開アドレスの方は、メールがスパム判定された場合に山田が気付かない場合があります。返事が来ない場合は [`@rnkv`](https://twitter.com/rnkv) まで連絡をおねがいします。
 
 
 
