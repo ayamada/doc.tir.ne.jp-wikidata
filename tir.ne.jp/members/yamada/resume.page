@@ -53,12 +53,12 @@ C
 :   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの (2007-2011年)
 :   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - 極簡単なApacheモジュールの作成 (2003年)
 D
-:   [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
+:   [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL) - D+SDLによる極簡単なwindows向けゲーム作成 (2007年)
 php
 :   某サイト(現在非公開)の、WordPressの設置およびカスタマイズ
 Erlang
 :   商用の大規模メール配信ミドルウェアの改修→[#業務経歴]()
-:   [http://legacy.e.tir.jp/wiliki?LFE]() Lisp Flavoured Erlang 試用メモ (2010年)
+:   [http://legacy.e.tir.jp/wiliki?LFE]() - Lisp Flavoured Erlang 試用メモ (2010年)
 Python
 :   hg付属のhgwebdir.cgiの極簡単な改修など(某社社内向け)
 Z80アセンブラ
@@ -105,7 +105,7 @@ Apache
 DJB tools
 :   daemontools, qmail, djbdns, ucspi-tcp を、後述のサーバ/ラック運用にて使用
 squid
-:   さくらてぃるキャッシュサーバ([技情研ネットの沿革](/tir.ne.jp/history)参照)にて利用 (2001年)
+:   さくらてぃるキャッシュサーバ([技情研ネットの沿革](/tir.ne.jp/history)参照)にて利用 (2001-2006年)
 :   [https://github.com/ayamada/copy-of-svn.tir.jp/tree/master/nekoie/misc/squid]() - さくら大阪ラック(現在は廃止)にて利用していたsquid設定ファイル/リダイレクタスクリプト/カスタマイズ済テンプレート類
 delegated
 :   某社社内向けの、特定サーバ管理情報閲覧用に設置および設定を行う (2002年)
@@ -140,18 +140,16 @@ vim
 :   2002年～2012年
     :   自社製大規模メール配信ミドルウェア各種(後述)と連携を行う、Perlによる、特定顧客向けの様々なドメイン特化型webフロントエンドの設計/構築および一部の保守を、大規模なもの四件、中～小規模なもの十件ほど行う
 :   2002年～2012年
-    :   Perlによる、大規模メール配信ミドルウェアA(仮名)の、webフロントエンドおよびメールテンプレートエンジン部の、改修および拡張
-:   2005年～2012年
-    :   Perlによる、大規模メール配信ミドルウェアB(仮名)のwebフロントエンドおよびAPIサーバ部の、改修および拡張
+    :   Perlによる、大規模メール配信ミドルウェアA, B(仮名)の、webフロントエンドおよびメールテンプレートエンジン部の、改修および拡張
 :   2010年
-    :   Erlangによる、大規模メール配信ミドルウェアC(仮名)のMIME処理モジュールの改修
+    :   Erlangによる、大規模メール配信ミドルウェアC(仮名)の、MIME処理モジュールの改修
 :   2004年
     :   Perlによる、自社保有の大量のサーバに対してApache(HTTPサーバ)と関連モジュールおよび関連ツール(cronolog等)の導入/バージョンアップ/基本設定を行う為のパッケージの作成およびメンテナンス
 :   2004年
     :   Perlによる、Apache向けの、複数ip/portにそれぞれhttpsを動的に割り当てる為の ip based virtual-host 設定ファイル生成ツールの作成およびメンテナンス
 :   2003～2004年
     :   PerlとMySQLによる、大規模メール配信ミドルウェアA(仮名)と連携を行う、中規模アンケートシステムの設計および開発
-:   2002年～2003年
+:   2002～2003年
     :   PerlとMySQLによる、大規模メール配信ミドルウェアA(仮名)と連携を行う、換金可能ポイント処理システムの開発
 :   2002年
     :   PerlとMySQLによる、中規模クリックカウント取得システムの改修
@@ -264,7 +262,173 @@ vim
 
 # English version
 
-Sorry, now preparing ...
+## Availability
+
+- From middle of July, 2013
+
+
+## Skill summary
+
+### Account of github
+
+- [https://github.com/ayamada]()
+
+### Languages and these deliverables
+
+Scheme
+:   [http://legacy.e.tir.jp/wiliki?speedygosh]()(japanese) - Script boot-loader like a nailgun for Gauche (2007-2011)
+:   [https://github.com/ayamada/c-a-g]()(japanese) - Search dispatcher for me (2011-2013)
+Haskell
+:   [gitit memo](/devel/gitit)(japanese) - Fix easy bugs on gitit and merged -> [#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331) (2012-2013)
+:   [http://legacy.e.tir.jp/wiliki?hdn]()(japanese) - Very easy games for windows, that made by Haskell (2008)
+Clojure
+:   [https://github.com/ayamada/clan]() - Application construction kit for Android, that using Clojure and LibGDX (2013)
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]()(japanese) - Game for Android and desktop OS, that using CLAN (2013)
+Java
+:   [https://github.com/ayamada/clan]() - Application construction kit for Android, that using Clojure and LibGDX (2013)
+GNU autotools, Makefile, sh
+:   [https://github.com/ayamada/clan]() - Application construction kit for Android, that using Clojure and LibGDX (2013)
+Perl
+:   Large-scale e-mail distribution middleware for commercial -> [#work-experience]()
+MySQL, PostgreSQL
+:   Large-scale e-mail distribution middleware for commercial -> [#work-experience]()
+HTML, CSS, Markdown
+:   [http://tir.jp/]() and releated sites
+JavaScript, jQuery
+:   Large-scale e-mail distribution middleware for commercial -> [#work-experience]()
+C
+:   [http://legacy.e.tir.jp/wiliki?speedygosh]()(japanese) - Script boot-loader like a nailgun for Gauche (2007-2011)
+:   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Very easy Apache module (2003)
+D
+:   [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL)(japanese) A very easy game for windows that made by D + SDL (2007)
+php
+:   Set up to WordPress and customize
+Erlang
+:   Large-scale e-mail distribution middleware for commercial -> [#work-experience]()
+:   [http://legacy.e.tir.jp/wiliki?LFE]()(japanese) Note for using Lisp Flavoured Erlang (2010)
+Python
+:   Modify hgwebdir.cgi for using office
+Z80 assembly language
+:   A game for MSX2 (1990)
+
+
+### Protocols, formats, libraries and these deliverables
+
+libgdx
+:   [https://github.com/ayamada/clan]() - Application construction kit for Android, that using Clojure and LibGDX (2013)
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]()(japanese) - Game for Android and desktop OS, that using CLAN (2013)
+Android SDK
+:   [https://github.com/ayamada/clan]() - Application construction kit for Android, that using Clojure and LibGDX (2013)
+HTTP (RFC 2616)
+:   [http://legacy.e.tir.jp/wiliki?tcpcgi]()(japanese) - A httpd (2005)
+SMTP, MIME (RFC 5321, 5322, etc...)
+:   Large-scale e-mail distribution middleware for commercial -> [#work-experience]()
+IRC
+:   [http://legacy.e.tir.jp/wiliki?pib]()(japanese) - An irc bot (2008-2009)
+XML, JSON
+:   Large-scale e-mail distribution middleware for commercial (for communication API) -> [#work-experience]()
+SDL
+:   [http://legacy.e.tir.jp/wiliki?hdn%3asdl](http://legacy.e.tir.jp/wiliki?hdn%3asdl)(japanese) A very easy game for windows that made by Haskell + SDL (2008)
+:   [http://legacy.e.tir.jp/wiliki?D%2bSDL](http://legacy.e.tir.jp/wiliki?D%2bSDL)(japanese) A very easy game for windows that made by D + SDL (2007)
+maven
+:   [https://github.com/ayamada/clan]() - Application construction kit for Android, that using Clojure and LibGDX (2013)
+
+
+### Using Softwares, others and these deliverables
+
+git, hg
+:   [https://github.com/ayamada]() - my account of github
+:   I used `hg` at previous working between 6 years
+:   [http://d.hatena.ne.jp/ranekov/20110201]()(japanese) - display status of not-yet-push for zsh
+:   I also can use svn, cvs and rcs
+Linux
+:   I used Slackware Linux, Linux From Scratch and Gentoo Linux at servers in internet data center and virtual-servers (2000-2013)
+Apache
+:   Installer/updater for many servers -> [#work-experience]()
+:   Dynamic setup tool for ip based virtual-host -> [#work-experience]()
+:   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Very easy Apache module (2003)
+DJB tools
+:   I used daemontools, qmail, djbdns and ucspi-tcp
+squid
+:   Squid was used for provide zip archives of [Ukagaka](http://en.wikipedia.org/wiki/Ukagaka) (2001-2006)
+:   [https://github.com/ayamada/copy-of-svn.tir.jp/tree/master/nekoie/misc/squid]() - Setting files, redirector script, and customized templates that used by server in internet data center (now obsoleted)
+delegated
+:   Internal use for office (2002)
+:   Personal-use by reverse-proxy
+GIMP
+:   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]()(japanese) - Game for Android and desktop OS, that using CLAN (2013)
+Graphviz
+:   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]() -> [https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() and other
+aviutl
+:   [http://www.nicovideo.jp/watch/sm20266312]() and other
+vim
+:   [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim)(japanese) - Patch for vimirc.vim
+:   [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim)(japanese) - Modified scheme.vim for Gauche (2004-2011)
+
+
+### Other deliverables
+
+I used Slackware Linux, Linux From Scratch and Gentoo Linux at servers in internet data center and virtual-servers
+:   [history of tir.ne.jp](/tir.ne.jp/history)(japanese)
+:   [memo for servers of internet data center](http://sakura.tir.jp/so.cgi)(japanese)
+:   I use these servers for check e-mail, development, and other routine-work on ssh
+Translations to japanese
+:   [http://legacy.e.tir.jp/wiliki#H-z89wkt]()(japanese)
+
+
+## Work experience
+This is list of works on companies, that excluded to personal works.
+
+Personal works is on [#skill-summary]().
+
+Mar, 2002 - Jul, 2012 `********` Inc.
+:   2002 - 2012
+    :   I designed, wrote and maintained to domain-specific web-frontends for various customers by `Perl`, that was on large-scale e-mail distribution middlewares.
+:   2002 - 2012
+    :   I wrote to e-mail template engine and universal web-frontend on large-scale e-mail distribution middleware A and B (anonym) by `Perl`.
+:   2010
+    :   I repaired to MIME convert module on large-scale e-mail distribution middleware C (anonym) by `Erlang`.
+:   2004
+    :   I wrote to Installer/updater/configuring of Apache and related tools for many servers by `Perl`.
+:   2004
+    :   I wrote to Installer/updater/configuring of Apache and related tools for many servers, that was written by `Perl`.
+    :   I wrote to dynamic setup tool for ip based virtual-host (using to many https).
+:   2003 - 2004
+    :   I wrote to a questionnaire system by `Perl` and `MySQL`, it work together to large-scale e-mail distribution middleware A (anonym).
+:   2002 - 2003
+    :   I wrote to convertible point system by `Perl` and `MySQL`, it work together to large-scale e-mail distribution middleware A (anonym).
+:   2002
+    :   I wrote to middle-scale url-redirect logging and counting system by `Perl` and `MySQL`.
+:   2002
+    :   I made to ringer melody for cellular phone.
+
+Apr, 2000 - Jun, 2001 `**********` Ltd.
+:   2000 - 2001
+    :   I operate a Slackware Linux server for DNS / SMTP / HTTP services, and wrote to operational manual.
+:   2000
+    :   I made to a application that setting to router configuration by `Java`.
+
+
+## Profile data
+
+Name
+:   Atsuo Yamada
+Nationality
+:   Japan
+Date of birth
+:   XXX XX, XXXX
+
+
+## Contact information
+
+Present address
+:   X-XX-XX `******* *************` Hyogo XXX-XXXX, JAPAN
+Phone
+:   +81-XX-XXX-XXXX
+E-mail
+:   `XXXXXXXX@XXXXXX` (public: `uint4096 ＠ gmail.com`)
+
+- Sorry, I may unaware to e-mail when be referred to as spam. At that time, please inform to [`@rnkv`](https://twitter.com/rnkv).
 
 
 
