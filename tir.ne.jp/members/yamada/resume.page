@@ -352,14 +352,14 @@ DJB tools
 squid
 :   Squid was used for provide zip archives of [Ukagaka](http://en.wikipedia.org/wiki/Ukagaka) (2001-2006)
 :   [https://github.com/ayamada/copy-of-svn.tir.jp/tree/master/nekoie/misc/squid]() - Setting files, redirector script, and customized templates that used by server in internet data center (now obsoleted)
-delegated
+delegated (proxy-server software)
 :   Internal use for office (2002)
 :   Personal-use by reverse-proxy
 GIMP
 :   [http://vnctst.tir.jp/ja/games/driftcat_underworld.html]()(japanese) - Game for Android and desktop OS, that using CLAN (2013)
 Graphviz
 :   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]() -> [https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() and other
-aviutl
+aviutl (famous software to edit movie in Japan)
 :   [http://www.nicovideo.jp/watch/sm20266312]() and other
 vim
 :   [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim)(japanese) - Patch for vimirc.vim
