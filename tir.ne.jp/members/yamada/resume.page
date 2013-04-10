@@ -389,16 +389,15 @@ Mar, 2002 - Jul, 2012 `********` Inc.
 :   2010
     :   I repaired to MIME convert module on large-scale e-mail distribution middleware C (anonym) by `Erlang`.
 :   2004
-    :   I wrote to Installer/updater/configuring of Apache and related tools for many servers by `Perl`.
+    :   I wrote to Installer/updater/configurator of Apache and related tools for many servers, that was written by `Perl`.
 :   2004
-    :   I wrote to Installer/updater/configuring of Apache and related tools for many servers, that was written by `Perl`.
     :   I wrote to dynamic setup tool for ip based virtual-host (using to many https).
 :   2003 - 2004
     :   I wrote to a questionnaire system by `Perl` and `MySQL`, it work together to large-scale e-mail distribution middleware A (anonym).
 :   2002 - 2003
     :   I wrote to convertible point system by `Perl` and `MySQL`, it work together to large-scale e-mail distribution middleware A (anonym).
 :   2002
-    :   I wrote to middle-scale url-redirect logging and counting system by `Perl` and `MySQL`.
+    :   I maintained to middle-scale url-redirect logging and counting system by `Perl` and `MySQL`.
 :   2002
     :   I made to ringer melody for cellular phone.
 
