@@ -851,6 +851,7 @@ TODO
     - 「autoconf+make+maven」はやめて、leinで統一する(しかし先にleinの使い方を学ぶ必要あり…)
     - cal内にて、「android限定のコード(と利用ライブラリ)」と「desktop限定のコード(と利用ライブラリ)」をうまく切り分けられるようにする
         - 現状ではlayout内のjavaコードでのみの切り分けなので不便
+    - lein化と同時に、[http://stackoverflow.com/questions/12281365/obfuscating-clojure-uberjars-with-proguard]() を設定するようにする
 
 - later
     - 開発版ビルドとリリース版ビルドの切り分け部分の改善
