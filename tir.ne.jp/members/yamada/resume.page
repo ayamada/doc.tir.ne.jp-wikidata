@@ -32,7 +32,7 @@ Scheme
 :   [http://legacy.e.tir.jp/wiliki?speedygosh]() - Gauche向けの、nailgun的なもの (2007-2011年)
 :   [https://github.com/ayamada/c-a-g]() - 自分用検索ディスパッチャ (2011-2013年)
 Haskell
-:   [gititメモ](/devel/gitit) - gititの極簡単な不具合の修正を何個かpull-reqしてmergeされた→[#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331) (2012-2013年)
+:   [gititメモ](/devel/gitit) - このサイト構築に利用しているgititのメモ。またgititの極簡単な不具合の修正を何個かpull-reqしてmergeされた→[#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331) (2012-2013年)
 :   [http://legacy.e.tir.jp/wiliki?hdn]() - Haskellによる極簡単なwindows向けゲーム作成 (2008年)
 Clojure
 :   [https://github.com/ayamada/clan]() - Android向けアプリをClojureで書く為の構築キット (2013年)
@@ -279,7 +279,7 @@ Scheme
 :   [http://legacy.e.tir.jp/wiliki?speedygosh]()(japanese) - Script boot-loader like a nailgun for Gauche (2007-2011)
 :   [https://github.com/ayamada/c-a-g]()(japanese) - Search dispatcher for me (2011-2013)
 Haskell
-:   [gitit memo](/devel/gitit)(japanese) - Fix easy bugs on gitit and merged -> [#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331) (2012-2013)
+:   [gitit memo](/devel/gitit)(japanese) - This site worked on gitit. I fixed to easy bugs on gitit and merged -> [#310](https://github.com/jgm/gitit/pull/310), [#330](https://github.com/jgm/gitit/pull/330), [#331](https://github.com/jgm/gitit/pull/331) (2012-2013)
 :   [http://legacy.e.tir.jp/wiliki?hdn]()(japanese) - Very easy games for windows, that made by Haskell (2008)
 Clojure
 :   [https://github.com/ayamada/clan]() - Application construction kit for Android, that using Clojure and LibGDX (2013)
