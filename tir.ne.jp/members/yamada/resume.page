@@ -344,13 +344,13 @@ git, hg
 Linux
 :   I used Slackware Linux, Linux From Scratch and Gentoo Linux at servers in internet data center and virtual-servers (2000-2013)
 Apache
-:   Installer/updater for many servers -> [#work-experience]()
-:   Dynamic setup tool for ip based virtual-host -> [#work-experience]()
+:   I wrote installer/updater for many servers -> [#work-experience]()
+:   I wrote dynamic setup tool for ip based virtual-host -> [#work-experience]()
 :   [http://web.archive.org/web/20081229023256/http://d.tir.jp/mod_log_reqh/]() - Very easy Apache module (2003)
 DJB tools
 :   I used daemontools, qmail, djbdns and ucspi-tcp
 squid
-:   Squid was used for provide zip archives of [Ukagaka](http://en.wikipedia.org/wiki/Ukagaka) (2001-2006)
+:   Squid was used for distributing zip archives of [Ukagaka](http://en.wikipedia.org/wiki/Ukagaka) (2001-2006)
 :   [https://github.com/ayamada/copy-of-svn.tir.jp/tree/master/nekoie/misc/squid]() - Setting files, redirector script, and customized templates that used by server in internet data center (now obsoleted)
 delegated (proxy-server software)
 :   Internal use for office (2002)
