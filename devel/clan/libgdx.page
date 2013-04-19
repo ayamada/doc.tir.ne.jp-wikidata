@@ -140,6 +140,9 @@ title: libgdxメモ
 ## 自動packing
 - [http://code.google.com/p/libgdx/wiki/TexturePacker#Automatic_packing]() にある通り、アプリ起動時にpack処理を入れる事ができるらしい。ただしこれを行うには、ビルド時に `gdx-tools.jar` を含める必要があるようだ。
 
+## その他の特性など
+- デフォルトでは、packされた各画像は最外部の1ドットが引き伸ばされた形式で保存される(つまり元画像が16x16なら18x18になる)。これは`GL_LINEAR`での拡大縮小時の用途。`GL_LINEAR`を使わないなら`pack.json`で切ってもいいし、そのままでもサイズ以外には別に問題はない。
+
 
 # その他
 
