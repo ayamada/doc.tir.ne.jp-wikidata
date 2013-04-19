@@ -107,6 +107,38 @@ title: libgdxメモ
 - androidの音回りは、一定時間無音だと、次に何かを再生する時に0.5秒程度の遅延が発生するようだ。なので、SEを適切なタイミングで出したい場合、BGM入れない場合であっても、無音のoggでも再生しておいた方がいい。そうしないとSEに遅延が発生する。
 
 
+# TextureAtlasおよびTexturePackerの使い方
+- [http://code.google.com/p/libgdx/wiki/TexturePacker]()
+- 要は、テクスチャは、小さいものを何個も登録するよりも、結合したでかい一つの画像にしてそこから矩形指定して使う方が速度コストが良いらしい。その為のクラスがTextureAtlasおよびTexturePacker。
+
+## TexturePackerを使ってpackする
+0. libgdx配布物を自分で展開し、そこに入っている `gdx.jar` および `extensions/gdx-tools/gdx-tools.jar` にクラスパスを通しておく(あるいはクラスパスの通った場所にコピーする)
+0. 特定ディレクトリに、packしたいテクスチャファイル(つまり`*.png`)を全部入れる
+    - なお、ファイル名が `image_02.png` のように末尾に数値の入っている物は特別扱いされる様子、注意
+        - [http://code.google.com/p/libgdx/wiki/TexturePacker#Image_indexes]()
+0. 特定ディレクトリに、pack.jsonという設定ファイルを入れる。省略可能
+    - 詳細は [http://code.google.com/p/libgdx/wiki/TexturePacker#Configuration]() 参照
+0. `java -cp 'gdx.jar;gdx-tools.jar' com.badlogic.gdx.tools.imagepacker.TexturePacker2 src-dir dst-dir name` を実行する
+    - `src-dir` は、上記の特定ディレクトリを指定
+    - `dst-dir` は、生成結果を入れるディレクトリを指定、省略可能
+        - この中に、 `pack.atlas` と `pack.png` が生成される
+        - 省略した場合、 `src-dir` と同じ階層に、  `src-dir`**-packed/** という名前のディレクトリが生成され、その中に上記2ファイルが作られる
+    - `name` は省略可能、これを指定すると上記2ファイルの`pack`部分に使われる
+
+- 上記の `src-dir` 内に、 `pack.json` という設定ファイルを入れる事により、pack時の挙動等を制御する事ができる。
+
+## TextureAtlasを使う
+- [http://code.google.com/p/libgdx/wiki/TexturePacker#TextureAtlas]() を参照。以下はその解説
+    - `TextureAtlas atlas;` で領域を確保
+    - `atlas = new TextureAtlas(Gdx.files.internal("path/to/pack"));` を create() 時にでも行う。 `pack.atlas` と `pack.png` を両方同時に指定する為、ファイル名は `pack` だけでいいようだ。
+    - `Sprite sprite = atlas.createSprite("imagename");` で、 テクスチャの一部からSpriteインスタンスを生成する。この場合、元ファイル名は`imagename.png`のものが取り出せる。
+    - `NinePatch patch = atlas.createPatch("patchimagename");` 同様に、NinePatchインスタンスを生成。
+    - `atlas.dispose();` libgdxのライフサイクル通り。アプリ終了時に必ずdispose()する。
+
+## 自動packing
+- [http://code.google.com/p/libgdx/wiki/TexturePacker#Automatic_packing]() にある通り、アプリ起動時にpack処理を入れる事ができるらしい。ただしこれを行うには、ビルド時に `gdx-tools.jar` を含める必要があるようだ。
+
+
 # その他
 
 - desktop向けでは、ウィンドウの移動中やリサイズ中は完全にゲームが一時停止し、その検知はメインスレッドからは行えない(少なくともwindowsでは)。
