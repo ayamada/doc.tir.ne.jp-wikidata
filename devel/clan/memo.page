@@ -114,6 +114,20 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 - ソースディレクトリ内に `*.clj` を置いていてもコンパイルされない時は、中のファイルの文字コードをシステム文字コードと一致させるか、環境変数MAVEN_OPTSに `-Dfile.encoding=utf-8` 的な指定を追加してみる。
     - これは、 clojure-maven-plugin が内部で使っている `org.codehaus.plexus.compiler.util.scan.*` あたりの仕様のようだ。
 
+## 配布物のjarにcalのソースファイルを含めないようにするには
+- 以下のように、 `cal/pom.xml.in` にてexclude指定を行う。
+    - ただしこの指定を行うと `*warn-on-reflection*` が有効な時にエラーが出てしまう為、リリース時にのみこの設定を行うようにすべき。
+
+~~~
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <excludes><exclude>**/*.clj</exclude></excludes>
+        </configuration>
+      </plugin>
+~~~
 
 # はまりポイントまとめ
 自分がはまった/はまりそうだったポイントのリストです。CLANと似た事を自分でもやってみようという人向け。
