@@ -121,8 +121,6 @@ Miscellaneous
 - proguardがほとんど役に立たない
     - 名前のコンパクト化ができない
     - 動的なevalによって、今は参照されていないモジュールが呼ばれる可能性がある為、使ってないモジュールであっても除外できない
-    - `*.clj`がjar内に入る為、難読化する意味がない
-        - `*.clj`なしにする方法があるのかもしれないが、未調査(単に除去するだけだと動かなくなってしまった)
 
 - libgdxは日本語のドキュメントや解説がほとんどない
 
@@ -165,7 +163,7 @@ CLANは、2013/02/28現在、以下の環境を要求します。
 - android-2.3 (API LEVEL 9) 以上
 
 2013/02/28 に、windows vista(32bit)とgentoo(x86-32bit)上にて
-動作する事を確認しました。
+サンプルプロジェクトのビルドが動作する事を確認しました。
 
 
 Usage
@@ -760,6 +758,9 @@ I dont want boot screen.
 
 二回目起動時に、トップレベルのdefで定義した、以前に起動したプロセスの変数の内容が、android本体を再起動するまで残っている。
 :   [clan/libgdx#androidのdexキャッシュ問題]()を見てください。
+
+生成したjarにソースファイルを含めたくない
+:   [clan/memo#配布物のjarにcalのソースファイルを含めないようにするには]()を見てください。
 
 How to make windows exe for debug
 :   do `make jar inner-release-exe`. but it is dangerous and be discouraged.
