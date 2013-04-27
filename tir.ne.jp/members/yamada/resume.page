@@ -9,9 +9,35 @@ title: 山田の仕事募集用resume
 
 ただし、ここは公開されている領域なので、一部の情報は伏せています。
 
+- [#日本語要約版]()
 - [#日本語版]()
 - [#english-version]()
 
+# 日本語要約版
+「詳細すぎて分かりづらい」という意見をもらったので、要約版を作ってみました。
+
+## だれ？
+- 山田淳雄です。コンピュータ技術者です。
+
+## どうしたいの？
+- お金がないのでお仕事ください。個人様、企業様、どちらもokです。基本的に何でもやります。でも厄介な仕事は勘弁してください。料金は要相談、柔軟に対応します。
+
+## なにができるの？
+- android, windows, mac, その他デスクトップosで動くプログラムを作れます。→[http://vnctst.tir.jp/ja/games/driftcat_underworld.html]()
+- サーバで動くプログラム(例えばオンラインゲームのゲームサーバ等)を作れます。→[http://legacy.e.tir.jp/wiliki?speedygosh]()
+- 各種サーバをハードやosから自前で構築し、安定した保守ができます。10年以上の運用実績があります。→[http://doc.intra.tir.ne.jp/tir.ne.jp/history]()
+- ウェブサイトを構築できます。→[http://tir.jp/]()
+- 極簡単な動画作成ができます。→[http://www.youtube.com/watch?v=oR-fVowVQwA]()
+- その他、プログラムの開発および既存プログラムの改修ができます。
+    - 使用可能言語は、Scheme, Haskell, Clojure, Perl, HTML, CSS, JavaScript, jQuery, C, Java, D, PHP, Erlang, Python, Z80アセンブラ、等々。
+    - 使用可能ミドルウェアやライブラリやプロトコル等は、 MySQK, PostgreSQL, Apache, squid, delegated, libgdx, HTTP, SMTP, IRC, XML, JSON, maven、等々。
+    - 使用可能ツールは、GNU autotools, Makefile, sh, git, hg, DJB tools, 等々。
+
+## もっとくわしく
+- 以下の[#日本語版]()を読んでください。
+- もしくは、 `uint4096 ＠ gmail.com` か [`@rnkv`](https://twitter.com/rnkv) まで問い合わせを！
+
+----
 
 # 日本語版
 
@@ -115,7 +141,7 @@ GIMP
 Graphviz
 :   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]()→[https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() 等々
 aviutl
-:   [http://www.nicovideo.jp/watch/sm20266312]() 等の動画作成
+:   [http://www.youtube.com/watch?v=oR-fVowVQwA]() 等の動画作成
 vim
 :   [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim) - vimscriptとperlで書かれたvim用ircクライアントを、vim7系列でも動くようにする為のパッチの作成
 :   [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim) - 汎用のscheme.vimをベースとした、Gauche向けのsyntaxファイル (2004-2011年)
@@ -361,7 +387,7 @@ GIMP
 Graphviz
 :   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]() -> [https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() and other
 aviutl (famous software to edit movie in Japan)
-:   [http://www.nicovideo.jp/watch/sm20266312]() and other
+:   [http://www.youtube.com/watch?v=oR-fVowVQwA]() and other
 vim
 :   [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim)(japanese) - Patch for vimirc.vim
 :   [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim)(japanese) - Modified scheme.vim for Gauche (2004-2011)
