@@ -28,7 +28,7 @@ title: 山田の仕事募集用resume
     - 極簡単な動画作成ができます。→例：[http://www.youtube.com/watch?v=oR-fVowVQwA]()
     - その他、プログラムの開発および既存プログラムの改修ができます。
         - 使用可能言語は、Scheme, Haskell, Clojure, Perl, HTML, CSS, JavaScript, jQuery, C, Java, D, PHP, Erlang, Python, Z80アセンブラ、等々。
-        - 使用可能ミドルウェアやライブラリやプロトコル等は、 MySQK, PostgreSQL, Apache, squid, delegated, libgdx, HTTP, SMTP, IRC, XML, JSON, maven、等々。
+        - 使用可能ミドルウェアやライブラリやプロトコル等は、 MySQL, PostgreSQL, Apache, squid, delegated, libgdx, HTTP, SMTP, IRC, XML, JSON, maven、等々。
         - 使用可能ツールは、GNU autotools, Makefile, sh, git, hg, DJB tools, 等々。
 もっとくわしく
 :   - 以下の[#日本語版]()を読んでください。
