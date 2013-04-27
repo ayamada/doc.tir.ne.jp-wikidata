@@ -16,26 +16,23 @@ title: 山田の仕事募集用resume
 # 日本語要約版
 「詳細すぎて分かりづらい」という意見をもらったので、要約版を作ってみました。
 
-## だれ？
-- 山田淳雄です。コンピュータ技術者です。
-
-## どうしたいの？
-- お金がないのでお仕事ください。個人様、企業様、どちらもokです。基本的に何でもやります。でも厄介な仕事は勘弁してください。料金は要相談、柔軟に対応します。
-
-## なにができるの？
-- android, windows, mac, その他デスクトップosで動くプログラムを作れます。→[http://vnctst.tir.jp/ja/games/driftcat_underworld.html]()
-- サーバで動くプログラム(例えばオンラインゲームのゲームサーバ等)を作れます。→[http://legacy.e.tir.jp/wiliki?speedygosh]()
-- 各種サーバをハードやosから自前で構築し、安定した保守ができます。10年以上の運用実績があります。→[http://doc.intra.tir.ne.jp/tir.ne.jp/history]()
-- ウェブサイトを構築できます。→[http://tir.jp/]()
-- 極簡単な動画作成ができます。→[http://www.youtube.com/watch?v=oR-fVowVQwA]()
-- その他、プログラムの開発および既存プログラムの改修ができます。
-    - 使用可能言語は、Scheme, Haskell, Clojure, Perl, HTML, CSS, JavaScript, jQuery, C, Java, D, PHP, Erlang, Python, Z80アセンブラ、等々。
-    - 使用可能ミドルウェアやライブラリやプロトコル等は、 MySQK, PostgreSQL, Apache, squid, delegated, libgdx, HTTP, SMTP, IRC, XML, JSON, maven、等々。
-    - 使用可能ツールは、GNU autotools, Makefile, sh, git, hg, DJB tools, 等々。
-
-## もっとくわしく
-- 以下の[#日本語版]()を読んでください。
-- もしくは、 `uint4096 ＠ gmail.com` か [`@rnkv`](https://twitter.com/rnkv) まで問い合わせを！
+だれ？
+:   - 山田淳雄です。コンピュータ技術者です。
+どうしたいの？
+:   - お金がないのでお仕事ください。個人様、企業様、どちらもokです。基本的に何でもやります。でも厄介な仕事は勘弁してください。料金は要相談、柔軟に対応します。
+なにができるの？
+:   - android, windows, mac, その他デスクトップosで動くプログラムを作れます。→[http://vnctst.tir.jp/ja/games/driftcat_underworld.html]()
+    - サーバで動くプログラム(例えばオンラインゲームのゲームサーバ等)を作れます。→[http://legacy.e.tir.jp/wiliki?speedygosh]()
+    - 各種サーバをハードやosから自前で構築し、安定した保守ができます。10年以上の運用実績があります。→[http://doc.intra.tir.ne.jp/tir.ne.jp/history]()
+    - ウェブサイトを構築できます。→[http://tir.jp/]()
+    - 極簡単な動画作成ができます。→[http://www.youtube.com/watch?v=oR-fVowVQwA]()
+    - その他、プログラムの開発および既存プログラムの改修ができます。
+        - 使用可能言語は、Scheme, Haskell, Clojure, Perl, HTML, CSS, JavaScript, jQuery, C, Java, D, PHP, Erlang, Python, Z80アセンブラ、等々。
+        - 使用可能ミドルウェアやライブラリやプロトコル等は、 MySQK, PostgreSQL, Apache, squid, delegated, libgdx, HTTP, SMTP, IRC, XML, JSON, maven、等々。
+        - 使用可能ツールは、GNU autotools, Makefile, sh, git, hg, DJB tools, 等々。
+もっとくわしく
+:   - 以下の[#日本語版]()を読んでください。
+    - もしくは、 `uint4096 ＠ gmail.com` か [`@rnkv`](https://twitter.com/rnkv) まで問い合わせを！
 
 ----
 
