@@ -61,6 +61,9 @@ Advantages
     - But `*.exe` need Java Runtime Environment
     - If you dont have android-sdk, still you can build only jar
 
+- It build completely on CLI based environment
+    - Compatibly for Jenkins and other CLI tools
+
 Didvantages
 
 - Too fat (jar:8.3M over, exe:8.4M over, apk:2.5M over)
@@ -98,6 +101,9 @@ Miscellaneous
 - android向けapk、windows向けexe、その他デスクトップos向けjar、を生成可能
     - ただし `*.exe` は実行にjavaインストールが必要
     - android-sdkを入れずに `*.jar` だけ生成する事もできます
+
+- 完全にコマンドラインベースの環境上に構築可能
+    - Jenkins等と相性が良い
 
 短所
 
