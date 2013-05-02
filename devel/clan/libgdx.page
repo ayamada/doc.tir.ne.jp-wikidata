@@ -132,9 +132,10 @@ title: libgdxメモ
 ## TextureAtlasを使う
 - [http://code.google.com/p/libgdx/wiki/TexturePacker#TextureAtlas]() を参照。以下はその解説
     - `TextureAtlas atlas;` で領域を確保
-    - `atlas = new TextureAtlas(Gdx.files.internal("path/to/pack"));` を create() 時にでも行う。 `pack.atlas` と `pack.png` を両方同時に指定する為、ファイル名は `pack` だけでいいようだ。
+    - `atlas = new TextureAtlas(Gdx.files.internal("path/to/pack"));` を create() 時にでも行う。 `"pack.atlas"` と `"pack.png"` を両方同時に指定する為、ファイル名は拡張子抜きの `"pack"` だけでいいようだ。
     - `Sprite sprite = atlas.createSprite("imagename");` で、 テクスチャの一部からSpriteインスタンスを生成する。この場合、元ファイル名は`imagename.png`のものが取り出せる。
     - `NinePatch patch = atlas.createPatch("patchimagename");` 同様に、NinePatchインスタンスを生成。
+    - `AtlasRegion region = atlas.findRegion("imagename");` 同様に、AtlasRegionインスタンスを生成。AtlasRegionはTextureRegionとして利用可能。
     - `atlas.dispose();` libgdxのライフサイクル通り。アプリ終了時に必ずdispose()する。
 
 ## 自動packing
