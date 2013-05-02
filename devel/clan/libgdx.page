@@ -132,14 +132,16 @@ title: libgdxメモ
 ## TextureAtlasを使う
 - [http://code.google.com/p/libgdx/wiki/TexturePacker#TextureAtlas]() を参照。以下はその解説
     - `TextureAtlas atlas;` で領域を確保
-    - `atlas = new TextureAtlas(Gdx.files.internal("path/to/pack"));` を create() 時にでも行う。 `"pack.atlas"` と `"pack.png"` を両方同時に指定する為、ファイル名は拡張子抜きの `"pack"` だけでいいようだ。
-    - `Sprite sprite = atlas.createSprite("imagename");` で、 テクスチャの一部からSpriteインスタンスを生成する。この場合、元ファイル名は`imagename.png`のものが取り出せる。
+    - `atlas = new TextureAtlas(Gdx.files.internal("path/to/pack.atlas"));` を create() 時にでも行う。この指定で `"pack.atlas"` と `"pack.png"` を両方同時に指定するのと同じ効果があるようだ。
+    - `Sprite sprite = atlas.createSprite("imagename");` で、 テクスチャの一部からSpriteインスタンスを生成する。この場合、元ファイル名は`imagename.png`のものが取り出せる。引数指定時に、元ファイルについていた拡張子は含めてはならない。
     - `NinePatch patch = atlas.createPatch("patchimagename");` 同様に、NinePatchインスタンスを生成。
     - `AtlasRegion region = atlas.findRegion("imagename");` 同様に、AtlasRegionインスタンスを生成。AtlasRegionはTextureRegionとして利用可能。
     - `atlas.dispose();` libgdxのライフサイクル通り。アプリ終了時に必ずdispose()する。
 
 ## 自動packing
-- [http://code.google.com/p/libgdx/wiki/TexturePacker#Automatic_packing]() にある通り、アプリ起動時にpack処理を入れる事ができるらしい。ただしこれを行うには、ビルド時に `gdx-tools.jar` を含める必要があるようだ。
+- [http://code.google.com/p/libgdx/wiki/TexturePacker#Automatic_packing]() にある通り、アプリ起動時にpack処理を入れる事ができる。
+    - ただしこれを行うには、ビルド時に `gdx-tools.jar` を含める必要がある。
+    - また、pack処理は結構時間がかかるので毎回起動時にpackするのは微妙かもしれない。
 
 ## その他の特性など
 - デフォルトでは、packされた各画像は最外部の1ドットが引き伸ばされた形式で保存される(つまり元画像が16x16なら18x18になる)。これは`GL_LINEAR`での拡大縮小時の用途。`GL_LINEAR`を使わないなら`pack.json`で切ってもいいし、そのままでもサイズ以外には別に問題はない。
