@@ -158,6 +158,8 @@ title: libgdxメモ
 
 # その他
 
+- desktopのみ対象にしてマウスの右クリックや移動を検知するには、InputProcessorを使う → [http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/InputProcessor.html]()
+
 - `Gdx.files.internal("path/to/dir/").list()` で、assets内の特定ディレクトリ内のファイルを取得できるが、これはdesktopでは動かない。理由は、apkではインストール時にファイルが展開されるのでFSとしてアクセスできるが、jarおよびexeではファイルが展開される訳ではない為。
     - 対策としては、単にコンパイルするタイミングで、特定ディレクトリ内のファイル一覧を取得してdumpしておけばよい。
 
