@@ -879,8 +879,6 @@ TODO
         - add more gimmick
 
     - 増やし忘れ対策 of `PROJECT_ANDROID_VERSIONCODE` in configure.in
-    - improve BootLoader
-        - LwjglApplicationやAndroidApplicationから、ApplicationListenerを完全に差し替えてしまう事が可能か調べる(勿論portableな方法でないといけない)
 
 - more later
     - enable proguard.cfg ( remove `-dontshrink` and tune-up )
@@ -888,7 +886,6 @@ TODO
     - maintain documents
     - translate from japanese comment to english in source
     - report to libgdx community
-    - how to use `libgdx/extensions/*`
     - more modular
     - more portable
     - more simple
