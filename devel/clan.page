@@ -768,6 +768,9 @@ I dont want boot screen.
 生成したjarにソースファイルを含めたくない
 :   [clan/memo#配布物のjarにcalのソースファイルを含めないようにするには]()を見てください。
 
+calのpomにライブラリを追加したら、PCでは動くのにdx.jarのコンパイル時に「`already added`」と言われて通らない
+:   追加したライブラリのscopeを`provided`にしてください。
+
 How to make windows exe for debug
 :   do `make jar inner-release-exe`. but it is dangerous and be discouraged.
 
