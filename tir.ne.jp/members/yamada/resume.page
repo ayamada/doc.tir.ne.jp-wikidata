@@ -29,7 +29,7 @@ title: 山田の仕事募集用resume
     - その他、プログラムの開発および既存プログラムの改修ができます。
         - 使用可能言語は、Scheme, Haskell, Clojure, Perl, HTML, CSS, JavaScript, jQuery, C, Java, D, PHP, Erlang, Python, Z80アセンブラ、等々。
         - 使用可能ミドルウェアやライブラリやプロトコル等は、 MySQL, PostgreSQL, qdbm, Apache, squid, delegated, libgdx, HTTP, SMTP, IRC, XML, JSON, maven、等々。
-        - 使用可能ツールは、GNU autotools, Makefile, sh, git, hg, DJB tools, 等々。
+        - 使用可能ツールは、GNU autotools, Makefile, sh, git, hg, DJB tools, dropbox、等々。
 もっとくわしく
 :   - 以下の[#日本語版]()を読んでください。
     - もしくは、 `uint4096 ＠ gmail.com` か [`@rnkv`](https://twitter.com/rnkv) まで問い合わせを！
@@ -139,6 +139,8 @@ Graphviz
 :   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]()→[https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() 等々
 aviutl
 :   [http://www.youtube.com/watch?v=oR-fVowVQwA]() 等の動画作成
+dropbox
+:   linuxサーバとの同期による自動化など
 vim
 :   [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim) - vimscriptとperlで書かれたvim用ircクライアントを、vim7系列でも動くようにする為のパッチの作成
 :   [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim) - 汎用のscheme.vimをベースとした、Gauche向けのsyntaxファイル (2004-2011年)
@@ -385,6 +387,8 @@ Graphviz
 :   [https://github.com/ayamada/clan/blob/master/doc/dependencies.dot]() -> [https://github.com/ayamada/clan/blob/master/doc/dependencies.png]() and other
 aviutl (famous software to edit movie in Japan)
 :   [http://www.youtube.com/watch?v=oR-fVowVQwA]() and other
+dropbox
+:   Sync from Windows-PC to Linux server for automatization and other
 vim
 :   [http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim](http://legacy.e.tir.jp/wiliki?vim%3avimirc.vim)(japanese) - Patch for vimirc.vim
 :   [http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim](http://legacy.e.tir.jp/wiliki?vim%3ascheme.vim)(japanese) - Modified scheme.vim for Gauche (2004-2011)
