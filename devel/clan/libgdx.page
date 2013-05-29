@@ -135,8 +135,10 @@ title: libgdxメモ
     - `atlas = new TextureAtlas(Gdx.files.internal("path/to/pack.atlas"));` を create() 時にでも行う。この指定で `"pack.atlas"` と `"pack.png"` を両方同時に指定するのと同じ効果があるようだ。
     - `Sprite sprite = atlas.createSprite("imagename");` で、 テクスチャの一部からSpriteインスタンスを生成する。この場合、元ファイル名は`imagename.png`のものが取り出せる。引数指定時に、元ファイルについていた拡張子は含めてはならない。
     - `AtlasRegion region = atlas.findRegion("imagename");` 同様に、AtlasRegionインスタンスを生成。AtlasRegionはTextureRegionとして利用可能。
-    - `NinePatch patch = atlas.createPatch("patchimagename");` 同様に、NinePatchインスタンスを生成。ただし元画像は予めninepatch splitsでなくてはならない。普通に指定したい場合はfindRegionを使った方がいい。
+    - `NinePatch patch = atlas.createPatch("patchimagename");` 同様に、NinePatchインスタンスを生成。ただし元画像はninepatch splits(.9.png)形式でなくてはならない。
     - `atlas.dispose();` libgdxのライフサイクル通り。アプリ終了時に必ずdispose()する。
+    - `Array<Sprite> sprites = atlas.createSprites("imagename");` hoge_02.png 形式の連番画像をSpriteの配列として取り出す。
+    - `Array<AtlasRegion> regions = atlas.findRegions("imagename");` hoge_02.png 形式の連番画像をAtlasRegionの配列として取り出す。
 
 ## 自動packing
 - [http://code.google.com/p/libgdx/wiki/TexturePacker#Automatic_packing]() にある通り、アプリ起動時にpack処理を入れる事ができる。
