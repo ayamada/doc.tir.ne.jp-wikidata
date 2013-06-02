@@ -17,6 +17,7 @@ TODO: あとでリンク化する事
 
 - ビットマップ化は[Hiero](https://code.google.com/p/libgdx/wiki/Hiero)にやらせる。
     - ダウンロードは[libgdx公式のダウンロード一覧](http://code.google.com/p/libgdx/downloads/list)から可能。
+        - 今後はgdx-tools内蔵になるようだ→[http://code.google.com/p/libgdx/wiki/Hiero]()
     - RenderingをNativeにするとOSのレンダラによってフォントが描画されるので、より綺麗にレンダリングされる場合がある(OSによる)。しかしGlyphの詰め込みが行われなくなってしまう(Glyph cache表示にしてみると分かる)。なので基本はRenderingはJavaを選択する。
     - 事前に、ビットマップ化したい文字の一覧のテキストファイルを用意しておき、コピペでtextareaに貼り付ける。
         - 何故か、全角空白が判定されない為、エディタで`*.fnt`ファイルをいじり、全角空白のエントリを追加する。
