@@ -3,7 +3,7 @@ toc: yes
 title: CLAN : Clojure, LibGDX, Android, Neko アプリケーション構築キット
 ...
 
-![](/devel/clan/logo_b.png)
+<div style="text-align:center"><img src="/devel/clan/logo_b.png" /></div>
 
 CLAN : Clojure, LibGDX, Android, Neko application construct kit
 ===============================================================
