@@ -7,6 +7,11 @@ hoge: テスト
 
 このページはgititそのものの動作確認をする為の、内部用ページです。
 
+<div class="frame" markdown="1" style="border:1px solid">
+# markdown_phpextraが有効かどうかのテスト
+有効なようだ
+</div>
+
 # single-quotが「＆＃３９；」ではなく「＆＃８２１７；」になる件
 - '
 
