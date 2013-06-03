@@ -27,8 +27,8 @@ title: CLANまえがき
         - うちのPCではOpenGL 2.0うごかん。それでもandroid向けデプロイには別に問題はないが、今回はパスする事に
 
 - [libgdx](http://libgdx.badlogicgames.com/)
-    - 書籍[Androidゲームプログラミング A to Z](http://www.impressjapan.jp/books/3113)([amazon](http://www.amazon.co.jp/dp/4844331132))(これは非常に良い本だった)の著者が主メンテナ
-    - android, PC(java), html5に対してdeploy可能。iOSは現在開発中(かつ別途MonoTouchライセンスが必要)
+    - 書籍[Androidゲームプログラミング A to Z](http://www.impressjapan.jp/books/3113)([amazon](http://www.amazon.co.jp/o/ASIN/4844331132/tirnejp-22))(これは非常に良い本だった)の著者が主メンテナ
+    - android, PC(java), html5に対してdeploy可能。iOSは現在開発中
     - PlayNよりも(C的な意味で)自由度が高い(libgdxのポリシー等については前述の書籍参照)
     - OpenGLES 2.0相当以上の機能を使うかどうかは選択可能
         - うちのPCでもうごく
