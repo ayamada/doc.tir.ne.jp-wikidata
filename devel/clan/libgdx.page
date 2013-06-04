@@ -160,6 +160,8 @@ title: libgdxメモ
 
 # その他
 
+- libgdxのmavenリポジトリには現在のところnightly buildしか登録されておらず、安定版は登録されていない。なので安定版をmaven等で使いたい場合は自前でローカルリポジトリに入れる必要がある。
+
 - desktopのみ対象にしてマウスの右クリックや移動を検知するには、InputProcessorを使う → [http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/InputProcessor.html]()
 
 - `Gdx.files.internal("path/to/dir/").list()` で、assets内の特定ディレクトリ内のファイルを取得できるが、これはdesktopでは動かない。理由は、apkではインストール時にファイルが展開されるのでFSとしてアクセスできるが、jarおよびexeではファイルが展開される訳ではない為。
