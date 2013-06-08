@@ -837,6 +837,25 @@ CLAN開発者である山田は現在お仕事募集中です。
 - see [http://tir.jp/RSM]().
 
 
+DONATE
+------
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_donations" />
+  <input type="hidden" name="business" value="T47SCVZKCCHWL" />
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+  <input type="hidden" name="lc" value="en_US" />
+</form>
+
+Please give me(ayamada, developer of CLAN) a money for develop to CLAN.
+
+CLAN開発の為の資金援助も募集中です。
+ただし日本ではPayPal経由での寄付はできません(詳細はぐぐってください)。
+代わりに、下のページからamazonで買い物をしていただけると非常に助かります。
+
+- [http://vnctst.tir.jp/ja/misc/amazon.html]() (for Japanese)
+
+
 Link
 ----
 
