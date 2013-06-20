@@ -356,11 +356,13 @@ android向けの署名付き`*.apk`を生成します。
 
 4. まだapk署名用の鍵を作ってなければ、作成します。
 
+    - [http://developer.android.com/intl/ja/tools/publishing/app-signing.html#cert]() を見ながら、正しく生成し直しましょう。 `-keyalg` の指定を忘れないようにする事(androidでは `SHA1withRSA` であるべきらしい)。
+
     - コンソールから以下のコマンドを実行します。
       質問されるので適切に入力し、パスワード等も決めてください。
 
         ~~~{.bash .numberLines}
-        keytool -genkey -keystore path/to/NAME.keystore -validity 36500 -alias NAME
+        keytool -genkey -v -keystore path/to/NAME.keystore -alias NAME -keyalg RSA -keysize 2048 -validity 36500
         ~~~
 
     - ファイル名およびalias名は自分で決めてください。
@@ -683,10 +685,17 @@ How to use external library from clojars and etc
     scopeがprovidedになってない事を確認する事。
     providedになってたらバイナリに含まれない。compileにしとく。
 
+apk生成時に "java.security.SignatureException: private key algorithm is not compatible with signature algorithm" というエラーが出る
+:   あなたの生成した鍵の `-genkey` 指定がおかしいようです。
+    [http://developer.android.com/intl/ja/tools/publishing/app-signing.html#cert]() を見ながら、正しく `-genkey` を指定して鍵を生成し直しましょう。
+
 Cannot create dex file
 :   bump up to value of `<jvmArgument>` in `android/pom.xml.in`.
 dexファイルの生成に失敗するようになった
 :   `android/pom.xml.in`内の`<jvmArgument>`の値を増やしてください。
+
+dexファイルの生成がいつまでたっても終わらない。cpuも使っていない
+:   おそらくdex内にcom.google.androidのjarを内包しようとしています。 dependencies 指定を見直してみてください。
 
 My app is too slow on android-real-machine.
 :   enabling
