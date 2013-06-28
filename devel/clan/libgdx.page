@@ -78,21 +78,31 @@ title: libgdxメモ
 - Preferences のデータの保存先
     - androidでは、androidのSharedPreferences内。
         - 仕様上では最大8kとなっているが、実質的には最大2k程度。
+        - 詳細は、後述の[#preferencesについて]()を参照。
     - windowsでは、 `C:\Users\{USERNAME}\.prefs\{PREFNAME}\` 内。
         - androidとは違い、他のlibgdx利用アプリと共通なので、
           PREFNAMEはきちんとuniqueな名前にする必要がある！
     - windows以外のdesktopでは、 `~/.prefs/{PREFNAME}/` 内。
         - PREFNAMEについてはwindowsと同じ注意が必要！
 
-- 上記の通り、Preferencesの保存先はandroid以外では面倒事があるので、PC向けデプロイを考えているなら、Preferencesを全く使わずに自前でセーブファイルを管理した方がいい。
-    - しかしこの場合も、何も考えずに Gdx.files.local() 等に書き出すと、PCでは(jarのあるディレクトリではなく)jarを起動した時のカレントディレクトリに書き出されてしまい位置が固定にならないので、結局、 Gdx.app.getType() を見た上で、自分でセーブロードの保存先を適切に判定する必要がある。
-        - androidは、そのまま Gdx.files.local() でよい
-        - windowsは、jarの置いてあるディレクトリに。 `System.getProperty("java.class.path")` を元にディレクトリを求める
-        - windows以外のPCは、 `System.getProperty("user.home")+"/.appname/"` あたりで。
-            - windowsかどうかの判定は `System.getProperty("file.separator")` から判定するのが手軽("os.name"だと微妙に不安がある)
+- 上記の通り、Preferencesの保存先はandroid以外では面倒事があるので、PC向けデプロイを考えているなら、androidデプロイ時はPreferencesに保存するが、desktopデプロイ時はPreferences全く使わずに自前でセーブファイルに保存する、等のようにした方がいいと思う。
+- 自前でセーブファイルを扱う場合、何も考えずに Gdx.files.local() 等に書き出すと、PCでは(jarのあるディレクトリではなく)jarを起動した時のカレントディレクトリに書き出されてしまい位置が固定にならないので、結局、 Gdx.app.getType() を見た上で、自分でセーブロードの保存先を適切に判定する必要がある。
+    - androidは、そのまま Gdx.files.local() でよい
+    - windowsは、jarの置いてあるディレクトリに。 `System.getProperty("java.class.path")` もしくは `` あたりを元にディレクトリを求める
+    - windows以外のPCは、 `System.getProperty("user.home")+"/.appname/"` あたりがいい？それともwindowsと同じ扱いとすべきか？迷うところ
+        - windowsかどうかの判定は `System.getProperty("file.separator")` から判定するのが手軽("os.name"だと微妙に不安がある)
 
 - android実機では「電話がかかってきて中断→そのまま電源オフ」の即死コンボがある為、「セーブポイントでのみセーブ可能」のような状況はまずい！
     - ほとんどすべてのゲーム用データを保持している変数/構造体は、pause()時にシリアライズして上記通りのディレクトリに書き出し、create()/resume()時に読み込むぐらいの気がまえが必要なようだ。
+
+
+# Preferencesについて
+
+- prefはSharedPreferencesらしいけど、他アプリと共有なの？
+    - SharedPreferences 自体はアプリ毎に個別です。ただし、明示的に他アプリのContextを指定する事で他アプリのPreferencesを読み書きする事も可能なので「SharedPreferences」という名前になっているようです。
+    - ※ただし、desktop向けデプロイでは単にホームディレクトリ上の `~/.prefs/` ディレクトリに保存されるだけなので、libgdxを使うアプリではごちゃまぜになる為、「androidではprefに保存、desktopではファイルに保存」等と処理を分けた方が無難。
+- libgdxでは `getSharedPreferences(name, Context.MODE_PRIVATE)` のように、 MODE_PRIVATE でハードコーディングされている。よって他アプリからデータが読み取られる事はないようだ。
+
 
 
 # 端末の向き
