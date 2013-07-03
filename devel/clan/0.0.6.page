@@ -52,11 +52,11 @@ Repository
 Child pages
 -----------
 
-- [clan/introduction](): 別に読まなくてもよい前書き
-- [clan/libgdx](): libgdxメモ
-- [clan/license](): 沢山のソフトが結合した結果、大変な事になったライセンス解説
-- [clan/assets](): アセット回りの話
-- [clan/memo](): 雑多なメモ。とりあえず何でもここに書く。あとで分類する予定。
+- [introduction](): 別に読まなくてもよい前書き
+- [libgdx](): libgdxメモ
+- [license](): 沢山のソフトが結合した結果、大変な事になったライセンス解説
+- [assets](): アセット回りの話
+- [memo](): 雑多なメモ。とりあえず何でもここに書く。あとで分類する予定。
 
 
 Advantages / Disadvantages
@@ -340,7 +340,7 @@ jp.ne.tir.drop.drop モジュールの各関数をメモリ上でのみ上書き
     - また、androidで動的に変更した内容は、
       次回のアプリ起動時にも引き継がれてしまうようです。
       REPLを利用したデバッグ時には注意が必要です。
-        - この件については、[clan/libgdx#androidのdexキャッシュ問題]()も参照してください。
+        - この件については、[libgdx#androidのdexキャッシュ問題]()も参照してください。
 
 「これで完成だ」と思ったら、リリースを行います。
 
@@ -782,10 +782,10 @@ I dont want boot screen.
 :   android実機では一度起動したプログラムはしばらくキャッシュされる為、二回目以降の起動は高速に行えます。起動画面は起動に時間がかかるのをごまかす為のものなので、高速起動できるなら起動画面を出す必要はないので、バージョン0.0.4からは出さないようにしました。
 
 二回目起動時に、トップレベルのdefで定義した、以前に起動したプロセスの変数の内容が、android本体を再起動するまで残っている。
-:   [clan/libgdx#androidのdexキャッシュ問題]()を見てください。
+:   [libgdx#androidのdexキャッシュ問題]()を見てください。
 
 生成したjarにソースファイルを含めたくない
-:   [clan/memo#配布物のjarにcalのソースファイルを含めないようにするには]()を見てください。
+:   [memo#配布物のjarにcalのソースファイルを含めないようにするには]()を見てください。
 
 calのpomにライブラリを追加したら、PCでは動くのにdx.jarのコンパイル時に「`already added`」と言われて通らない
 :   追加したライブラリのscopeを`provided`にしてください。
@@ -810,10 +810,10 @@ android実機でEキーなんて押せねーよ！
     もしくはbluetoothキーボードを用意。
 
 How do license?
-:   see [clan/license]()(sorry, use translator).
+:   see [license]()(sorry, use translator).
 
 ライセンスどうすればいい？
-:   [clan/license]() を見てください。
+:   [license]() を見てください。
 
 nekoの使い方がわからない
 :   androidではActivity内に子Activityを持つ構造が普通で、
@@ -843,7 +843,7 @@ What is assets of sample game?
 :   自作した。全部俺。
 
 Etc...
-:   see [clan/memo]().
+:   see [memo]().
 
 
 WANTED
@@ -888,7 +888,7 @@ CLAN have [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 Which can be found in the file [LICENSE](https://github.com/ayamada/clan/blob/master/LICENSE).
 
-see [clan/license]().
+see [license]().
 
 
 TODO
