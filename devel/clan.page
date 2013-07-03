@@ -1,46 +1,60 @@
 ---
 toc: yes
-title: CLAN : Clojure, LibGDX, Android, Neko アプリケーション構築キット
+title: CLAN : Clojure, LibGDX, Android, Neko application construct kit
 ...
+
+
+Sorry, I am rewriting this document now. Old document (for version 0.0.6) is here. -> [clan/0.0.6]()
+
+現在ドキュメントの書き直し中です。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
+
+----
 
 <div style="text-align:center"><img src="/devel/clan/logo_b.png" /></div>
 
-CLAN : Clojure, LibGDX, Android, Neko application construct kit
-===============================================================
-
-CLAN supply to an environment that construct android application using
-libgdx by only clojure code. You must understand to clojure and libgdx.
-
-WARNING: This package version is 0.0.6 . It cannot upgrade
-to future version 1.0.0 . Please try to CLAN if you still OK.
-
-* * * * *
+**CLAN : Clojure, LibGDX, Android, Neko application construct kit**
 
 **CLAN : Clojure, LibGDX, Android, Neko アプリケーション構築キット**
 
-これは「clojureのコード書くだけでlibgdx使ったandroidアプリができた！」を
-実現する為のアプリ構築キットです。
-別途、clojureとlibgdxの知識が必要です。
 
-注意：現在のバージョンは 0.0.6 です。
-TODOにある「lein化」と「platform別ライブラリ化」が完了した時点で
-バージョン 1.0.0 とします。 この 0.0.6 から 1.0.0
-へのアップデートは非常に困難ですが、
-それでもいい人は試してみてください。
+Abstract
+========
 
-( cal 内は多分そのまま使えますが、 configure.in 等は移行不可能です。)
+- CLAN is ...
+    - If you write [LibGDX](http://libgdx.badlogicgames.com/)'s [ApplicationListener](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html) by **Clojure**, then CLAN can run this.
+      And, CLAN can deploy to jar(for many desktop OS with Java), exe(for Windows with Java), apk(for Android).
+        - Therefore, you shall be able to understand LibGDX and Clojure, if you want to use CLAN.
+    - CLAN can use nREPL.
+        - but it is very inconvenience, because it has problem that [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]().
+    - CLAN have splash screen on loading Clojure at boot.
+        - Can replace logo image.
+    - CLAN is completely CLI (unnecessary GUI).
+    - CLAN work on UNIX like OS, Mac, and Windows!
 
-- 紹介動画を作りました → [http://www.nicovideo.jp/watch/sm20266312]()
+----
+
+**概要**
+
+- CLANとは
+    - [LibGDX](http://libgdx.badlogicgames.com/)の[ApplicationListener](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html)を「Clojureで」書いたものを、実行させたり、jarやexeやapkにデプロイしたりする事のできる開発キットです。
+        - よって、CLANを使いたい人はLibGDXとClojureを理解している必要があります。
+    - nREPLが使える
+        - ただしかなり不便、問題点は [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]() に書いてある
+    - プロセス起動時のClojureロード時に起動ロゴ等の画像を表示する機能あり
+        - ロゴ画像は入替可能
+    - 完全にcliベースでのビルドやデプロイが可能(gui環境不要)
+    - unix風環境、mac、windows環境でも動く！
 
 
 Repository
-----------
+==========
 
 - [https://github.com/ayamada/clan]()
 
 
 Child pages
------------
+===========
+(sorry, these pages are written in japanese)
 
 - [clan/introduction](): 別に読まなくてもよい前書き
 - [clan/libgdx](): libgdxメモ
@@ -49,127 +63,49 @@ Child pages
 - [clan/memo](): 雑多なメモ。とりあえず何でもここに書く。あとで分類する予定。
 
 
-Advantages / Disadvantages
---------------------------
-
-Advantages
-
-- Android get the power of LibGDX and Lisp
-    - Java dont have macro, but Clojure have macro
-
-- Can deploy to apk for Android, exe for Windows, jar for other desktop OS
-    - But `*.exe` need Java Runtime Environment
-    - If you dont have android-sdk, still you can build only jar
-
-- It build completely on CLI based environment
-    - Compatibly for Jenkins and other CLI tools
-
-Didvantages
-
-- Too fat (jar:8.3M over, exe:8.4M over, apk:2.5M over)
-
-- Boot slowly
-
-- You must write specialized clojure-code for Android
-  (typical clojure-code work better on PC, but it has problems on Android)
-    - But we have macro! Maybe CLAN will be provided many macros in future.
-
-- Deploy for GWT and iOS were not supported yet
-    - I support to iOS in future.
-      But it is needed to mac, iOS-machine, developer license,
-      and MonoTouch license, etc ...
-      Now I have no money, and no income.
-      I start to support iOS in CLAN when I get constantly income.
-
-- proguard only work a bit
-    - cannot name compaction
-    - cannot remove unused modules
-    - worthless obfuscate because `*.clj` is in jar
-
-Miscellaneous
-
-- using autoconf, make, maven (change to only lein in future)
-
-* * * * *
-
-長所
-
-- libgdxとlispが両方そなわり最強に見える
-    - android上でのアセンブラであるところのjavaの為に、「マクロ付きjava」としてもclojureは利用できる
-    - マクロ無しにjavaだけで最適化をやろうとすると頭がおかしくなって死ぬ
-
-- android向けapk、windows向けexe、その他デスクトップos向けjar、を生成可能
-    - ただし `*.exe` は実行にjavaインストールが必要
-    - android-sdkを入れずに `*.jar` だけ生成する事もできます
-
-- 完全にコマンドラインベースの環境上に構築可能
-    - Jenkins等と相性が良い
-
-短所
-
-- でかい(jar:8.3M～, exe:8.4M～, apk:2.5M～)
-
-- 起動が遅い
-    - clojureの初期化に時間がかかる(これをごまかす為に起動ロゴを表示している)。
-    - 上記とは別に、デスクトップ向けexe/jarにて、アンチウイルスソフトによる実行前チェックが走り、それに10秒程度かかる事がある様子。これはCLANの問題ではなく、巨大なjarを持つjava製アプリ全般の問題のようで、どうも対策は無理っぽい。
-
-- android向けに特化したclojureコードを書かなくてはいけない
-  (普通の書き方のclojureコードは、PCでは問題なく動くがandroid上で色々と問題がある)
-    - だが我々にはマクロがある。時の経過と共にCLAN向けマクロは充実する予定
-
-- libgdxはGWTとiOSへのデプロイにも対応しているが、これらはCLANでは未対応
-    - iOSについては将来対応したいと思っているが、これには、
-      mac本体, iOS入りマシン, developer license, MonoTouch license,
-      等を購入しなくてはならず、現在のayamadaの資金では無理。
-      ayamadaがコンスタントな収入を得られるようになってから
-      対応が開始される予定。
-
-- proguardがほとんど役に立たない
-    - 名前のコンパクト化ができない
-    - 動的なevalによって、今は参照されていないモジュールが呼ばれる可能性がある為、使ってないモジュールであっても除外できない
-
-- libgdxは日本語のドキュメントや解説がほとんどない
-
-その他の特徴
-
-- autoconf + make + maven 使用(将来はleinのみにしたい)
-
-
 Requirement
------------
+===========
 
-see [env]().
+- Commonly-used CLI environment
+    - sh, GNU make(gmake), GNU autotools(autoconf), wget, unzip
+        - If you use Windows, these are in [MinGW/MSYS](http://www.mingw.org/).
+            - But, you will be update wget's cert, maybe.
+- [JDK 1.6](http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html) or [OpenJDK 1.6](http://openjdk.java.net/)
+    - If you build Android's apk, you must use 1.6, NOT 1.7 (Android SDK requires 1.6)
+    - If you don't build Android's apk, you can use 1.7
+- [JRE 1.6 or later (recommend 1.7)](http://java.com/en/download/) or [OpenJDK Runtime Environment](http://openjdk.java.net/)
+- [Leiningen](https://github.com/technomancy/leiningen/)
+- (optional) [Android SDK](http://developer.android.com/sdk/) (for Android's apk)
+- (optional) [Launch4j](http://launch4j.sourceforge.net/) (for Windows' exe)
 
-(sorry, this document is written in japanese, please use translator.)
+I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Linux(x86-32bit) on 2013/02/28.
 
-On 2013/02/28, CLAN is required to ...
+----
 
-- jre 1.6 or 1.7
-- jdk 1.6 (not supported jdk 1.7)
-- clojure 1.4.0 or greater(use clojue 1.5.0 on default)
-- libgdx 0.9.7
-- android-2.3 (API LEVEL 9) or greater
+- 一般的なCLI環境
+    - sh, GNU make(gmake), GNU autotools(autoconf), wget, unzip
+        - windows環境の場合は、[MinGW/MSYS](http://www.mingw.org/)に全て入ってます
+            - ただし、おそらく[wgetのcertを更新しておく](http://d.hatena.ne.jp/bellbind/20110612/1307848645)必要があります
+- [JDK 1.6](http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html) か [OpenJDK 1.6](http://openjdk.java.net/)
+    - もしandroid用apkをビルドしたい場合、バージョンは1.6でないといけません(android sdkが1.6でないと動かない為)。
+    - android用apkが不要な場合は1.7でokです
+- [JRE 1.6 もしくはそれ以降 (1.7推奨)](http://java.com/en/download/) もしくは [OpenJDK Runtime Environment](http://openjdk.java.net/)
+- [Leiningen](https://github.com/technomancy/leiningen/)
+- (optional) [Android SDK](http://developer.android.com/sdk/) (android用apkを生成したい場合のみ)
+- (optional) [Launch4j](http://launch4j.sourceforge.net/) (windows用exeを生成したい場合のみ)
 
-I look see that CLAN worked on microsoft windows vista(x86-32bit),
-gentoo linux(x86-32bit) on 2013/02/28.
+2013/02/28 に、windows vista(32bit)とgentoo(x86-32bit)上にてサンプルプロジェクトのビルドが動作する事を確認しています。
 
-* * * * *
+各種のインストールについては、 [env]() が参考になるかもしれません。
 
-[env]() を見て、手元の環境を同様の状態に構築しておいてください。
 
-(これはwindows上に構築する前提の手順です。
-windows以外なら手順が違いますが、もっと簡単に要求物を構築できるでしょう。)
 
-CLANは、2013/02/28現在、以下の環境を要求します。
 
-- jre 1.6 もしくは 1.7
-- jdk 1.6 (jdk 1.7 は未サポート)
-- clojure 1.4.0 以上(デフォルトではclojure 1.5.0を自動的に使用)
-- libgdx 0.9.7
-- android-2.3 (API LEVEL 9) 以上
+続きはあとで書く
 
-2013/02/28 に、windows vista(32bit)とgentoo(x86-32bit)上にて
-サンプルプロジェクトのビルドが動作する事を確認しました。
+<!--
+
+
 
 
 Usage
@@ -921,5 +857,6 @@ TODO
     - more portable
     - more simple
 
+-->
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
