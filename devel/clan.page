@@ -249,6 +249,7 @@ If you install Android SDK, you can run sample application on android.
 ~~~{.bash .numberLines}
 make android-run
 ~~~
+
 To build for Android need very large memory(over 1G) and minutes(over 5min?).
 
 ----
