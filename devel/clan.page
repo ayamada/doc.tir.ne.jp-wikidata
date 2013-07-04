@@ -96,7 +96,7 @@ I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Li
 
 2013/02/28 に、windows vista(32bit)とgentoo(x86-32bit)上にてサンプルプロジェクトのビルドが動作する事を確認しています。
 
-各種のインストールについては、 [env]() が参考になるかもしれません。
+windows環境での各種のインストールについては、 [env]() が参考になるかもしれません。
 
 
 Usage
