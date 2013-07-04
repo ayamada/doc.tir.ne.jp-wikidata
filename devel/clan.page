@@ -107,7 +107,7 @@ Usage
 ~~~{.bash .numberLines}
 mkdir -p package/projname
 cd package/projname
-git clone git://github.com/ayamada/clan.git
+git clone https://github.com/ayamada/clan.git
 (cd clan && git checkout 0.1.0)
 sh clan/script/spread_current_dir.sh
 ~~~
@@ -139,10 +139,72 @@ sh clan/script/spread_current_dir.sh
         - `clan/script/spread_current_dir.sh` スクリプトは `package/projname/.gitignore` も生成します。これには `package/projname/clan/` を除外する設定が入っています。
 
 
+## Build and run sample application on desktop
+
+~~~{.bash .numberLines}
+autoconf && ./configure
+make run
+~~~
+
+This sample application is named "drop" or "space drop".
+
+(This game rule is based on [http://code.google.com/p/libgdx/wiki/SimpleApp](), I rewrite by Clojure and add more gimmics. )
+
+CLAN's `BootLoader.java` control as long as display boot-logo.
+
+- This is for loading clojure on background.
+- You can change boot-logo image file and boot-jingle sound file at later.
+
+If "drop" works done, then stop application process, and go next.
+
+~~~{.bash .numberLines}
+make repl
+~~~
+
+This is run application with nREPL.
+
+But, it is very heavy at before boot, and cannot rerun in lein repl.
+I guess, will use `make run` for almost develop.
+will use `make repl` for chase very dificcurt bug.
+
+- See [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]().
+
+TODO: つづきはあとで
+
+~~~
+...
+~~~
+
+~~~{.bash .numberLines}
+make distclean
+~~~
+
+端末のアプリ一覧から起動し、動く事を確認してください。
+
+動く事が確認できたら、一旦中間ファイルを削除します。
+
+
+
+## Build and run sample application on android
+
+If you install Android SDK, you can run sample application on android.
+
+~~~{.bash .numberLines}
+make android-run
+~~~
+
+(TODO)
+
+更に以下のコマンドで、usbデバッグ接続しているandroid端末に
+サンプルアプリをインストールします。
+
+## Clean up sample application
+
+~~~{.bash .numberLines}
+make distclean
+~~~
 
 <!--
-
-## Build sample application
 
 TODO
 
@@ -160,38 +222,6 @@ Directory structure
 
 <!--
 
-
-
-以下のコマンドで、サンプルアプリを構築して起動してみます。
-動く事を確認してください。
-
-~~~{.bash .numberLines}
-autoconf && ./configure
-make jar-exec
-~~~
-
-このサンプルアプリの名前はdrop(表示上の名前はspace drop)です。 これは
-[http://code.google.com/p/libgdx/wiki/SimpleApp]()
-を参考にclojureで書き直し、新要素を追加してあります。
-
-起動ロゴが出て消えるまでがclanが管理する部分です。
-ロゴ等はあとで好きに入れ替えましょう。
-それ以降は完全にサンプルアプリ側に制御が渡されます。
-
-更に以下のコマンドで、usbデバッグ接続しているandroid端末に
-サンプルアプリをインストールします。
-
-~~~{.bash .numberLines}
-make apk-install
-~~~
-
-端末のアプリ一覧から起動し、動く事を確認してください。
-
-動く事が確認できたら、一旦中間ファイルを削除します。
-
-~~~{.bash .numberLines}
-make distclean
-~~~
 
 
 ### 開発の開始
@@ -788,22 +818,22 @@ Etc...
 TODO
 ====
 
-- [http://stackoverflow.com/questions/12281365/obfuscating-clojure-uberjars-with-proguard]() を設定するようにする
+- simplify spaghetti build process (but it is difficult)
 
-- リリース版と開発版でAndroidManifest.xmlのuses-permissionの変更(要は開発時のみ`INTERNET`と`WRITE_EXTERNAL_STORAGE`を有効にしたい的な)
+- enable proguard.cfg ( remove `-dontshrink` and tune-up )
+    - [http://stackoverflow.com/questions/12281365/obfuscating-clojure-uberjars-with-proguard]()
+
+- automatically change uses-permission (and others) in AndroidManifest.xml
+    - I want to enable/disable `INTERNET`, `WRITE_EXTERNAL_STORAGE` when release/debug
 
 - collecting and documentation to know-how in clojure(for android), libgdx, android, neko
 
 - 増やし忘れ対策 of `PROJECT_ANDROID_VERSIONCODE` in configure.in
 
-- enable proguard.cfg ( remove `-dontshrink` and tune-up )
-- change CLAN logo to more better
 - maintain documents
 - translate from japanese comment to english in source
 - report to libgdx community
-- more simple
-- more modular
-- more portable
+- change CLAN logo to more better
 
 
 Help me
