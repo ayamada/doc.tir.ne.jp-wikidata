@@ -116,12 +116,12 @@ sh clan/script/spread_current_dir.sh
 - You decide target of checkout from [git tag](https://github.com/ayamada/clan/tags)
 - Run `clan/script/spread_current_dir.sh`, then spread many files to `package/projname/`
 - There is assumed below directory strucuture.
-    - `package/projname/clan/` : CLAN main unit, you don't need to edit in this directory.
-    - `package/projname/` : there is in your application project files.
+    - **`package/projname/clan/` :** CLAN main unit, you don't need to edit in this directory.
+    - **`package/projname/` :** there is in your application project files.
         - Check to [#directory-structure]() for details.
-    - `package/` : You can set Makefile(or other script) for distributing built files(jar/exe/apk) by youself. (optional)
+    - **`package/` :** You can set Makefile(or other script) for distributing built files(jar/exe/apk) by youself. (optional)
         - For example: zipping exe and README.txt, push apk to google play, etc...
-    - `package/.git` or `package/projname/.git` : save your project to git (or other revision-control-system) local repository. (optional)
+    - **`package/.git`** or **`package/projname/.git` :** save your project to git (or other revision-control-system) local repository. (optional)
         - `clan/script/spread_current_dir.sh` makes `package/projname/.gitignore`, that exclude to `package/projname/clan/` .
 
 ----
@@ -130,15 +130,15 @@ sh clan/script/spread_current_dir.sh
 - [git tag](https://github.com/ayamada/clan/tags) を見て、どのバージョンをcheckoutするか決めます。
 - `clan/script/spread_current_dir.sh` を実行します。すると `package/projname/` の中に大量のファイルが展開されます。
 - これらは以下のようなディレクトリ構成を想定しています。
-    - `package/projname/clan/` : CLAN本体、あなたがこの中をいじる必要は通常はありません
-    - `package/projname/` : あなたのアプリのプロジェクトのファイルはこの中に置きます。
+    - **`package/projname/clan/` :** CLAN本体、あなたがこの中をいじる必要は通常はありません
+    - **`package/projname/` :** あなたのアプリのプロジェクトのファイルはこの中に置きます。
         - [#directory-structure]() に詳細があります。
-    - `package/` : ここに、リリース向けとして生成した jar, exe, apk を配布向けにパッケージングする為の Makefile(もしくは他のスクリプト等)を自由に置く事ができます(optional)
+    - **`package/` :** ここに、リリース向けとして生成した jar, exe, apk を配布向けにパッケージングする為の Makefile(もしくは他のスクリプト等)を自由に置く事ができます(optional)
         - 例: exeファイルとREADME.txtをセットでzipに固める。apkファイルをgoogle playにpushする。等々…
-    - `package/.git` もしくは `package/projname/.git` : あなたのプロジェクトをgit(もしくは他のリビジョン管理システム)に保存する為の何かも設置できます(optional)
+    - **`package/.git`** もしくは **`package/projname/.git` :** あなたのプロジェクトをgit(もしくは他のリビジョン管理システム)に保存する為の何かも設置できます(optional)
         - `clan/script/spread_current_dir.sh` スクリプトは `package/projname/.gitignore` も生成します。これには `package/projname/clan/` を除外する設定が入っています。
 
-TODO: つづきはあとで
+
 
 <!--
 
