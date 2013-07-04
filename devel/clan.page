@@ -82,6 +82,8 @@ I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Li
 
 ----
 
+**必要なもの**
+
 - 一般的なCLI環境
     - sh, GNU make(gmake), GNU autotools(autoconf), wget, unzip
         - windows環境の場合は、[MinGW/MSYS](http://www.mingw.org/)に全て入ってます
@@ -102,7 +104,11 @@ windows環境での各種のインストールについては、 [env]() が参�
 Usage
 =====
 
+**使い方**
+
 ## Prepare to develop and run sample application for test
+
+**開発準備とサンプルアプリ実行テスト**
 
 ### Spreading project directory
 
@@ -127,6 +133,16 @@ sh clan/script/spread_current_dir.sh
         - `clan/script/spread_current_dir.sh` makes `package/projname/.gitignore`, that exclude to `package/projname/clan/` .
 
 ----
+
+**プロジェクトディレクトリの展開**
+
+~~~{.bash .numberLines}
+mkdir -p package/projname
+cd package/projname
+git clone https://github.com/ayamada/clan.git
+(cd clan && git checkout 0.1.0)
+sh clan/script/spread_current_dir.sh
+~~~
 
 - `package` と `projname` を好きに決めます。
 - [git tag](https://github.com/ayamada/clan/tags) を見て、どのバージョンをcheckoutするか決めます。
@@ -157,15 +173,17 @@ CLAN's `BootLoader.java` control as long as display boot-logo.
 - This is for loading clojure on background.
 - You can change boot-logo image file and boot-jingle sound file at later.
 
-If "drop" works done, then stop application process, and go next.
+If "drop" works done, then finish application process, and go next.
+
+(I explain to description of `autoconf && ./configure`, and targets of `make`, but it is at later.)
+
+This is run application with nREPL.
 
 ~~~{.bash .numberLines}
 make repl
 ~~~
 
-This is run application with nREPL.
-
-But, it take very long time at boot, and cannot rerun in lein repl.
+But, it take very long time at boot, and that cannot rerun in nREPL.
 I guess, will use `make run` for almost develop.
 And, will use `make repl` for chase to very difficult bugs.
 
@@ -177,7 +195,48 @@ Read this, and input to nREPL console as you likes.
 
 (For example, change and input to `(def speed-level 100)`, `(def item-spawn-interval 100000000000)`, etc...)
 
-If nREPL works, then stop application process, and go next.
+If you see to work nREPL, then finish application process, and go next.
+
+----
+
+**サンプルアプリをデスクトップ上で実行してみる**
+
+~~~{.bash .numberLines}
+autoconf && ./configure
+make run
+~~~
+
+このサンプルアプリは「drop」「space drop」という名前です。
+
+(このゲームは [http://code.google.com/p/libgdx/wiki/SimpleApp]() をベースにClojureで書き直し、色々な要素を追加しています)
+
+アプリが起動すると、起動ロゴが表示されている間はCLANの `BootLoader.java` が制御を握ります。
+
+- ロゴの出ている間、バックグラウンドではclojureのローゴが行われています
+- 起動ロゴや起動音の差し替えができます。
+
+サンプルアプリがちゃんと動いているようなら、アプリを終了して次に進んで下さい。
+
+( `autoconf && ./configure` の詳細や make のターゲットについてはまた後で解説します。)
+
+nREPL経由でサンプルアプリを実行する事もできます。
+
+~~~{.bash .numberLines}
+make repl
+~~~
+
+しかし、nREPL経由だと起動までに非常に時間がかかり、しかもnREPL中には一回しかアプリ起動ができません。
+なので、通常の開発時は主に`make run`を使って開発を行い、`make repl`を使うのは難しいバグを追跡している時だけにするのが良いと思います。
+
+- [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]() に、この件が少し書かれています。
+
+サンプルアプリのソースは `src/drop/main.clj` にあります。
+
+これを見て、nREPLのコンソールを色々と試してみてください。
+
+(例えば、ソースから「`(def speed-level 100)`」「`(def item-spawn-interval 100000000000)`」のようなところを拾ってきて、数値を変更して入力してみるとか)
+
+nREPLが一応動いているのを見たら、アプリを終了して次に進んでください。
 
 ### Build and run sample application on android
 
@@ -190,6 +249,23 @@ If you install Android SDK, you can run sample application on android.
 ~~~{.bash .numberLines}
 make android-run
 ~~~
+To build for Android need very large memory(over 1G) and minutes(over 5min?).
+
+----
+
+**サンプルアプリをandroidで実行してみる**
+
+(オプショナル)
+
+android sdkをインストールしているなら、サンプルアプリをandroid上で動かす事ができます。
+
+(ただし先に、androidデバッグusb接続をしておくか、エミュレータを起動しておいてください)
+
+~~~{.bash .numberLines}
+make android-run
+~~~
+
+android向けのビルドは(デスクトップ向けと比べて)非常に多くのメモリ(1G以上)と時間(5分ぐらい？)が必要になります。
 
 ### Clean up sample application
 
@@ -199,6 +275,15 @@ make distclean
 
 Delete almost temporary files and clean up to sample application.
 
+----
+
+**サンプルアプリのクリア**
+
+~~~{.bash .numberLines}
+make distclean
+~~~
+
+ほとんどの一時ファイルを消し、サンプルアプリをクリアします。
 
 ## Develop your application
 
