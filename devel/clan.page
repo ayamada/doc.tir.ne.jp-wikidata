@@ -102,54 +102,65 @@ I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Li
 Usage
 =====
 
-TODO
-
-<!--
-### プロジェクトの設置
-
-まず、以下のようにプロジェクト設置ディレクトリを作ります。
+## Spreading project directory
 
 ~~~{.bash .numberLines}
 mkdir -p package/projname
 cd package/projname
 git clone git://github.com/ayamada/clan.git
-(cd clan && git checkout 0.0.6)
+(cd clan && git checkout 0.1.0)
 sh clan/script/spread_current_dir.sh
 ~~~
 
-- `package` と `projname` は自分で好きなように決めてください。
-- チェックアウトする対象は [git tag](https://github.com/ayamada/clan/tags)
-  を見て決めてください。
-- 最後の `clan/script/spread_current_dir.sh` によって、
-  package/projname 内に、各サンプルファイルが設置されます。
+- You decide `package` and `projname` as you likes
+- You decide target of checkout from [git tag](https://github.com/ayamada/clan/tags)
+- Run `clan/script/spread_current_dir.sh`, then spread many files to `package/projname/`
+- There is assumed below directory strucuture.
+    - `package/projname/clan/` : CLAN main unit, you don't need to edit in this directory.
+    - `package/projname/` : there is in your application project files.
+        - Check to [#directory-structure]() for details.
+    - `package/` : You can set Makefile(or other script) for distributing built files(jar/exe/apk) by youself. (optional)
+        - For example: zipping exe and README.txt, push apk to google play, etc...
+    - `package/.git` or `package/projname/.git` : save your project to git (or other revision-control-system) local repository. (optional)
+        - `clan/script/spread_current_dir.sh` makes `package/projname/.gitignore`, that exclude to `package/projname/clan/` .
 
-これは以下の構造を想定しています。
+----
 
-- package/projname/clan/ として、CLAN本体を設置。
-- package/projname/.gitignore に、 CLAN本体を除外する設定を記述。
+- `package` と `projname` を好きに決めます。
+- [git tag](https://github.com/ayamada/clan/tags) を見て、どのバージョンをcheckoutするか決めます。
+- `clan/script/spread_current_dir.sh` を実行します。すると `package/projname/` の中に大量のファイルが展開されます。
+- これらは以下のようなディレクトリ構成を想定しています。
+    - `package/projname/clan/` : CLAN本体、あなたがこの中をいじる必要は通常はありません
+    - `package/projname/` : あなたのアプリのプロジェクトのファイルはこの中に置きます。
+        - [#directory-structure]() に詳細があります。
+    - `package/` : ここに、リリース向けとして生成した jar, exe, apk を配布向けにパッケージングする為の Makefile(もしくは他のスクリプト等)を自由に置く事ができます(optional)
+        - 例: exeファイルとREADME.txtをセットでzipに固める。apkファイルをgoogle playにpushする。等々…
+    - `package/.git` もしくは `package/projname/.git` : あなたのプロジェクトをgit(もしくは他のリビジョン管理システム)に保存する為の何かも設置できます(optional)
+        - `clan/script/spread_current_dir.sh` スクリプトは `package/projname/.gitignore` も生成します。これには `package/projname/clan/` を除外する設定が入っています。
 
+TODO: つづきはあとで
+
+<!--
+
+## Build sample application
+
+TODO
+
+Directory structure
+===================
+
+- `package/projname/clan/` : CLAN main unit, you don't need to edit in this directory.
+- `package/projname/.gitignore` : ...
     - この .gitignore も `spread_current_dir.sh`
       によって生成されます。
+- 
 
-- package/projname/ に、作りたいアプリ本体の各ファイルを設置。
-
-    - これらのファイルも `spread_current_dir.sh`
-      によって大体生成されます。
-
-- package/ に、 `package/projname/`
-  で生成されたリリース版実行バイナリを
-  配布する為のパッケージング/デプロイする為の Makefile か何かを設置。
-
-    - これについてはCLANは何も提供しません。自分で用意してください。
-
-- package/.git に、自プロジェクトを保存。
-
-    - これについてもCLANは何も提供しません。自分で行ってください。
-    - 前述の通り、 package/projname/.gitignore によって、
-      CLAN本体は除外されます。
+-->
 
 
-### サンプルの構築
+<!--
+
+
 
 以下のコマンドで、サンプルアプリを構築して起動してみます。
 動く事を確認してください。
@@ -771,47 +782,29 @@ Etc...
 :   see [clan/memo]().
 
 
-TODO
-----
-
-- important
-    - [http://awards.cesa.or.jp/cat/cat_03.html]() に応募して五十万円を狙う為のゲームと動画を作成
-    - 「autoconf+make+maven」はやめて、leinで統一する(しかし先にleinの使い方を学ぶ必要あり…)
-    - cal内にて、「android限定のコード(と利用ライブラリ)」と「desktop限定のコード(と利用ライブラリ)」をうまく切り分けられるようにする
-        - 現状ではlayout内のjavaコードでのみの切り分けなので不便
-    - lein化と同時に、[http://stackoverflow.com/questions/12281365/obfuscating-clojure-uberjars-with-proguard]() を設定するようにする
-
-- later
-    - 開発版ビルドとリリース版ビルドの切り分け部分の改善
-        - 「開発版でのみjarに含めるライブラリ」みたいな事ができるようにしたい
-        - リリース版と開発版でAndroidManifest.xmlのuses-permissionの変更(要は開発時のみ`INTERNET`と`WRITE_EXTERNAL_STORAGE`を有効にしたい的な)
-
-    - provide jp.ne.tir.clan.util
-        - 内容は、よく使うマクロ定義とか、ブートジングルのオンオフ関数とか
-
-    - android実機では、二回目起動時はブート画面を出さずに素早く起動するようにする。またutilとして、次回起動時にあえてまたブート画面を出すようにする関数を提供する
-
-    - collecting and documentation to know-how in clojure(for android), libgdx, android, neko
-    - refactoring sample app
-        - clean-up code
-        - implement to timeout on eval-file
-        - boot nREPL-server at debug-time
-        - FPSが低下した時にEキーを取りこぼす時がある。真面目に対応するならGdx.input.justTouched()と同じような処理が必要(おそらくキーリスナを作らないと駄目)
-        - add more gimmick
-
-    - 増やし忘れ対策 of `PROJECT_ANDROID_VERSIONCODE` in configure.in
-
-- more later
-    - enable proguard.cfg ( remove `-dontshrink` and tune-up )
-    - change CLAN logo to more better
-    - maintain documents
-    - translate from japanese comment to english in source
-    - report to libgdx community
-    - more modular
-    - more portable
-    - more simple
-
 -->
+
+
+TODO
+====
+
+- [http://stackoverflow.com/questions/12281365/obfuscating-clojure-uberjars-with-proguard]() を設定するようにする
+
+- リリース版と開発版でAndroidManifest.xmlのuses-permissionの変更(要は開発時のみ`INTERNET`と`WRITE_EXTERNAL_STORAGE`を有効にしたい的な)
+
+- collecting and documentation to know-how in clojure(for android), libgdx, android, neko
+
+- 増やし忘れ対策 of `PROJECT_ANDROID_VERSIONCODE` in configure.in
+
+- enable proguard.cfg ( remove `-dontshrink` and tune-up )
+- change CLAN logo to more better
+- maintain documents
+- translate from japanese comment to english in source
+- report to libgdx community
+- more simple
+- more modular
+- more portable
+
 
 Help me
 =======
