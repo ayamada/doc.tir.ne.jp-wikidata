@@ -366,46 +366,107 @@ make distclean
         - If you update to `src/...` then you can retry `make run` directly, but if you update to outside of `src/...` then you may execute `make clean` and `make run` for safety.
     - I describe targets of `make` later.
 
-8. Execut `make android-run` (optional)
-    - TODO: あとで
-
-TODO: つづきはあとで！
-
+8. Execute `make android-run` (optional)
+    - You shall install Android SDK, and you shall connect Android-debug-usb or run Android emulator before `make android-run`.
+    - This require time and memory.
 
 **自分のアプリを開発する**
+
+1. `configure.ac` ファイルを編集する
+    - `autoconf` は分かりますか？難しくはないです。
+        - `dnl` は一行コメント
+        - `AC_INIT()` で、 artifactIdとバージョンを定義
+        - `FOO="string"` で、ローカル(configure.ac内)変数を定義
+        - `AC_SUBST()` で、プロジェクト変数を定義
+        - `autoconf && ./configure` を実行する事で、 `*.clj.in` のようなファイルから `*.clj` が生成される。
+            - この時、 `*.clj.in` 内にある `@FOO@` のような文字列は、 `AC_SUBST()` で定義した変数の内容に置換される。
+    - `configure.ac` 内の `dnl Defines` の各変数の内容を、あなたのアプリ用に変更しておいてください。
+
+2. `layout/Desktop.java.in` `layout/MainActivity.java.in` `android/AndroidManifest.xml.in` を編集する
+    - android用apkを生成しないのであれば、 `layout/MainActivity.java.in` `android/AndroidManifest.xml.in` は無視してよいです。
+    - `layout/Desktop.java.in` にはdesktop向けビルド時の起動クラスが入っています。このファイルから生成される `Desktop.java` は、 `desktop/src-java/(PROJECT_GROUPID)/Desktop.java` に再配置されます。
+        - このファイルを編集する事で、desktop向けのLWJGLプロセスの設定をいじる事ができます。
+    - `layout/MainActivity.java.in` にはandroid向けビルド時の起動クラスが入っています。このファイルから生成される `MainActivity.java` は、 `android/src-java/(PROJECT_GROUPID)/MainActivity.java` に再配置されます。
+        - このファイルも同様に、androidプロセス等の設定をいじれます。
+
+3. `src/drop/` に入っているサンプルアプリのソースを捨て、 `src/...` として、あなたのアプリのソースを入れます。
+    - 先ほどの `configure.ac` にて、 `PROJECT_CAL_GENERATOR_CLASS` に "my.app.main" を指定した場合、あなたは `src/my/app/main.clj` を書く事になります。勿論、このファイルから参照する他の `*.clj` を一緒に含めても問題ありません。
+    - また同様に、先ほどの `configure.ac` にて、 `PROJECT_CAL_GENERATOR_FN` に "generate-al" を指定した場合、あなたは `src/my/app/main.clj` の中に「`(defn generate-al [] (proxy [ApplicationListener] [] ...)`」のような関数を書く必要があります。
+        - 以下は画面をフラッシュさせるだけの最小限のアプリのソースです。
+
+            ~~~
+            (ns my.app.main
+              (:import
+                (com.badlogic.gdx Gdx ApplicationListener)
+                (com.badlogic.gdx.graphics GL10)))
+            (defn generate-al []
+              (proxy [ApplicationListener] []
+                (create [] nil)
+                (resume [] nil)
+                (resize [w h] nil)
+                (render []
+                  (.. Gdx gl (glClearColor (rand) (rand) (rand) 1.0))
+                  (.. Gdx gl (glClear GL10/GL_COLOR_BUFFER_BIT)))
+                (pause [] nil)
+                (dispose [] nil)
+                ))
+            ~~~
+
+4. `project-common.clj.in` を編集する
+    - clojars.org等から外部ライブラリをimportしたい場合、このファイルの中の `dependencies-common` に追加します。
+        - ただし、desktop向け/android向け限定にしたい場合は、 `dependencies-dependencies` もしくは `dependencies-android` に追加します。
+
+5. `autoconf && ./configure` を実行する
+    - 先ほどの説明通り、これで `path/to/foo.suffix.in` から `path/to/foo.suffix` が生成されます。
+    - この後でもし `*.in` ファイルの内容を変更した時は、必ず忘れずに `autoconf && ./configure` を再実行してください。そうしないと変更内容が反映されません。
+        - なお、もし変更したファイルが `layout/*.in` だった場合、上記に加えて `make layout-clean layout` も実行する必要があります。これは、 `layout/` 配下のファイルは `desktop/src-java/...` 等に再配置される必要があるからです。
+
+6. 以下の各ディレクトリに入っているサンプルアプリのリソースを削除し、代わりにあなたのアプリのリソースを入れます
+    - `desktop/assets/`
+        - ここにはアプリ自体が利用する各種のリソースファイル(画像、サウンド、その他各種何でも)を入れます。
+            - 入れたリソースファイルを取り出すには「`(.. Gdx files (internal "assets/filename.suffix"))`」のように指定します。
+        - このディレクトリは `desktop/` の中にありますが、desktop向けに限らず、android向けの場合でもこのディレクトリが参照されます。
+    - `desktop/assets/cbl_logo.png` と `desktop/assets/cbl_jingle.ogg`
+        - この二つのファイルは BootLoader.java が起動ロゴ/起動SEとして使用します。このファイル名は変更可能です(`layout/*.in` を見てください)。
+        - これらのファイルが存在しない場合は、単に起動ロゴは表示されず、起動SEも再生されないだけです。
+    - `desktop/assets/process_icon/`
+        - ここにはLWJGL(desktopプロセス)用のアイコンを入れます(これも `layout/Desktop.java.in` でファイル名を変更できます)。
+            - このアイコンがない場合、LWJGLロゴのデフォルトアイコンが使われます。
+    - `textures/`
+        - ここに画像ファイルを入れると、ビルド時に自動的に [TexturePacker](http://code.google.com/p/libgdx/wiki/TexturePacker) が実行され、 `desktop/assets/pack.{atlas,png}` として生成されます。
+            - `make ta` を実行する事で、いつでも再生成が可能です。
+        - 上記のTextureAtlasを使わない場合は、このディレクトリは空にしておけばokです。
+    - `android/res/`
+        - android用アプリアイコンを入れます。
+    - `l4j/windows.ico`
+        - windows用アイコンを入れます。
+        - windows用アイコンは[GIMPで作れます](clan/assets#アイコン)。
+
+7. `make run` を実行する
+    - あなたのアプリをビルドし、その後に起動します。
+    - もしうまく動かなかったり、予想と違う動きをしたり、エラー例外を投げたりした場合、ソースを修正してからまた `make run` を実行してみてください。
+        - もしくはCLANのバグかもしれません。[githubのissues](https://github.com/ayamada/clan/issues)をチェックしたり投稿したりしてみてください。
+        - `src/...` の中を修正した時は `make run` を再実行するだけでokですが、 `src/...` の中以外を修正した時は、念の為に `make clean` してから `make run` した方がよいです。
+    - `make` の他のターゲット指定についてはまた後で説明します。
+
+8. `make android-run` を実行する(optional)
+    - 実行前にandroid sdkをインストールし、androidデバッグusb接続もしくはandroidエミュレータ起動をしておいてください。
+    - これには結構な時間と大量のメモリが必要です。
+
+
+## Release your application
+
+TODO: つづきはあとで
+
+
+**自分のアプリをリリースする**
 
 
 <!--
 
-8. `make apk-install` して実機で動作確認
-
-    - このコマンドでデバッグ版のandroid用 `*.apk` が生成され、
-      接続されている端末にインストールされます。
-      端末のアプリ一覧から入ったアプリを選択して動かしてみてください。
-    - この場合も修正し直す場合は `make clean` してから 3. に戻ってください。
-
-これらのコンパイルは結構時間がかかる為、
-デバッグ中は、直に`*.clj`ファイルを読み込むようにするといいでしょう。
-これならアプリを再起動するだけですぐに反映されます。
-
-(サンプルアプリにもこの機能を入れてあります。
-`load-*`系関数を使って外部にある、 `(ns jp.ne.tir.drop.drop ...)`
-ではじまるスクリプトを読み込む事で、既にコンパイルされている
-jp.ne.tir.drop.drop モジュールの各関数をメモリ上でのみ上書き
-したような状態にする事ができます。)
-
-- ただしPCではすぐにロードされますが、
-  android実機でのスクリプトのロードはPCとは違い、
-  非常に時間がかかります。注意！ (サンプルアプリ程度の量で1分ぐらい)
-    - また、androidで動的に変更した内容は、
-      次回のアプリ起動時にも引き継がれてしまうようです。
-      REPLを利用したデバッグ時には注意が必要です。
-        - この件については、[clan/libgdx#androidのdexキャッシュ問題]()も参照してください。
+TODO: claninfo.cljおよびclanutil.cljの使い方も書く事
 
 「これで完成だ」と思ったら、リリースを行います。
-
-
-### リリース作業
 
 デスクトップ向けos汎用の`*.jar`、windows向けの`*.exe`、
 android向けの署名付き`*.apk`を生成します。
