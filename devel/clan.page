@@ -286,53 +286,86 @@ make distclean
 
 ほとんどの一時ファイルを消し、サンプルアプリをクリアします。
 
+
 ## Develop your application
 
+1. Edit file `configure.ac`
+    - Do you know `autoconf`? It is not difficult.
+        - `dnl` is comment
+        - `AC_INIT()` is to define artifactId and version
+        - `FOO="string"` is to define local variables
+        - `AC_SUBST()` is to define project variables
+        - If you execute `autoconf && ./configure` command, then that generate from `*.clj.in` to `*.clj`.
+            - At which time, a string as `@FOO@` in `*.clj.in` was replaced to project variables by defined `AC_SUBST()`.
+    - You modify in section of `dnl Defines` in file `configure.ac` for your application.
+
+2. Edit `layout/Desktop.java.in`, `layout/MainActivity.java.in` and `android/AndroidManifest.xml.in`
+    - If you don't want to deploy Android's apk, then you can ignore `layout/MainActivity.java.in` and `android/AndroidManifest.xml.in`.
+    - A file `layout/Desktop.java.in` is boot entry class for desktop build. It is relocate to `desktop/src-java/(PROJECT_GROUPID)/Desktop.java`.
+        - If you want to customize LWJGL process or configuration of CLAN, then you can edit this.
+    - A file `layout/MainActivity.java.in` is boot entry class for android build. It is relocate to `android/src-java/(PROJECT_GROUPID)/MainActivity.java`.
+        - If you want to customize Android process or configuration of CLAN, then you can edit this.
+
+3. Discard source of sample application `src/drop/`, and create source of your application `src/...`
+    - For example, if you deside `PROJECT_CAL_GENERATOR_CLASS` in `configure.ac` to "my.app.main", then you shall create `src/my/app/main.clj`. This file is main sources of your application. You can put also other source files too, of course.
+    - For example, if you deside `PROJECT_CAL_GENERATOR_FN` in `configure.ac` to "generate-al", then you shall write to function like `(defn generate-al [] (proxy [ApplicationListener] [] ...)` in `src/my/app/main.clj`.
+        - It is smallest application code only flashing screen.
+
+            ~~~
+            (ns ???
+              (:import
+                (com.badlogic.gdx Gdx ApplicationListener)
+                (com.badlogic.gdx.graphics GL10)))
+            (defn generate-al []
+              (proxy [ApplicationListener] []
+                (create [] nil)
+                (resume [] nil)
+                (resize [w h] nil)
+                (render []
+                  (.. Gdx gl (glClearColor (rand) (rand) (rand) 1.0))
+                  (.. Gdx gl (glClear GL10/GL_COLOR_BUFFER_BIT)))
+                (pause [] nil)
+                (dispose [] nil)
+                ))
+            ~~~
+
+4. Edit `project-common.clj.in`
+    - If you want to import/use external libraries to your project from clojars.org and other repos, then add external libraries to `dependencies-common` in `project-common.clj.in`.
+        - If you want to add only desktop/android, add to `dependencies-desktop` `dependencies-android` in `project-common.clj.in`.
+
+5. Execute `autoconf && ./configure`
+    - It generate from `path/to/foo.suffix.in` to `path/to/foo.suffix`.
+    - If you change `*.in` files later, then you must execute `autoconf && ./configure` again, you don't forget it.
+        - Added to which, if you change `layout/*.in` files, then you must execute `make layout-clean layout`. Because, these files must relocate to `desktop/src-java/...` or `android/src-java/...`.
+
+6. Remove resources of sample application, and put resources of your application
+    - `textures/`
+        - If you put in image files to `textures/`, then these is packed by [TexturePacker](http://code.google.com/p/libgdx/wiki/TexturePacker) to `desktop/assets/pack.{atlas,png}` automatically.
+            - You can do `make ta` to pack any time.
+        - If you don't use TextureAtlas, then you will clear out this.
+    - `desktop/assets/`
+        - あとで
+    - `desktop/assets/process_icon/`
+        - あとで
+    - `android/res/`
+        - あとで
+    - `l4j/windows.ico`
+        - あとで
 
 TODO: つづきはあとで！
 
+**自分のアプリを開発する**
+
+
 <!--
 
-
-
-### 開発の開始
-
-上記ディレクトリをベースに、以下のフローで開発を行います。
-
-1. configure.ac を適切に書き換える
-
-2. 必要に応じて、`layout/*.in` `android/AndroidManifest.xml.in` 等を編集
-
-    - `*.in` というのは、autoconfによる書き換えを行う元ファイル。
-        とりあえず、以下だけ把握していればok。
-
-        - 後述の `autoconf && ./configure`
-          実行時に書き換えも実行される
-        - 例えば `hoge.xml.in` から `hoge.xml`
-          が、同じディレクトリに生成される
-        - ファイル内の `@HOGE@` のような部分のみが書き換えられる
-        - 後述の `make clean`
-          系を実行すると、生成されたファイルも消える
-
-    - この辺りのファイルの実際の役目についてはlibgdxおよびandroidの
-      ドキュメントをぐぐってください。
-
-3. cal/src/main/clojure/{package}/.../al.clj 等を作成/編集
-
-    - これがアプリの本体です。
-
 4. 利用するアイコン、リソース等を assets/ res/ l4j/ 等に追加/変更
+TODO: 0.0.6から変更になったものの内、まだ記述していない残りが以下。記述する事
+- desktop/assets
+    - androidでもこれが使われる、という事
+- desktop/assets/process_icon
+    - ここにdesktop用のプロセスアイコンを入れるという事、指定の詳細についてはlayout/Desktop.java.inを見るべき、という事
 
-5. `autoconf && ./configure` する
-
-    - これにより、環境のチェックと `*.in` ファイルからの
-      書き換え(ファイル生成)が実行される。
-    - 知っている人は ./configure にパラメータや引数を渡したくなるかも
-      しれませんが、ここでは一般的な autoconf の利用法から外れた
-      使い方をしている為、何も渡さないようお願いします。
-    - layout内のファイル等、一部のソースも `*.in`
-      ファイルになっている為、
-      面倒くさがらず、こまめにautoconfを実行する事を推奨します。
 
 6. `make jar-exec` する
 
@@ -904,7 +937,12 @@ Etc...
 TODO
 ====
 
+- isolate `desktop/` for `make run`
+    - if target application make temporary files, that get `desktop/` messy.
+
 - simplify spaghetti build process (but it is difficult)
+    - remove autoconf (if possible)
+    - remove Makefile (if possible)
 
 - enable proguard.cfg ( remove `-dontshrink` and tune-up )
     - [http://stackoverflow.com/questions/12281365/obfuscating-clojure-uberjars-with-proguard]()
