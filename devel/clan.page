@@ -370,6 +370,8 @@ make distclean
     - You shall install Android SDK, and you shall connect Android-debug-usb or run Android emulator before `make android-run`.
     - This require time and memory.
 
+----
+
 **自分のアプリを開発する**
 
 1. `configure.ac` ファイルを編集する
@@ -458,6 +460,8 @@ make distclean
 
 TODO: つづきはあとで
 
+
+----
 
 **自分のアプリをリリースする**
 
