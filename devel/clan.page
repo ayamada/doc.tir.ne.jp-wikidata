@@ -289,7 +289,7 @@ make distclean
 
 ## Develop your application
 
-1. Edit file `configure.ac`
+1. Edit `configure.ac` file
     - Do you know `autoconf`? It is not difficult.
         - `dnl` is comment
         - `AC_INIT()` is to define artifactId and version
@@ -312,7 +312,7 @@ make distclean
         - It is smallest application code only flashing screen.
 
             ~~~
-            (ns ???
+            (ns my.app.main
               (:import
                 (com.badlogic.gdx Gdx ApplicationListener)
                 (com.badlogic.gdx.graphics GL10)))
@@ -339,18 +339,29 @@ make distclean
         - Added to which, if you change `layout/*.in` files, then you must execute `make layout-clean layout`. Because, these files must relocate to `desktop/src-java/...` or `android/src-java/...`.
 
 6. Remove resources of sample application, and put resources of your application
+    - `desktop/assets/`
+        - Put in here to your application's resources(image files, sound files, and other).
+            - How to get out to resouces from here: `(.. Gdx files (internal "assets/filename.suffix"))`
+        - This is in `desktop/`, but this is also used for Android too.
+    - `desktop/assets/cbl_logo.png` and `desktop/assets/cbl_jingle.ogg`
+        - These are used by BootLoader.java as default (see `layout/*.in`).
+        - If these files not exists, then not display logo-image, or not play jingle-sound.
+    - `desktop/assets/process_icon/`
+        - This is include process-icon files for LWJGL (see `layout/Desktop.java.in`).
+            - If not exists, be used to LWJGL default process-icon.
     - `textures/`
         - If you put in image files to `textures/`, then these is packed by [TexturePacker](http://code.google.com/p/libgdx/wiki/TexturePacker) to `desktop/assets/pack.{atlas,png}` automatically.
             - You can do `make ta` to pack any time.
         - If you don't use TextureAtlas, then you will clear out this.
-    - `desktop/assets/`
-        - あとで
-    - `desktop/assets/process_icon/`
-        - あとで
     - `android/res/`
-        - あとで
+        - Icons for Android.
     - `l4j/windows.ico`
-        - あとで
+        - Icon for Windows.
+        - You can make icon for windows by GIMP.
+
+7. Execute `make run`
+
+
 
 TODO: つづきはあとで！
 
@@ -358,14 +369,6 @@ TODO: つづきはあとで！
 
 
 <!--
-
-4. 利用するアイコン、リソース等を assets/ res/ l4j/ 等に追加/変更
-TODO: 0.0.6から変更になったものの内、まだ記述していない残りが以下。記述する事
-- desktop/assets
-    - androidでもこれが使われる、という事
-- desktop/assets/process_icon
-    - ここにdesktop用のプロセスアイコンを入れるという事、指定の詳細についてはlayout/Desktop.java.inを見るべき、という事
-
 
 6. `make jar-exec` する
 
