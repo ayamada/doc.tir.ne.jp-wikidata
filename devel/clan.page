@@ -360,26 +360,22 @@ make distclean
         - You can make icon for windows by GIMP.
 
 7. Execute `make run`
+    - Build and run your application.
+    - If it don't work, unexpected work, raised error, then you may fix your code, and retry `make run`.
+        - Or it is bug of CLAN. [Check and post issues](https://github.com/ayamada/clan/issues).
+        - If you update to `src/...` then you can retry `make run` directly, but if you update to outside of `src/...` then you may execute `make clean` and `make run` for safety.
+    - I describe targets of `make` later.
 
-
+8. Execut `make android-run` (optional)
+    - TODO: あとで
 
 TODO: つづきはあとで！
+
 
 **自分のアプリを開発する**
 
 
 <!--
-
-6. `make jar-exec` する
-
-    - ソースにエラー等がなければ、 `*.jar`
-      ファイルが生成され、実行されます。
-    - エラーが出た場合は 2. か 3. に戻って修正してください。
-    - その他のmakeで指定できるターゲットは後述。
-
-7. 動作したが気に食わない/更にコードを追加する
-
-    - `make clean` してから 3. に戻ってください。
 
 8. `make apk-install` して実機で動作確認
 
