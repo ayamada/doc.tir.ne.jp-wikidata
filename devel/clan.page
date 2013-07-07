@@ -458,101 +458,160 @@ make distclean
 
 ## Release your application
 
-TODO: つづきはあとで
+**自分のアプリをリリースする**
+
+### Prepare for release
+
+1. Edit `configure.ac`
+    - Change version string for release
+    - Increment `PROJECT_ANDROID_VERSIONCODE` (for Android's apk)
+
+2. Edit `android/AndroidManifest.xml.in`
+    - Change enable/disable `INTERNET` and other `uses-permission` if needed
+
+3. Make release-tag or release-branch (if needed)
+
+4. Do `autoconf && ./configure`
+
+### Build jar of release-version for desktop
+
+~~~
+make release-jar
+~~~
+
+And, built `target/{artifactId}.jar`.
+
+NOTE: It include `make desktop-clean` for safety.
+
+### Build exe of release-version for windows
+
+It is required to [Launch4j](http://launch4j.sourceforge.net/).
+
+~~~
+make release-exe
+~~~
+
+And, built `target/{artifactId}.exe` from `target/{artifactId}.jar`.
+
+### Build apk of release-version for android
+
+It is required this list.
+
+- Install [Android SDK](http://developer.android.com/sdk/)
+- You will generate your [private key](http://developer.android.com/tools/publishing/app-signing.html#cert)
+    - **This key shall need args `-keyalg RSA`**, NOT `DSA` (WARNING: default is `DSA` in some OS). This is constraint by [lein-droid](https://github.com/clojure-android/lein-droid).
+- You will edit `ANDROID_SDK_PATH`, `ANDROID_KEYSTORE_PATH` and `ANDROID_KEY_ALIAS` in `configure.ac`, and do `autoconf && ./configure`.
+    - It is NOT in `~/.lein/profiles.clj` now, sorry.
+
+~~~
+make release-apk
+~~~
+
+It takes long time, and it ask to password for private key in midstream.
+
+And, built `target/{artifactId}.apk`.
+
+NOTE: It include `make android-clean` for safety.
+
+### Build all
+
+~~~
+make release
+~~~
+
+And, built `target/{artifactId}.jar`, `target/{artifactId}.exe` and `target/{artifactId}.apk`.
+
+(NOTE: It need password for apk too)
+
+### Other work for release
+
+- Do final check to built files.
+- Packaging for distribution (if needed)
+- Register Google Play and other distribution site (if needed)
+- Change files for devel (if needed)
+    1. Edit `configure.ac` for version string
+    2. Edit `android/AndroidManifest.xml.in`
+    3. Do `autoconf && ./configure`
 
 
 ----
 
-**自分のアプリをリリースする**
+### リリース準備
 
+1. `configure.ac` をいじる
+    - バージョン文字列をリリース用に変更
+    - `PROJECT_ANDROID_VERSIONCODE` を増やす(android用)
+
+2. `android/AndroidManifest.xml.in` をいじる
+    - 必要に応じて `INTERNET` やその他の `uses-permission` 項目の有効/無効を変更する
+
+3. 必要に応じて、リリースタグやリリースブランチを作成
+
+4. ファイルをいじったので、 `autoconf && ./configure` を実行
+
+### リリース版のデスクトップos向けjarをビルドする
+
+~~~
+make release-jar
+~~~
+
+これで `target/{artifactId}.jar` が生成される。
+
+注意：この際に、安全の為に `make desktop-clean` が実行されます。
+
+### リリース版のwindows向けexeをビルドする
+
+[Launch4j](http://launch4j.sourceforge.net/) が必要です。
+
+~~~
+make release-exe
+~~~
+
+これで `target/{artifactId}.jar` から `target/{artifactId}.exe` が生成される。
+
+### リリース版のandroid向けapkをビルドする
+
+以下が必要です。
+
+- [Android SDK](http://developer.android.com/sdk/) のインストール
+- [private key](http://developer.android.com/tools/publishing/app-signing.html#cert) の生成
+    - **生成時に `-keyalg RSA` の引数を渡す必要があります**、 `DSA` では駄目です(注意：osによってはデフォルト値が `DSA` になっています)。これは[lein-droid](https://github.com/clojure-android/lein-droid)の制約です。
+- `configure.ac` を編集し、 `ANDROID_SDK_PATH` `ANDROID_KEYSTORE_PATH` `ANDROID_KEY_ALIAS` を適切に設定し、 `autoconf && ./configure` を実行します。
+    - 現在のところ、これらの設定を `~/.lein/profiles.clj` で行う事はできません。ごめんなさい。
+
+~~~
+make release-apk
+~~~
+
+時間がかかります。また途中でパスワードが聞かれます。
+
+これで `target/{artifactId}.apk` が生成されます。
+
+注意：この際に、安全の為に `make android-clean` が実行されます。
+
+### リリース版のjar, exe, apkを一度にビルドする
+
+~~~
+make release
+~~~
+
+これで `target/{artifactId}.jar` `target/{artifactId}.exe` `target/{artifactId}.apk` が生成されます。
+
+注意：リリース版apk生成を含むので、やはり途中でパスワード入力が必要です。
+
+### その他のリリース作業
+
+- 生成されたファイルを動かしてみて、最終チェックを行います。
+- 必要に応じて、配布用にパッケージングします(README.txtを同梱したり等)。
+- 必要に応じて、google playに登録したり、配布サイトに設置したりします。
+- 必要に応じて、リリース向けに変更していた部分を開発向けに戻します。
+    1. `configure.ac` のバージョン文字列など
+    2. `android/AndroidManifest.xml.in` の `uses-permission` など
+    3. 変更したら、 `autoconf && ./configure` を実行
 
 <!--
 
 TODO: claninfo.cljおよびclanutil.cljの使い方も書く事
-
-「これで完成だ」と思ったら、リリースを行います。
-
-デスクトップ向けos汎用の`*.jar`、windows向けの`*.exe`、
-android向けの署名付き`*.apk`を生成します。
-
-1. リリースするので、 configure.ac を編集し、
-   バージョン番号等をリリース向けに変更します。
-   (具体的には「-SNAPSHOT」を取る、とかそういう作業)
-    - バージョンアップの場合は、忘れずに `PROJECT_ANDROID_VERSIONCODE`
-      の値を上げます。
-
-2. AndroidManifest.xml.in も編集します。
-    - デバッグの為だけに `INTERNET` や `WRITE_EXTERNAL_STORAGE`
-      を有効にしていた場合は、必要に応じてコメントアウトしておきます。
-      (これは将来には何らかの手段で、手でいじらなくてすむようにする予定…)
-
-3. ソースをgit等に保存している場合は、
-   この段階でリリースタグやリリースブランチも作っておきます。
-
-4. まだapk署名用の鍵を作ってなければ、作成します。
-
-    - [http://developer.android.com/intl/ja/tools/publishing/app-signing.html#cert]() を見ながら、正しく生成し直しましょう。 `-keyalg` の指定を忘れないようにする事(androidでは `SHA1withRSA` であるべきらしい)。
-
-    - コンソールから以下のコマンドを実行します。
-      質問されるので適切に入力し、パスワード等も決めてください。
-
-        ~~~{.bash .numberLines}
-        keytool -genkey -v -keystore path/to/NAME.keystore -alias NAME -keyalg RSA -keysize 2048 -validity 36500
-        ~~~
-
-    - ファイル名およびalias名は自分で決めてください。
-      この辺りの詳細についてはぐぐってください。
-    - このファイルをなくすとgoogle playでのバージョンアップが
-      できなくなるので、バックアップを取っておいた方がいいでしょう。
-
-5. 上の署名用鍵の情報を、ローカルのmavenのsettings.xmlに設定する
-
-    - 以下の内容のsettings.xmlを、 `~/.m2/settings.xml` に設置します。
-      既に設置されている場合はいい感じに混ぜてください。
-      この辺りの詳細も必要であればぐぐってください。
-
-        ~~~{.xml .numberLines}
-        <settings>
-          <profiles>
-            <profile>
-              <id>clan-sign</id>
-              <properties>
-                <sign.keystore>d:/path/to/hoge.keystore</sign.keystore>
-                <sign.alias>hoge</sign.alias>
-                <sign.storepass>xxxxxxxx</sign.storepass>
-                <sign.keypass>xxxxxxxx</sign.keypass>
-              </properties>
-            </profile>
-          </profiles>
-          <activeProfiles>
-            <activeProfile>clan-sign</activeProfile>
-          </activeProfiles>
-        </settings>
-        ~~~
-
-    - 上記の `sign.keystore sign.alias sign.storepass sign.keypass` を
-        自分の生成した鍵にあうように変更しておいてください。
-
-        - msysではドライブ指定に注意が必要です。
-          上記のような感じなら大丈夫でしょう。
-
-6. 例によって `autoconf && ./configure` した後、 `make release`
-   を実行します。 エラーにならずに最後まで完了すれば、 `target/`
-   の中に以下の3ファイルが生成されます。
-
-    - `appname-android.apk  appname-desktop.exe  appname-desktop.jar`
-
-7. これらの3ファイルそれぞれに対して、最終動作確認を行います。
-
-    - この段階で問題が見付かる事が結構多い…もう少し検証工程が必要だ！
-
-8. 必要に応じて、これらのファイルを配布物としてパッケージングしたり、
-   google playに登録したりします。
-
-9. リリースしたので、 configure.ac と AndroidManifest.xml.in を編集し、
-   バージョン番号等を非リリース向けに戻したり等の作業を行います。
-
-以上。
 
 
 -->
@@ -759,7 +818,7 @@ sh clan/script/spread_current_dir.sh
   この機能は、アプリの再ビルドなしに jp.ne.tir.drop.drop モジュールを
   更新するのに使える(上記ファイルとしてcal内のdrop.cljをそのまま指定する)
     - android端末でこの機能を使って外部URLからファイル読み込む場合、
-      AndroidManifest.xmlにINTERNETが必要。
+      android/AndroidManifest.xmlにINTERNETが必要。
       またファイルのロード(というかdexコンパイル)にはかなりの時間がかかる。
 
 - 起動後はEキーを押すと、上記とは別の外部ファイル/URLのファイル内容をevalする
@@ -1011,7 +1070,7 @@ TODO
 - enable proguard.cfg ( remove `-dontshrink` and tune-up )
     - [http://stackoverflow.com/questions/12281365/obfuscating-clojure-uberjars-with-proguard]()
 
-- automatically change uses-permission (and others) in AndroidManifest.xml
+- automatically change `uses-permission` (and others) in `android/AndroidManifest.xml`
     - I want to enable/disable `INTERNET`, `WRITE_EXTERNAL_STORAGE` when release/debug
 
 - collecting and documentation to know-how in clojure(for android), libgdx, android, neko
