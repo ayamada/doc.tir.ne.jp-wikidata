@@ -473,6 +473,20 @@ make distclean
 
 4. Do `autoconf && ./configure`
 
+----
+**リリース準備**
+
+1. `configure.ac` をいじる
+    - バージョン文字列をリリース用に変更
+    - `PROJECT_ANDROID_VERSIONCODE` を増やす(android用)
+
+2. `android/AndroidManifest.xml.in` をいじる
+    - 必要に応じて `INTERNET` やその他の `uses-permission` 項目の有効/無効を変更する
+
+3. 必要に応じて、リリースタグやリリースブランチを作成
+
+4. ファイルをいじったので、 `autoconf && ./configure` を実行
+
 ### Build jar of release-version for desktop
 
 ~~~
@@ -483,6 +497,18 @@ And, built `target/{artifactId}.jar`.
 
 NOTE: It include `make desktop-clean` for safety.
 
+----
+
+**リリース版のデスクトップos向けjarをビルドする**
+
+~~~
+make release-jar
+~~~
+
+これで `target/{artifactId}.jar` が生成される。
+
+注意：この際に、安全の為に `make desktop-clean` が実行されます。
+
 ### Build exe of release-version for windows
 
 It is required to [Launch4j](http://launch4j.sourceforge.net/).
@@ -492,6 +518,18 @@ make release-exe
 ~~~
 
 And, built `target/{artifactId}.exe` from `target/{artifactId}.jar`.
+
+----
+
+**リリース版のwindows向けexeをビルドする**
+
+[Launch4j](http://launch4j.sourceforge.net/) が必要です。
+
+~~~
+make release-exe
+~~~
+
+これで `target/{artifactId}.jar` から `target/{artifactId}.exe` が生成される。
 
 ### Build apk of release-version for android
 
@@ -513,63 +551,9 @@ And, built `target/{artifactId}.apk`.
 
 NOTE: It include `make android-clean` for safety.
 
-### Build all
-
-~~~
-make release
-~~~
-
-And, built `target/{artifactId}.jar`, `target/{artifactId}.exe` and `target/{artifactId}.apk`.
-
-(NOTE: It need password for apk too)
-
-### Other work for release
-
-- Do final check to built files.
-- Packaging for distribution (if needed)
-- Register Google Play and other distribution site (if needed)
-- Change files for devel (if needed)
-    1. Edit `configure.ac` for version string
-    2. Edit `android/AndroidManifest.xml.in`
-    3. Do `autoconf && ./configure`
-
-
 ----
 
-### リリース準備
-
-1. `configure.ac` をいじる
-    - バージョン文字列をリリース用に変更
-    - `PROJECT_ANDROID_VERSIONCODE` を増やす(android用)
-
-2. `android/AndroidManifest.xml.in` をいじる
-    - 必要に応じて `INTERNET` やその他の `uses-permission` 項目の有効/無効を変更する
-
-3. 必要に応じて、リリースタグやリリースブランチを作成
-
-4. ファイルをいじったので、 `autoconf && ./configure` を実行
-
-### リリース版のデスクトップos向けjarをビルドする
-
-~~~
-make release-jar
-~~~
-
-これで `target/{artifactId}.jar` が生成される。
-
-注意：この際に、安全の為に `make desktop-clean` が実行されます。
-
-### リリース版のwindows向けexeをビルドする
-
-[Launch4j](http://launch4j.sourceforge.net/) が必要です。
-
-~~~
-make release-exe
-~~~
-
-これで `target/{artifactId}.jar` から `target/{artifactId}.exe` が生成される。
-
-### リリース版のandroid向けapkをビルドする
+**リリース版のandroid向けapkをビルドする**
 
 以下が必要です。
 
@@ -589,7 +573,19 @@ make release-apk
 
 注意：この際に、安全の為に `make android-clean` が実行されます。
 
-### リリース版のjar, exe, apkを一度にビルドする
+### Build all
+
+~~~
+make release
+~~~
+
+And, built `target/{artifactId}.jar`, `target/{artifactId}.exe` and `target/{artifactId}.apk`.
+
+(NOTE: It need password for apk too)
+
+----
+
+**リリース版のjar, exe, apkを一度にビルドする**
 
 ~~~
 make release
@@ -599,7 +595,19 @@ make release
 
 注意：リリース版apk生成を含むので、やはり途中でパスワード入力が必要です。
 
-### その他のリリース作業
+### Other work for release
+
+- Do final check to built files.
+- Packaging for distribution (if needed)
+- Register Google Play and other distribution site (if needed)
+- Change files for devel (if needed)
+    1. Edit `configure.ac` for version string
+    2. Edit `android/AndroidManifest.xml.in`
+    3. Do `autoconf && ./configure`
+
+----
+
+**その他のリリース作業**
 
 - 生成されたファイルを動かしてみて、最終チェックを行います。
 - 必要に応じて、配布用にパッケージングします(README.txtを同梱したり等)。
@@ -609,14 +617,14 @@ make release
     2. `android/AndroidManifest.xml.in` の `uses-permission` など
     3. 変更したら、 `autoconf && ./configure` を実行
 
+
+
+
+
 <!--
 
 TODO: claninfo.cljおよびclanutil.cljの使い方も書く事
-
-
--->
-
-<!--
+TODO: 古いドキュメントと比べてみて、必要な情報が抜けてないか確認する事
 
 
 Directory structure
