@@ -474,6 +474,7 @@ make distclean
 4. Do `autoconf && ./configure`
 
 ----
+
 **リリース準備**
 
 1. `configure.ac` をいじる
