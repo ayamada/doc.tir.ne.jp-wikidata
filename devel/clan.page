@@ -691,34 +691,54 @@ I suppose to setup by [#spreading-project-directory]() (there is in `package/pro
 - **`package/projname/target/`** : リリース版の `app.jar` `app.exe` `app.apk` およびリリースに関連する一時ファイル置き場
 
 
+Utilities
+=========
+
+CLAN supply `claninfo.clj` and `clanutil.clj`.
+
+~~~
+(use '[jp.ne.tir.clan.claninfo :as claninfo])
+
+claninfo/is-release? ; => true or false
+claninfo/clan-clojure-version ; => "1.5.0"
+...
+~~~
+
+~~~
+(use '[jp.ne.tir.clan.clanutil])
+
+(keep-code-when-release
+  (prn "disable wizard-mode")
+  ...)
+(purge-code-when-release
+  (prn "enable wizard-mode")
+  ...)
+(keep-code-when-desktop
+  (prn "a payment handling for desktop")
+  ...)
+(keep-code-when-android
+  (prn "a payment handling for android")
+  ...)
+
+(set-display-bootlogo-in-android!) ; this is for explicit manipulation to shutdown process by user
+
+(set-jingle-off-by-pref! boolean) ; play/mute boot-jingle on boot time
+
+(is-jingle-off-by-pref?) ; => true or false
+
+(get-package-type) ; => :apk or :exe or :jar (it return :jar when make run/repl)
+(get-os-type) ; => ; => :android or :windows or :unix
+~~~
+
+See `clan/cbl/src/jp/ne/tir/clan/claninfo.clj.in` and `clan/cbl/src/jp/ne/tir/clan/clanutil.clj`.
+
 <!--
 
-
-
-TODO: claninfo.cljおよびclanutil.cljの使い方も書く事
 TODO: 古いドキュメントと比べてみて、必要な情報が抜けてないか確認する事
 TODO: nekoのつかいかたについてもかく
 
-
 その他
 ======
-
-### 用語について
-
-- clan : この構築キット、配布物一式、ディレクトリ名
-- cal : CLAN ApplicationListener。アプリ本体、これを主にいじる。 cal/ が実体
-- cbl : CLAN BootLoader。ブート画面部分。clan/cbl/ 内にソースあり
-
-
-
-### CLAN自体の情報を取得する
-
-- clan/info/ によって、 jp.ne.tir.clan.Info が提供されます。
-- 詳細については、 `clan/info/src/main/java/jp/ne/tir/clan/Info.java.in`
-  を確認してください。しかし実際に使う可能性があるのは `Info/debug`,
-  `Info/buildNumber`, `Info/BuildDate` ぐらいでしょう。
-  それぞれ、デバッグフラグ、ビルド番号(単なるepoch)、ビルド日時です。
-
 
 ### makeターゲット一覧
 
