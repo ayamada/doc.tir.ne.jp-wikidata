@@ -508,8 +508,8 @@ makeの依存関係はドットファイルのフラグファイルで管理し�
 これは主に、mavenのローカルリポジトリに入るファイルを判定する為です。
 
 実際の依存関係のグラフは、clan同梱の
-[doc/dependencies.png](https://github.com/ayamada/clan/blob/master/doc/dependencies.png) および
-[doc/dependencies.dot](https://github.com/ayamada/clan/blob/master/doc/dependencies.dot) を参照してみてください。
+[doc/dependencies.png](https://github.com/ayamada/clan/blob/use_maven/doc/dependencies.png) および
+[doc/dependencies.dot](https://github.com/ayamada/clan/blob/use_maven/doc/dependencies.dot) を参照してみてください。
 
 - make info
     - clan/info/ にある、clan自体の情報を保持するパッケージを構築し、
