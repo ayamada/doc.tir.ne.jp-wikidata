@@ -861,8 +861,61 @@ Refer to `Makefile.in` for more information.
     - `make distclean` を実行し、更に `libgdx-x.y.z.zip` も削除します。
 
 
+How to maintain CLAN itself
+===========================
 
-TODO: つづきはあとで
+CLAN was developed with sample app.
+
+----
+
+**CLAN自身のメンテナンス手順**
+
+CLANはサンプルアプリとセットで開発を行う。
+
+## develop CLAN
+
+~~~{.bash .numberLines}
+mkdir -p clan_parent
+cd clan_parent
+git clone git@github.com:ayamada/clan.git
+sh clan/script/spread_current_dir.sh
+~~~
+
+- It isn't need to project directory, because sample app hasn't respository
+- Do `git clone` from ssh, not https(because, https is readonly)
+- expand sample files
+
+Can develop CLAN and sample app.
+And edit sample app sources and inside `clan/`.
+
+If you want to commit to repository, then you do to command like below.
+
+~~~{.bash .numberLines}
+make distclean
+rm -rf clan/sample
+cp -a Makefile.in android configure.ac project-common.clj.in \
+desktop/ layout/ src/ src-java/ textures/ l4j/ clan/sample/
+cd clan
+git status
+git add ...
+git commit
+cd -
+~~~
+
+TODO: まだ途中
+
+...
+
+
+Release sample app (if needed)
+
+- See [#release-your-application]().
+
+.
+
+----
+
+**CLANの開発**
 
 <!--
 
@@ -874,63 +927,7 @@ TODO: nekoのつかいかたについてもかく
 
 
 
-### CLAN自身の開発手順
-
-自分用。
-
-CLANはサンプルアプリとセットで開発を行う。
-
-~~~{.bash .numberLines}
-mkdir -p clan_parent
-cd clan_parent
-git clone git@github.com:ayamada/clan.git
-sh clan/script/spread_current_dir.sh
-~~~
-
-- サンプルアプリのリリースは手動で行う為、ディレクトリは一段でよい
-- push可能なように、sshでgit cloneする
-- サンプルを展開する
-
-この状態で開発を行う。
-
-まず最初に al.clj をいじって、
-外部ファイルの動的ロード(後述)とプロファイリングができるようにしておく事。
-
-サンプルアプリは今のところ、非リリース版では以下の機能が有効になる。
-(将来には変更になる可能性大)
-
-- 起動時に、外部ファイル/URLからclojureファイルを読み込む。
-  この機能は、アプリの再ビルドなしに jp.ne.tir.drop.drop モジュールを
-  更新するのに使える(上記ファイルとしてcal内のdrop.cljをそのまま指定する)
-    - android端末でこの機能を使って外部URLからファイル読み込む場合、
-      android/AndroidManifest.xmlにINTERNETが必要。
-      またファイルのロード(というかdexコンパイル)にはかなりの時間がかかる。
-
-- 起動後はEキーを押すと、上記とは別の外部ファイル/URLのファイル内容をevalする
-  この機能はREPLの粗悪品として使える。
-    - 本当はnREPLを使いたいが、デバッグ版とリリース版の切り分けがうまくいかず
-      とりあえず簡易版としてこれを実装。
-    - たまにandroid内でスレッドプールからスレッドが確保できなくなる時がある。
-      原因不明。あとで調べなくてはならない。
-
-一通り開発ができたら以下を行う。
-
-- 上記で変更した al.clj を元の状態に戻しておく
-- もし必要であれば、サンプルアプリのリリース版の生成を行う。
-    - ここの手順は上記の「[#リリース作業]()」を確認する事。
-        - ただし、上記「リリース作業」内では、この中でplayや配布物の公開を
-          行っているが、CLANサンプルアプリの場合は、リリースファイルの生成
-          のところまでで一旦止めておく事(CLAN本体のリリース後に公開する)。
-    - なお、このリリース作業内にて、drop.clj内のlicenseのurlのタグ部分の更新も
-      通常は必要(サンプルアプリのみのバージョンアップであれば不要)。
-      忘れないようにする事。
-
 その後、以下を実行してsampleに反映し直す。
-
-~~~{.bash .numberLines}
-make maintainer-clean
-cp -a Makefile.in android assets cal configure.ac desktop l4j layout res clan/sample
-~~~
 
 要は、 clan/ 以外の全ファイルを clan/sample/ へと戻している。
 
