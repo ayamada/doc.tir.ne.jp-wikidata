@@ -864,15 +864,19 @@ Refer to `Makefile.in` for more information.
 How to maintain CLAN itself
 ===========================
 
+This section is for me.
+
 CLAN was developed with sample app.
 
 ----
 
 **CLAN自身のメンテナンス手順**
 
+この項目は筆者の為のものです。
+
 CLANはサンプルアプリとセットで開発を行う。
 
-## develop CLAN
+## Develop CLAN
 
 ~~~{.bash .numberLines}
 mkdir -p clan_parent
@@ -885,8 +889,8 @@ sh clan/script/spread_current_dir.sh
 - Do `git clone` from ssh, not https(because, https is readonly)
 - expand sample files
 
-Can develop CLAN and sample app.
-And edit sample app sources and inside `clan/`.
+May develop CLAN with sample app.
+And edit sample app sources (`src/`) and inside `clan/`.
 
 If you want to commit to repository, then you do to command like below.
 
@@ -897,74 +901,107 @@ cp -a Makefile.in android configure.ac project-common.clj.in \
 desktop/ layout/ src/ src-java/ textures/ l4j/ clan/sample/
 cd clan
 git status
+git diff
 git add ...
 git commit
 cd -
 ~~~
 
-TODO: まだ途中
+Point is to get back to edit files to `clan/sample/`.
 
-...
-
+NOTE: you may check `git diff` for local changes.
 
 Release sample app (if needed)
 
 - See [#release-your-application]().
-
-.
+- Publish distribution of sample app if needed. Register Google Play.
 
 ----
 
 **CLANの開発**
+
+~~~{.bash .numberLines}
+mkdir -p clan_parent
+cd clan_parent
+git clone git@github.com:ayamada/clan.git
+sh clan/script/spread_current_dir.sh
+~~~
+
+- サンプルアプリは独自のリポジトリを持たないので、プロジェクトディレクトリを作る必要はない
+- `git clone` はhttpsではなく、sshで行う(pushするので)
+- 通常と同様にファイルを展開している
+
+サンプルアプリとCLANを開発できるようになった。
+
+なので、サンプルアプリのソース(`src/`)と `clan/` 内を編集する。
+
+もしリポジトリにコミットしたくなったら、下のコマンドのように行う。
+
+~~~{.bash .numberLines}
+make distclean
+rm -rf clan/sample
+cp -a Makefile.in android configure.ac project-common.clj.in \
+desktop/ layout/ src/ src-java/ textures/ l4j/ clan/sample/
+cd clan
+git status
+git diff
+git add ...
+git commit
+git push
+cd -
+~~~
+
+要は、編集した各ファイルを `clan/sample/` に戻している。
+
+注意： `git diff` をチェックして、ローカルな変更をコミットに含めてしまわないよう確認した方がよい。
+
+もし必要なら、サンプルアプリをリリースする。
+
+- この手順は [#release-your-application]() を参照
+- 必要に応じて、サンプルアプリの配布物を公開する事。google playにも登録する事
+
+
+## Release CLAN
+
+0. Add record for release to `ChangeLog`
+    - Must check `git log` and append important changes to `ChangeLog`
+1. Edit `script/settings.sh` and remove `-SNAPSHOT` from version string
+2. `git add ChangeLog script/settings.sh`
+3. `git commit -m 'version X.Y.Z releasing'`
+4. `git tag -a X.Y.Z -m 'a description'`
+5. Edit `script/settings.sh` and increment version string and add `-SNAPSHOT` to version string
+6. `git add script/settings.sh`
+7. `git commit -m 'version X.Y.Z released'`
+8. `git push`
+9. `git push origin --tags`
+10. Edit [http://doc.tir.ne.jp/devel/clan]()(this page!), and press "公開サイトに反映" button.
+    - Modify "Latest version" on a description
+    - Append important changes to this document if exists
+
+----
+
+**CLANのリリース**
+
+0. ChangeLog にリリースの記録を行う
+    - gitのコミットログを確認し、重要な変更点があるならきちんと記入する事
+1. `script/settings.sh` のバージョン番号から、 `-SNAPSHOT` を除去
+2. `git add ChangeLog script/settings.sh`
+3. `git commit -m 'version X.Y.Z releasing'`
+4. `git tag -a タグ名 -m 'メッセージ'`
+5. `script/settings.sh` のバージョン番号を上げ、 `-SNAPSHOT` を付与
+6. `git add script/settings.sh`
+7. `git commit -m 'version X.Y.Z released'`
+8. `git push`
+9. `git push origin --tags`
+10. [http://doc.tir.ne.jp/devel/clan]()(つまりこのページ)を編集し、その後「公開サイトに反映」ボタンを押す。
+    - 概要のところの「現在のバージョン」を更新
+    - 重要な変更内容を追記(もしあるなら)
 
 <!--
 
 TODO: 古いドキュメントと比べてみて、必要な情報が抜けてないか確認する事
 TODO: nekoのつかいかたについてもかく
 
-その他
-======
-
-
-
-その後、以下を実行してsampleに反映し直す。
-
-要は、 clan/ 以外の全ファイルを clan/sample/ へと戻している。
-
-その後、忘れずにgitに保存する。 この際には必ず、
-**変更ファイル一覧および差分を確認** し、うっかりして
-**前述のpath部分の変更がコミットされたりする事がないよう注意** する。
-
-- サンプルアプリ部分をコミットしたくなったら、前述の cp -a
-  を行ってからコミットする事。
-
-
-### CLAN自身のリリース手順
-
-上記の通りに開発を行い、gitに保存したところまで進めておく事。
-
-0. ChangeLog にリリースの記録
-    - gitのコミットログを確認し、重要な変更点があるならきちんと記入する事
-1. script/settings.sh のバージョン番号から、 `-SNAPSHOT` を除去
-2. git add ChangeLog script/settings.sh
-3. git commit -m 'version X.Y.Z releasing'
-4. git tag -a タグ名 -m 'メッセージ'
-5. script/settings.sh のバージョン番号を上げ、 `-SNAPSHOT` を付与
-6. git add script/settings.sh
-7. git commit -m 'version X.Y.Z released'
-8. git push
-9. git push origin --tags
-
-時間があればリリースブランチを使う等、もう少し今風に改善したいところだが…
-
-上記が完了したら、[http://doc.tir.ne.jp/devel/clan]()、つまりこのページ自体も更新を行い、「公開サイトに反映」ボタンを押す事。
-
-- 具体的には以下を変更する
-    - 上の方の「現在のバージョン」
-    - Usage内のチェックアウトするタグ指定
-    - もしバージョンアップに伴い仕様が変化したなら、該当箇所を忘れずに更新
-
-最後に、必要に応じて、サンプルアプリの配布物を公開する。google playにも登録する。
 -->
 
 
