@@ -4,9 +4,9 @@ title: CLAN : Clojure, LibGDX, Android, Neko application construct kit
 ...
 
 
-Sorry, I am rewriting this document now. Old document (for version 0.0.6) is here. -> [clan/0.0.6]()
+This is a document for version-0.1.0. Old document (for version 0.0.6) is here. -> [clan/0.0.6]()
 
-現在ドキュメントの書き直し中です。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
+これはバージョン0.1.0のドキュメントです。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
 
 ----
 
@@ -24,6 +24,7 @@ Abstract
     - If you write [LibGDX](http://libgdx.badlogicgames.com/)'s [ApplicationListener](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html) by **Clojure**, then CLAN can run this.
       And, CLAN can deploy to jar(for many desktop OS with Java), exe(for Windows with Java), apk(for Android).
         - Therefore, you shall be able to understand LibGDX and Clojure, if you want to use CLAN.
+        - CLAN include [Neko](https://github.com/alexander-yakushev/neko).
     - CLAN can use nREPL.
         - but it is very inconvenience, because it have some problems that [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]().
     - CLAN have splash screen on loading Clojure at boot.
@@ -38,6 +39,7 @@ Abstract
 - CLANとは
     - [LibGDX](http://libgdx.badlogicgames.com/)の[ApplicationListener](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html)を「Clojureで」書いたものを、実行させたり、jarやexeやapkにデプロイしたりする事のできる開発キットです。
         - よって、CLANを使いたい人はLibGDXとClojureを理解している必要があります。
+        - [Neko](https://github.com/alexander-yakushev/neko) も含んでいます
     - nREPLが使える
         - ただしかなり不便、問題点は [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]() に書いてある
     - プロセス起動時のClojureロード時に起動ロゴ等の画像を表示する機能あり
@@ -997,187 +999,94 @@ cd -
     - 概要のところの「現在のバージョン」を更新
     - 重要な変更内容を追記(もしあるなら)
 
-<!--
-
-TODO: 古いドキュメントと比べてみて、必要な情報が抜けてないか確認する事
-TODO: nekoのつかいかたについてもかく
-
--->
-
-
-
-続きはあとで書く
-
-<!--
 
 FAQ
----
+===
 
 How to use external library from clojars and etc
-:   Now, add dependency to `cal/pom.xml.in`.
+:   Edit `project-common.clj.in` and do `autoconf && ./configure`
 
-外部ライブラリ追加したい
-:   今のところは、 `cal/pom.xml.in` にdependencyを追加してください。
-    他のdependencyのエントリをコピペする際には、
-    scopeがprovidedになってない事を確認する事。
-    providedになってたらバイナリに含まれない。compileにしとく。
+I want to separate process by desktop or Android
+:   You can use `keep-code-when-desktop` and others by [jp.ne.tir.clan.clanutil](#utilities). These can includes to `import`, `use` and other special-forms because that do code-elimination at compile-time.
 
-apk生成時に "java.security.SignatureException: private key algorithm is not compatible with signature algorithm" というエラーが出る
-:   あなたの生成した鍵の `-genkey` 指定がおかしいようです。
-    [http://developer.android.com/intl/ja/tools/publishing/app-signing.html#cert]() を見ながら、正しく `-genkey` を指定して鍵を生成し直しましょう。
+Have error `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` on make apk
+:   See [#build-apk-of-release-version-for-android]().
 
-Cannot create dex file
-:   bump up to value of `<jvmArgument>` in `android/pom.xml.in`.
-dexファイルの生成に失敗するようになった
-:   `android/pom.xml.in`内の`<jvmArgument>`の値を増やしてください。
-
-dexファイルの生成がいつまでたっても終わらない。cpuも使っていない
-:   おそらくdex内にcom.google.androidのjarを内包しようとしています。 dependencies 指定を見直してみてください。
-
-My app is too slow on android-real-machine.
-:   enabling
-    [`*warn-on-reflection*`](http://clojure.org/java_interop#Java%20Interop-Type%20Hints),
-    and insert type specifier. it was used by
-    [clojure-maven-plugin](https://github.com/talios/clojure-maven-plugin#configuring-your-clojure-session).
-
-android実機で超遅い
-:   [`*warn-on-reflection*`](http://clojure.org/java_interop#Java%20Interop-Type%20Hints)
-    を有効にして、型指定しまくって警告を全部つぶす。
-    [clojure-maven-plugin](https://github.com/talios/clojure-maven-plugin#configuring-your-clojure-session)からも指定可能。
-
-Why cannot I compile `*.clj`, it was skipped.
-:   set to encoding = utf-8, or add string like `-Dfile.encoding=utf-8`
-    to env-variable of `MAVEN_OPTS`. This is spec of clojure-maven-plugin
-    probably.
-
-なぜか `*.clj` がスキップされてコンパイルされない
-:   文字コードをutf-8にしてみる。 もしくは、環境変数`MAVEN_OPTS`に
-    `-Dfile.encoding=utf-8` 的な指定を追加してみる。
-    clojure-maven-pluginの仕様のようです。
+My app is too slow on Android.
+:   Enabling [`*warn-on-reflection*`](http://clojure.org/java_interop#Java%20Interop-Type%20Hints), and insert type specifier.
 
 How to upgrade CLAN
-:   replace `clan/` directory, or `git pull` on `clan/` directory. but,
-    you must check to ChangeLog for incompatible changes at before.
+:   Do `cd clan`, `git pull` and `git checkout x.y.z` ([tag list](https://github.com/ayamada/clan/tags)). but, you must check to ChangeLog for incompatible changes at before.
 
-CLANバージョンアップのやりかた
-:   `clan/` ディレクトリを丸ごと新しいものに交換する。 もしくは `clan/`
-    ディレクトリ内で `git pull` を実行。
-    だが先にChangeLogを見て、非互換な変更がないか確認する事。
-
-Where is save data of Preferences
-:   - on Android, there is in SharedPreferences. it delete by uninstall app.
-    - on Windows, there is in `C:\Users\{USERNAME}\.prefs\{PREFNAME}\`.
-      WARNING: `.prefs` is shared by other libgdx apps.
-      PREFNAME must have unique name!
-    - on othre desktop OS, there is in `~/.prefs/{PREFNAME}/`.
-      WARNING: `.prefs` is shared by other libgdx apps.
-      PREFNAME must have unique name!
-
-Preferences の実データの保存先
-:   - androidでは、SharedPreferences内。アプリアンインストールで削除される。
-    - windowsでは、 `C:\Users\{USERNAME}\.prefs\{PREFNAME}\` 内。
-      androidとは違い、他のlibgdx利用アプリと共通なので、
-      PREFNAMEはきちんとuniqueな名前にする必要がある！
-    - windows以外のdesktopでは、 `~/.prefs/{PREFNAME}/` 内。
-      PREFNAMEについてはwindowsと同じ注意が必要！
-
-I want to change/erase background console output.
-:   You edit `clan/cbl/src/main/java/jp/ne/tir/clan/BootLoader.java`
-
-背景のコンソール出力を変更したい/表示させたくない
-:   `clan/cbl/src/main/java/jp/ne/tir/clan/BootLoader.java` をいじる
-
-I want to change color in boot screen.
-:   You edit `clan/cbl/src/main/java/jp/ne/tir/clan/BootLoader.java`
-
-ブート画面の色を変更したい
-:   `clan/cbl/src/main/java/jp/ne/tir/clan/BootLoader.java` をいじる
+I want to change/erase background console output, boot logo and other.
+:   You edit `layout/*.java.in`.
 
 I want to change boot screen more better.
-:   You edit `clan/cbl/src/main/java/jp/ne/tir/clan/BootLoader.java`
+:   You edit `clan/cbl/src-java/jp/ne/tir/clan/BootLoader.java`, and please send pull-req to me.
 
-その他ブート画面をもっとよくしたい
-:   `clan/cbl/src/main/java/jp/ne/tir/clan/BootLoader.java` をいじる
+Not display boot-logo to boot at second time and more
+:   Boot-logo is for to wait to loading clojure core. But almost processes were reused on Android, So not need to display boot-logo to boot at second time and more. Even so, if you want to display boot-logo, you may call [`(set-display-bootlogo-in-android!)`](#utilities).
 
-I dont want boot screen.
-:   You check to comment-outed area in `clan/layout/*.in`.
+Vars/functions were kept to defined/modified by previous execution while reboot Android machine
+:   Finished Processes were reused on Android. You may use another Android apps like "task killer".
 
-ブート画面を出したくない
-:   `clan/layout/*.in` 内のコメントアウトされている部分を見てください。
-
-二回目起動時に起動画面が表示されない
-:   android実機では一度起動したプログラムはしばらくキャッシュされる為、二回目以降の起動は高速に行えます。起動画面は起動に時間がかかるのをごまかす為のものなので、高速起動できるなら起動画面を出す必要はないので、バージョン0.0.4からは出さないようにしました。
-
-二回目起動時に、トップレベルのdefで定義した、以前に起動したプロセスの変数の内容が、android本体を再起動するまで残っている。
-:   [clan/libgdx#androidのdexキャッシュ問題]()を見てください。
-
-生成したjarにソースファイルを含めたくない
-:   [clan/memo#配布物のjarにcalのソースファイルを含めないようにするには]()を見てください。
-
-calのpomにライブラリを追加したら、PCでは動くのにdx.jarのコンパイル時に「`already added`」と言われて通らない
-:   追加したライブラリのscopeを`provided`にしてください。
-
-How to make windows exe for debug
-:   do `make jar inner-release-exe`. but it is dangerous and be discouraged.
-
-デバッグ版exeを作りたい
-:   `make jar inner-release-exe` で作れます。しかし危険なのでおすすめしない。
-
-What is something wrong to collision-detection of sample-app?
-:   it can catch items by mouth only.
-
-サンプルアプリの当たり判定おかしくない？
-:   口の部分にのみ当たり判定があります。
-
-I cannot press 'E' key on real-android-machine.
-:   you can edit code that add button on screen, or use bluetooth keyboard.
-
-android実機でEキーなんて押せねーよ！
-:   自分でコードをいじって画面にボタンでも追加する。
-    もしくはbluetoothキーボードを用意。
-
-How do license?
-:   see [clan/license]()(sorry, use translator).
-
-ライセンスどうすればいい？
-:   [clan/license]() を見てください。
-
-nekoの使い方がわからない
-:   androidではActivity内に子Activityを持つ構造が普通で、
-    libgdxはその子Activity内にゲームを作る機能はあるけれど、
-    Activity構造自体をどうこうする機能は提供していない。
-    nekoはその機能があるので、そういう構造にしたい場合はnekoを使う。
-    がayamadaがまだそういう機能を必要とするアプリを作ってないので
-    取り込むだけ取り込んで放置されている。
-    そういうアプリを作り始めたらドキュメントを書く。
-    それまでは英語のnekoのドキュメントを読んで調べてほしい。
+How to use neko
+:   Libgdx not provide to manipulate Android's activity. Neko have this function. If you want to manipulate Android's activity, you can use neko. See [document of neko](https://github.com/alexander-yakushev/neko/wiki).
 
 What is CLAN logo?
 :   This is my family emblem. Change more better logo on later. (because
     it is too cutting corners.) logo's emblem part came from eps-file
     that distributed by [http://eps.crest-japan.net/index_en.php]().
 
-CLANのロゴは何？
-:   うちの家の家紋です。
-    あとでもっとちゃんとしたロゴを作る(あまりにも手抜きなので)。
-    家紋部分は [http://eps.crest-japan.net/]()
-    からepsファイルを貰ってきて加工して作った。
-
 What is assets of sample game?
 :   all assets were made by me.
+
+----
+
+**FAQ**
+
+外部ライブラリを使いたい
+:   `project-common.clj.in` を編集し、 `autoconf && ./configure` を実行してください
+
+desktopとandroidで処理を分けたい
+:   [jp.ne.tir.clan.clanutil](#utilities)の`keep-code-when-desktop`系を使ってください。コンパイル時にターゲット以外のコード除去が行われるので、`import`や`use`等も囲めます。
+
+apk生成時に `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` というエラーが出る
+:   [#build-apk-of-release-version-for-android]() を見てください
+
+android実機ですごく遅い
+:   [`*warn-on-reflection*`](http://clojure.org/java_interop#Java%20Interop-Type%20Hints) を有効にし、型指定を追加しまくってください
+
+CLANのアップデート手順
+:   `cd clan` してから、 `git pull` と `git checkout x.y.z` を実行してください([タグ一覧](https://github.com/ayamada/clan/tags))。ですが、ChangeLogに非互換な変更がないかどうかを先に確認しておいてください。
+
+起動ロゴ、コンソール出力、等々を変更したい
+:   `layout/*.java.in` をいじってください。
+
+起動画面をもっとよく変更したい
+:   `clan/cbl/src-java/jp/ne/tir/clan/BootLoader.java` をいじってください。よかったらpull-reqもしてください。
+
+二回目起動時に起動画面が表示されない
+:   android実機では一度起動したプログラムはしばらくキャッシュされる為、二回目以降の起動は高速に行えます。起動画面は起動に時間がかかるのをごまかす為のものなので、高速起動できるなら起動画面を出す必要はないので、バージョン0.0.4からは出さないようにしました。それでも起動画面を出したい場合は、 [`(set-display-bootlogo-in-android!)`](#utilities) を実行してください。
+
+二回目起動時に、前回のプロセスで定義した変数/関数等の内容が、android本体を再起動するまで残っている
+:   「task killer」系のアプリを使って完全に終了させない限り、プロセスは再利用されます。詳細は[clan/libgdx#androidのdexキャッシュ問題]()を見てください。
+
+nekoの使い方
+:   androidではActivity内に子Activityを持つ構造が普通で、libgdxはそのActivity内にゲームを作る機能はあるけれど、Activity構造自体をどうこうする機能は提供していない。nekoはその機能があるので、そういう構造にしたい場合はnekoを使う。がayamadaがまだそういう機能を必要とするアプリを作ってないので取り込むだけ取り込んで放置されている。そういうアプリを作り始めたらドキュメントを書く。それまでは自分で[nekoのドキュメント](https://github.com/alexander-yakushev/neko/wiki)を読んで調べてほしい。
+
+CLANのロゴは何？
+:   うちの家の家紋です。あとでもっとちゃんとしたロゴを作る(あまりにも手抜きなので)。家紋部分は [http://eps.crest-japan.net/]() からepsファイルを貰ってきて加工して作った。
 
 サンプルゲームの画像や音は何？
 :   自作した。全部俺。
 
-Etc...
-:   see [clan/memo]().
-
-
--->
-
 
 TODO
 ====
+
+- support iOS and GWT
+    - I need iOS-machine and mac, but I haven't money
 
 - isolate `desktop/` for `make run`
     - if target application make temporary files, that get `desktop/` messy.
