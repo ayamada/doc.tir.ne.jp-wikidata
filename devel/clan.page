@@ -27,10 +27,11 @@ Abstract
         - CLAN include [Neko](https://github.com/alexander-yakushev/neko).
     - CLAN can use nREPL.
         - but it is very inconvenience, because it have some problems that [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]().
-    - CLAN have splash screen on loading Clojure at boot.
+    - CLAN display splash screen at boot for loading Clojure.
         - Can replace logo image.
     - CLAN is completely CLI (unnecessary GUI).
     - CLAN work on UNIX like OS, Mac, and Windows!
+    - CLAN use [lein-droid](https://github.com/clojure-android/lein-droid).
 
 ----
 
@@ -46,6 +47,7 @@ Abstract
         - ロゴ画像は入替可能
     - 完全にcliベースでのビルドやデプロイが可能(gui環境不要)
     - unix風環境、mac、windows環境でも動く！
+    - [lein-droid](https://github.com/clojure-android/lein-droid)を使っています
 
 
 Repository
