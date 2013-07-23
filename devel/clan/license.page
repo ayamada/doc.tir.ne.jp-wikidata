@@ -67,4 +67,16 @@ CLAN本体のライセンスはApache License 2.0です。
 - [http://www.tldrlegal.com/compare]() 便利。しかし自動生成なので、細かいところまで正しいかどうかはちょっと怪しい部分あり
 
 
+# サンプル
+
+自作ゲーム「ぶらり猫の旅　地底帝国編」でのライセンス表記は今のところ、こういう形にした(将来には変更するかも)。
+
+- [http://vnctst.tir.jp/ja/games/driftcat_underworld_license.html#Embedded%20Software%27s%20Licenses]()
+    - 配布サイトの1ページとして作成し、アプリ内からはリンクを押すとこのページをブラウザで開くようにした
+        - 「ライセンス類」は、スタッフロールのページの一項目とした
+    - 面倒なので、jar/exe/apkで共通とした(実際にはjar版ではlaunch4jやnekoを含んでいないにも関わらず、ここには書いてある)
+
+
+
+
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
