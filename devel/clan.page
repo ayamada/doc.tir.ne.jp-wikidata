@@ -24,14 +24,14 @@ Abstract
     - If you write [LibGDX](http://libgdx.badlogicgames.com/)'s [ApplicationListener](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html) by **Clojure**, then CLAN can run this.
       And, CLAN can deploy to jar(for many desktop OS with Java), exe(for Windows with Java), apk(for Android).
         - Therefore, you shall be able to understand LibGDX and Clojure, if you want to use CLAN.
-        - CLAN include [Neko](https://github.com/alexander-yakushev/neko).
+        - CLAN include [Neko](https://github.com/alexander-yakushev/neko) (for Android).
     - CLAN can use nREPL.
         - but it is very inconvenience, because it have some problems that [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]().
     - CLAN display splash screen at boot for loading Clojure.
         - Can replace logo image.
     - CLAN is completely CLI (unnecessary GUI).
     - CLAN work on UNIX like OS, Mac, and Windows!
-    - CLAN use [lein-droid](https://github.com/clojure-android/lein-droid).
+    - CLAN use [lein-droid](https://github.com/clojure-android/lein-droid) (for Android).
 
 ----
 
@@ -40,14 +40,14 @@ Abstract
 - CLANとは
     - [LibGDX](http://libgdx.badlogicgames.com/)の[ApplicationListener](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html)を「Clojureで」書いたものを、実行させたり、jarやexeやapkにデプロイしたりする事のできる開発キットです。
         - よって、CLANを使いたい人はLibGDXとClojureを理解している必要があります。
-        - [Neko](https://github.com/alexander-yakushev/neko) も含んでいます
+        - [Neko](https://github.com/alexander-yakushev/neko) も含んでいます(android向け)
     - nREPLが使える
         - ただしかなり不便、問題点は [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]() に書いてある
     - プロセス起動時のClojureロード時に起動ロゴ等の画像を表示する機能あり
         - ロゴ画像は入替可能
     - 完全にcliベースでのビルドやデプロイが可能(gui環境不要)
     - unix風環境、mac、windows環境でも動く！
-    - [lein-droid](https://github.com/clojure-android/lein-droid)を使っています
+    - [lein-droid](https://github.com/clojure-android/lein-droid)を使っています(android向け)
 
 
 Repository
