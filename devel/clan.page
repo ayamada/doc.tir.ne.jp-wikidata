@@ -82,7 +82,7 @@ Requirement
     - You may use version 2.1.0 now. Tentatively, 2.2.0 cannot work on `make repl`.
     - You can edit `LEIN_VERSION` in `lein` shell script, and do `lein --version`.
 - (optional) [Android SDK](http://developer.android.com/sdk/) (for Android's apk)
-    - It must be `Android SDK Tools Revision 2.2.0.0` and `Android SDK Platform-tools Revision 17` or later. Older versions couldn't work.
+    - `Android SDK Tools` must be `Revision 2.2.0.0` or later, and `Android SDK Platform-tools` must be `Revision 17` or later. Older versions couldn't work.
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (for Windows' exe)
 
 I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Linux(x86-32bit) on 2013/02/28.
