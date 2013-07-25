@@ -82,7 +82,7 @@ Requirement
     - You may use version 2.1.0 now. Tentatively, 2.2.0 cannot work on `make repl`.
     - You can edit `LEIN_VERSION` in `lein` shell script, and do `lein --version`.
 - (optional) [Android SDK](http://developer.android.com/sdk/) (for Android's apk)
-    - `Android SDK Tools` must be `Revision 2.2.0.0` or later, and `Android SDK Platform-tools` must be `Revision 17` or later. Older versions couldn't work.
+    - `Android SDK Tools` must be `Revision 2.2.0.0` or later, and `Android SDK Platform-tools` must be `Revision 17` or later, and `Android SDK Build-tools` must be `Revision 17` or later. Older versions couldn't work.
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (for Windows' exe)
 
 I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Linux(x86-32bit) on 2013/02/28.
@@ -103,7 +103,7 @@ I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Li
     - 今は 2.1.0 を使うようにしてください。とりあえず 2.2.0 では `make repl` が動きません。
     - `lein` スクリプト自体を編集し、中の `LEIN_VERSION` を変更する事でバージョンが変えられます。変更後は `lein --version` を実行してみてください。
 - (optional) [Android SDK](http://developer.android.com/sdk/) (android用apkを生成したい場合のみ)
-    - `Android SDK Tools` はバージョンが `2.2.0.0` 以上、 `Android SDK Platform-tools` はバージョンが `17` 以上が必要です。古いバージョンでは上手く動きません。
+    - `Android SDK Tools` はバージョンが `2.2.0.0` 以上、 `Android SDK Platform-tools` はバージョンが `17` 以上、 `Android SDK Build-tools` はバージョンが `17` 以上が必要です。古いバージョンでは上手く動きません。
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (windows用exeを生成したい場合のみ)
 
 2013/02/28 に、windows vista(32bit)とgentoo(x86-32bit)上にてサンプルプロジェクトのビルドが動作する事を確認しています。
