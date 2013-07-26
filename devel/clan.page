@@ -26,7 +26,7 @@ Abstract
         - Therefore, you shall be able to understand LibGDX and Clojure, if you want to use CLAN.
         - CLAN include [Neko](https://github.com/alexander-yakushev/neko) (for Android).
     - CLAN can use nREPL.
-        - but it is very inconvenience, because it have some problems that [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]().
+        - but it is very inconvenience, because it have some problems like [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]().
     - CLAN display splash screen at boot for loading Clojure.
         - Can replace logo image.
     - CLAN is completely CLI (unnecessary GUI).
@@ -42,7 +42,7 @@ Abstract
         - よって、CLANを使いたい人はLibGDXとClojureを理解している必要があります。
         - [Neko](https://github.com/alexander-yakushev/neko) も含んでいます(android向け)
     - nREPLが使える
-        - ただしかなり不便、問題点は [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]() に書いてある
+        - ただしかなり不便、 [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]() 等の問題点がある
     - プロセス起動時のClojureロード時に起動ロゴ等の画像を表示する機能あり
         - ロゴ画像は入替可能
     - 完全にcliベースでのビルドやデプロイが可能(gui環境不要)
@@ -205,7 +205,7 @@ This is run application with nREPL.
 make repl
 ~~~
 
-But, it take very long time at boot, and that cannot rerun in nREPL.
+But, it take very long time at boot, and that rerun with a defect by LWJGL in nREPL(strange window size, etc).
 I guess, will almost use `make run` in cycle of develop.
 And, will use `make repl` for chase to very difficult bugs.
 
@@ -247,7 +247,7 @@ nREPL経由でサンプルアプリを実行する事もできます。
 make repl
 ~~~
 
-しかし、nREPL経由だと起動までに非常に時間がかかり、しかもnREPL中には一回しかアプリ起動ができません。
+しかし、nREPL経由だと起動までに非常に時間がかかり、しかもnREPL中で二回目以降のアプリ起動にはLWJGLに支障があります(ウィンドウサイズがおかしくなる等)。
 なので、通常の開発時は主に`make run`を使って開発を行い、`make repl`を使うのは難しいバグを追跡している時だけにするのが良いと思います。
 
 - [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]() に、この件が少し書かれています。
