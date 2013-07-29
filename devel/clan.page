@@ -560,8 +560,7 @@ It is required this list.
 
 - Install [Android SDK](http://developer.android.com/sdk/)
 - You will generate your [private key](http://developer.android.com/tools/publishing/app-signing.html#cert)
-    - **This key shall need args `-keyalg RSA`**, NOT `DSA` (WARNING: default is `DSA` in some OS). This is constraint by [lein-droid](https://github.com/clojure-android/lein-droid).
-- You will edit `ANDROID_SDK_PATH`, `ANDROID_KEYSTORE_PATH` and `ANDROID_KEY_ALIAS` in `configure.ac`, and do `autoconf && ./configure`.
+- You will edit `ANDROID_SDK_PATH`, `ANDROID_SIGALG`, `ANDROID_KEYSTORE_PATH` and `ANDROID_KEY_ALIAS` in `configure.ac`, and do `autoconf && ./configure`.
     - It is NOT in `~/.lein/profiles.clj` now, sorry.
 
 ~~~
@@ -582,8 +581,7 @@ NOTE: It include `make android-clean` for safety.
 
 - [Android SDK](http://developer.android.com/sdk/) のインストール
 - [private key](http://developer.android.com/tools/publishing/app-signing.html#cert) の生成
-    - **生成時に `-keyalg RSA` の引数を渡す必要があります**、 `DSA` では駄目です(注意：osによってはデフォルト値が `DSA` になっています)。これは[lein-droid](https://github.com/clojure-android/lein-droid)の制約です。
-- `configure.ac` を編集し、 `ANDROID_SDK_PATH` `ANDROID_KEYSTORE_PATH` `ANDROID_KEY_ALIAS` を適切に設定し、 `autoconf && ./configure` を実行します。
+- `configure.ac` を編集し、 `ANDROID_SDK_PATH` `ANDROID_SIGALG` `ANDROID_KEYSTORE_PATH` `ANDROID_KEY_ALIAS` を適切に設定し、 `autoconf && ./configure` を実行します。
     - 現在のところ、これらの設定を `~/.lein/profiles.clj` で行う事はできません。ごめんなさい。
 
 ~~~
@@ -1030,7 +1028,7 @@ I want to separate process by desktop or Android
 :   You can use `keep-code-when-desktop` and others by [jp.ne.tir.clan.clanutil](#utilities). These can includes to `import`, `use` and other special-forms because that do code-elimination at compile-time.
 
 Have error `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` on make apk
-:   See [#build-apk-of-release-version-for-android]().
+:   Modify `ANDROID_SIGALG` to if your private key's algorithm is `RSA` then `SHA1withRSA` else algorithm is `DSA` then `SHA1withDSA` in `configure.ac`.
 
 I got error `#<FileNotFoundException java.io.FileNotFoundException: Could not locate path/to/Desktop__init.class or path/to/Desktop.clj on classpath: >` by `make repl`
 :   You should use lein-2.1.0. See [#requirement]().
@@ -1078,7 +1076,7 @@ desktopとandroidで処理を分けたい
 :   [jp.ne.tir.clan.clanutil](#utilities)の`keep-code-when-desktop`系を使ってください。コンパイル時にターゲット以外のコード除去が行われるので、`import`や`use`等も囲めます。
 
 apk生成時に `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` というエラーが出る
-:   [#build-apk-of-release-version-for-android]() を見てください
+:   鍵のアルゴリズムと署名のアルゴリズムが一致していません。 `configure.ac` の `ANDROID_SIGALG` に、鍵がRSAなら "SHA1withRSA" を、 鍵がDSAなら "SHA1withDSA" を指定してみてください。
 
 `make repl` 時に `#<FileNotFoundException java.io.FileNotFoundException: Could not locate path/to/Desktop__init.class or path/to/Desktop.clj on classpath: >` というエラーが出る
 :   lein は 2.1.0 を使います。 [#requirement]() を見てください
