@@ -100,9 +100,15 @@ title: libgdxメモ
 
 # Preferencesについて
 
+- ※一つのプロセス内で、同一のPreferencesインスタンスを複数生成してはいけない！
+    - おそらくだが、毎回Preferencesを生成して使い捨てるのも危険だと思う(GCのタイミングによって重なる可能性があると思うので)。
+    - 正常に読めなかったり保存できなくなったりする。シングルトン前提でありトランザクションもない。
+    - 違うPreferencesであれば複数同時に生成して扱っても大丈夫なようだ。
+
 - prefはSharedPreferencesらしいけど、他アプリと共有なの？
     - SharedPreferences 自体はアプリ毎に個別です。ただし、明示的に他アプリのContextを指定する事で他アプリのPreferencesを読み書きする事も可能なので「SharedPreferences」という名前になっているようです。
     - ※ただし、desktop向けデプロイでは単にホームディレクトリ上の `~/.prefs/` ディレクトリに保存されるだけなので、libgdxを使うアプリではごちゃまぜになる為、「androidではprefに保存、desktopではファイルに保存」等と処理を分けた方が無難。
+
 - libgdxでは `getSharedPreferences(name, Context.MODE_PRIVATE)` のように、 MODE_PRIVATE でハードコーディングされている。よって他アプリからデータが読み取られる事はないようだ。
 
 
