@@ -793,7 +793,7 @@ Refer to `Makefile.in` for more information.
     - あなたのアプリを起動します。
 
 - `make repl`
-    - Run your application and open nREPL console.
+    - Run your application with nREPL console.
     - あなたのアプリをnREPLコンソール付きで起動します。
 
 - `make pack`
@@ -815,7 +815,7 @@ Refer to `Makefile.in` for more information.
     - 開発用のapkを端末で実行します。
 
 - `make android-repl`
-    - Run apk (for debug) and open nREPL console(sorry, now preparing).
+    - Run apk (for debug) with nREPL console(sorry, now preparing).
     - 開発用のapkを端末にてnREPLコンソール付きで実行します(すいません、まだ準備中です)。
 
 ## For releases
@@ -835,6 +835,15 @@ Refer to `Makefile.in` for more information.
 - `make release`
     - Build jar, exe, and apk for release.
     - リリース版のjar, exe, apk全部をビルドします。
+
+- `make release-apk-install`
+    - Install apk (for release) to device. It requires `make release-apk`.
+    - リリース版のapkを端末にインストールします。 `make release-apk` を先に実行しておいてください。
+
+- `make release-apk-run`
+    - Run apk (for release) to device. It requires `make release-apk-install`.
+    - リリース版のapkを端末から起動します。 `make release-apk-install` を先に実行しておいてください。
+
 
 ## Cleanups
 
