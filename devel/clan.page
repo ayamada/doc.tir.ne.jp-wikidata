@@ -1060,6 +1060,9 @@ Not display boot-logo to boot at second time and more
 Vars/functions were kept to defined/modified by previous execution while reboot Android machine
 :   Finished Processes were reused on Android. You may use another Android apps like "task killer".
 
+Edit files and do `make run` that works, but Edit files and do `make android-run` that not work (not reflected from modified sources)
+:   Sorry, do `make android-clean` before `make android-run`.
+
 How to use neko
 :   Libgdx not provide to manipulate Android's activity. Neko have this function. If you want to manipulate Android's activity, you can use neko. See [document of neko](https://github.com/alexander-yakushev/neko/wiki).
 
@@ -1107,6 +1110,9 @@ CLANのアップデート手順
 
 二回目起動時に、前回のプロセスで定義した変数/関数等の内容が、android本体を再起動するまで残っている
 :   「task killer」系のアプリを使って完全に終了させない限り、プロセスは再利用されます。詳細は[clan/libgdx#androidのdexキャッシュ問題]()を見てください。
+
+ファイルを変更してから `make run` を実行しても反映されているが、ファイルを変更してから `make android-run` を実行しても反映されない
+:   現在のところは仕様です。`make android-clean` を先に実行してください。
 
 nekoの使い方
 :   androidではActivity内に子Activityを持つ構造が普通で、libgdxはそのActivity内にゲームを作る機能はあるけれど、Activity構造自体をどうこうする機能は提供していない。nekoはその機能があるので、そういう構造にしたい場合はnekoを使う。がayamadaがまだそういう機能を必要とするアプリを作ってないので取り込むだけ取り込んで放置されている。そういうアプリを作り始めたらドキュメントを書く。それまでは自分で[nekoのドキュメント](https://github.com/alexander-yakushev/neko/wiki)を読んで調べてほしい。
