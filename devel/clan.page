@@ -95,7 +95,6 @@ Requirement
     - You can edit `LEIN_VERSION` in `lein` shell script, and do `lein --version`.
 - (optional) [Android SDK](http://developer.android.com/sdk/) (for Android's apk)
     - `Android SDK Tools` must be `Revision 2.2.0.0` or later, and `Android SDK Platform-tools` must be `Revision 17` or later, and `Android SDK Build-tools` must be `Revision 17` or later. Older versions couldn't work.
-    - You should edit to `~/.lein/profiles.clj`. see [#build-and-run-sample-application-on-android]().
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (for Windows' exe)
 
 I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Linux(x86-32bit) on 2013/02/28.
@@ -117,7 +116,6 @@ I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Li
     - `lein` スクリプト自体を編集し、中の `LEIN_VERSION` を変更する事でバージョンが変えられます。変更後は `lein --version` を実行してみてください。
 - (optional) [Android SDK](http://developer.android.com/sdk/) (android用apkを生成したい場合のみ)
     - `Android SDK Tools` はバージョンが `2.2.0.0` 以上、 `Android SDK Platform-tools` はバージョンが `17` 以上、 `Android SDK Build-tools` はバージョンが `17` 以上が必要です。古いバージョンでは上手く動きません。
-    - `~/.lein/profiles.clj` を設定する必要があります。 [#build-and-run-sample-application-on-android]() を確認してください。
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (windows用exeを生成したい場合のみ)
 
 2013/02/28 に、windows vista(32bit)とgentoo(x86-32bit)上にてサンプルプロジェクトのビルドが動作する事を確認しています。
@@ -268,27 +266,6 @@ nREPLが一応動いているのを見たら、アプリを終了して次に進
 
 If you install Android SDK, you can run sample application on android.
 
-You should edit `~/.lein/profiles.clj`, add `:clan` and `:clan-sign` entries.
-
-~~~
-{
- :clan {:android {:sdk-path "d:/prog/Android/android-sdk"}}
- :clan-sign {:android {:keystore-path "d:/home/.android/foo.keystore"
-                       :key-alias "foo"
-                       :sigalg "SHA1withRSA"
-                       :keypass "password" ; optional
-                       :storepass "password" ; optional
-                       }}
- }
-~~~
-
-- `:sdk-path` : Path of Android SDK. It must be needed.
-- `:keystore-path`, `:key-alias` : Private key. It is needed only on release. I recommend to create now. See [http://developer.android.com/tools/publishing/app-signing.html#cert]().
-- `:sigalg` : Algorithm of sign. If you key is `RSA` then "SHA1withRSA", or else if you key is `DSA` then "SHA1withDSA".
-- `:keypass`, `:storepass` : Passwords. If you not set these, you will enter password on build-time.
-
-You can insert another parameters to `:clan` profile, like `:jvm-opts ["-Duser.language=en"]` etc...
-
 You shall connect Android-debug-usb, or run Android emulator.
 
 ~~~{.bash .numberLines}
@@ -304,27 +281,6 @@ To build for Android need very large memory(over 1G) and minutes(over 5min?).
 (オプショナル)
 
 android sdkをインストールしているなら、サンプルアプリをandroid上で動かす事ができます。
-
-その場合、 `~/.lein/profiles.clj` に `:clan` と `:clan-sign` エントリを追加しておいてください。
-
-~~~
-{
- :clan {:android {:sdk-path "d:/prog/Android/android-sdk"}}
- :clan-sign {:android {:keystore-path "d:/home/.android/foo.keystore"
-                       :key-alias "foo"
-                       :sigalg "SHA1withRSA"
-                       :keypass "password" ; optional
-                       :storepass "password" ; optional
-                       }}
- }
-~~~
-
-- `:sdk-path` : Android SDK のpathを設定します。必須です。
-- `:keystore-path`, `:key-alias` : リリース用の鍵ファイルおよび鍵のエイリアス名を設定します。リリース時にのみ必要です。今生成しておく事をおすすめします。詳細は [http://developer.android.com/tools/publishing/app-signing.html#cert]() にあります。
-- `:sigalg` : 署名アルゴリズム指定です。上記の鍵を `RSA` で生成した場合は "SHA1withRSA" を、 `DSA` で生成した場合は "SHA1withDSA" を指定してください。
-- `:keypass`, `:storepass` : 鍵のパスワードです。設定しない場合はリリースビルド時にパスワードを聞かれるので入力する必要があります。
-
-なお、 `:clan` プロファイルには、他に `:jvm-opts ["-Duser.language=en"]` 等の、好きなパラメータを追加できます。
 
 以下を実行する前に、androidデバッグusb接続をしておくか、エミュレータを起動しておいてください。
 
@@ -604,13 +560,29 @@ It is required this list.
 
 - Install [Android SDK](http://developer.android.com/sdk/)
 - You will generate your [private key](http://developer.android.com/tools/publishing/app-signing.html#cert)
-- You will edit `~/.lein/profiles.clj`. See [#build-and-run-sample-application-on-android]().
+
+You should edit `~/.lein/profiles.clj`, add `:clan-sign` entry.
+
+~~~
+{
+ :clan-sign {:android {:keystore-path "d:/home/.android/foo.keystore"
+                       :key-alias "foo"
+                       :sigalg "SHA1withRSA"
+                       :keypass "password" ; optional
+                       :storepass "password" ; optional
+                       }}
+ }
+~~~
+
+- `:keystore-path`, `:key-alias` : Private key.
+- `:sigalg` : Algorithm of sign. If you key is `RSA` then "SHA1withRSA", or else if you key is `DSA` then "SHA1withDSA".
+- `:keypass`, `:storepass` : Passwords. If you not set these, you will enter password on build-time.
 
 ~~~
 make release-apk
 ~~~
 
-It takes long time, and it ask to password for private key in midstream.
+It takes long time.
 
 And, built `target/{artifactId}.apk`.
 
@@ -624,13 +596,29 @@ NOTE: It include `make android-clean` for safety.
 
 - [Android SDK](http://developer.android.com/sdk/) のインストール
 - [private key](http://developer.android.com/tools/publishing/app-signing.html#cert) の生成
-- `~/.lein/profiles.clj` の編集。 [#build-and-run-sample-application-on-android]() を確認してください
+
+`~/.lein/profiles.clj` に `:clan-sign` エントリを追加しておく必要があります。
+
+~~~
+{
+ :clan-sign {:android {:keystore-path "d:/home/.android/foo.keystore"
+                       :key-alias "foo"
+                       :sigalg "SHA1withRSA"
+                       :keypass "password" ; optional
+                       :storepass "password" ; optional
+                       }}
+ }
+~~~
+
+- `:keystore-path`, `:key-alias` : リリース用の鍵ファイルおよび鍵のエイリアス名を設定します。
+- `:sigalg` : 署名アルゴリズム指定です。上記の鍵を `RSA` で生成した場合は "SHA1withRSA" を、 `DSA` で生成した場合は "SHA1withDSA" を指定してください。
+- `:keypass`, `:storepass` : 鍵のパスワードです。設定しない場合はリリースビルド時にパスワードを聞かれるので入力する必要があります。
 
 ~~~
 make release-apk
 ~~~
 
-時間がかかります。また途中でパスワードが聞かれます。
+時間がかかります。
 
 これで `target/{artifactId}.apk` が生成されます。
 
@@ -644,8 +632,6 @@ make release
 
 And, built `target/{artifactId}.jar`, `target/{artifactId}.exe` and `target/{artifactId}.apk`.
 
-(NOTE: It need password for apk too)
-
 ----
 
 **リリース版のjar, exe, apkを一度にビルドする**
@@ -655,8 +641,6 @@ make release
 ~~~
 
 これで `target/{artifactId}.jar` `target/{artifactId}.exe` `target/{artifactId}.apk` が生成されます。
-
-注意：リリース版apk生成を含むので、やはり途中でパスワード入力が必要です。
 
 ### Other work for release
 
@@ -1079,7 +1063,7 @@ I want to separate process by desktop or Android
 :   You can use `keep-code-when-desktop` and others by [jp.ne.tir.clan.clanutil](#utilities). These can includes to `import`, `use` and other special-forms because that do code-elimination at compile-time.
 
 Have error `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` on make apk
-:   See [#build-and-run-sample-application-on-android]() and edit `~/.lein/profiles.clj`.
+:   See [#build-apk-of-release-version-for-android]() and edit `~/.lein/profiles.clj`.
 
 I got error `#<FileNotFoundException java.io.FileNotFoundException: Could not locate path/to/Desktop__init.class or path/to/Desktop.clj on classpath: >` by `make repl`
 :   You should use lein-2.1.0. See [#requirement]().
@@ -1130,7 +1114,7 @@ desktopとandroidで処理を分けたい
 :   [jp.ne.tir.clan.clanutil](#utilities)の`keep-code-when-desktop`系を使ってください。コンパイル時にターゲット以外のコード除去が行われるので、`import`や`use`等も囲めます。
 
 apk生成時に `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` というエラーが出る
-:   鍵のアルゴリズムと署名のアルゴリズムが一致していません。 [#build-and-run-sample-application-on-android]() を見ながら `~/.lein/profiles.clj` を変更してみてください。
+:   鍵のアルゴリズムと署名のアルゴリズムが一致していません。 [#build-apk-of-release-version-for-android]() を見ながら `~/.lein/profiles.clj` を変更してみてください。
 
 `make repl` 時に `#<FileNotFoundException java.io.FileNotFoundException: Could not locate path/to/Desktop__init.class or path/to/Desktop.clj on classpath: >` というエラーが出る
 :   lein は 2.1.0 を使います。 [#requirement]() を見てください
