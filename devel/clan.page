@@ -91,8 +91,9 @@ Requirement
     - If you don't build Android's apk, you can use 1.7
 - [JRE 1.6 or later (recommend 1.7)](http://java.com/en/download/) or [OpenJDK Runtime Environment](http://openjdk.java.net/)
 - [Leiningen](https://github.com/technomancy/leiningen/) 2.1.0
-    - You may use version 2.1.0 now. Tentatively, 2.2.0 cannot work on `make repl`.
-    - You can edit `LEIN_VERSION` in `lein` shell script, and do `lein --version`.
+    - You may use version 2.1.0 now. Tentatively, 2.3.0 cannot work on `make repl`.
+        - You can edit `LEIN_VERSION` to `2.1.0` in `lein` shell script, and do `lein self-install` for downgrading lein.
+        - If you want to use `make repl` on lein-2.3.0, you need to read and edit `profiles-desktop` in `project-common.clj.in`. But it cause a lot of warnings (by clojure-complete).
 - (optional) [Android SDK](http://developer.android.com/sdk/) (for Android's apk)
     - `Android SDK Tools` must be `Revision 2.2.0.0` or later, and `Android SDK Platform-tools` must be `Revision 17` or later, and `Android SDK Build-tools` must be `Revision 17` or later. Older versions couldn't work.
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (for Windows' exe)
@@ -112,8 +113,9 @@ I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Li
     - android用apkが不要な場合は1.7でokです
 - [JRE 1.6 もしくはそれ以降 (1.7推奨)](http://java.com/en/download/) もしくは [OpenJDK Runtime Environment](http://openjdk.java.net/)
 - [Leiningen](https://github.com/technomancy/leiningen/) 2.1.0
-    - 今は 2.1.0 を使うようにしてください。とりあえず 2.2.0 では `make repl` が動きません。
-    - `lein` スクリプト自体を編集し、中の `LEIN_VERSION` を変更する事でバージョンが変えられます。変更後は `lein --version` を実行してみてください。
+    - 今は 2.1.0 を使うようにしてください。とりあえず 2.3.0 では `make repl` が動きません。
+    - `lein` スクリプト自体を編集し、中の `LEIN_VERSION` を `2.1.0` に変更する事でバージョンが変えられます。変更後は `lein self-install` を実行してください。
+        - もし、どうしても 2.3.0 で `make repl` がしたい場合は、 `project-common.clj.in` ファイル内の `profiles-desktop` のところを読んでコメントアウトを解除してください。ただしrepl起動時に大量の警告が表示されます(clojure-completeのせい)。
 - (optional) [Android SDK](http://developer.android.com/sdk/) (android用apkを生成したい場合のみ)
     - `Android SDK Tools` はバージョンが `2.2.0.0` 以上、 `Android SDK Platform-tools` はバージョンが `17` 以上、 `Android SDK Build-tools` はバージョンが `17` 以上が必要です。古いバージョンでは上手く動きません。
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (windows用exeを生成したい場合のみ)
@@ -1092,6 +1094,9 @@ Edit files and do `make run` that works, but Edit files and do `make android-run
 How to use neko
 :   Libgdx not provide to manipulate Android's activity. Neko have this function. If you want to manipulate Android's activity, you can use neko. See [document of neko](https://github.com/alexander-yakushev/neko/wiki).
 
+Can't work `make repl`
+:   Probably, you use `lein-2.3.0`. see [#requirement]().
+
 What is CLAN logo?
 :   This is my family emblem. Change more better logo on later. (because
     it is too cutting corners.) logo's emblem part came from eps-file
@@ -1142,6 +1147,9 @@ CLANのアップデート手順
 
 nekoの使い方
 :   androidではActivity内に子Activityを持つ構造が普通で、libgdxはそのActivity内にゲームを作る機能はあるけれど、Activity構造自体をどうこうする機能は提供していない。nekoはその機能があるので、そういう構造にしたい場合はnekoを使う。がayamadaがまだそういう機能を必要とするアプリを作ってないので取り込むだけ取り込んで放置されている。そういうアプリを作り始めたらドキュメントを書く。それまでは自分で[nekoのドキュメント](https://github.com/alexander-yakushev/neko/wiki)を読んで調べてほしい。
+
+`make repl`が動かない
+:   おそらくあなたは `lein-2.3.0` を使っています。 [#requirement]() を確認してみてください。
 
 CLANのロゴは何？
 :   うちの家の家紋です。あとでもっとちゃんとしたロゴを作る(あまりにも手抜きなので)。家紋部分は [http://eps.crest-japan.net/]() からepsファイルを貰ってきて加工して作った。
