@@ -953,7 +953,7 @@ If you want to commit to repository, then you do to command like below.
 
 ~~~{.bash .numberLines}
 make distclean
-rm -rf clan/sample
+rm -rf clan/sample/*
 cp -a Makefile.in android configure.ac project-common.clj.in \
 desktop/ layout/ src/ src-java/ textures/ l4j/ clan/sample/
 cd clan
@@ -996,7 +996,7 @@ sh clan/script/spread_current_dir.sh
 
 ~~~{.bash .numberLines}
 make distclean
-rm -rf clan/sample
+rm -rf clan/sample/*
 cp -a Makefile.in android configure.ac project-common.clj.in \
 desktop/ layout/ src/ src-java/ textures/ l4j/ clan/sample/
 cd clan
