@@ -10,11 +10,13 @@ This is a document for version-0.1.0(not released yet). Old document (for versio
 
 ----
 
-<div style="text-align:center"><img src="/devel/clan/logo_b.png" /></div>
+<div style="text-align:center"><img src="/devel/clan/logo_b.png" /><br /><a href="https://travis-ci.org/ayamada/clan"><img src="https://travis-ci.org/ayamada/clan.png?branch=master" alt="Build Status" /></a>
 
 **CLAN : Clojure, LibGDX, Android, Neko application construct kit**
 
 **CLAN : Clojure, LibGDX, Android, Neko アプリケーション構築キット**
+
+</div>
 
 
 Abstract
