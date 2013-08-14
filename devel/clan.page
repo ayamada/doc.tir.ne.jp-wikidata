@@ -1,6 +1,6 @@
 ---
 toc: yes
-title: CLAN : Clojure, LibGDX, Android, Neko application construct kit
+title: CLAN
 ...
 
 
@@ -92,15 +92,14 @@ Requirement
     - If you build Android's apk, you must use 1.6, NOT 1.7 (Android SDK requires 1.6)
     - If you don't build Android's apk, you can use 1.7
 - [JRE 1.6 or later (recommend 1.7)](http://java.com/en/download/) or [OpenJDK Runtime Environment](http://openjdk.java.net/)
-- [Leiningen](https://github.com/technomancy/leiningen/) 2.1.0
-    - You may use version 2.1.0 now. Tentatively, 2.3.0 cannot work on `make repl`.
-        - You can edit `LEIN_VERSION` to `2.1.0` in `lein` shell script, and do `lein self-install` for downgrading lein.
-        - If you want to use `make repl` on lein-2.3.0, you need to read and edit `profiles-desktop` in `project-common.clj.in`. But it cause a lot of warnings (by clojure-complete).
+- [Leiningen](https://github.com/technomancy/leiningen/) 2.3.1 or later
 - (optional) [Android SDK](http://developer.android.com/sdk/) (for Android's apk)
     - `Android SDK Tools` must be `Revision 2.2.0.0` or later, and `Android SDK Platform-tools` must be `Revision 17` or later, and `Android SDK Build-tools` must be `Revision 17` or later. Older versions couldn't work.
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (for Windows' exe)
 
 I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Linux(x86-32bit) on 2013/02/28.
+
+I registered to [Travis CI](https://travis-ci.org/ayamada/clan) since at 2013/08/14.
 
 ----
 
@@ -114,15 +113,14 @@ I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Li
     - もしandroid用apkをビルドしたい場合、バージョンは1.6でないといけません(android sdkが1.6でないと動かない為)。
     - android用apkが不要な場合は1.7でokです
 - [JRE 1.6 もしくはそれ以降 (1.7推奨)](http://java.com/en/download/) もしくは [OpenJDK Runtime Environment](http://openjdk.java.net/)
-- [Leiningen](https://github.com/technomancy/leiningen/) 2.1.0
-    - 今は 2.1.0 を使うようにしてください。とりあえず 2.3.0 では `make repl` が動きません。
-    - `lein` スクリプト自体を編集し、中の `LEIN_VERSION` を `2.1.0` に変更する事でバージョンが変えられます。変更後は `lein self-install` を実行してください。
-        - もし、どうしても 2.3.0 で `make repl` がしたい場合は、 `project-common.clj.in` ファイル内の `profiles-desktop` のところを読んでコメントアウトを解除してください。ただしrepl起動時に大量の警告が表示されます(clojure-completeのせい)。
+- [Leiningen](https://github.com/technomancy/leiningen/) 2.3.1 以降
 - (optional) [Android SDK](http://developer.android.com/sdk/) (android用apkを生成したい場合のみ)
-    - `Android SDK Tools` はバージョンが `2.2.0.0` 以上、 `Android SDK Platform-tools` はバージョンが `17` 以上、 `Android SDK Build-tools` はバージョンが `17` 以上が必要です。古いバージョンでは上手く動きません。
+    - `Android SDK Tools` はバージョンが `2.2.0.0` 以上、 `Android SDK Platform-tools` はバージョンが `17` 以上、 `Android SDK Build-tools` はバージョンが `17` 以上が必要です。古いバージョンではうまく動きません。
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (windows用exeを生成したい場合のみ)
 
 2013/02/28 に、windows vista(32bit)とgentoo(x86-32bit)上にてサンプルプロジェクトのビルドが動作する事を確認しています。
+
+また 2013/08/14 より、[Travis CI](https://travis-ci.org/ayamada/clan)上にてサンプルプロジェクトのビルドテストを行うようになりました。
 
 windows環境での各種のインストールについては、 [env]() が参考になるかもしれません。
 
