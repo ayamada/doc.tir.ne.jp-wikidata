@@ -498,12 +498,9 @@ make distclean
     - Change version string for release
     - Increment `PROJECT_ANDROID_VERSIONCODE` (for Android's apk)
 
-2. Edit `android/AndroidManifest.xml.in`
-    - Change enable/disable `INTERNET` and other `uses-permission` if needed
+2. Make release-tag or release-branch (if needed)
 
-3. Make release-tag or release-branch (if needed)
-
-4. Do `autoconf && ./configure`
+3. Do `autoconf && ./configure`
 
 ----
 
@@ -513,12 +510,9 @@ make distclean
     - バージョン文字列をリリース用に変更
     - `PROJECT_ANDROID_VERSIONCODE` を増やす(android用)
 
-2. `android/AndroidManifest.xml.in` をいじる
-    - 必要に応じて `INTERNET` やその他の `uses-permission` 項目の有効/無効を変更する
+2. 必要に応じて、リリースタグやリリースブランチを作成
 
-3. 必要に応じて、リリースタグやリリースブランチを作成
-
-4. ファイルをいじったので、 `autoconf && ./configure` を実行
+3. ファイルをいじったので、 `autoconf && ./configure` を実行
 
 ### Build jar of release-version for desktop
 
@@ -566,7 +560,7 @@ make release-exe
 
 ### Build apk of release-version for android
 
-It is required this list.
+It requires below list.
 
 - Install [Android SDK](http://developer.android.com/sdk/)
 - You will generate your [private key](http://developer.android.com/tools/publishing/app-signing.html#cert)
@@ -587,6 +581,7 @@ You should edit `~/.lein/profiles.clj`, add `:clan-sign` entry.
 - `:keystore-path`, `:key-alias` : Private key.
 - `:sigalg` : Algorithm of sign. If you key is `RSA` then "SHA1withRSA", or else if you key is `DSA` then "SHA1withDSA".
 - `:keypass`, `:storepass` : Passwords. If you not set these, you will enter password on build-time.
+- These parameter's description is on [sample of lein-droid's project.clj](https://github.com/clojure-android/lein-droid/blob/master/sample/project.clj#L26). And you can read [lein-droid's tutorial](https://github.com/clojure-android/lein-droid/wiki/Tutorial).
 
 ~~~
 make release-apk
@@ -597,6 +592,8 @@ It takes long time.
 And, built `target/{artifactId}.apk`.
 
 NOTE: It include `make android-clean` for safety.
+
+WARNING: `:clan-sign` profile is only used on release time. Debug(devel) version's APK are signed by auto-generated private key for debug.
 
 ----
 
@@ -623,6 +620,7 @@ NOTE: It include `make android-clean` for safety.
 - `:keystore-path`, `:key-alias` : リリース用の鍵ファイルおよび鍵のエイリアス名を設定します。
 - `:sigalg` : 署名アルゴリズム指定です。上記の鍵を `RSA` で生成した場合は "SHA1withRSA" を、 `DSA` で生成した場合は "SHA1withDSA" を指定してください。
 - `:keypass`, `:storepass` : 鍵のパスワードです。設定しない場合はリリースビルド時にパスワードを聞かれるので入力する必要があります。
+- これらのパラメータの詳細は[lein-droidのproject.cljのサンプル](https://github.com/clojure-android/lein-droid/blob/master/sample/project.clj#L26)にあります。[lein-droidのチュートリアル](https://github.com/clojure-android/lein-droid/wiki/Tutorial)も参照してみてください。
 
 ~~~
 make release-apk
@@ -633,6 +631,8 @@ make release-apk
 これで `target/{artifactId}.apk` が生成されます。
 
 注意：この際に、安全の為に `make android-clean` が実行されます。
+
+要注意： `:clan-sign`プロフィールはリリース時のみ使われます。デバッグ版のapkは、自動生成されたデバッグ用の鍵によって署名されます。
 
 ### Build all
 
@@ -659,8 +659,7 @@ make release
 - Register Google Play and other distribution site (if needed)
 - Change files for devel (if needed)
     1. Edit `configure.ac` for version string
-    2. Edit `android/AndroidManifest.xml.in`
-    3. Do `autoconf && ./configure`
+    2. Do `autoconf && ./configure`
 
 ----
 
@@ -671,8 +670,7 @@ make release
 - 必要に応じて、google playに登録したり、配布サイトに設置したりします。
 - 必要に応じて、リリース向けに変更していた部分を開発向けに戻します。
     1. `configure.ac` のバージョン文字列など
-    2. `android/AndroidManifest.xml.in` の `uses-permission` など
-    3. 変更したら、 `autoconf && ./configure` を実行
+    2. 変更したら、 `autoconf && ./configure` を実行
 
 
 Directory structure
