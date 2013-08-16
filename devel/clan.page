@@ -142,7 +142,10 @@ Usage
 mkdir -p package/projname
 cd package/projname
 git clone https://github.com/ayamada/clan.git
-(cd clan && git checkout 0.1.0)
+cd clan
+git tag
+git checkout 0.1.0
+cd ..
 sh clan/script/spread_current_dir.sh
 ~~~
 
@@ -153,9 +156,9 @@ sh clan/script/spread_current_dir.sh
     - **`package/projname/clan/` :** CLAN main unit, you don't need to edit in this directory.
     - **`package/projname/` :** there is in your application project files.
         - Check to [#directory-structure]() for details.
-    - **`package/` :** You can set Makefile(or other script) for distributing built files(jar/exe/apk) by youself. (optional)
+    - **`package/` :** You can set Makefile(or other script for build) for distributing built files(jar/exe/apk) by youself. (optional)
         - For example: zipping exe and README.txt, push apk to google play, etc...
-    - **`package/.git`** or **`package/projname/.git` :** save your project to git (or other revision-control-system) local repository. (optional)
+    - **`package/.git`** or **`package/projname/.git` :** save your project to git (or other revision-control-system) repository. (optional)
         - `clan/script/spread_current_dir.sh` makes `package/projname/.gitignore`, that exclude to `package/projname/clan/` .
 
 ----
@@ -166,7 +169,10 @@ sh clan/script/spread_current_dir.sh
 mkdir -p package/projname
 cd package/projname
 git clone https://github.com/ayamada/clan.git
-(cd clan && git checkout 0.1.0)
+cd clan
+git tag
+git checkout 0.1.0
+cd ..
 sh clan/script/spread_current_dir.sh
 ~~~
 
@@ -177,7 +183,7 @@ sh clan/script/spread_current_dir.sh
     - **`package/projname/clan/` :** CLAN本体、あなたがこの中をいじる必要は通常はありません
     - **`package/projname/` :** あなたのアプリのプロジェクトのファイルはこの中に置きます。
         - [#directory-structure]() に詳細があります。
-    - **`package/` :** ここに、リリース向けとして生成した jar, exe, apk を配布向けにパッケージングする為の Makefile(もしくは他のスクリプト等)を自由に置く事ができます(optional)
+    - **`package/` :** ここに、リリース向けとして生成した jar, exe, apk を配布向けにパッケージングする為の Makefile(もしくは他のビルド用スクリプト等)を自由に置く事ができます(optional)
         - 例: exeファイルとREADME.txtをセットでzipに固める。apkファイルをgoogle playにpushする。等々…
     - **`package/.git`** もしくは **`package/projname/.git` :** あなたのプロジェクトをgit(もしくは他のリビジョン管理システム)に保存する為の何かも設置できます(optional)
         - `clan/script/spread_current_dir.sh` スクリプトは `package/projname/.gitignore` も生成します。これには `package/projname/clan/` を除外する設定が入っています。
@@ -192,7 +198,7 @@ make run
 
 This sample application is named "drop" or "space drop".
 
-(This game rule is based on [http://code.google.com/p/libgdx/wiki/SimpleApp](), I rewrite by Clojure and add more gimmics. )
+(This game's rule is based on [http://code.google.com/p/libgdx/wiki/SimpleApp](), I rewrite by Clojure and add more gimmics. )
 
 CLAN's `BootLoader.java` control as long as display boot-logo.
 
@@ -209,7 +215,7 @@ This is run application with nREPL.
 make repl
 ~~~
 
-But, it take very long time at boot, and that rerun with a defect by LWJGL in nREPL(strange window size, etc).
+But, it take very long time at boot, display a lot of reflection warnings, and that rerun with some defects in nREPL.
 I guess, will almost use `make run` in cycle of develop.
 And, will use `make repl` for chase to very difficult bugs.
 
@@ -234,11 +240,11 @@ make run
 
 このサンプルアプリは「drop」「space drop」という名前です。
 
-(このゲームは [http://code.google.com/p/libgdx/wiki/SimpleApp]() をベースにClojureで書き直し、色々な要素を追加しています)
+(このゲームは [http://code.google.com/p/libgdx/wiki/SimpleApp]() のルールをベースにClojureで書き直し、色々な要素を追加しています)
 
 アプリが起動すると、起動ロゴが表示されている間はCLANの `BootLoader.java` が制御を握ります。
 
-- ロゴの出ている間、バックグラウンドではclojureのローゴが行われています
+- ロゴの出ている間、バックグラウンドではclojureのロードが行われています
 - 起動ロゴや起動音の差し替えができます。
 
 サンプルアプリがちゃんと動いているようなら、アプリを終了して次に進んで下さい。
@@ -251,7 +257,7 @@ nREPL経由でサンプルアプリを実行する事もできます。
 make repl
 ~~~
 
-しかし、nREPL経由だと起動までに非常に時間がかかり、しかもnREPL中で二回目以降のアプリ起動にはLWJGLに支障があります(ウィンドウサイズがおかしくなる等)。
+しかし、nREPL経由だと起動までに非常に時間がかかり、大量のreflection warningが表示され、しかもnREPL内にてアプリ起動を複数回行うと色々な問題が発生する事が分かっています。
 なので、通常の開発時は主に`make run`を使って開発を行い、`make repl`を使うのは難しいバグを追跡している時だけにするのが良いと思います。
 
 - [http://badlogicgames.com/forum/viewtopic.php?t=9400&p=42716]() に、この件が少し書かれています。
@@ -823,8 +829,8 @@ Refer to `Makefile.in` for more information.
     - あなたのアプリを起動します。
 
 - `make repl`
-    - Run your application with nREPL console.
-    - あなたのアプリをnREPLコンソール付きで起動します。
+    - Run your application with nREPL console. See [#build-and-run-sample-application-on-desktop]().
+    - あなたのアプリをnREPLコンソール付きで起動します。 [#build-and-run-sample-application-on-desktop]() も参照してください。
 
 - `make pack`
     - Build jar for release (for internal use).
@@ -833,6 +839,10 @@ Refer to `Makefile.in` for more information.
 ## For Android
 
 - `make android-build`
+    - Build apk without deps for debug.
+    - 開発用のapk(依存物抜き)を生成します。
+
+- `make android-apk`
     - Build apk for debug.
     - 開発用のapkを生成します。
 
