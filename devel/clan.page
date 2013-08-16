@@ -955,7 +955,7 @@ Tune-up for Android
 
 - [`*warn-on-reflection*`](http://clojure.org/java_interop#Java%20Interop-Type%20Hints) を有効にし、型指定を追加しまくってみる。
 - 一定間隔でガクガクする場合はGCが原因なので、可能な限りrenderハンドラ内でオブジェクト生成しないようにする。
-    - つまり、clojureのimmutableなデータ型が使えない場合が多い(ほとんど変更しないようなデータでのみ使うようにする)。java arrayを多用する必要がある。
+    - つまり、clojureのimmutableなデータ型が使えない場合が多い。java arrayを多用する必要がある。
 - 関数呼び出しもそこそこコストが高いのでマクロを使ってインライン化してみる(つまり`reduce`とかは使いづらい)。
 - 既存のandroid向けjavaチューニングの記事や本を探して参考にする。
     - おすすめはlibgdx開発者が書いた[Androidゲームプログラミング A to Z](http://www.impressjapan.jp/books/3113)([amazon](http://www.amazon.co.jp/o/ASIN/4844331132/tirnejp-22))(ただし英語版は[2nd Edition](http://www.apress.com/9781430246770)が出てるが日本語訳版は初版ベースで少し情報が古い)。
@@ -1032,9 +1032,7 @@ sh clan/script/spread_current_dir.sh
 - `git clone` はhttpsではなく、sshで行う(pushするので)
 - 通常と同様にファイルを展開している
 
-サンプルアプリとCLANを開発できるようになった。
-
-なので、サンプルアプリのソース(`src/`)と `clan/` 内を編集する。
+これでサンプルアプリとCLANを開発できるようになったので、サンプルアプリのソース(`src/`)と `clan/` 内を編集する。
 
 もしリポジトリにコミットしたくなったら、下のコマンドのように行う。
 
@@ -1067,15 +1065,16 @@ cd -
 0. Add record for release to `ChangeLog`
     - Must check `git log` and append important changes to `ChangeLog`
 1. Edit `script/settings.sh` and remove `-SNAPSHOT` from version string
-2. `git add ChangeLog script/settings.sh`
-3. `git commit -m 'version X.Y.Z releasing'`
-4. `git tag -a X.Y.Z -m 'a description'`
-5. Edit `script/settings.sh` and increment version string and add `-SNAPSHOT` to version string
-6. `git add script/settings.sh`
-7. `git commit -m 'version X.Y.Z released'`
-8. `git push`
-9. `git push origin --tags`
-10. Edit [http://doc.tir.ne.jp/devel/clan]()(this page!), and press "公開サイトに反映" button.
+2. Edit latest version information in `README.md`
+3. `git add ChangeLog script/settings.sh README.md`
+4. `git commit -m 'version X.Y.Z releasing'`
+5. `git tag -a X.Y.Z -m 'a description'`
+6. Edit `script/settings.sh` and increment version string and add `-SNAPSHOT` to version string
+7. `git add script/settings.sh`
+8. `git commit -m 'version X.Y.Z released'`
+9. `git push`
+10. `git push origin --tags`
+11. Edit [http://doc.tir.ne.jp/devel/clan]()(this page!), and press "公開サイトに反映" button.
     - Modify "Latest version" on a description
     - Append important changes to this document if exists
 
@@ -1086,15 +1085,16 @@ cd -
 0. ChangeLog にリリースの記録を行う
     - gitのコミットログを確認し、重要な変更点があるならきちんと記入する事
 1. `script/settings.sh` のバージョン番号から、 `-SNAPSHOT` を除去
-2. `git add ChangeLog script/settings.sh`
-3. `git commit -m 'version X.Y.Z releasing'`
-4. `git tag -a タグ名 -m 'メッセージ'`
-5. `script/settings.sh` のバージョン番号を上げ、 `-SNAPSHOT` を付与
-6. `git add script/settings.sh`
-7. `git commit -m 'version X.Y.Z released'`
-8. `git push`
-9. `git push origin --tags`
-10. [http://doc.tir.ne.jp/devel/clan]()(つまりこのページ)を編集し、その後「公開サイトに反映」ボタンを押す。
+2. `README.md` の最新バージョン情報の記述を変更
+3. `git add ChangeLog script/settings.sh README.md`
+4. `git commit -m 'version X.Y.Z releasing'`
+5. `git tag -a タグ名 -m 'メッセージ'`
+6. `script/settings.sh` のバージョン番号を上げ、 `-SNAPSHOT` を付与
+7. `git add script/settings.sh`
+8. `git commit -m 'version X.Y.Z released'`
+9. `git push`
+10. `git push origin --tags`
+11. [http://doc.tir.ne.jp/devel/clan]()(つまりこのページ)を編集し、その後「公開サイトに反映」ボタンを押す。
     - 概要のところの「現在のバージョン」を更新
     - 重要な変更内容を追記(もしあるなら)
 
@@ -1202,6 +1202,8 @@ CLANのロゴは何？
 TODO
 ====
 
+- be able to work `make android-repl`
+
 - support iOS and GWT
     - I need iOS-machine and mac, but I haven't money
 
@@ -1212,19 +1214,26 @@ TODO
     - remove autoconf (if possible)
     - remove Makefile (if possible)
 
+- get together information for license
+    - ぶらり猫のスタッフロールをベースに、lein-droid等のビルドツールの一覧も用意する。これらはライセンスに含める必要はないが「利用したツール」として出したい為
+    - licenseページの英語化
+
+- project-common.clj.in 内の「:aot :all-with-unused」設定の見直し
+    - :all-with-unusedだと、clojure.replとかまで入ってしまう、「:aot [:all 'neko.compilation]」みたいな感じの設定にしたい。しかし今のleinだとそういう設定はできないのでちょっと考える必要がある
+
+- ログ表示関数、ロゴ表示関数もConfig.javaにて設定できるようにする
+
 - enable proguard.cfg ( remove `-dontshrink` and tune-up )
     - [http://stackoverflow.com/questions/12281365/obfuscating-clojure-uberjars-with-proguard]()
-
-- automatically change `uses-permission` (and others) in `android/AndroidManifest.xml`
-    - I want to enable/disable `INTERNET`, `WRITE_EXTERNAL_STORAGE` when release/debug
 
 - collecting and documentation to know-how in clojure(for android), libgdx, android, neko
 
 - 増やし忘れ対策 of `PROJECT_ANDROID_VERSIONCODE` in configure.in
 
-- maintain documents
 - translate from japanese comment to english in source
+
 - report to libgdx community
+
 - change CLAN logo to more better
 
 
