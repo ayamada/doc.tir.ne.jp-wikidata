@@ -282,7 +282,7 @@ You shall connect Android-debug-usb, or run Android emulator.
 make android-run
 ~~~
 
-To build for Android need very large memory(over 1G) and minutes(over 5min?).
+To build for Android need very large memory(over 1-2G) and some minutes(over 5min).
 
 ----
 
@@ -298,7 +298,7 @@ android sdkをインストールしているなら、サンプルアプリをand
 make android-run
 ~~~
 
-android向けのビルドは(デスクトップ向けと比べて)非常に多くのメモリ(1G以上)と時間(5分ぐらい？)が必要になります。
+android向けのビルドは(デスクトップ向けと比べて)非常に多くのメモリ(1-2G以上)と時間(5分以上)が必要になります。
 
 ### Clean up sample application
 
@@ -326,7 +326,7 @@ make distclean
         - `dnl` is comment
         - `AC_INIT()` is to define artifactId and version
         - `FOO="string"` is to define local variables
-        - `AC_SUBST()` is to define project variables
+        - `AC_SUBST()` is to define project's variables
         - If you execute `autoconf && ./configure` command, then that generate from `*.clj.in` to `*.clj`.
             - At which time, a string as `@FOO@` in `*.clj.in` was replaced to project variables by defined `AC_SUBST()`.
     - You modify in section of `dnl Defines` in file `configure.ac` for your application.
@@ -363,7 +363,7 @@ make distclean
 
 4. Edit `project-common.clj.in`
     - If you want to import/use external libraries to your project from clojars.org and other repos, then add external libraries to `dependencies-common` in `project-common.clj.in`.
-        - If you want to add only desktop/android, add to `dependencies-desktop` `dependencies-android` in `project-common.clj.in`.
+        - If you want to add only desktop/android, add to `dependencies-desktop`/`dependencies-android` in `project-common.clj.in`.
 
 5. Execute `autoconf && ./configure`
     - It generate from `path/to/foo.suffix.in` to `path/to/foo.suffix`.
