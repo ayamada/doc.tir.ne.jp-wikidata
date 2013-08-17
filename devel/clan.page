@@ -24,7 +24,7 @@ Abstract
 
 - CLAN is ...
     - If you write [LibGDX](http://libgdx.badlogicgames.com/)'s [ApplicationListener](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/ApplicationListener.html) by **Clojure**, then CLAN can run this.
-      And, CLAN can deploy to jar(for many desktop OS with Java), exe(for Windows with Java), apk(for Android).
+      And, CLAN can deploy to JAR(for many desktop OS with Java), EXE(for Windows with Java), APK(for Android).
         - Therefore, you shall be able to understand LibGDX and Clojure, if you want to use CLAN.
         - CLAN include [Neko](https://github.com/alexander-yakushev/neko) (for Android).
     - CLAN can use nREPL.
@@ -91,11 +91,11 @@ Requirement
         - If you use Windows, these are in [MinGW/MSYS](http://www.mingw.org/).
             - But, you will be update wget's cert, maybe.
 - [JDK 1.6](http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html) or [OpenJDK 1.6](http://openjdk.java.net/)
-    - If you build Android's apk, you must use 1.6, NOT 1.7 (Android SDK requires 1.6)
-    - If you don't build Android's apk, you can use 1.7
+    - If you build Android's APK, you must use 1.6, NOT 1.7 (Android SDK requires 1.6)
+    - If you don't build Android's APK, you can use 1.7
 - [JRE 1.6 or later (recommend 1.7)](http://java.com/en/download/) or [OpenJDK Runtime Environment](http://openjdk.java.net/)
 - [Leiningen](https://github.com/technomancy/leiningen/) 2.3.1 or later
-- (optional) [Android SDK](http://developer.android.com/sdk/) (for Android's apk)
+- (optional) [Android SDK](http://developer.android.com/sdk/) (for Android's APK)
     - `Android SDK Tools` must be `Revision 2.2.0.0` or later, and `Android SDK Platform-tools` must be `Revision 17` or later, and `Android SDK Build-tools` must be `Revision 17` or later. Older versions couldn't work.
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (for Windows' exe)
 
@@ -157,7 +157,7 @@ sh clan/script/spread_current_dir.sh
     - **`package/projname/` :** there is in your application project files.
         - Check to [#directory-structure]() for details.
     - **`package/` :** You can set Makefile(or other script for build) for distributing built files(jar/exe/apk) by youself. (optional)
-        - For example: zipping exe and README.txt, push apk to google play, etc...
+        - For example: zipping exe and README.txt, push APK to google play, etc...
     - **`package/.git`** or **`package/projname/.git` :** save your project to git (or other revision-control-system) repository. (optional)
         - `clan/script/spread_current_dir.sh` makes `package/projname/.gitignore`, that exclude to `package/projname/clan/` .
 
@@ -332,7 +332,7 @@ make distclean
     - You modify in section of `dnl Defines` in file `configure.ac` for your application.
 
 2. Edit `layout/Desktop.java.in`, `layout/MainActivity.java.in` and `android/AndroidManifest.xml.in`
-    - If you don't want to deploy Android's apk, then you can ignore `layout/MainActivity.java.in` and `android/AndroidManifest.xml.in`.
+    - If you don't want to deploy Android's APK, then you can ignore `layout/MainActivity.java.in` and `android/AndroidManifest.xml.in`.
     - A file `layout/Desktop.java.in` is boot entry class for desktop build. It is relocate to `desktop/src-java/(PROJECT_GROUPID)/Desktop.java`.
         - If you want to customize LWJGL process or configuration of CLAN, then you can edit this.
     - A file `layout/MainActivity.java.in` is boot entry class for android build. It is relocate to `android/src-java/(PROJECT_GROUPID)/MainActivity.java`.
@@ -496,7 +496,7 @@ make distclean
 
 1. Edit `configure.ac`
     - Change version string for release
-    - Increment `PROJECT_ANDROID_VERSIONCODE` (for Android's apk)
+    - Increment `PROJECT_ANDROID_VERSIONCODE` (for Android's APK)
 
 2. Make release-tag or release-branch (if needed)
 
@@ -558,7 +558,7 @@ make release-exe
 
 これで `target/{artifactId}.jar` から `target/{artifactId}.exe` が生成される。
 
-### Build apk of release-version for android
+### Build APK of release-version for android
 
 It requires below list.
 
@@ -852,19 +852,19 @@ Refer to `Makefile.in` for more information.
     - 開発用の中間ファイルを生成します(内部用)。
 
 - `make android-apk`
-    - Build apk for debug.
+    - Build APK for debug.
     - 開発用のapkを生成します。
 
 - `make android-install`
-    - Install apk (for debug) to device.
+    - Install APK (for debug) to device.
     - 開発用のapkを端末にインストールします。
 
 - `make android-run`
-    - Run apk (for debug) in device.
+    - Run APK (for debug) in device.
     - 開発用のapkを端末で実行します。
 
 - `make android-repl`
-    - Run apk (for debug) with nREPL console(sorry, now preparing).
+    - Run APK (for debug) with nREPL console(sorry, now preparing).
     - 開発用のapkを端末にてnREPLコンソール付きで実行します(すいません、まだ準備中です)。
 
 ## For releases
@@ -878,19 +878,19 @@ Refer to `Makefile.in` for more information.
     - リリース版のexeをビルドします。
 
 - `make release-apk`
-    - Build apk for release.
+    - Build APK for release.
     - リリース版のapkをビルドします。
 
 - `make release`
-    - Build jar, exe, and apk for release.
+    - Build JAR, EXE, and APK for release.
     - リリース版のjar, exe, apk全部をビルドします。
 
 - `make release-apk-install`
-    - Install apk (for release) to device. It requires `make release-apk`.
+    - Install APK (for release) to device. It requires `make release-apk`.
     - リリース版のapkを端末にインストールします。 `make release-apk` を先に実行しておいてください。
 
 - `make release-apk-run`
-    - Run apk (for release) to device. It requires `make release-apk-install`.
+    - Run APK (for release) to device. It requires `make release-apk-install`.
     - リリース版のapkを端末から起動します。 `make release-apk-install` を先に実行しておいてください。
 
 
@@ -1108,11 +1108,17 @@ How to use external library from clojars and etc
 I want to separate process by desktop or Android
 :   You can use `keep-code-when-desktop` and others by [jp.ne.tir.clan.clanutil](#utilities). These can includes to `import`, `use` and other special-forms because that do code-elimination at compile-time.
 
-Have error `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` on make apk
-:   See [#build-apk-of-release-version-for-android]() and edit `~/.lein/profiles.clj`.
-
 My app is too slow on Android.
 :   See [#tune-up-for-android]().
+
+Cause errors by memory or GC on generate dex for Android.
+:   It requires many memories. You change `:dex-opts` in `project-common.clj.in`, and do `autoconf && ./configure`.
+
+Have error `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` on generate APK
+:   See [#build-apk-of-release-version-for-android]() and edit `~/.lein/profiles.clj`.
+
+Cannot build APK by other reasons.
+:   you append `DEBUG=1` to make command, like `DEBUG=1 make android-run`. It is lein-droid's verbose-output option. This imformation may help to research problem.
 
 How to upgrade CLAN
 :   Do `cd clan`, `git pull` and `git checkout x.y.z` ([tag list](https://github.com/ayamada/clan/tags)). but, you must check to ChangeLog for incompatible changes at before.
@@ -1127,16 +1133,13 @@ Not display boot-logo to boot at second time and more
 :   Boot-logo is for to wait to loading clojure core. But almost processes were reused on Android, So not need to display boot-logo to boot at second time and more. Even so, if you want to display boot-logo, you may call [`(set-display-bootlogo-in-android!)`](#utilities).
 
 Vars/functions were kept to defined/modified by previous execution while reboot Android machine
-:   Finished Processes were reused on Android. You may use another Android apps like "task killer".
+:   Finished Processes were reused on Android. You may use another Android apps like "task killer" for debug-version. But, you must be careful to change global mutable states, or you must remember to initialize these on start.
 
 Edit files and do `make run` that works, but Edit files and do `make android-run` that not work (not reflected from modified sources)
 :   Sorry, do `make android-clean android-run`.
 
 How to use neko
 :   Libgdx not provide to manipulate Android's activity. Neko have this function. If you want to manipulate Android's activity, you can use neko. See [document of neko](https://github.com/alexander-yakushev/neko/wiki).
-
-Can't work `make repl`
-:   Probably, you use `lein-2.3.0`. see [#requirement]().
 
 What is CLAN logo?
 :   This is my family emblem. Change more better logo on later. (because
@@ -1159,11 +1162,17 @@ Other questions
 desktopとandroidで処理を分けたい
 :   [jp.ne.tir.clan.clanutil](#utilities)の`keep-code-when-desktop`系を使ってください。コンパイル時にターゲット以外のコード除去が行われるので、`import`や`use`等も囲めます。
 
+android実機ですごく遅い
+:   [#tune-up-for-android]() を見てください
+
+dex生成時にメモリ回りやGCのエラーが出る
+:   android sdkによるdex生成は非常にメモリを消費します。`project-common.clj.in`の`:dex-opts`のところをいじって使用メモリ量を増やしてください(増やした後は`autoconf && ./configure`実行も必要)
+
 apk生成時に `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` というエラーが出る
 :   鍵のアルゴリズムと署名のアルゴリズムが一致していません。 [#build-apk-of-release-version-for-android]() を見ながら `~/.lein/profiles.clj` を変更してみてください。
 
-android実機ですごく遅い
-:   [#tune-up-for-android]() を見てください
+その他、android向けビルドが上手く動かない
+:   `DEBUG=1 make android-run` のように`DEBUG=1`をつける事で、lein-droidのログ出力が詳細になります。ヒントになる情報が出るかも(出ないかも)
 
 CLANのアップデート手順
 :   `cd clan` してから、 `git pull` と `git checkout x.y.z` を実行してください([タグ一覧](https://github.com/ayamada/clan/tags))。ですが、ChangeLogに非互換な変更がないかどうかを先に確認しておいてください。
@@ -1185,9 +1194,6 @@ CLANのアップデート手順
 
 nekoの使い方
 :   androidではActivity内に子Activityを持つ構造が普通で、libgdxはそのActivity内にゲームを作る機能はあるけれど、Activity構造自体をどうこうする機能は提供していない。nekoはその機能があるので、そういう構造にしたい場合はnekoを使う。がayamadaがまだそういう機能を必要とするアプリを作ってないので取り込むだけ取り込んで放置されている。そういうアプリを作り始めたらドキュメントを書く。それまでは自分で[nekoのドキュメント](https://github.com/alexander-yakushev/neko/wiki)を読んで調べてほしい。
-
-`make repl`が動かない
-:   おそらくあなたは `lein-2.3.0` を使っています。 [#requirement]() を確認してみてください。
 
 CLANのロゴは何？
 :   うちの家の家紋です。あとでもっとちゃんとしたロゴを作る(あまりにも手抜きなので)。家紋部分は [http://eps.crest-japan.net/]() からepsファイルを貰ってきて加工して作った。
