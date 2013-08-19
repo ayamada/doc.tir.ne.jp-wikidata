@@ -1108,17 +1108,15 @@ How to use external library from clojars and etc
 I want to separate process by desktop or Android
 :   You can use `keep-code-when-desktop` and others by [jp.ne.tir.clan.clanutil](#utilities). These can includes to `import`, `use` and other special-forms because that do code-elimination at compile-time.
 
-My app is too slow on Android.
-:   See [#tune-up-for-android]().
-
-Cause errors by memory or GC on generate dex for Android.
-:   It requires many memories. You change `:dex-opts` in `project-common.clj.in`, and do `autoconf && ./configure`.
-
-Have error `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` on generate APK
-:   See [#build-apk-of-release-version-for-android]() and edit `~/.lein/profiles.clj`.
-
-Cannot build APK by other reasons.
-:   you append `DEBUG=1` to make command, like `DEBUG=1 make android-run`. It is lein-droid's verbose-output option. This imformation may help to research problem.
+I have some troubles on Android
+:   My app is too slow on Android.
+    :   See [#tune-up-for-android]().
+    Cause errors by memory or GC on generate dex for Android.
+    :   It requires many memories. You change `:dex-opts` in `project-common.clj.in`, and do `autoconf && ./configure`.
+    Have error `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` on generate APK
+    :   See [#build-apk-of-release-version-for-android]() and edit `~/.lein/profiles.clj`.
+    Cannot build APK by other reasons.
+    :   you append `DEBUG=1` to make command, like `DEBUG=1 make android-run`. It is lein-droid's verbose-output option. This imformation may help to research problem.
 
 How to upgrade CLAN
 :   Do `cd clan`, `git pull` and `git checkout x.y.z` ([tag list](https://github.com/ayamada/clan/tags)). but, you must check to ChangeLog for incompatible changes at before.
@@ -1162,17 +1160,16 @@ Other questions
 desktopとandroidで処理を分けたい
 :   [jp.ne.tir.clan.clanutil](#utilities)の`keep-code-when-desktop`系を使ってください。コンパイル時にターゲット以外のコード除去が行われるので、`import`や`use`等も囲めます。
 
-android実機ですごく遅い
-:   [#tune-up-for-android]() を見てください
-
-dex生成時にメモリ回りやGCのエラーが出る
-:   android sdkによるdex生成は非常にメモリを消費します。`project-common.clj.in`の`:dex-opts`のところをいじって使用メモリ量を増やしてください(増やした後は`autoconf && ./configure`実行も必要)
-
-apk生成時に `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` というエラーが出る
-:   鍵のアルゴリズムと署名のアルゴリズムが一致していません。 [#build-apk-of-release-version-for-android]() を見ながら `~/.lein/profiles.clj` を変更してみてください。
-
-その他、android向けビルドが上手く動かない
-:   `DEBUG=1 make android-run` のように`DEBUG=1`をつける事で、lein-droidのログ出力が詳細になります。ヒントになる情報が出るかも(出ないかも)
+android向けにて問題がある
+:   android実機ですごく遅い
+    :   [#tune-up-for-android]() を見てください
+    dex生成時にメモリ回りやGCのエラーが出る
+    :   android sdkによるdex生成は非常にメモリを消費します。`project-common.clj.in`の`:dex-opts`のところをいじって使用メモリ量を増やしてください(増やした後は`autoconf && ./configure`実行も必要)
+    apk生成時に `java.security.SignatureException: private key algorithm is not compatible with signature algorithm` というエラーが出る
+    :   鍵のアルゴリズムと署名のアルゴリズムが一致していません。 [#build-apk-of-release-version-for-android]() を見ながら `~/.lein/profiles.clj` を変更してみてください。
+    その他、android向けビルドが上手く動かない
+    :   `DEBUG=1 make android-run` のように`DEBUG=1`をつける事で、lein-droidのログ出力が詳細になります。ヒントになる情報が出るかも(出ないかも)
+    :   [clan/memo]()と[clan/libgdx]()にも少し情報を書いた
 
 CLANのアップデート手順
 :   `cd clan` してから、 `git pull` と `git checkout x.y.z` を実行してください([タグ一覧](https://github.com/ayamada/clan/tags))。ですが、ChangeLogに非互換な変更がないかどうかを先に確認しておいてください。
