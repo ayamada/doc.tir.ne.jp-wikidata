@@ -4,9 +4,9 @@ title: CLAN
 ...
 
 
-This is a document for version-0.1.0(not released yet). Old document (for version 0.0.6) is here. -> [clan/0.0.6]()
+This is a document for version-0.1.0-PREVIEW3. Old document (for version 0.0.6) is here. -> [clan/0.0.6]()
 
-これはバージョン0.1.0(まだ未リリース)のドキュメントです。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
+これはバージョン0.1.0-PREVIEW3のドキュメントです。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
 
 ----
 
@@ -144,7 +144,7 @@ cd package/projname
 git clone https://github.com/ayamada/clan.git
 cd clan
 git tag
-git checkout 0.1.0
+git checkout 0.1.0-PREVIEW3
 cd ..
 sh clan/script/spread_current_dir.sh
 ~~~
@@ -171,7 +171,7 @@ cd package/projname
 git clone https://github.com/ayamada/clan.git
 cd clan
 git tag
-git checkout 0.1.0
+git checkout 0.1.0-PREVIEW3
 cd ..
 sh clan/script/spread_current_dir.sh
 ~~~
