@@ -86,6 +86,7 @@ Child pages
 Requirement
 ===========
 
+- PC and OS(Windows or Mac or Linux or \*BSD)
 - Commonly-used CLI environment
     - sh, GNU make(gmake), GNU autotools(autoconf), wget, unzip
         - If you use Windows, these are in [MinGW/MSYS](http://www.mingw.org/).
@@ -107,6 +108,7 @@ I registered to [Travis CI](https://travis-ci.org/ayamada/clan) since at 2013/08
 
 **必要なもの**
 
+- PCおよびos(windowsかmacかlinuxか\*bsd)
 - 一般的なCLI環境
     - sh, GNU make(gmake), GNU autotools(autoconf), wget, unzip
         - windows環境の場合は、[MinGW/MSYS](http://www.mingw.org/)に全て入ってます
