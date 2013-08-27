@@ -54,6 +54,47 @@ Abstract
     - [lein-droid](https://github.com/clojure-android/lein-droid)を使っています(android向け)
 
 
+## Advantages
+
+- It can start easily and quickly
+- You can make proper application(game) that works 60fps and can publish `Google Play`
+
+----
+
+**うれしい点**
+
+- 簡単にすぐ始められる
+- 60fpsで動作し、google playで公開可能な、きちんとしたアプリ(ゲーム)が作れる
+
+## Disadvantages
+
+- You need know-how of Clojure and LibGDX
+    - Require to read [Programming Clojure (2nd edition)](http://pragprog.com/book/shcloj2/programming-clojure) or to know Clojure like same level
+    - Require to read Wiki and Javadocs on [LibGDX official site](http://libgdx.badlogicgames.com/).
+        - Additionally, you can read `Beginning Android Games 2nd Edition`. See [#tune-up-for-android]().
+- Too fat (jar:8.3M～, exe:8.4M～, apk:2.5M～)
+    - But, it is average in games, because these includes many assets like images and sounds.
+- Boot slowly
+    - It have a time as the same level as [Puzzle & Dragons](http://en.wikipedia.org/wiki/Puzzle_%26_Dragons)' boot logo screen.
+- Must need to tune-up for Android (like to make Android's game by Java)
+    - It is not need when for PC only.
+
+----
+
+**うれしくない点**
+
+- clojure, libgdxの知識が必須
+    - clojureは、[プログラミングClojure第二版](http://ssl.ohmsha.co.jp/cgi-bin/menu.cgi?ISBN=978-4-274-06913-0)([amazon](http://www.amazon.co.jp/o/ASIN/4274069133/tirnejp-22))読了レベル程度の知識があればok
+    - libgdxは、wikiの記事とリファレンス読みながらおぼえるぐらいでok(ただしどちらも英語)
+        - 日本語が良いなら、「Androidゲームプログラミング A to Z」が参考になる。詳細は[#tune-up-for-android]()参照
+- サイズがでかい(jar:8.3M～, exe:8.4M～, apk:2.5M～)
+    - ゲームの場合、そもそも画像や音源等でサイズがふくらむ為、それほど問題にはならない
+- 起動に時間がかかる
+    - 自分が測定したところ、パズドラの起動ロゴ表示時間と同程度のローディング画面表示が必要。ゲームなら許容範囲内だが非ゲームなら厳しいところだと思う
+- android向けの場合、javaでandroidゲームを作る際と同様のチューニングが必須
+    - PC向けの場合は、チューニングしなくても良好なパフォーマンスで動作する
+
+
 Repository
 ==========
 
@@ -1208,6 +1249,8 @@ TODO
 ====
 
 - be able to work `make android-repl`
+
+- [https://github.com/ztellman/primitive-math]() をさわってみて、ちゃんと動いて役立つようなら組み込む
 
 - support iOS and GWT
     - I need iOS-machine and mac, but I haven't money
