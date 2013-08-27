@@ -1,11 +1,11 @@
 ---
 toc: no
-title: 当サイト内の文書の内容についての問い合わせ
+title: 当サイト内の各文書の内容についての問い合わせ
 ...
 
 当サイト内の文書は、[技情研ネットのメンバー](/tir.ne.jp/members)が管理を行っています。
 
-もし各文書の内容等にミスや誤りや問題点等がある場合は、[githubのissues](https://github.com/ayamada/doc.tir.ne.jp-wikidata/issues)にて連絡していただけると助かります(特に英文回りが非常にやばいです)。
+もし各文書の内容等に不備、誤り、問題点等がある場合は、[githubのissues](https://github.com/ayamada/doc.tir.ne.jp-wikidata/issues)にて連絡していただけると助かります(特に英文回りがやばいです)。
 
 - 上記のissuesのリポジトリは、当サイト内文書の生データの退避先です。
 - 日本語と英語にて受け付けしています。
