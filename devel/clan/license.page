@@ -81,7 +81,8 @@ CLAN本体のライセンスはApache License 2.0です。
 
 - ライセンス要件では全くないですが、CLANでアプリ作ったら配布サイトのどこかに「libgdxを使って作りました」的なリンクを置いておくとlibgdx作者のMarioさんがよろこぶとおもいます。
     - ただ、それ用のバナーはlibgdxのサイトにはないようです。自分が上記スタッフロール用に加工したものでよければ、以下に置いてます。
-        - http://vnctst.tir.jp/ja/img/libgdx.png
+        - http://vnctst.tir.jp/ja/img/libgdx.png (背景白)
+        - http://vnctst.tir.jp/ja/img/libgdx_tp.png (背景透過。黒っぽいところに置くと「lib」が見えないので注意)
     - CLANも同様にしたい場合は、以下に128x128の画像を置いてます。正方形なのでバナーとしては扱いづらいですが。
         - http://vnctst.tir.jp/ja/img/clan.png
 
