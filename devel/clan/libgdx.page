@@ -170,6 +170,22 @@ title: libgdxメモ
     - よく分からない場合は、BitmapFontのコンストラクタの第二引数をtrueにしてみるとよい。これをtrueにすると他のTextureやRectangle等と同じ領域に描画されるようになる(つまり指定した座標を左下とするrectとして描画される)。しかし当然上下が逆になる。
 
 
+# パフォーマンスチューニング
+
+[http://www.infoq.com/jp/articles/9_Fallacies_Java_Performance]() の「結論」より
+
+~~~
+どのようなJavaプロセスを実行 (開発も実運用も) する場合，
+最低限でも以下のフラグは常に設定するべきです。
+-verbose:gc (GC ログの出力)
+-Xloggc: (より包括的な GC ログ出力)
+-XX:+PrintGCDetails (詳細な出力用)
+-XX:+PrintTenuringDistribution (JVM が Tenured として扱うしきい値を表示する)
+~~~
+
+- android上で動かす際にはさすがに設定できないが、とりあえずPC上でデバッグしている間は付けて損はないようだ。
+
+
 # その他
 
 - libgdxのmavenリポジトリには現在のところnightly buildしか登録されておらず、安定版は登録されていない。なので安定版をmaven等で使いたい場合は自前でローカルリポジトリに入れる必要がある。
