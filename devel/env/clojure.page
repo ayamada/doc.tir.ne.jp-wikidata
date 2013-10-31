@@ -59,18 +59,12 @@ clojureのreplをちょっと動かしたくなった時は、どこからでも
             lein --version
             ~~~
 
-
-## lein-droid
-試行錯誤してみたが、windowsで動かすにはまだ困難なようだ。
-
-`apkbuilder.bat` のところでギブアップしたので、 `apkbuilder.bat` が使われなくなったらまた再挑戦する。
-
-挑戦する場合は、READMEには「Current version of lein-droid is 0.1.0-beta1.」ってなってるが、これは古いので注意。本当の最新バージョンはコミットログあたりから探す事
+- `~/.lein/profiles.clj` も必要に応じて設定しておく。
 
 
-# 次
 
-- [android]()編に続く。
+
+[android]()編に続く。
 
 
 
