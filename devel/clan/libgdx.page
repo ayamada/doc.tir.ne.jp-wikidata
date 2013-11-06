@@ -186,9 +186,13 @@ title: libgdxメモ
 - android上で動かす際にはさすがに設定できないが、とりあえずPC上でデバッグしている間は付けて損はないようだ。
 
 
-# その他
+# Mavenパッケージ
 
-- libgdxのmavenリポジトリには現在のところnightly buildしか登録されておらず、安定版は登録されていない。なので安定版をmaven等で使いたい場合は自前でローカルリポジトリに入れる必要がある。
+- [http://search.maven.org/#search%7Cga%7C1%7Cgdx]() あたりにある。
+- 警告！mavenセントラルリポジトリには「com.badlogic**games**.gdx.\*」というパッケージ名で登録されているが、実際のクラス名は「com.badlogic.gdx.\*」になっている。よって、maven/leinにてパッケージを指定する際には前者を、実際のソース内でimportする際には後者を指定しなくてはならない。Java sucks!
+
+
+# その他
 
 - desktopのみ対象にしてマウスの右クリックや移動を検知するには、InputProcessorを使う → [http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/InputProcessor.html]()
 
