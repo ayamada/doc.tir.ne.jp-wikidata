@@ -1296,7 +1296,7 @@ Help me
     - Please give me a work for money.
         - See [my resume](/tir.ne.jp/members/yamada/resume#english-version).
     - Please donate me a money for develop to CLAN.
-        - <form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_donations" /><input type="hidden" name="business" value="T47SCVZKCCHWL" /><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" /><input type="hidden" name="lc" value="en_US" /></form>
+        - <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><input type="hidden" name="cmd" value="_xclick" /><input type="hidden" name="business" value="T47SCVZKCCHWL" /><input type="hidden" name="item_name" value="CLAN donation" /><input type="hidden" name="no_shipping" value="1" /><input type="hidden" name="currency_code" value="USD" /><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" /><input type="hidden" name="lc" value="en_US" /></form>
 - Contact for me (provisional): [`@rnkv`](https://twitter.com/rnkv)
 
 ----
@@ -1309,8 +1309,7 @@ Help me
     - よかったら金になるお仕事ください。
         - 詳細については[山田のresume](/tir.ne.jp/members/yamada/resume)を見てください。
     - よかったらCLAN開発資金を寄付してください。
-        - …と言いたいところですが、日本ではPayPal経由での寄付ができないので、代わりに、下のページからamazonで買い物をしていただけると非常に助かります。
-            - [http://vnctst.tir.jp/ja/misc/amazon.html]()
+        - 上にあるpaypalのdonateボタン、もしくは [http://vnctst.tir.jp/ja/misc/amazon.html]() 経由でamazonで買い物をしていただけると非常に助かります。
 - libgdxは日本語ドキュメントが猛烈に不足しているので、あなたも自分のサイトでlibgdxの日本語記事を書いてみませんか？
     - 山田が書いた雑多な記事は、[clan/libgdx]()にあります。
 - 山田はやる気がありません。
