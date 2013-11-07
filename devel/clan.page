@@ -4,9 +4,9 @@ title: CLAN
 ...
 
 
-This is a document for version-0.1.0. Old document (for version 0.0.6) is here. -> [clan/0.0.6]()
+This is a document for version-0.1.1. Old document (for version 0.0.6) is here. -> [clan/0.0.6]()
 
-これはバージョン0.1.0のドキュメントです。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
+これはバージョン0.1.1のドキュメントです。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
 
 ----
 
@@ -129,7 +129,7 @@ Requirement
 
 - PC and OS(Windows or Mac or Linux or \*BSD)
 - Commonly-used CLI environment
-    - sh, GNU make(gmake), GNU autotools(autoconf), wget, unzip
+    - sh, GNU make(gmake), GNU autotools(autoconf), wget
         - If you use Windows, these are in [MinGW/MSYS](http://www.mingw.org/).
             - But, you will be update wget's cert, maybe.
 - [JDK 1.6](http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html) or [OpenJDK 1.6](http://openjdk.java.net/)
@@ -151,7 +151,7 @@ I registered to [Travis CI](https://travis-ci.org/ayamada/clan) since at 2013/08
 
 - PCおよびos(windowsかmacかlinuxか\*bsd)
 - 一般的なCLI環境
-    - sh, GNU make(gmake), GNU autotools(autoconf), wget, unzip
+    - sh, GNU make(gmake), GNU autotools(autoconf), wget
         - windows環境の場合は、[MinGW/MSYS](http://www.mingw.org/)に全て入ってます
             - ただし、おそらく[wgetのcertを更新しておく](http://d.hatena.ne.jp/bellbind/20110612/1307848645)必要があります
 - [JDK 1.6](http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html) か [OpenJDK 1.6](http://openjdk.java.net/)
@@ -187,7 +187,7 @@ cd package/projname
 git clone https://github.com/ayamada/clan.git
 cd clan
 git tag
-git checkout 0.1.0
+git checkout 0.1.1
 cd ..
 sh clan/script/spread_current_dir.sh
 ~~~
@@ -214,7 +214,7 @@ cd package/projname
 git clone https://github.com/ayamada/clan.git
 cd clan
 git tag
-git checkout 0.1.0
+git checkout 0.1.1
 cd ..
 sh clan/script/spread_current_dir.sh
 ~~~
