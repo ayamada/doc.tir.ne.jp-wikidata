@@ -1296,7 +1296,7 @@ Help me
     - Please give me a work for money.
         - See [my resume](/tir.ne.jp/members/yamada/resume#english-version).
     - Please donate me a money for develop to CLAN.
-        - <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><input type="hidden" name="cmd" value="_xclick" /><input type="hidden" name="business" value="T47SCVZKCCHWL" /><input type="hidden" name="item_name" value="CLAN donation" /><input type="hidden" name="no_shipping" value="1" /><input type="hidden" name="currency_code" value="USD" /><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" /><input type="hidden" name="lc" value="en_US" /></form>
+        - <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><input type="hidden" name="cmd" value="_xclick" /><input type="hidden" name="business" value="T47SCVZKCCHWL" /><input type="hidden" name="item_name" value="CLAN donation" /><input type="hidden" name="no_shipping" value="1" /><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" /></form>
 - Contact for me (provisional): [`@rnkv`](https://twitter.com/rnkv)
 
 ----
