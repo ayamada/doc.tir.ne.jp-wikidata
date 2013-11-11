@@ -43,7 +43,7 @@ git clone --bare path/to/existent-proj ~/repos/new-proj.git
 別マシンのリポジトリへと直にgit initやgit cloneを行う事はできないようだ。頻繁に行うようならssh越しに実行するスクリプト等を用意する事。
 
 
-# git clone
+## git clone
 
 ~~~
 git clone ssh://(server-name)/home/(user-name)/repos/new-proj.git
