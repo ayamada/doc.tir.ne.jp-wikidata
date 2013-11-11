@@ -1,0 +1,92 @@
+---
+toc: yes
+categories: git
+title: gitメモ
+...
+
+このページには、git回りのノウハウや操作手順を書きます。
+
+# dropbox管理下で使うな
+
+この約束を破ると色々と面倒な目に遭う。
+
+基本的に、dropbox管理下でgitを使いたい場合というのは、ほぼ.gitのバックアップを自動的に取りたいだけだと思うので、多少面倒であっても、以下のプライベートリポジトリの設定を行う事。長い目で見ればその方が面倒が少ない。dropbox管理下だと将来確実に面倒な目を見る。
+
+
+# 極簡単な、バックアップ機能付きプライベートリポジトリの作成
+
+## 他の選択肢
+
+- publicなリポジトリで問題なければ、普通にgithub等を使う。
+- バックアップ不要であれば、git initのみの運用で、ローカル内で完結させる(しかしバックアップ不要な事はまずないと思う)
+- 下記の作成すら面倒なら、bitbucketのプライベートリポジトリ機能を検討する。もしくはgithubに金を払う。
+
+## リポジトリ置き場等の作成
+
+~~~
+mkdir ~/repos
+mkdir ~/repos_tbz
+~~~
+
+## 新プロジェクト用リポジトリの作成
+
+~~~
+git init --bare ~/repos/new-proj.git
+~~~
+
+既に途中まで進めてるリポジトリから引き継ぐ場合は以下のようにする
+
+~~~
+git clone --bare path/to/existent-proj ~/repos/new-proj.git
+~~~
+
+別マシンのリポジトリへと直にgit initやgit cloneを行う事はできないようだ。頻繁に行うようならssh越しに実行するスクリプト等を用意する事。
+
+
+# git clone
+
+~~~
+git clone ssh://(server-name)/home/(user-name)/repos/new-proj.git
+~~~
+
+(server-name) と (user-name) は適切に指定する事。
+
+同じマシン内であれば以下だけで良い。
+
+~~~
+git clone ~/repos/new-proj.git
+~~~
+
+あとは適当に作業を行い、適切なタイミングでgit pushする。
+
+## バックアップ設定
+
+crontabに以下のような感じに仕込む。
+
+~~~
+5 5 * * * sh path/to/repos_bak.sh > path/to/repos_bak.log 2>&1
+~~~
+
+repos_bak.sh 本体は以下のような内容。
+
+~~~
+#!/bin/sh
+cd repos
+for d in *.git
+do
+  nice tar cvfj ~/repos_tbz/$d.tbz $d
+done
+dropbox-api sync ~/repos_tbz dropbox:/repos_tbz
+~~~
+
+- 事前にdropbox-apiをインストールしてアカウント設定まで行っておく事
+- またdropbox内にバックアップ用ディレクトリ(repos_tbz)の作成も行っておく事
+- バックアップ先はdropbox以外が良ければ適当に変更する事
+    - この例では履歴管理はdropbox任せなので、バックアップ先に履歴管理機能がない場合は、自前でファイル名にタイムスタンプを含める等を行う必要あり
+- tgzでのバックアップだと、内容に変化がなくてもgzする毎に書庫の内容に差が出てしまい、dropbox更新がなされてしまう。tbzならばそういう事はないのでbzip2で圧縮している。
+
+
+
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
