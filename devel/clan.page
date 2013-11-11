@@ -1182,6 +1182,9 @@ Edit files and do `make run` that works, but Edit files and do `make android-run
 How to use neko
 :   Libgdx not provide to manipulate Android's activity. Neko have this function. If you want to manipulate Android's activity, you can use neko. See [document of neko](https://github.com/alexander-yakushev/neko/wiki).
 
+Couldn't work `make repl`
+:   Maybe you may find compile error in many warnings. fix this line.
+
 What is CLAN logo?
 :   This is my family emblem. Change more better logo on later. (because
     it is too cutting corners.) logo's emblem part came from eps-file
@@ -1234,6 +1237,9 @@ CLANのアップデート手順
 
 nekoの使い方
 :   androidではActivity内に子Activityを持つ構造が普通で、libgdxはそのActivity内にゲームを作る機能はあるけれど、Activity構造自体をどうこうする機能は提供していない。nekoはその機能があるので、そういう構造にしたい場合はnekoを使う。がayamadaがまだそういう機能を必要とするアプリを作ってないので取り込むだけ取り込んで放置されている。そういうアプリを作り始めたらドキュメントを書く。それまでは自分で[nekoのドキュメント](https://github.com/alexander-yakushev/neko/wiki)を読んで調べてほしい。
+
+make replが動かなくなった
+:   大量のwarningに紛れて、こっそりコンパイルエラーが出てる場合があります。そこの行を修正してみましょう。
 
 CLANのロゴは何？
 :   うちの家の家紋です。あとでもっとちゃんとしたロゴを作る(あまりにも手抜きなので)。家紋部分は [http://eps.crest-japan.net/]() からepsファイルを貰ってきて加工して作った。
