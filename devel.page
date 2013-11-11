@@ -6,6 +6,8 @@ title: 技情研ネットの技術情報
 
 - [gititメモ](devel/gitit) - 当サイト(doc.tir.ne.jp)は[gitit](devel/gitit)を使って構築しています。
 
+- [gitメモ](devel/git)
+
 - androidアプリ開発
     - [環境構築](devel/env)
     - [CLAN解説ページ](devel/clan)
