@@ -1185,6 +1185,9 @@ How to use neko
 Couldn't work `make repl`
 :   Maybe you may find compile error in many warnings. fix this line.
 
+Occured NullPointerException in `make ta` (TextureAtlas)
+:   Maybe that packed data are too large. You can enlarge `maxWidth` and `maxHeight` on `pack.json` in `textures/`. See [https://github.com/libgdx/libgdx/wiki/Texture-packer]().
+
 What is CLAN logo?
 :   This is my family emblem. Change more better logo on later. (because
     it is too cutting corners.) logo's emblem part came from eps-file
@@ -1240,6 +1243,9 @@ nekoの使い方
 
 make replが動かなくなった
 :   大量のwarningに紛れて、こっそりコンパイルエラーが出てる場合があります。そこの行を修正してみましょう。
+
+TextureAtlas生成時にぬるぽが出る
+:   →[clan/libgdx#texturepackerを使ってpackする]()
 
 CLANのロゴは何？
 :   うちの家の家紋です。あとでもっとちゃんとしたロゴを作る(あまりにも手抜きなので)。家紋部分は [http://eps.crest-japan.net/]() からepsファイルを貰ってきて加工して作った。
