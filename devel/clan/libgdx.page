@@ -142,6 +142,7 @@ title: libgdxメモ
     - `name` は省略可能、これを指定すると上記2ファイルの`pack`部分に使われる
 
 - 上記の `src-dir` 内に、 `pack.json` という設定ファイルを入れる事により、pack時の挙動等を制御する事ができる。
+    - ぬるぽでpackに失敗する時はおそらく、合計サイズがmaxWidth/maxHeightを越えてしまっているので、pack.jsonを入れて増やす。今どきの端末なら4096x4096まで、数年前の端末でも2048x2048までは問題なくいけるようだ。
 
 ## TextureAtlasを使う
 - [http://code.google.com/p/libgdx/wiki/TexturePacker#TextureAtlas]() を参照。以下はその解説
