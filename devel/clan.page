@@ -1164,8 +1164,9 @@ I have some troubles on Android
 How to upgrade CLAN
 :   Do `cd clan`, `git pull` and `git checkout x.y.z` ([tag list](https://github.com/ayamada/clan/tags)). but, you must check to ChangeLog for incompatible changes at before.
 
-I want to change/erase background console output, boot logo and other.
+I want to change/erase boot display output, boot logo and other. / I want to change process' window-size and other for Desktop PC.
 :   You edit `layout/*.java.in`.
+:   See [https://github.com/libgdx/libgdx/blob/master/backends/gdx-backend-lwjgl/src/com/badlogic/gdx/backends/lwjgl/LwjglApplicationConfiguration.java]() for Desktop PC.
 
 I want to change boot screen more better.
 :   You edit `clan/cbl/src-java/jp/ne/tir/clan/BootLoader.java`, and please send pull-req to me.
@@ -1223,8 +1224,9 @@ android向けにて問題がある
 CLANのアップデート手順
 :   `cd clan` してから、 `git pull` と `git checkout x.y.z` を実行してください([タグ一覧](https://github.com/ayamada/clan/tags))。ですが、ChangeLogに非互換な変更がないかどうかを先に確認しておいてください。
 
-起動ロゴ、コンソール出力、等々を変更したい
+起動ロゴ、起動時表示内容、等々を変更したい / PC向けデプロイ時で、ウィンドウサイズやリサイズ設定等を変更したい
 :   `layout/*.java.in` をいじってください。
+:   PC向け設定可能項目につては、 [https://github.com/libgdx/libgdx/blob/master/backends/gdx-backend-lwjgl/src/com/badlogic/gdx/backends/lwjgl/LwjglApplicationConfiguration.java]() を参照してください(何故かこの辺りはjavadocにされてない)。
 
 起動画面をもっとよく変更したい
 :   `clan/cbl/src-java/jp/ne/tir/clan/BootLoader.java` をいじってください。よかったらpull-reqもしてください。
