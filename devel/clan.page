@@ -1226,7 +1226,7 @@ CLANのアップデート手順
 
 起動ロゴ、起動時表示内容、等々を変更したい / PC向けデプロイ時で、ウィンドウサイズやリサイズ設定等を変更したい
 :   `layout/*.java.in` をいじってください。
-:   PC向け設定可能項目につては、 [https://github.com/libgdx/libgdx/blob/master/backends/gdx-backend-lwjgl/src/com/badlogic/gdx/backends/lwjgl/LwjglApplicationConfiguration.java]() を参照してください(何故かこの辺りはjavadocにされてない)。
+:   PC向け設定可能項目については、 [https://github.com/libgdx/libgdx/blob/master/backends/gdx-backend-lwjgl/src/com/badlogic/gdx/backends/lwjgl/LwjglApplicationConfiguration.java]() を参照してください(何故かこの辺りはjavadocにされてない)。
 
 起動画面をもっとよく変更したい
 :   `clan/cbl/src-java/jp/ne/tir/clan/BootLoader.java` をいじってください。よかったらpull-reqもしてください。
