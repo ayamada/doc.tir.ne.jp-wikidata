@@ -12,17 +12,17 @@ title: libgdxメモ
 
 - [http://libgdx.badlogicgames.com/features.html]() によると、「Libgdx tries not be the "end all, be all" solution. It does not force a specific design on you. Pick and choose from the features below.(以下の表は省略)」との事。この方針によって、同様の他のフレームワークやゲームエンジンよりもずっと自由度が高い。「clojure経由でlibgdxを使おう」みたいな事を考える者にとってはこの自由度は重要な点だ。他の「全部入り」指向のフレームワークは(たとえそれが安全の為であっても)制限が多い。
 
-- 分からない事があれば、とりあえず[Wiki](http://code.google.com/p/libgdx/wiki/TableOfContents)に該当記事がないか探してみる。それなりに頻繁に更新されている。
+- 分からない事があれば、とりあえず[Wiki](https://github.com/libgdx/libgdx/wiki)に該当記事がないか探してみる。それなりに頻繁に更新されている。
 
 - 時間がある時に一度、どんな機能があるかを[API](http://libgdx.badlogicgames.com/nightlies/docs/api/)のところから目を通しておいた方がいい。必要な機能が既に実装されている事は多い。
-    - 勿論、エディタのリファレンス機能もしくは[検索ディスパッチャ](http://doc.tir.ne.jp/devel/env/windows#%E9%96%8B%E7%99%BA%E7%94%A8%E3%82%BD%E3%83%95%E3%83%88%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)にも、このAPIからの検索を登録しておく事。頻繁に使う事になる。
+    - 勿論、エディタのリファレンス機能もしくは[検索ディスパッチャ](/devel/env/windows#%E9%96%8B%E7%99%BA%E7%94%A8%E3%82%BD%E3%83%95%E3%83%88%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)にも、このAPIからの検索を登録しておく事。頻繁に使う事になる。
 
 
 # ライフサイクル
 
 - androidの[Activity Lifecycle](http://developer.android.com/intl/ja/reference/android/app/Activity.html#ActivityLifecycle)はかなり複雑。しかしandroidアプリを作る上で避けては通れない。
 
-- libgdxの[ApplicationLifeCycle](http://code.google.com/p/libgdx/wiki/ApplicationLifeCycle)は上記androidのlifecycleを扱いやすいようにシンプルにされている(それでいて必要最小限の分離が保たれている)。しかしその代償として分かりにくい部分が増えている箇所があるのと、元々分かりにくい部分も多い為、以下に注意点をまとめてみた。
+- libgdxの[ApplicationLifeCycle](https://github.com/libgdx/libgdx/wiki/The-life-cycle)は上記androidのlifecycleを扱いやすいようにシンプルにされている(それでいて必要最小限の分離が保たれている)。しかしその代償として分かりにくい部分が増えている箇所があるのと、元々分かりにくい部分も多い為、以下に注意点をまとめてみた。
     - この図ではrender()とひとくくりにされているが、render()の中ではスクリーン等への描画のみではなく、各種の入力値の反映や内部処理も同時に行う必要がある。実際の処理のほとんどはここに書く事になる。
     - PCではpause()→resume()の流れは絶対に起きない為、この部分の動作検証は実機もしくはエミュレータで行うしかない。
         - 0.9.8まではそうだったが、0.9.9になって、PCでもウィンドウのフォーカスが他に移動した時/復帰した時にpause()→resume()の流れが発生するようになったようだ。
@@ -56,7 +56,7 @@ title: libgdxメモ
     - [http://mobileapplication.blog.fc2.com/blog-entry-3.html]()
     - [http://mobileapplication.blog.fc2.com/blog-entry-4.html]()
     - これについて自分が実機で調べた限りでは、task killerで殺した場合は create()のところからやり直しになるので、きちんと create() 内で変数やオブジェクトの初期化をしていれば大丈夫なようだ。
-        - ただ自分の調査はandroid-3.2.1で調べたので、それ以前のバージョンでも create() のところからやり直しになるのかは不安なところ…
+        - ただ自分の調査はandroid-3.2.1で調べたので、それ以前のバージョンでも create() のところからやり直しになるのかは不安なところ。
 
 まとめ
 
@@ -125,16 +125,16 @@ title: libgdxメモ
 
 
 # TextureAtlasおよびTexturePackerの使い方
-- [http://code.google.com/p/libgdx/wiki/TexturePacker]()
+- [https://github.com/libgdx/libgdx/wiki/Texture-packer]()
 - 要は、テクスチャは、小さいものを何個も登録するよりも、結合したでかい一つの画像にしてそこから矩形指定して使う方が速度コストが良いらしい。その為のクラスがTextureAtlasおよびTexturePacker。
 
 ## TexturePackerを使ってpackする
 0. libgdx配布物を自分で展開し、そこに入っている `gdx.jar` および `extensions/gdx-tools/gdx-tools.jar` にクラスパスを通しておく(あるいはクラスパスの通った場所にコピーする)
 0. 特定ディレクトリに、packしたいテクスチャファイル(つまり`*.png`)を全部入れる
     - なお、ファイル名が `image_02.png` のように末尾に数値の入っている物は特別扱いされる様子、注意
-        - [http://code.google.com/p/libgdx/wiki/TexturePacker#Image_indexes]()
-0. 特定ディレクトリに、pack.jsonという設定ファイルを入れる。省略可能
-    - 詳細は [http://code.google.com/p/libgdx/wiki/TexturePacker#Configuration]() 参照
+        - [https://github.com/libgdx/libgdx/wiki/Texture-packer#wiki-Image_indexes]()
+0. 上記ディレクトリに、pack.jsonという設定ファイルも一緒に入れる。省略可能
+    - 詳細は [https://github.com/libgdx/libgdx/wiki/Texture-packer#wiki-Configuration]() 参照
 0. `java -cp 'gdx.jar;gdx-tools.jar' com.badlogic.gdx.tools.imagepacker.TexturePacker2 src-dir dst-dir name` を実行する
     - `src-dir` は、上記の特定ディレクトリを指定
     - `dst-dir` は、生成結果を入れるディレクトリを指定、省略可能
@@ -146,7 +146,7 @@ title: libgdxメモ
     - ぬるぽでpackに失敗する時はおそらく、生成後の画像サイズがmaxWidthもしくはmaxHeightを越えてしまっているので、pack.jsonを入れてこれらの値を増やす。今どきの端末なら4096x4096まで、数年前の端末でも2048x2048までは問題なくいけるようだ。
 
 ## TextureAtlasを使う
-- [http://code.google.com/p/libgdx/wiki/TexturePacker#TextureAtlas]() を参照。以下はその解説
+- [https://github.com/libgdx/libgdx/wiki/Texture-packer#wiki-TextureAtlas]() を参照。以下はその解説
     - `TextureAtlas atlas;` で領域を確保
     - `atlas = new TextureAtlas(Gdx.files.internal("path/to/pack.atlas"));` を create() 時にでも行う。この指定で `"pack.atlas"` と `"pack.png"` を両方同時に指定するのと同じ効果があるようだ。
     - `Sprite sprite = atlas.createSprite("imagename");` で、 テクスチャの一部からSpriteインスタンスを生成する。この場合、元ファイル名は`imagename.png`のものが取り出せる。引数指定時に、元ファイルについていた拡張子は含めてはならない。
@@ -157,7 +157,7 @@ title: libgdxメモ
     - `Array<AtlasRegion> regions = atlas.findRegions("imagename");` hoge_02.png 形式の連番画像をAtlasRegionの配列として取り出す。
 
 ## 自動packing
-- [http://code.google.com/p/libgdx/wiki/TexturePacker#Automatic_packing]() にある通り、アプリ起動時にpack処理を入れる事ができる。
+- [https://github.com/libgdx/libgdx/wiki/Texture-packer#wiki-Automatic_packing]() にある通り、アプリ起動時にpack処理を入れる事ができる。
     - ただしこれを行うには、ビルド時に `gdx-tools.jar` を含める必要がある。
     - また、pack処理は結構時間がかかるので毎回起動時にpackするのは微妙かもしれない。
 
