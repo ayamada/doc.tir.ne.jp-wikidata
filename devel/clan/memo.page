@@ -130,7 +130,7 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
 vim-clojure-static を使う場合の設定
 
 - [http://www.deepbluelambda.org/programming/clojure/programming-clojure-with-vim-2013-edition]() を参考にした
-- 自分はNeoBundle使用。
+- 自分はNeoBundleを使っているので、それに合わせた
 
 ### .vimrc
 
@@ -159,13 +159,13 @@ augroup rainbow_parentheses
 augroup END
 ~~~
 
-- slimvの、デフォルトで有効になってる括弧自動補完機能は便利だけれども、マルチバイト文字との相性が悪く、文字化けしてしまう事があるので切っている。
+- slimvの、デフォルトで有効になってる括弧自動補完機能は便利だけれども、マルチバイト文字との相性が悪く、文字化けしてしまう事があるので切っている(paredit_mode)。
 
 ### 操作メモ
 
 - `<C-X><C-U>` で、clojure基本シンボル一覧より補完候補を表示する
 - `ab` で括弧で囲まれた範囲を括弧ごと選択、 `ib` で同様に括弧抜きで選択
-        - cab, dab, yab みたいに使う。
+    - `cab`, `dab`, `yab` みたいに使う。
 
 
 # maven関連
