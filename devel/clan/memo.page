@@ -125,6 +125,49 @@ TODO: この部分についてはあちこちにノウハウがある筈。だ�
         - この問題は `@#'name.space/var-name` のように書く事でも一応対応可能だが、マクロのquasiquote内でこれを書くと間違いなく混乱すると考え、今回は避けた
 
 
+## vim-clojure-static 設定
+
+vim-clojure-static を使う場合の設定
+
+- [http://www.deepbluelambda.org/programming/clojure/programming-clojure-with-vim-2013-edition]() を参考にした
+- 自分はNeoBundle使用。
+
+### .vimrc
+
+~~~
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'kovisoft/slimv'
+let g:paredit_mode=0
+NeoBundle 'guns/vim-clojure-static'
+let g:rbpt_colorpairs = [
+  \ [ '13', '#6c71c4'],
+  \ [ '5',  '#d33682'],
+  \ [ '1',  '#dc322f'],
+  \ [ '9',  '#cb4b16'],
+  \ [ '3',  '#b58900'],
+  \ [ '2',  '#859900'],
+  \ [ '6',  '#2aa198'],
+  \ [ '4',  '#268bd2'],
+  \ ]
+augroup rainbow_parentheses
+  au!
+  au VimEnter * RainbowParenthesesActivate
+  au BufEnter * RainbowParenthesesLoadRound
+  au BufEnter * RainbowParenthesesLoadSquare
+  au BufEnter * RainbowParenthesesLoadBraces
+augroup END
+~~~
+
+- slimvの、デフォルトで有効になってる括弧自動補完機能は便利だけれども、マルチバイト文字との相性が悪く、文字化けしてしまう事があるので切っている。
+
+### 操作メモ
+
+- `<C-X><C-U>` で、clojure基本シンボル一覧より補完候補を表示する
+- `ab` で括弧で囲まれた範囲を括弧ごと選択、 `ib` で同様に括弧抜きで選択
+        - cab, dab, yab みたいに使う。
+
+
 # maven関連
 
 CLANが昔にmavenを使っていた際のメモ。現在は不要になったが一応残しておく。
