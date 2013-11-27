@@ -7,6 +7,8 @@ hoge: テスト
 
 このページはgititそのものの動作確認をする為の、内部用ページです。
 
+バージョンアップ対応
+
 <div class="frame" markdown="1" style="border:1px solid">
 # markdown_phpextraが有効かどうかのテスト
 有効なようだ
