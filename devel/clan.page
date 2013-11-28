@@ -1189,9 +1189,6 @@ Couldn't work `make repl`
 Occured NullPointerException in `make ta` (TextureAtlas)
 :   Maybe that packed data are too large. You can enlarge `maxWidth` and `maxHeight` on `pack.json` in `textures/`. See [https://github.com/libgdx/libgdx/wiki/Texture-packer]().
 
-Not reflected a texture when update image files in `texture` directory
-:   Run `make ta`.
-
 What is CLAN logo?
 :   This is my family emblem. Change more better logo on later. (because
     it is too cutting corners.) logo's emblem part came from eps-file
@@ -1251,9 +1248,6 @@ make replが動かなくなった
 
 TextureAtlas生成時にぬるぽが出る
 :   →[clan/libgdx#texturepackerを使ってpackする]()
-
-`texture`ディレクトリ内を更新したのに反映されない
-:   `make ta`を実行してください。
 
 CLANのロゴは何？
 :   うちの家の家紋です。あとでもっとちゃんとしたロゴを作る(あまりにも手抜きなので)。家紋部分は [http://eps.crest-japan.net/]() からepsファイルを貰ってきて加工して作った。
