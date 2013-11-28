@@ -1163,6 +1163,7 @@ I have some troubles on Android
 
 How to upgrade CLAN
 :   Do `cd clan`, `git pull` and `git checkout x.y.z` ([tag list](https://github.com/ayamada/clan/tags)). but, you must check to ChangeLog for incompatible changes at before.
+:   Sometimes, updated `Makefile.in` in `clan/sample/` when bump version. You may replace it by hand, if you don't modify `Makefile.in`. (It is very inconvenience, so I want to refine it in future.)
 
 I want to change/erase boot display output, boot logo and other. / I want to change process' window-size and other for Desktop PC.
 :   You edit `layout/*.java.in`.
@@ -1223,6 +1224,7 @@ android向けにて問題がある
 
 CLANのアップデート手順
 :   `cd clan` してから、 `git pull` と `git checkout x.y.z` を実行してください([タグ一覧](https://github.com/ayamada/clan/tags))。ですが、ChangeLogに非互換な変更がないかどうかを先に確認しておいてください。
+:   たまに `clan/sample/` 配下の `Makefile.in` 等が更新されています。古いプロジェクトで特に `Makefile.in` 等をいじっていない場合は、手で更新してください(これは不便なので将来的には何とかしたいです)。
 
 起動ロゴ、起動時表示内容、等々を変更したい / PC向けデプロイ時で、ウィンドウサイズやリサイズ設定等を変更したい
 :   `layout/*.java.in` をいじってください。
