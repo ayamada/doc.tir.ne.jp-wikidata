@@ -179,11 +179,118 @@ title: libgdxメモ
 - 使う際は、前述のTextureAtlasに入れておき、元ファイルが`hoge.9.png`ならば`atlas.createPatch("hoge")`でpadding等が上記通り設定されたNinePatchインスタンスが取り出せる。黒ピクセルは勿論除去されている。
 
 
-# BitmapFontの向き
-- BitmapFontは他のTextureやRectangle等と違い、指定した座標を左上とするrectとして描画される。非常に困る。
-    - つまり、(0,0)を指定すると何も表示されず、(0,フォントの高さ)としてはじめて左下に表示される。
-    - よく分からない場合は、BitmapFontのコンストラクタの第二引数をtrueにしてみるとよい。これをtrueにすると他のTextureやRectangle等と同じ領域に描画されるようになる(つまり指定した座標を左下とするrectとして描画される)。しかし当然上下が逆になる。
+# BitmapFont
 
+BitmapFontは非常にバッドノウハウが濃縮されている。
+
+## BitmapFont概要
+
+- libgdxで利用できるBitmapFontは、大昔より慣用的に利用されている「`*.fnt`」形式のビットマップフォントである。
+    - fnt形式のビットマップフォントはlibgdx以外でも大抵のゲームエンジンで採用されていたりする汎用的なものである。しかし「(RFC的な)標準化された仕様」というものが存在せず、半分「実装だけが仕様です」状態になっており非常に困る。
+        - 自分が調べたlibgdxでの実装(仕様)については下の方に書いた。
+- fnt形式のビットマップフォントは、「文字定義情報」と「全文字入りTexture」から構成される。
+    - 「文字定義情報」は、通常は`*.fnt`ファイルによって定義する。
+    - 「全文字入りTexture」は、通常は`*.png`ファイル。libgdxでは生成済のTextureやTextureRegionを直に指定する事もできる。
+- fnt形式のビットマップフォント(具体的には、上記の`*.fnt`と`*.png`のペア)を生成するソフトは結構あちこちで公開配布されている。しかしlibgdxには「[Hiero](https://github.com/libgdx/libgdx/wiki/Hiero)」というビットマップフォント生成ツールが付属しているので、これを使うのが無難。
+- libgdxは内蔵でascii範囲のみのArialフォントが組み込まれている。引数無しでBitmapFontインスタンスを生成するとこれが利用できる。
+- libgdxのBitmapFontは、いわゆるUnicodeの内、いわゆるCJK文字の辺りまでは普通に利用できる(CJK以外のより複雑なUnicode仕様がどこまで完全に満たされているかは不明)。
+    - ただし勿論、漢字を一通り使おうと思ったら結構なTexture領域と定義が必要。
+
+## Hieroを使ったBitmapFont生成
+
+- 基本的な使い方は、[Hiero](https://github.com/libgdx/libgdx/wiki/Hiero)のページに書いてある通り。
+    - そこのページにはHiero以外のfnt生成ソフトの簡単な紹介もあり、それらを使ってもよい。ただし先に書いたように、fnt形式のビットマップフォントの仕様は標準化されておらず実装依存の部分が多い為、libgdxで使うのであれば、libgdx付属のHieroで生成するのが一番無難だと思う。
+- [clan]()では`make hiero`で起動できるようにしておいた。
+- 具体的な作成手順
+    1. 左上の「Font」項目にて、フォントを選択し、そのサイズ等も設定する。
+        - RenderingをNativeにするとOSのレンダラによってフォントが描画されるので、より綺麗にレンダリングされる場合がある(OSによる)。しかしGlyphの圧縮詰め込みが行われなくなってしまう(下のRendering表示のところで、Glyph cache表示にしてみると分かる)。なので基本はRenderingはJavaを選択した方がよい。
+        - 漢字全部を含む場合、Size=16、Rendering=Javaの状態にて、生成Texture画像が1024x1024にギリギリに収まるかどうかぐらいの大きさになる。
+    2. 上部中央の「Sample Text」項目にて、使用する文字の一覧を設定する。もし漢字全部含ませたい場合は、漢字全部をここに書く。
+        - いわゆるJIS第一水準までを含んだ文字一覧を、 [http://legacy.e.tir.jp/fnt_japanese_chars.txt]() に置いた。これからコピペすればよい。
+    3. 右上の「Effects」項目にて、文字にかけるエフェクトを複数選択できる。通常はColorを白に設定するだけでよいと思う。
+        - `*.hiero`ファイルからロードしたら、ここの設定はなくなってしまうようだ。デフォルトで設定されている「Color＝白」もなくなってるので、`*.hiero`ファイルからロードしたらこれぐらいは手で設定し直す必要がある。
+    4. 左下の「Rendering」項目にて、「Glyph cache」表示を選択し、適切に「Page width」と「Page height」の設定を行う。
+        - これは要は、生成する`*.png`の大きさ設定の事。この縦横サイズよりも実際の文字の方が多い場合は、`*.png`が複数に分割されてしまう(つまりPagesが複数になる)。分割されると管理が面倒になるのでなるべく一枚に収まるように設定する。
+            - ただしandroid実機で扱えるTextureの最大サイズは、「全ての端末で扱える＝512x512」「最初期の端末を除く＝1024x1024」「数年前ぐらいレベルの端末＝2048x2048」「最近の端末＝4096x4096」、みたいな感じ。あまり無茶に大きくしない事。
+    5. 右下の「Padding」項目にて、1文字の上下左右に埋め込む空白ピクセルの量と、実際に描画する際にずらしたい際の移動量を指定できる。
+        - Paddingはマイナス値も設定できるがあまりにマイナスにしすぎるとエラー例外が出てHieroを再起動せざるをえなくなる。この辺はあまり無茶な値を設定しない事。
+        - 後述するLinear描画を使う予定の場合は、最低でも左と上に1ずつPaddingしておくべき(右と下でもよい)。
+    6. 全て設定し終わったら、左上の「File」より、「Save BMFont files」を選択する。これで`*.fnt`と`*.png`が生成される。
+    7. 一応この設定内容も、左上の「File」より、「Save Hiero settings file」から保存しておく。これで`*.hiero`ファイルが保存される。
+        - 前述の通り、「Effects」の項目は保存されないし、「Sample Text」の項目も保存されない。基本的にはこのセーブロードには頼らない方がいいと思う。
+    8. 上記にて生成した`*.fnt`ファイルにはいくつかの問題がある為、テキストエディタで開いて以下の加工を行う。この変更内容の詳細は[#bitmapfont書式]()にある。
+        - commonの行の、lineHeightのサイズを適切に設定する
+            - デフォルトではかなり行間が広く取られている。日本語メインで扱う場合、フォントサイズ16で作ったらlineHeightは16～20ぐらいで良いと思う。
+        - char id=32の行のxadvanceを適切に設定する
+            - id=32は半角スペース。デフォルトではxadvanceつまり横幅が0に設定されてしまっている。フォントサイズ16で作ったら8ぐらいに設定するといいと思う。
+        - 日本語を扱う場合、char id=12288の行を新規追加する
+            - id=12288は全角空白。何故かHieroから認識されず除外されてしまう。前述のid=32の半角スペースの行をコピペし、idを12288に書き換え、xadvanceも半角の倍に設定すればok。
+        - char id=12288の行を増やしたのに伴い、chars行のcount値を1増やす
+        - 等幅フォントとして利用する場合は、全ての行のxadvanceを適切に書き換える
+            - id値が255以内なら半角横幅を、それ以上なら全角横幅を適切に設定する。手で行うにはあまりに量が多いので、スクリプトか何かを用意したいところ。
+            - ここではJIS第一水準までしか扱っていないが、id値256以上のUnicode文字の中には全角横幅に相応しくないものもあるので、もしそういう文字を含める場合はその文字だけ個別にxadvanceを設定する事。
+
+## BitmapFontの準備
+
+- `*.fnt`および`*.png`を、普通にassetsとして含めておく。
+    - `*.png`の方はTextureAtlasとして、他のTextureと一緒に固めてしまってもよい。
+
+## BitmapFontの描画
+
+- [http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html]()辺りを見て、`draw()`を実行すればok。
+    - ※BitmapFontは他のTextureやRectangle等と違い、指定座標を「左上の角」とするrectとして描画される(Texture等はデフォルトでは指定座標が「左下の角」に相当する)。非常に困る。
+        - 例えば、座標に(0,0)を指定すると画面の外に描画される事となって何も表示されず、(0,フォントの高さ)としてはじめて左下に表示される。
+        - よく分からない場合は、BitmapFontのコンストラクタの第二引数をtrueにしてみるとよい。これをtrueにすると他のTextureやRectangle等と同じ領域に描画されるようになる(つまり指定した座標を左下とするrectとして描画される)。しかし当然上下が逆になる。
+            - これを行うのであれば、ビットマップフォント生成時に上下を逆にしておく必要がある、が、Hieroにはそういう機能はついてなかった
+    - 複数行を一度に描画する場合は`drawMultiLine()`か`drawWrapped()`を使う。
+    - BitmapFontの描画は各文字の座標計算が含まれる為そこそこコストがある。このコスト軽減の為に[http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFontCache.html]()がある。実際のコードではほぼこちらを使う事になる。
+    - BitmapFontを描画する際に、文字サイズを変更してもジャギーにならないよう綺麗に表示させたい場合は、BitmapFontの文字TextureにLinearフィルタを設定する。
+        - 具体的には[http://stackoverflow.com/a/18062590]()みたいな事。勿論描画コストは上がる。またBitmapFontのTextureをTextureAtlasに入れてた場合、他の画像にまでフィルタが設定されてしまう点に注意。
+        - この際には、Linearフィルタ固有の問題として、`*.png`内での文字同士の間隔が十分に取れていないと、隣の文字からの色漏れが発生してしまう点がある。Hieroでの生成の場合はきちんとPaddingを設定しておく事。
+
+## BitmapFont書式
+
+前述の通り、fnt形式のビットマップフォントは「(RFC的な)標準化された仕様」が存在せず「実装が仕様です」状態になっている。なのでlibgdxの挙動から書式を調べてみた。
+
+- info行 : この行は、このフォントがどのようなものなのかを示す為の情報行であり、実際の描画の際には全く活用されないようだ(少なくともlibgdxでは)。
+- common行 : このフォント全体に影響するような項目。
+    - lineHeight : 「行間を決定する為の」一行の高さ。主に`drawMultiLine()`系や`drawWrapped()`系に影響する。改行を含まない場合の`getBounds()`系で得られる高さには影響しない点に注意。
+    - base : 一行の文字のベース高さ。これを上下させる事で全ての文字をまとめて上下にスライドさせられる。
+    - scaleW, scaleH : 文字領域全体のサイズ。変更する必要はない。
+    - pages : 総ページ数。変更する必要はない。
+    - packed : ？？？
+- page行 : 前述のcommon pagesの数だけ行が存在。
+    - id : このページのid。
+    - file : このページの元ファイル名。BitmapFontのコンストラクタに`*.fnt`だけ指定した場合は、(同じディレクトリにある)このファイル名からTextureがロードされる。
+- chars行 : char行が何行あるかを示す為だけの行
+    - count : char行が何行あるかを示す。Hieroではマイナス1オリジンで出力される(つまり5行あればcount=4になる)。libgdxではこの情報は別に利用してないように思える。
+- char行 : 文字一つの定義行。前述のchars countの数+1だけ行が存在。
+    - id : Unicode番号。ucs2範囲(つまり65535まで)は普通に使えるのを確認済。
+    - x, y, width, height : この文字の転送元Texture内のrect情報。基本的に切り詰められた領域が指定されている。
+    - xoffset, yoffset : 前述のrectを描画する際の、描画先座標に対するオフセット値。前述の通り、転送元が切り詰められている為、その切り詰め分を戻す為に使われる。マイナス値も指定可能。
+    - xadvance : この文字の横幅。この文字が描画されると、次に描画される文字はx座標がこの値だけ進んだ位置を基準に描画される事になる。
+    - page : この文字がどのページに存在するか。前述のpage行のid値を指定する。
+    - chnl : ？？？
+- kernings行 : kerning行が何行あるかを示す為だけの行
+    - count : kerning行が何行あるかを示す。Hieroではマイナス1オリジンで出力される(つまり5行あればcount=4になる)。libgdxではこの情報は別に利用してないように思える。
+- kerning行 : 詳細不明
+
+## BitmapFontバッドノウハウ
+
+- libgdx組み込みのArialフォントを等幅フォントとして使いたい場合は、[setFixedWidthGlyphs()](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html#setFixedWidthGlyphs(java.lang.CharSequence))を設定しておく事。
+
+- BitmapFont描画の基準座標が「左上の角」である事を忘れないようにする(詳細は[#bitmapfontの描画]()参照)。
+
+- Linearフィルタ設定時の為に、HieroでPaddingを設定しておく事([#hieroを使ったbitmapfont生成]()の5と[#bitmapfontの描画]()を参照)。
+
+- `*.fnt`のcommon lineHeightの値と、`getBounds()`で得られる高さとの相関関係について
+    - [#bitmapfont書式]()にも書いているが、lineHeightは「行間を決定する為の」一行の高さであり、drawする文字列が一行だけの時はこの値は全く使われない。ではその時は何によって一行の高さが決定されるのかと言うと、[getCapHeight()](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html#getCapHeight())の値が使われている。
+        - `getCapHeight()`が返す高さとは、具体的には「半角大文字Mの高さ」。つまりchar id=77のheight値。yoffsetは考慮されない。
+    - つまり結果として、`*.fnt`にて「common lineHeight=16」かつ「char id=77 height=14 (つまりMの文字の高さが14)」の時に、三行の文字列を`drawMultiLine()`する際のTextBoundsの高さは、16+16+14=46、という事になる。
+
+## BitmapFontチューニングポイント
+
+あとで書く
 
 # パフォーマンスチューニング
 
