@@ -227,7 +227,7 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
         - 日本語を扱う場合、char id=12288の行を新規追加する
             - id=12288は全角空白。何故かHieroから認識されず除外されてしまう。前述のid=32の半角スペースの行をコピペし、idを12288に書き換え、xadvanceも半角の倍に設定すればok。
         - char id=12288の行を増やしたのに伴い、chars行のcount値を1増やす
-        - 等幅フォントとして利用する場合は、全ての行のxadvanceを適切に書き換える
+        - 等幅フォントとして生成する場合は、全ての行のxadvanceを適切に書き換える
             - id値が255以内なら半角横幅を、それ以上なら全角横幅を適切に設定する。手で行うにはあまりに量が多いので、スクリプトか何かを用意したいところ。
             - ここではJIS第一水準までしか扱っていないが、id値256以上のUnicode文字の中には全角横幅に相応しくないものもあるので、もしそういう文字を含める場合はその文字だけ個別にxadvanceを設定する事。
         - 最後に、char id=77の行(「M」の文字)の設定をいじる事を考慮する。詳細については後述の[#bitmapfontバッドノウハウ]()と[#bitmapfontチューニングポイント]()を参照。
@@ -249,6 +249,10 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
     - BitmapFontを描画する際に、文字サイズを変更してもジャギーにならないよう綺麗に表示させたい場合は、BitmapFontの文字TextureにLinearフィルタを設定する。
         - 具体的には[http://stackoverflow.com/a/18062590]()みたいな事。勿論描画コストは上がる。またBitmapFontのTextureをTextureAtlasに入れてた場合、他の画像にまでフィルタが設定されてしまう点に注意。
         - この際には、Linearフィルタ固有の問題として、`*.png`内での文字同士の間隔が十分に取れていないと、隣の文字からの色漏れが発生してしまう点がある。Hieroでの生成の場合はきちんとPaddingを設定しておく事。
+    - 既存の(プロポーショナルな)フォントを等幅フォントとして利用したい場合は、[setFixedWidthGlyphs()](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html#setFixedWidthGlyphs(java.lang.CharSequence))を使う。
+        - 一番横幅が大きい文字に合わせられる。この仕様が困る場合は`*.fnt`をいじるしかない。
+        - 具体的には、 [http://legacy.e.tir.jp/fnt_japanese_chars.txt]() を全角と半角とで分割して文字列化し、全角→半角の順で`setFixedWidthGlyphs()`を実行する(全部一緒に実行すると、半角文字まで全角文字の横幅になってしまう)。
+
 
 ## BitmapFont書式
 
@@ -279,7 +283,8 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
 
 ## BitmapFontバッドノウハウ
 
-- libgdx組み込みのArialフォントを等幅フォントとして使いたい場合は、[setFixedWidthGlyphs()](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html#setFixedWidthGlyphs(java.lang.CharSequence))を設定しておく事。
+- libgdx組み込みのArialフォントを使う際は `font.setFixedWidthGlyphs("0123456789")` しておくとよい
+    - ここにアルファベットまで含めると数値の文字間が空きすぎて見た目が悪くなる
 
 - BitmapFont描画の基準座標が「左上の角」である事を忘れないようにする(詳細は[#bitmapfontの描画]()参照)。
 
@@ -304,6 +309,7 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
 
 - `*.fnt`いじり
     - ゲーム等では、フォントは等幅の方が圧倒的に扱いやすいので、なるべくxadvanceの等幅加工をしておきたい。
+        - `setFixedWidthGlyphs()`でもよいが、横幅が一番大きい文字に揃える加工しかできないので扱いづらい
     - char id=77 「M」の設定
         - フォントによっては「半角Mよりも全角漢字のheightの方が大きい」という事が普通にあり、それが微妙に困る時もあるので、「M」の文字のheightを他の全角漢字レベルに大きくすると同時にyoffsetを減らす事で、`getCapHeight()`の値の調整を行う。
             - この際には、いじった「M」の文字だけ領域が大きくなる為、Linearフィルタ用の文字間隔がなくなってないかチェックする必要あり！
