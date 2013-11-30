@@ -286,7 +286,6 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
 - libgdx組み込みのArialフォントを使う際は `font.setFixedWidthGlyphs("0123456789")` しておくとよい
     - ここにアルファベットまで含めると数値の文字間が空きすぎて見た目が悪くなる
 - BitmapFont描画の基準座標が「左上の角」である事を忘れないようにする(詳細は[#bitmapfontの描画]()参照)。
-- Linearフィルタ設定時の為に、HieroでPaddingを設定しておく事([#hieroを使ったbitmapfont生成]()の5と[#bitmapfontの描画]()を参照)。
 - `*.fnt`のcommon lineHeightの値と、`getBounds()`で得られる高さとの相関関係について
     - [#bitmapfont書式]()にも書いているが、lineHeightは「行間を決定する為の」一行の高さであり、drawする文字列が一行だけの時はこの値は全く使われない。ではその時は何によって一行の高さが決定されるのかと言うと、[getCapHeight()](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html#getCapHeight())の値が使われている。
         - `getCapHeight()`が返す高さとは、具体的には「半角大文字Mの高さ」。つまりchar id=77のheight値。yoffsetは考慮されない。
@@ -299,11 +298,9 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
         - 左1上1を設定すべきか？右1下1を設定すべきか？それとも上下左右1ずつか？
             - 検討中
     - 今は別にLinearにしなくてよくても、将来に別のゲーム等にフォントを流用した時にLinearフィルタつけたくなる可能性は高い。だから文字間隔は最初から十分に取っておいて損はない。
-
 - 他の画像と一緒にTextureAtlasにまとめるべきか？
     - ascii範囲のみであれば、まとめてもよい。ただしまとめる場合はLinearフィルタの有無は全体と統一を取る事。
     - 漢字含む場合は、まとめるべきではない。
-
 - `*.fnt`いじり
     - ゲーム等では、フォントは等幅の方が圧倒的に扱いやすいので、なるべくxadvanceの等幅加工をしておきたい。
         - `setFixedWidthGlyphs()`でもよいが、横幅が一番大きい文字に揃える加工しかできないので扱いづらい
