@@ -285,11 +285,8 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
 
 - libgdx組み込みのArialフォントを使う際は `font.setFixedWidthGlyphs("0123456789")` しておくとよい
     - ここにアルファベットまで含めると数値の文字間が空きすぎて見た目が悪くなる
-
 - BitmapFont描画の基準座標が「左上の角」である事を忘れないようにする(詳細は[#bitmapfontの描画]()参照)。
-
 - Linearフィルタ設定時の為に、HieroでPaddingを設定しておく事([#hieroを使ったbitmapfont生成]()の5と[#bitmapfontの描画]()を参照)。
-
 - `*.fnt`のcommon lineHeightの値と、`getBounds()`で得られる高さとの相関関係について
     - [#bitmapfont書式]()にも書いているが、lineHeightは「行間を決定する為の」一行の高さであり、drawする文字列が一行だけの時はこの値は全く使われない。ではその時は何によって一行の高さが決定されるのかと言うと、[getCapHeight()](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html#getCapHeight())の値が使われている。
         - `getCapHeight()`が返す高さとは、具体的には「半角大文字Mの高さ」。つまりchar id=77のheight値。yoffsetは考慮されない。
