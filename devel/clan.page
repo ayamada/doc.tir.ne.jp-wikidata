@@ -4,9 +4,9 @@ title: CLAN
 ...
 
 
-This is a document for version-0.1.3. Old document (for version 0.0.6) is here. -> [clan/0.0.6]()
+This is a document for version-0.2.0. Old document (for version 0.0.6) is here. -> [clan/0.0.6]()
 
-これはバージョン0.1.3のドキュメントです。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
+これはバージョン0.2.0のドキュメントです。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
 
 ----
 
@@ -187,7 +187,7 @@ cd package/projname
 git clone https://github.com/ayamada/clan.git
 cd clan
 git tag
-git checkout 0.1.3
+git checkout 0.2.0
 cd ..
 sh clan/script/spread_current_dir.sh
 ~~~
@@ -214,7 +214,7 @@ cd package/projname
 git clone https://github.com/ayamada/clan.git
 cd clan
 git tag
-git checkout 0.1.3
+git checkout 0.2.0
 cd ..
 sh clan/script/spread_current_dir.sh
 ~~~
@@ -868,6 +868,10 @@ Refer to `Makefile.in` for more information.
 
 ## For desktop or development
 
+- `make hiero`
+    - Run [Hiero](https://github.com/libgdx/libgdx/wiki/Hiero).
+    - [Hiero](https://github.com/libgdx/libgdx/wiki/Hiero)を起動します。
+
 - `make devpack`
     - Build temporary jar for debug.
     - 開発用の一時jarを生成します。
@@ -931,6 +935,15 @@ Refer to `Makefile.in` for more information.
 - `make release-apk-run`
     - Run APK (for release) to device. It requires `make release-apk-install`.
     - リリース版のapkを端末から起動します。 `make release-apk-install` を先に実行しておいてください。
+
+- `make debug-jar`
+    - Build jar for debug.
+    - デバッグ版のjarをビルドします。リリース版との違いは、claninfo.cljのデバッグフラグが有効になっている点のみです。
+
+- `make debug-exe`
+    - Build exe for debug.
+    - デバッグ版のexeをビルドします。
+
 
 
 ## Cleanups
