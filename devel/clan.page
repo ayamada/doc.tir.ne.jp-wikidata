@@ -855,8 +855,8 @@ Refer to `Makefile.in` for more information.
 ## Dependencies
 
 - `make dep`
-    - do nothing now.
-    - 現在は何もしません。
+    - Fetch jars to `clan/depinst/repos/` for `libgdx.so` for Android.
+    - android向けの `libgdx.so` の為に、 `clan/depinst/repos/` 内にjarをダウンロードします。
 
 - `make ta`
     - Build `desktop/assets/pack.{atlas,png}` from `textures/` by [TexturePacker](http://code.google.com/p/libgdx/wiki/TexturePacker).
@@ -936,8 +936,8 @@ Refer to `Makefile.in` for more information.
 ## Cleanups
 
 - `make depclean`
-    - do nothing now.
-    - 現在は何もしません。
+    - Clean up `clan/depinst/repos/` for `libgdx.so` for Android.
+    - android向けの `libgdx.so` の為に使用している `clan/depinst/repos/` を綺麗にします。
 
 - `make ta-clean`
     - Remove `desktop/assets/pack.atlas` and `desktop/assets/pack.png`.
