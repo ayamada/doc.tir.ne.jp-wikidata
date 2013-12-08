@@ -320,6 +320,13 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
         - 困る場面はほぼTextBounds回りなので、「TextBoundsはwidthのみ利用し、heightについては常に自分で計算した値を使う」というポリシーにして回避してもよい。
 
 
+## そして完成したBitmapFont
+
+「M+ 1mn medium」をベースにした、上記仕様を完全に満たしたビットマップフォントを作ってみた。
+
+まだ一部の文字が半角判定になっていたり等の問題が残っているが、それらの確認と修正が済んだら、[VNCTST games](http://vnctst.tir.jp/)の方で公開しようと思う。
+
+
 # パフォーマンスチューニング
 
 [http://www.infoq.com/jp/articles/9_Fallacies_Java_Performance]() の「結論」より
