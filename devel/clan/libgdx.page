@@ -51,7 +51,7 @@ title: libgdxメモ
         - なお、clojure等で動的にdexコンパイルした内容も残る為、動的にevalして関数の処理を変更した場合、それも残っている事に注意！
             - デバッグ時を除いて、そういう破壊的更新を行わないようにしなくてはならないし、デバッグ時もこまめにtask killer等でkillした方がいいかも
 
-- 上とは逆に、変数が`<clinit>`か何かによってクリアされる現象も起こるらしい。ただ、これはライフサイクルのpause()→resume()の時限定のようだ。
+- 上とは逆に、変数が`<cinit>`か何かによってクリアされる現象も起こるらしい。ただ、これはライフサイクルのpause()→resume()の時限定のようだ。
     - [http://mobileapplication.blog.fc2.com/blog-entry-2.html]()
     - [http://mobileapplication.blog.fc2.com/blog-entry-3.html]()
     - [http://mobileapplication.blog.fc2.com/blog-entry-4.html]()
