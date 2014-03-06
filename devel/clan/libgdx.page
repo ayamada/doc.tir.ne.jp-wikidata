@@ -208,7 +208,7 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
         - 漢字全部を含む場合、Size=16、Rendering=Javaの状態にて、生成Texture画像が1024x1024にギリギリに収まるかどうかぐらいの大きさになる。
     2. 上部中央の「Sample Text」項目にて、使用する文字の一覧を設定する。もし漢字全部含ませたい場合は、漢字全部をここに書く。
         - いわゆるJIS第一水準までを含んだ文字一覧を [http://legacy.e.tir.jp/fnt_japanese_chars.txt]() に置いた。これを取得し、必要な文字を追加して使えばよい
-            - https://github.com/ayamada/mplus-1mn-medium-16-fnt-tir には、自分が取捨選択したものもある。
+            - [https://github.com/ayamada/mplus-1mn-medium-16-fnt-tir]() には、自分が取捨選択したものもある。
     3. 右上の「Effects」項目にて、文字にかけるエフェクトを複数選択できる。最初はColorを白に設定するだけでよいと思う。
         - おすすめは「Distance field」。ただしビットマップ生成にものすごく時間がかかる。
     4. 左下の「Rendering」項目にて、「Glyph cache」表示を選択し、適切に「Page width」と「Page height」の設定を行う。
