@@ -387,6 +387,10 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
 # 外部リンク
 
 - [androidnoteblog](http://androidnoteblog.wordpress.com/) : 数少ないlibgdxの日本語記事のあるブログ。色々と参考にさせてもらった。
+    - なくなっていた…。[Internet Archive](http://web.archive.org/web/20130903025356/http://androidnoteblog.wordpress.com/)から一応見る事は可能。
+- [http://www.gamefromscratch.com/]() : 英語だが、libgdxの分かりやすいチュートリアルとコードが置いてある。オススメは以下のエントリ。
+    - [http://www.gamefromscratch.com/page/LibGDX-Tutorial-series.aspx]()
+    - [http://www.gamefromscratch.com/post/2014/01/10/LibGDX-minimal-3D-app.aspx]()
 
 
 
