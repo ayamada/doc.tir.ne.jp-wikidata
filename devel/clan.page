@@ -700,6 +700,10 @@ make release
 
 - Do final check to built files.
 - Packaging for distribution (if needed)
+    - You put in files to `bundle/win/` and `bundle/jar/`,
+      and you run `make package`, so you get
+      `target/{artifactId}-{version}-win.zip`
+      and `target/{artifactId}-{version}-jar.zip`.
 - Register Google Play and other distribution site (if needed)
 - Change files for devel (if needed)
     1. Edit `configure.ac` for version string
@@ -711,6 +715,10 @@ make release
 
 - 生成されたファイルを動かしてみて、最終チェックを行います。
 - 必要に応じて、配布用にパッケージングします(README.txtを同梱したり等)。
+    - `bundle/win/` および `/bundle/jar/` に同梱したいファイルを入れ、
+      `make package` を実行すると、
+      `target/{artifactId}-{version}-win.zip` と
+      `target/{artifactId}-{version}-jar.zip` が生成されます。
 - 必要に応じて、google playに登録したり、配布サイトに設置したりします。
 - 必要に応じて、リリース向けに変更していた部分を開発向けに戻します。
     1. `configure.ac` のバージョン文字列など
@@ -754,6 +762,10 @@ I suppose to setup by [#spreading-project-directory]() (there is in `package/pro
 
 - **`package/projname/target/`** : There is enclose to target files like `app.jar`, `app.exe`, `app.apk` (and related other temporary files) for release.
 
+- **`package/projname/bundle/`** : There is put in bundled files when `make package`.
+    - **`package/projname/bundle/win/`** : For Windows
+    - **`package/projname/bundle/jar/`** : For Unix like OS (include Mac)
+
 ----
 
 **ディレクトリ構造**
@@ -791,6 +803,10 @@ I suppose to setup by [#spreading-project-directory]() (there is in `package/pro
 - **`package/projname/tmp/`** : libgdx配布物を展開する一時ディレクトリ
 
 - **`package/projname/target/`** : リリース版の `app.jar` `app.exe` `app.apk` およびリリースに関連する一時ファイル置き場
+
+- **`package/projname/bundle/`** : `make package`時の同梱ファイル置き場
+    - **`package/projname/bundle/win/`** : windows向け
+    - **`package/projname/bundle/jar/`** : 非windows向け
 
 
 Utilities
@@ -960,6 +976,18 @@ Refer to `Makefile.in` for more information.
     - Build exe for debug.
     - デバッグ版のexeをビルドします。
 
+- `make package-win`
+    - Create a zip for Windows.
+    - windows向けパッケージのzipを生成します。
+
+- `make package-jar`
+    - Create a zip for Unix like OS(include Mac).
+    - 非windows向けパッケージのzipを生成します。
+
+- `make package`
+    - Run `make package-win package-jar`.
+    - `make package-win package-jar` を実行します。
+
 
 
 ## Cleanups
@@ -1062,8 +1090,8 @@ If you want to commit to repository, then you do to command like below.
 ~~~{.bash .numberLines}
 make distclean
 rm -rf clan/sample/*
-cp -a .gitignore Makefile.in android configure.ac project-common.clj.in \
-desktop/ layout/ src/ src-java/ tas/ l4j/ clan/sample/
+cp -a .gitignore Makefile.in android bundle configure.ac \
+desktop l4j layout project-common.clj.in src src-java tas clan/sample
 cd clan
 git status
 git diff
@@ -1103,8 +1131,8 @@ sh clan/script/spread_current_dir.sh
 ~~~{.bash .numberLines}
 make distclean
 rm -rf clan/sample/*
-cp -a .gitignore Makefile.in android configure.ac project-common.clj.in \
-desktop/ layout/ src/ src-java/ tas/ l4j/ clan/sample/
+cp -a .gitignore Makefile.in android bundle configure.ac \
+desktop l4j layout project-common.clj.in src src-java tas clan/sample
 cd clan
 git status
 git diff
