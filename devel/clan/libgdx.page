@@ -391,7 +391,7 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
 - [http://www.gamefromscratch.com/]() : 英語だが、libgdxの分かりやすいチュートリアルとコードが置いてある。オススメは以下のエントリ。
     - [http://www.gamefromscratch.com/page/LibGDX-Tutorial-series.aspx]()
     - [http://www.gamefromscratch.com/post/2014/01/10/LibGDX-minimal-3D-app.aspx]()
-
+- [へびのぬけがら: libGDX](http://snakemanshow.blogspot.jp/search/label/libGDX) : NetBeansでlibgdxプロジェクトを動かし、サンプルコードをDesktop, Android, GWT, iOS(シミュレータ)で動かす記事。今後記事増えそう。
 
 
 
