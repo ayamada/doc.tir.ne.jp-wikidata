@@ -252,6 +252,7 @@ BitmapFontは非常にバッドノウハウが濃縮されている。
     - BitmapFontの描画は各文字の座標計算が含まれる為そこそこコストがある。このコスト軽減の為に[http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFontCache.html]()がある。実際のコードではほぼこちらを使う事になる。
     - BitmapFontを描画する際に、文字サイズを変更してもジャギーにならないよう綺麗に表示させたい場合は、BitmapFontの文字TextureにLinearフィルタを設定する。
         - 具体的には[http://stackoverflow.com/a/18062590]()みたいな事。勿論描画コストは上がる。またBitmapFontのTextureをTextureAtlasに入れてた場合、他の画像にまでフィルタが設定されてしまう点に注意。
+            - ※上記リンクのコードは、テクスチャが一枚だけのフォントでしか有効でない。テクスチャを複数持つフォント(漢字入りだと複数になりがち)では、[getRegion()](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html#getRegion%28%29)ではなく、[getRegions()](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html#getRegions%28%29)を使って、全部のテクスチャに設定を行う必要がある。
         - この際には、Linearフィルタ固有の問題として、`*.png`内での文字同士の間隔が十分に取れていないと、隣の文字からの色漏れが発生してしまう事がある。
             - Hieroでの生成の場合はきちんとPaddingを設定しておく事。
     - 既存の(プロポーショナルな)フォントを等幅フォントとして利用したい場合は、[setFixedWidthGlyphs()](http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html#setFixedWidthGlyphs(java.lang.CharSequence))を使う。
