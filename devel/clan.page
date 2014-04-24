@@ -8,6 +8,8 @@ This is a document for version-1.0.0. Old document (for version 0.0.6) is here. 
 
 これはバージョン1.0.0のドキュメントです。古いバージョン(0.0.6ベース)のドキュメントはこちらにあります→[clan/0.0.6]()
 
+(バージョン0.2.0のドキュメントはバックアップ取るの面倒だったので残してありません。すいません)
+
 ----
 
 <div style="text-align:center"><img src="/devel/clan/logo_b.png" /><br /><a href="https://travis-ci.org/ayamada/clan"><img src="https://travis-ci.org/ayamada/clan.png?branch=master" alt="Build Status" /></a>
