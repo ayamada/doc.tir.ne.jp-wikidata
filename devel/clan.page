@@ -1311,6 +1311,18 @@ CLANのロゴは何？
 その他の質問
 :   [https://github.com/ayamada/doc.tir.ne.jp-wikidata/issues]() にお願いします(日本語でok)。
 
+Android向け追加FAQ
+
+`java.lang.IllegalArgumentException: already added:` というエラーが出る
+:   おそらく、 `:dependencies` に指定しているパッケージのどれか二つ(もしくはclojure本体)が、ある一つのパッケージに依存しており、しかも別々のバージョンが指定されています。`project-common.clj.in` にて、 `:exclusions` オプションを使い該当モジュールを除外してください。場合によっては該当モジュールを `:scope "provided"` 指定でdependenciesに含める必要があるかもしれません。これらのオプションの詳細についてはLeiningenのリファレンスを参照してください。
+
+`com.android.sdklib.build.DuplicateFileException: Duplicate files at the same path inside the APK` というエラーが出る
+:   `:dependencies` に指定しているパッケージのjar内のファイルが衝突しています。clojure製ライブラリを `:use-resources` すると高確率で `project.clj` が衝突します。これについての解決策はまだ模索中です。
+    :   `maven-android-plugin` では、[extractDuplicatesオプション](http://stackoverflow.com/questions/8103863/duplicate-file-when-deploying-apk)を指定する事で許可できるようだけれども、同じ事をlein-droidでやるにはどうすればいい？
+
+一部のモジュール(というか、`org.clojure/tools.reader`)をdependenciesに含めたら、起動時にstack overflowで死ぬ
+:   仕様？現状のところ、回避方法不明。これそのもの、もしくはこれをdependenciesに持つモジュールは使わない方向で…
+
 
 TODO
 ====
