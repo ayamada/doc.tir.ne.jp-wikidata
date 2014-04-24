@@ -135,16 +135,15 @@ Requirement
     - sh, GNU make(gmake), GNU autotools(autoconf), wget
         - If you use Windows, these are in [MinGW/MSYS](http://www.mingw.org/).
             - But, you will be update wget's cert, maybe.
-- [JDK 1.6](http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html) or [OpenJDK 1.6](http://openjdk.java.net/)
-    - If you build Android's APK, you must use 1.6, NOT 1.7 (Android SDK requires 1.6)
-    - If you don't build Android's APK, you can use 1.7
-- [JRE 1.6 or later (recommend 1.7)](http://java.com/en/download/) or [OpenJDK Runtime Environment](http://openjdk.java.net/)
+- [JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) or [OpenJDK 1.7](http://openjdk.java.net/)
+- [JRE 1.7 or later](http://java.com/en/download/) or [OpenJDK Runtime Environment](http://openjdk.java.net/)
 - [Leiningen](https://github.com/technomancy/leiningen/) 2.3.1 or later
 - (optional) [Android SDK](http://developer.android.com/sdk/) (for Android's APK)
     - `Android SDK Tools` must be `Revision 2.2.0.0` or later, and `Android SDK Platform-tools` must be `Revision 17` or later, and `Android SDK Build-tools` must be `Revision 17` or later. Older versions couldn't work.
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (for Windows' exe)
 
 I look see that CLAN worked on Microsoft Windows Vista(x86-32bit), and Gentoo Linux(x86-32bit) on 2013/02/28.
+And I look see that CLAN worked on Mac OS X(x86-64bit) on 2014/04/24.
 
 I registered to [Travis CI](https://travis-ci.org/ayamada/clan) since at 2013/08/14.
 
@@ -157,18 +156,17 @@ I registered to [Travis CI](https://travis-ci.org/ayamada/clan) since at 2013/08
     - sh, GNU make(gmake), GNU autotools(autoconf), wget
         - windows環境の場合は、[MinGW/MSYS](http://www.mingw.org/)に全て入ってます
             - ただし、おそらく[wgetのcertを更新しておく](http://d.hatena.ne.jp/bellbind/20110612/1307848645)必要があります
-- [JDK 1.6](http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html) か [OpenJDK 1.6](http://openjdk.java.net/)
-    - もしandroid用apkをビルドしたい場合、バージョンは1.6でないといけません(android sdkが1.6でないと動かない為)。
-    - android用apkが不要な場合は1.7でokです
-- [JRE 1.6 もしくはそれ以降 (1.7推奨)](http://java.com/en/download/) もしくは [OpenJDK Runtime Environment](http://openjdk.java.net/)
+- [JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) か [OpenJDK 1.7](http://openjdk.java.net/)
+- [JRE 1.7 もしくはそれ以降](http://java.com/en/download/) もしくは [OpenJDK Runtime Environment](http://openjdk.java.net/)
 - [Leiningen](https://github.com/technomancy/leiningen/) 2.3.1 以降
 - (optional) [Android SDK](http://developer.android.com/sdk/) (android用apkを生成したい場合のみ)
     - `Android SDK Tools` はバージョンが `2.2.0.0` 以上、 `Android SDK Platform-tools` はバージョンが `17` 以上、 `Android SDK Build-tools` はバージョンが `17` 以上が必要です。古いバージョンではうまく動きません。
 - (optional) [Launch4j](http://launch4j.sourceforge.net/) (windows用exeを生成したい場合のみ)
 
 2013/02/28 に、windows vista(32bit)とgentoo(x86-32bit)上にてサンプルプロジェクトのビルドが動作する事を確認しています。
+また2014/04/24に、mac(x86-64bit)上にて動作を確認しています。
 
-また 2013/08/14 より、[Travis CI](https://travis-ci.org/ayamada/clan)上にてサンプルプロジェクトのビルドテストを行うようになりました。
+2013/08/14 より、[Travis CI](https://travis-ci.org/ayamada/clan)上にてサンプルプロジェクトのビルドテストを行うようになりました。
 
 windows環境での各種のインストールについては、 [env]() が参考になるかもしれません。
 
