@@ -8,12 +8,12 @@ title: 開発環境構築/clojure
 # javaの部
 
 ## jdk
-※2013年1月現在、android sdkはjava7には正式対応していない。しかし同時に2013年1月現在、最新でないjavaはセキュリティ的に問題がある。よって、**jreは7を、jdkは6**を入れるようにする。
+jreは7を、jdkも7を別々に入れるようにする。まだ8は入れない。
 
 - まぎらわしくならないように、既によく分からないjreが入っている場合は、アンインストールして再起動して完全に削除しておく(結構前にそれではまった)。
-- [http://www.oracle.com/technetwork/java/javase/downloads/index.html]() から、jreの7の最新版と、jdkの6をダウンロードする
+- [http://www.oracle.com/technetwork/java/javase/downloads/index.html]() から、jreの7の最新版と、jdkの7をダウンロードする
 - jreの7をインストールする。**インストール先を変更して、スペースを含まないpathにしておく**事。
-- jdkの6をインストールする。これも**インストール先を変更して、スペースを含まないpathにしておく**事。また、**同梱のjreとjava DBはインストールしない**事。
+- jdkの7をインストールする。これも**インストール先を変更して、スペースを含まないpathにしておく**事。また、**同梱のjreとjava DBはインストールしない**事。
 - PATHに、jdkのbinを普通に追加する。
 - **環境変数JAVA_HOMEに、jdkのbinより前部分を設定**しておく(maven用)
     - PATHと同じようにbin含むpathを追加すると、bin/binを探されてしまう為
