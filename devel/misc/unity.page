@@ -156,7 +156,7 @@ function OnGUI () {
     - 音源ファイルをAssetsに追加し、[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を使う。詳細はぐぐれ。
 - モーダルダイアログ的操作を行うには
     - [GUI.ModalWindow](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.ModalWindow.html)を使う。ダイアログ内にボタン等の他のパーツを含めたい場合は、引数の`func:WindowFunction`内で描画するようにする。
-- GUIオブジェクト同士での描画順序を制御するには
+- 重なったGUIオブジェクト同士での描画順序を制御するには
     - [GUI.depth](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI-depth.html)を設定する。ただし上記モーダルダイアログは常に最前面。
 
 
