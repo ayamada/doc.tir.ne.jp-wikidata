@@ -1,0 +1,177 @@
+---
+toc: yes
+categories: unity
+title: マウスを極力さわりたくないプログラマの為のUnity入門
+...
+
+これは、「テキストベースの非アクションゲーム」をUnityで構成する為のメモです。普通のUnity的ゲームやアクションゲームを作りたい人は他の文書を探してください。
+
+- 「テキストベースの非アクションゲーム」とは、大体ステッパーズ・ストップあたりを想定しています。
+
+筆者はmac版のunityで操作を行っている。windows版だとボタンの名前が違ったりする可能性あり。
+
+
+# 「テキストベースの非アクションゲーム」のスケルトンプロジェクト構築手順
+
+## 前準備
+
+1. Unityインストール
+    - 適当にインストールして起動するところまでやっとく。メールアドレス登録あたりがかなり分かりにくいが、検索すればどうにかなる範囲
+2. 早速起動する
+3. 設定を行う
+    - とりあえずメニュー項目より「Unity」→「Preferences」→「External Tools」→「External Script Editor」を、普段自分が使ってるvimなりemacsなりに設定変更する事。これであなたは生きのびる事ができる。
+
+
+## プロジェクトの開始
+
+1. 既に高度なサンプルプロジェクトが開かれている。画面上部の再生ボタンを押して遊んでみてもよい。
+2. サンプルプロジェクトを閉じ、自分のプロジェクトを開始する。起動メニュー項目より「File」→「New Project」を選択し、項目を埋めればよい。
+    - ディレクトリ名には、マルチバイト文字や空白文字を含まない方がいい気がする
+    - 「Import」のチェックボックスは全て空でok
+    - 「3D」「2D」の選択肢があるが、どちらでも問題ない
+
+引き続き、「タイトル画面」→「ゲーム開始」→「タイトル画面」というシーン遷移の最小構成を作る。OPデモ、エンディング、ゲームオーバー等の追加は後回し。
+
+
+## タイトル画面の作成
+
+1. いきなり空の3D空間が表示されていてビビるが、それは見なかった事にすればok(実際、この文書では全く使わない)。メニュー項目より「GameObject」→「Create Empty」を選ぶ。これで空のゲームオブジェクトが生成される。
+2. この今生成したオブジェクトが、画面左のメイン領域のHierarchy欄に出現する。
+3. オブジェクトをクリックし、選択状態にする。すると、右側のペイン領域に、このゲームオブジェクトの詳細が表示される。
+    - 左側ペイン右側ペインどちらからでも、このオブジェクトの名前を変更する事ができる。「Title」のような名前をつけておくとよい。将来にゲームオブジェクトが増えた際に、それぞれを区別するのに役立つ。しかし今回は一個だけなので、名前をつけなくても問題ない。
+4. 右側ペインにある「Add Component」ボタンを押し、「New Script」を選択する。
+    1. 「Name」としてファイル名を入力する。とりあえずここでは「Title」とする。
+    2. 「Language」は、「JavaScript / C# / Boo」のいずれかより、自分が一番好きな(もしくは「この三つの中では一番マシ」な)言語を選ぶ。
+        - ここではJavaScriptを選択したものとして説明を行う。
+    3. 「Create and Add」ボタンを押す。
+        - これにより、画面下部ペイン領域の「Project」→「Assets」の中に、新しいファイルが作られる。
+        - この「Assets」はアイコンの見た目通り、実際のディレクトリを示している。つまりプロジェクトディレクトリ名が仮に "/home/username/proj1" だったとすると、ここまでの操作によって "/home/username/proj1/Assets/Title.js" が作られた事になる。
+5. (optional) 上記手順以外に、既存のスクリプトを直にAssetsに作成する事もできる。しかしその場合は上記のゲームオブジェクトにリンク(関連付け)されていないので、自分でリンクを行わなくてはならない。
+    - スクリプトファイルのアイコンを、右側ペイン領域内にドラッグ＆ドロップすればok。既に追加されてるかどうかは、既に項目があるかどうかで判別できる。右クリックより「Remove Component」を選択する事で、リンク解除もできる。
+6. ファイルをダブルクリックし、エディタで開き、編集する！とりあえず以下をコピペする。
+
+    ~~~
+    #pragma strict
+
+    var logoRect:Rect;
+    var logoStyle:GUIStyle;
+    var buttonRect:Rect;
+
+    function Start () {
+      var w:int = 256;
+      var h:int = 64;
+      var x:int = (Screen.width - w) / 2;
+      var y:int = Screen.height * 0.25;
+      logoRect = Rect(x, y, w, h);
+
+      logoStyle = GUIStyle.none;
+      logoStyle.fontSize = 32;
+      logoStyle.alignment = TextAnchor.MiddleCenter;
+
+      w = 64;
+      h = 32;
+      x = (Screen.width - w) / 2;
+      y = Screen.height * 0.75;
+      buttonRect = Rect(x, y, w, h);
+    }
+
+    function Update () {
+    }
+
+    function OnGUI () {
+      GUI.Label(logoRect, "ゲームタイトル", logoStyle);
+      if (GUI.Button(buttonRect, "スタート")) {
+        Application.LoadLevel("Game");
+      }
+    }
+    ~~~
+
+    - 簡単に解説すると、「`#pragma strict`」によって厳密な型指定有効なモードにし、`Start()`関数は最初の一回だけ呼ばれ、`Update()`関数は毎フレーム呼ばれ、`OnGUI()`関数も毎フレーム呼ばれる。今回利用するラベルやボタン類は`OnGUI()`の内部で描画するもの、という事になっているようだ。
+    - また後で、[GUI スクリプティング ガイド](http://docs-jp.unity3d.com/Documentation/Components/GUIScriptingGuide.html)を見ながら、画像を設定したり、細かいデザイン等を調整したりするとよい。
+    - エラー類は画面下部ペイン領域の「Console」および最下段のステータス行に表示される。「Project」タブと共によく使う部分となるようだ。
+
+7. ソースファイルを変更した後は、Assetsを右クリックし、「Refresh」を実行する事。これをしないとunity側に変更内容が反映されない。
+8. 画面上部中央の再生ボタンを押し、タイトル文字とボタンが表示される事を確認する。
+    - 今のところ、ボタンを押してもエラーになる。遷移先のシーンをまだ作ってないからだ。
+9. 「Title」シーンとして保存する。
+    - メニューより「File」→「Save Scene as」にて「Title」として保存する(Assets内に保存される)。
+10. メニューより「File」→「Build Settings」を選択し、「Add Current」ボタンを押してビルド対象として登録し、ダイアログを閉じる
+
+
+## ゲーム本体の作成
+
+1. メニューより「File」→「New Scene」を選択する。
+2. タイトル画面同様、空のゲームオブジェクトを作成し、対応するスクリプトを生成する。オブジェクトおよびスクリプト名は「Game」とする。
+    - 前述のタイトルのコード内の「`Application.LoadLevel("Game")`」のところに対応しているので、ここを変更した場合はタイトル側も変更する事。
+3. タイトル画面同様、以下のサンプルソースを反映して動作確認し、「Game」シーンとして保存し、「Build Setting」にて登録を行う
+
+~~~
+#pragma strict
+
+function Start () {
+}
+
+function Update () {
+}
+
+function OnGUI () {
+  GUI.Label(Rect(32, 32, 256, 32), "TODO: ゲーム内容を実装");
+  if (GUI.Button(Rect(32, 128, 128, 32), "タイトルに戻る")) {
+    Application.LoadLevel("Title");
+  }
+}
+~~~
+
+
+## シーン遷移の設定およびビルド
+
+1. メニューより「File」→「Build Settings」を選択
+2. 「Schenes In Build」の項目の一番上(0番)がタイトルになっている事を確認する(これが最初に実行される)。
+3. 「Platform」を自分が望むものに変更し、「Switch Platform」ボタンを押す。ここでは「Web Player」を選択した。
+4. (optional) 「Player Settings」ボタンを押すとプレイヤー側設定が行える。あとで本格的にデプロイする前ぐらいに、解像度やアイコンを設定しておくとよい。
+5. 「Build And Run」ボタンを押すと保存ダイアログが出るので、適切な名前をつけて保存する。
+    - 「Web Player」の場合は、指定した名前のディレクトリが作成され、中に`*.html`と`*.unity3d`が生成された。
+6. 動作確認をして問題ない事を確認する。
+
+- ここまでできたスケルトンのデプロイ結果を、 [http://vnctst.tir.jp/stash/unity0002/]() に設置した(大した事の全くないデモだが)。
+
+
+## そしてゲーム作成へ
+
+- [スクリプトリファレンス](http://docs-jp.unity3d.com/Documentation/ScriptReference/index.html)を見ながら、画像や効果音を追加したり、ゲーム本体を実装したり、ゲームオーバーやエンディングを実装したりする。
+    - やろうと思えばユニティちゃん等の3Dオブジェクトを、背景として表示したり動かしたりもできるだろう。Unity的にはそっちこそが本業なのだし。
+- とにかく[GUI スクリプティング ガイド](http://docs-jp.unity3d.com/Documentation/Components/GUIScriptingGuide.html)は全部目を通すべき。
+
+
+# その他のメモ
+
+## How to
+
+- ゲームデータを保存するには
+    - [PlayerPrefs](http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html)を使う。
+- 画像を表示するには
+    - テクスチャをAssetsに追加し、[Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す。詳細はぐぐれ。
+- BGM/効果音を鳴らすには
+    - 音源ファイルをAssetsに追加し、[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を使う。詳細はぐぐれ。
+- モーダルダイアログ的操作を行うには
+    - [GUI.ModalWindow](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.ModalWindow.html)を使う。ダイアログ内にボタン等の他のパーツを含めたい場合は、引数の`func:WindowFunction`内で描画するようにする。
+- GUIオブジェクト同士での描画順序を制御するには
+    - [GUI.depth](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI-depth.html)を設定する。ただし上記モーダルダイアログは常に最前面。
+
+
+## 現状での問題点
+
+- 型付きJS/C#/Booで書く必要がある
+    - 自分はLispで書きたい！
+        - UnityのJSは「UnityScript」というもので、標準的なECMAScriptではないらしい(ので、Lisp→JSコンパイラ系は厳しい)。cliインタープリタ等もない
+        - [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() に、[TameScheme](http://sourceforge.net/projects/tamescheme/)を利用した事例はあるようだ
+- gitに保存しづらい
+    - 丸ごとgitにつっこむ事自体は可能だが、追加アセットが無駄に容量食う
+        - ユニティちゃんフルセットで追加すると150Mとか増える
+        - .gitignore等で追加アセットを除外する事は可能だが、当然、他のところでgit cloneする際に問題が出る(clone後に手でアセット追加しないといけない)
+
+
+
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
