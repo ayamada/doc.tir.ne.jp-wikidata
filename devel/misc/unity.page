@@ -161,7 +161,7 @@ function OnGUI () {
 
 ## 現状での問題点
 
-- 型付きJS/C#/Booで書く必要がある
+- JS/C#/Booで書く必要がある
     - 自分はLispで書きたい！
         - UnityのJSは「UnityScript」というもので、標準的なECMAScriptではないらしい(ので、Lisp→JSコンパイラ系は厳しい)。cliインタープリタ等もない
         - [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() に、[TameScheme](http://sourceforge.net/projects/tamescheme/)を利用した事例はあるようだ
