@@ -167,12 +167,16 @@ function OnGUI () {
         - UnityのJSは「UnityScript」というもので、標準的なECMAScriptではないらしい(ので、Lisp→JSコンパイラ系は厳しい)。cliインタープリタ等もない
         - [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() に、[TameScheme](http://sourceforge.net/projects/tamescheme/)を利用した事例はあるようだ
         - [https://groups.google.com/forum/#!topic/clojure/i9Pv_mTXptM]() [https://github.com/nasser/clojure-unity]() に、.NET版clojureをC#経由で実行している事例もあるようだ
+
 - gitに保存しづらい
     - 丸ごとgitにつっこむ事自体は可能だが、追加アセットが無駄に容量食う
         - ユニティちゃんフルセットで追加すると150Mとか増える
         - .gitignore等で追加アセットを除外する事は可能だが、当然、他のところでgit cloneする際に問題が出る(clone後に手でアセット追加しないといけない)
 
 
+## TODO
+
+- [http://answers.unity3d.com/questions/47183/continuous-integration-with-unity.html]() によると、 `-batchmode` 引数によって、cliからビルド操作ができるらしい。これがあれば、上記スケルトンプロジェクトができた段階で、あとはunity本体は起動せずに、ソースのみ編集→ビルド、のサイクルができるようだ、多分。
 
 
 
