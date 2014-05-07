@@ -166,7 +166,7 @@ function OnGUI () {
     - 自分はLispで書きたい！
         - UnityのJSは「UnityScript」というもので、標準的なECMAScriptではないらしい(ので、既存のLisp→JSコンパイラ系は厳しい)。cliインタープリタ等もない
         - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() - [IronScheme](http://ironscheme.codeplex.com/) をC#経由で動かす事例
-        - [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() - [TameScheme](http://sourceforge.net/projects/tamescheme/) を利用した事例
+        - [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() - [TameScheme](http://tamescheme.sourceforge.net/) を利用した事例
         - [https://groups.google.com/forum/#!topic/clojure/i9Pv_mTXptM]() [https://github.com/nasser/clojure-unity]() - [clojureCLR](https://github.com/clojure/clojure-clr)をC#経由で実行する事例
 
 - gitに保存しづらい
