@@ -163,16 +163,28 @@ function OnGUI () {
 ## 現状での問題点
 
 - JS/C#/Booで書く必要がある
-    - 自分はLispで書きたい！
-        - UnityのJSは「UnityScript」というもので、標準的なECMAScriptではないらしい(ので、既存のLisp→JSコンパイラ系は厳しい)。cliインタープリタ等もない
-        - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() - [IronScheme](http://ironscheme.codeplex.com/) をC#経由で動かす事例
-        - [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() - [TameScheme](http://tamescheme.sourceforge.net/) を利用した事例
-        - [https://groups.google.com/forum/#!topic/clojure/i9Pv_mTXptM]() [https://github.com/nasser/clojure-unity]() - [clojureCLR](https://github.com/clojure/clojure-clr)をC#経由で実行する事例
+    - 自分はLispで書きたい！→後述の「Unity上でLispを動かすには」の項目へ
 
 - gitに保存しづらい
     - 丸ごとgitにつっこむ事自体は可能だが、追加アセットが無駄に容量食う
         - ユニティちゃんフルセットで追加すると150Mとか増える
         - .gitignore等で追加アセットを除外する事は可能だが、当然、他のところでgit cloneする際に問題が出る(clone後に手でアセット追加しないといけない)
+
+
+## Unity上でLispを動かすには
+
+- Unityの内部はMono(.NET)なので、適当にMono(.NET)上で動くLisp実装を組み込み、C#経由で呼び出せばとりあえず動くようだ
+    - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() - [IronScheme](http://ironscheme.codeplex.com/) をC#経由で動かす事例
+    - [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() - [TameScheme](http://tamescheme.sourceforge.net/) を利用した事例
+    - [https://groups.google.com/forum/#!topic/clojure/i9Pv_mTXptM]() [https://github.com/nasser/clojure-unity]() - [clojureCLR](https://github.com/clojure/clojure-clr)をC#経由で実行する事例
+    - ただ、どれも初期化コストが結構かかる様子。ブラゲを作りたいので、一定以上の初期化コストがかかるのはあまり望ましくない
+        - これを解決するには、コンパイラ/トランスレータ型のLisp実装を選ぶ必要がある
+
+- UnityのJSは「UnityScript」というもので、標準的なECMAScriptではないので、既存のLisp→JSコンパイラ/トランスレータをそのまま動かす事はできなさそう
+    - とは言え、型指定をつけられるようにするぐらいの改修でいけるのでは？試す価値はありそうに思える
+
+- [Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/)を使い、SchemeのソースからC#のソースを生成する？
+    - 検索しても、これを試した人はまだいないようだ？試してみる？
 
 
 ## TODO
