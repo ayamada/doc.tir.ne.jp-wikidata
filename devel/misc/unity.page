@@ -185,13 +185,14 @@ function OnGUI () {
         - [TameScheme](http://tamescheme.sourceforge.net/) を利用した事例が [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() にあるが動作未確認。プロジェクトページを見る限り未完成のような…
 
 
-- [Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/) を使い、SchemeコードをC#にコンパイルし `*.dll` を生成する
-    - これは可能な筈だが、筆者はBiglooでdllを生成するところでつまづいたので確認できてない。検索してみたが、これ(Unity+Bigloo)をやってみた人を見付ける事はできなかった。
+- [Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/) を使い、Schemeコードから `*.dll` を生成する
+    - これは可能な筈だが、筆者はBiglooでdllを生成するところでつまづいたので確認できてない。検索してみたが、他にUnity+Biglooをやってみた人を見付ける事はできなかった。
     - 直に `*.dll` を生成できるので、実現できれば、他のdll系Lisp処理系と比べて初期化コストがかなり抑えられる筈だが…
 
 - Lisp->JavaScriptコンパイラ/トランスレータを動かす
     - 上記の通り、UnityのJSは「UnityScript」という方言なので、既存のLisp->JavaScriptコンパイラ/トランスレータはそのままではまず動かないと思う。自分で改修するか、一から作るかする必要がある。
     - もし一から作る場合、コンパイル結果はJavaScriptにするのではなく、C#かBooのソースに変換する方が楽だと思う。
+    - 前述の[Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/)には、SchemeコードからC#のソースを生成する機能があるっぽそうな感じだが、自分にはよく分からなかった
 
 
 ## 判明している問題点
