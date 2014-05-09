@@ -178,11 +178,15 @@ function OnGUI () {
         - スクリプトをdllにコンパイルするタイプであれば初期化コストを抑えられるが、後述のBigloo以外には見付からなかった。
     - 候補になりそうなのは以下。
         - [clojureCLR](https://github.com/clojure/clojure-clr)
-            - [https://groups.google.com/forum/#!topic/clojure/i9Pv_mTXptM]() に、C#経由で実行する事例がある
-            - プロジェクトページが [https://github.com/nasser/clojure-unity]() にある。ここからgit cloneしてそのままunityでプロジェクトとして開けば動作確認できる(もしかしたらmono実行環境が必要かも)。実行開始するまでの待ち時間が結構ある。
+            - [https://github.com/nasser/clojure-unity]() に、C#経由で実行しているプロジェクトファイル一式が公開されている。
+            - 上記からgit cloneしてそのままunityでプロジェクトとして開けば動作確認できる。実行開始するまでの待ち時間が結構ある。
         - [IronScheme](http://ironscheme.codeplex.com/)
-            - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() にC#経由で実行する事例がある。
+            - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() にREPL実行できるサンプルがある。
+            - 上記ページの一番下にあるファイルをダウンロードし、unityのプロジェクトにimportし、importされた中の「SchemeTest」シーンを開き、「Maximize on Play」ボタンを押してから実行する(最大化しとかないとスクリーン最下段の入力欄が隠れて分からなくなる)。これでREPLが起動するので、あとは上記ページにあるように色々と試せる。
+                - 色々試してたら、REPLが起動しなくなってしまう事があった。安定していないのか、それとも古いunity用だからなのか。
+            - clojureCLRほどではないが、これも起動するまでに結構時間がかかる。
         - [TameScheme](http://tamescheme.sourceforge.net/) を利用した事例が [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() にあるが動作未確認。プロジェクトページを見る限り未完成のような…
+            - 実行できる形式のファイルは特に公開されてないっぽい？
 
 
 - [Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/) を使い、Schemeコードから `*.dll` を生成する
