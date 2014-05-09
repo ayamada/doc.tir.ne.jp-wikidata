@@ -44,7 +44,7 @@ title: マウスを極力さわりたくないプログラマの為のUnity入�
         - 詳細な説明は省くがスクリプト名は大文字はじまり推奨。後で後悔はさせないので、とにかく大文字はじまりにしておいてください。
     2. 「Language」は、「JavaScript / C# / Boo(Python風)」のいずれかより、自分が一番好きな(もしくは「この三つの中では一番マシ」な)言語を選ぶ。
         - ここではJavaScriptを選択したものとして説明を行う。
-        - 後述する「[#jsとcとbooどの言語を選ぶべきか]()」も後で読んどいてください。
+        - 後述する「[JSとC#とBoo、どの言語を選ぶべきか](#jsとcとbooどの言語を選ぶべきか)」も後で読んどいてください。
     3. 「Create and Add」ボタンを押す。
         - これにより、画面下部ペイン領域の「Project」→「Assets」の中に、新しいファイルが作られる。
         - この「Assets」はアイコンの見た目通り、実際のディレクトリを示している。つまりプロジェクトディレクトリが仮に "/home/username/proj1" だったとすると、ここまでの操作によって "/home/username/proj1/Assets/Title.js" が作られた事になる。
@@ -151,8 +151,8 @@ function OnGUI () {
 ## JSとC#とBoo、どの言語を選ぶべきか
 
 - ここでの例ではJSを選んではいるものの、UnityのJavaScriptは標準的なECMAScriptではなく独自の方言になっており色々と制約が多く無駄に苦労するので、「C#もPythonもやった事ないがJSならなんとか分かる」という人以外は避けた方がよい。この三つの中ではBooが一番言語仕様が真っ当に出来ているので、Python大嫌いとかでなければBooを選ぶべき。
-    - この文書のタイトルを見て読み進めるようなプログラマなら、 [http://www.atsuhiro-me.net/unity/dev/boo-basic]() と [http://www.asahi-net.or.jp/~sy7a-ht/diary/tut_boo.html]() を読めば全く問題なくBooを書けるだろう。
-    - 公式リファレンスにはJSとC#のコードサンプルはあるが、Booのコードサンプルは無い事が多い。が、これも上記のようなプログラマならば簡単にJS/C#のコードサンプルから読み替えができるだろう。
+    - この文書のタイトルを見て読み進めるようなプログラマなら、 [http://www.atsuhiro-me.net/unity/dev/boo-basic]() と [http://www.asahi-net.or.jp/~sy7a-ht/diary/tut_boo.html]() を読めば問題なくBooを書けるだろう。
+    - 公式リファレンスにはJSとC#のコードサンプルはあるが、Booのコードサンプルは無い事が多い。が、これも上記のようなプログラマならば問題なくJS/C#のコードサンプルから読み替えができるだろう。
     - 「UnityのJSを選ぶとどのように苦労するのか」を知りたければ [http://wiki.unity3d.com/index.php/Head_First_into_Unity_with_UnityScript]() でも読んでください。
 
 ## How to
