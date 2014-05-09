@@ -41,7 +41,8 @@ title: マウスを極力さわりたくないプログラマの為のUnity入�
     - 左側ペイン右側ペインどちらからでも、このオブジェクトの名前を変更する事ができる。「Title」のような名前をつけておくとよい。将来にゲームオブジェクトが増えた際に、それぞれを区別するのに役立つ。しかし今回は一個だけなので、名前をつけなくても問題ない。
 4. 右側ペインにある「Add Component」ボタンを押し、「New Script」を選択する。
     1. 「Name」としてファイル名を入力する。とりあえずここでは「Title」とする。
-    2. 「Language」は、「JavaScript / C# / Boo」のいずれかより、自分が一番好きな(もしくは「この三つの中では一番マシ」な)言語を選ぶ。
+        - 詳細な説明は省くがスクリプト名は大文字はじまり推奨。後で後悔はさせないので、とりあえずそうしておいてください。
+    2. 「Language」は、「JavaScript / C# / Boo(Python風)」のいずれかより、自分が一番好きな(もしくは「この三つの中では一番マシ」な)言語を選ぶ。
         - ここではJavaScriptを選択したものとして説明を行う。
     3. 「Create and Add」ボタンを押す。
         - これにより、画面下部ペイン領域の「Project」→「Assets」の中に、新しいファイルが作られる。
@@ -146,12 +147,19 @@ function OnGUI () {
 
 # その他のメモ
 
+## JSとC#とBoo、どの言語を選ぶべきか
+
+- ここでの例ではJSを選んではいるものの、UnityのJavaScriptは標準的なECMAScriptではなく独自の方言になっており色々と制約が多く無駄に苦労するので、「C#もPythonもやった事ないがJSならなんとか分かる」という人以外は避けた方がよい。この三つの中ではBooが一番言語仕様が真っ当に出来ているので、Python大嫌いとかでなければBooを選ぶべき。
+    - この文書のタイトルを見て読み進めるようなプログラマなら、 [http://www.atsuhiro-me.net/unity/dev/boo-basic]() と [http://www.asahi-net.or.jp/~sy7a-ht/diary/tut_boo.html]() を読めば全く問題なくBooを書けるだろう。
+    - 公式リファレンスにはJSとC#のコードサンプルはあるが、Booのコードサンプルは無い事が多い。が、これも上記のようなプログラマならば簡単にJS/C#のコードサンプルから読み替えができるだろう。
+    - 「UnityのJSを選ぶとどのように苦労するのか」を知りたければ [http://wiki.unity3d.com/index.php/Head_First_into_Unity_with_UnityScript]() でも読んでください。
+
 ## How to
 
 - ゲームデータを保存するには
     - [PlayerPrefs](http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html)を使う。
 - 画像を表示するには
-    - テクスチャをAssetsに追加し、[Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す。詳細はぐぐれ。
+    - テクスチャをAssetsに追加し、[Resources.Load](http://docs-jp.unity3d.com/Documentation/ScriptReference/Resources.Load.html)でロードし、[Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す。詳細はぐぐれ。
 - BGM/効果音を鳴らすには
     - 音源ファイルをAssetsに追加し、[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を使う。詳細はぐぐれ。
 - モーダルダイアログ的操作を行うには
@@ -160,31 +168,38 @@ function OnGUI () {
     - [GUI.depth](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI-depth.html)を設定する。ただし上記モーダルダイアログは常に最前面。
 
 
-## 現状での問題点
+## Unity上でLispを動かすには
 
-- JS/C#/Booで書く必要がある
-    - 自分はLispで書きたい！→後述の「Unity上でLispを動かすには」の項目へ
+何種類かの選択肢がある。
+
+- Mono/.NET系のLisp処理系を動かす
+    - C#もしくはBoo経由で `*.dll` になっているLisp処理系を実行し、Lispスクリプトをread/evalする。
+    - Lisp処理系自体の初期化とスクリプトのロードに結構コストがかかる。
+        - スクリプトをdllにコンパイルするタイプであれば初期化コストを抑えられるが、後述のBigloo以外には見付からなかった。
+    - 候補になりそうなのは以下。
+        - [clojureCLR](https://github.com/clojure/clojure-clr)
+            - [https://groups.google.com/forum/#!topic/clojure/i9Pv_mTXptM]() に、C#経由で実行する事例がある
+            - プロジェクトページが [https://github.com/nasser/clojure-unity]() にある。ここからgit cloneしてそのままunityでプロジェクトとして開けば動作確認できる(もしかしたらmono実行環境が必要かも？)。実行開始するまでの待ち時間が結構ある。
+        - [IronScheme](http://ironscheme.codeplex.com/)
+            - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() にC#経由で実行する事例がある。
+        - [TameScheme](http://tamescheme.sourceforge.net/) を利用した事例が [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() にあるが動作未確認。プロジェクトページを見る限り未完成のような…
+
+
+- [Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/) を使い、SchemeコードをC#にコンパイルし `*.dll` を生成する
+    - これは可能な筈だが、筆者はBiglooでdllを生成するところでつまづいたので確認できてない。検索してみたが、これ(Unity+Bigloo)をやってみた人を見付ける事はできなかった。
+    - 直に `*.dll` を生成できるので、実現できれば、他のdll系Lisp処理系と比べて初期化コストがかなり抑えられる筈だが…
+
+- Lisp->JavaScriptコンパイラ/トランスレータを動かす
+    - 上記の通り、UnityのJSは「UnityScript」という方言なので、既存のLisp->JavaScriptコンパイラ/トランスレータはそのままではまず動かないと思う。自分で改修するか、一から作るかする必要がある。
+    - もし一から作る場合、コンパイル結果はJavaScriptにするのではなく、C#かBooのソースに変換する方が楽だと思う。
+
+
+## 判明している問題点
 
 - gitに保存しづらい
     - 丸ごとgitにつっこむ事自体は可能だが、追加アセットが無駄に容量食う
         - ユニティちゃんフルセットで追加すると150Mとか増える
         - .gitignore等で追加アセットを除外する事は可能だが、当然、他のところでgit cloneする際に問題が出る(clone後に手でアセット追加しないといけない)
-
-
-## Unity上でLispを動かすには
-
-- Unityの内部はMono(.NET)なので、適当にMono(.NET)上で動くLisp実装を組み込み、C#経由で呼び出せばとりあえず動くようだ
-    - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() - [IronScheme](http://ironscheme.codeplex.com/) をC#経由で動かす事例
-    - [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() - [TameScheme](http://tamescheme.sourceforge.net/) を利用した事例
-    - [https://groups.google.com/forum/#!topic/clojure/i9Pv_mTXptM]() [https://github.com/nasser/clojure-unity]() - [clojureCLR](https://github.com/clojure/clojure-clr)をC#経由で実行する事例
-    - ただ、どれも初期化コストが結構かかる様子。ブラゲを作りたいので、一定以上の初期化コストがかかるのはあまり望ましくない
-        - これを解決するには、コンパイラ/トランスレータ型のLisp実装を選ぶ必要がある
-
-- UnityのJSは「UnityScript」というもので、標準的なECMAScriptではないので、既存のLisp→JSコンパイラ/トランスレータをそのまま動かす事はできなさそう
-    - とは言え、型指定をつけられるようにするぐらいの改修でいけるのでは？試す価値はありそうに思える
-
-- [Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/)を使い、SchemeのソースからC#のソースを生成する？
-    - 検索しても、これを試した人はまだいないようだ？試してみる？
 
 
 ## TODO
