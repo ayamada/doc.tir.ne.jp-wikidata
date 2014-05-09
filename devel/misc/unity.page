@@ -179,7 +179,7 @@ function OnGUI () {
     - 候補になりそうなのは以下。
         - [clojureCLR](https://github.com/clojure/clojure-clr)
             - [https://groups.google.com/forum/#!topic/clojure/i9Pv_mTXptM]() に、C#経由で実行する事例がある
-            - プロジェクトページが [https://github.com/nasser/clojure-unity]() にある。ここからgit cloneしてそのままunityでプロジェクトとして開けば動作確認できる(もしかしたらmono実行環境が必要かも？)。実行開始するまでの待ち時間が結構ある。
+            - プロジェクトページが [https://github.com/nasser/clojure-unity]() にある。ここからgit cloneしてそのままunityでプロジェクトとして開けば動作確認できる(もしかしたらmono実行環境が必要かも)。実行開始するまでの待ち時間が結構ある。
         - [IronScheme](http://ironscheme.codeplex.com/)
             - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() にC#経由で実行する事例がある。
         - [TameScheme](http://tamescheme.sourceforge.net/) を利用した事例が [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() にあるが動作未確認。プロジェクトページを見る限り未完成のような…
