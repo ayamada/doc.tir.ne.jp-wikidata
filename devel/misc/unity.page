@@ -161,6 +161,7 @@ function OnGUI () {
 
 - ゲームデータを保存するには
     - [PlayerPrefs](http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html)を使う。
+    - [http://www.previewlabs.com/writing-playerprefs-fast/]()に、改善版がPublic Domainで置いてある。
 - 画像を表示するには
     1. テクスチャ画像ファイルを`Assets/Resouces/`に追加する。pngが無難
     2. [Resources.Load](http://docs-jp.unity3d.com/Documentation/ScriptReference/Resources.Load.html)で`Texture2D`型としてロードする
