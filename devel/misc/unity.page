@@ -202,8 +202,11 @@ class SE:
 
   static public def Play (path as string, vol as double):
     clip as AudioClip = Load(path)
-    vol *= masterVol
-    go.audio.PlayOneShot(clip, vol)
+    if not clip:
+      Debug.LogWarning("'$path' not found", go)
+    else:
+      vol *= masterVol
+      go.audio.PlayOneShot(clip, vol)
 
   static public def Play (path as string):
     Play(path, 1.0)
