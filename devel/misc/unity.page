@@ -176,7 +176,7 @@ function OnGUI () {
         - 細かい再生パラメータは[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を参照
     5. 再生自体は上記で可能だが、このままではシーンを変更するとBGM/SEがすぐに終了してしまう。シーンが破棄される際に一緒にAudioSource類も破棄されてしまうからだ。これが嫌な場合は、現在のシーンとは別に、管理用の[GameObject](http://docs-jp.unity3d.com/Documentation/ScriptReference/GameObject.html)を生成し、[DontDestroyOnLoad](http://docs-jp.unity3d.com/Documentation/ScriptReference/Object.DontDestroyOnLoad.html)を設定した上で、[AddComponent](http://docs-jp.unity3d.com/Documentation/ScriptReference/GameObject.AddComponent.html)で[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を追加し、そっちで再生すればよい。これは各シーンから独立したオブジェクトになるので、ファイルも分けた方がよい。
         - つまり [http://zyyxlabo.blogspot.jp/2013/03/unitysoundmanager-ver.html]() みたいなのを作る事になる。「これでよい」と思う人であれば、これをそのまま使ってもよいと思う。
-        - 自分の作った、非常にシンプルな例。以下を `SE.boo` として保存し、別のスクリプトから `SE.Play("hoge")` を実行するだけで、勝手に"SE"という名前のGameObjectを作って保持しつつ"Assets/Resources/hoge.ogg"を一回だけ鳴らす。連打可能。鳴っている間にシーン変更があっても途切れない。
+        - 自分の作ったコード。以下を `SE.boo` として保存し、別のスクリプトから `SE.Play("hoge")` を実行するだけで、勝手に"SE"という名前のGameObjectを作って保持しつつ"Assets/Resources/hoge.ogg"を一回だけ鳴らす。連打可能。鳴っている間にシーン変更があっても途切れない。
 
 ~~~
 import UnityEngine
