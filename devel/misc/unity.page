@@ -162,7 +162,7 @@ function OnGUI () {
 - ゲームデータを保存するには
     - [PlayerPrefs](http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html)を使う。
 - 画像を表示するには
-    - テクスチャをAssetsに追加し、[Resources.Load](http://docs-jp.unity3d.com/Documentation/ScriptReference/Resources.Load.html)でロードし、[Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す。詳細はぐぐれ。
+    - テクスチャを`Assets/Resouces`に追加し、[Resources.Load](http://docs-jp.unity3d.com/Documentation/ScriptReference/Resources.Load.html)でロードし、[Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す。詳細はぐぐれ。
 - BGM/効果音を鳴らすには
     - 音源ファイルをAssetsに追加し、[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を使う。詳細はぐぐれ。
 - モーダルダイアログ的操作を行うには
