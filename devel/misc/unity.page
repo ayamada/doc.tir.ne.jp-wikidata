@@ -185,7 +185,7 @@ import UnityEngine
 class SE:
   static private go as GameObject
   static private clips = {}
-  static public masterVol as single = 0.5
+  static public MasterVol as single = 0.5
 
   static private def setup ():
     if not go:
@@ -206,7 +206,7 @@ class SE:
     if not clip:
       Debug.LogWarning("'$path' not found", go)
     else:
-      vol *= masterVol
+      vol *= MasterVol
       go.audio.PlayOneShot(clip, vol)
 
   static public def Play (path as string):
