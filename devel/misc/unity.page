@@ -185,7 +185,7 @@ import UnityEngine
 class SE:
   static private go as GameObject
   static private clips = {}
-  static public masterVol = 0.5
+  static public masterVol as single = 0.5
 
   static private def setup ():
     if not go:
