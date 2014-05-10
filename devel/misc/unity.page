@@ -201,7 +201,7 @@ class SE:
       clips[path] = clip
     return clip
 
-  static public def Play (path as string, vol as double):
+  static public def Play (path as string, vol as single):
     clip as AudioClip = Load(path)
     if not clip:
       Debug.LogWarning("'$path' not found", go)
