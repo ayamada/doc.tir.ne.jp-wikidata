@@ -162,9 +162,21 @@ function OnGUI () {
 - ゲームデータを保存するには
     - [PlayerPrefs](http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html)を使う。
 - 画像を表示するには
-    - テクスチャを`Assets/Resouces`に追加し、[Resources.Load](http://docs-jp.unity3d.com/Documentation/ScriptReference/Resources.Load.html)でロードし、[Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す。詳細はぐぐれ。
+    1. テクスチャ画像ファイルを`Assets/Resouces/`に追加する。pngが無難
+    2. [Resources.Load](http://docs-jp.unity3d.com/Documentation/ScriptReference/Resources.Load.html)で`Texture2D`型としてロードする
+        - pathは`Assets/Resources/`からの相対path指定。また元ファイルについていた拡張子は消して指定する事(unityが勝手に内部でファイルをコンバートする為)
+            - 要は`Assets/Resources/hoge.png`を置いたら、`Resources.Load("hoge")`でロードできる
+    3. [Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す
 - BGM/効果音を鳴らすには
-    - 音源ファイルを`Assets/Resources`に追加し、[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を使う。詳細はぐぐれ。
+    1. 音源ファイルを`Assets/Resouces/`に追加する。oggが無難
+    2. [Resources.Load](http://docs-jp.unity3d.com/Documentation/ScriptReference/Resources.Load.html)で`AudioClip`型としてロードする
+        - 上記テクスチャロード時の注意点も参照
+    3. シーン内に[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を確保しておく。guiから作成したものを参照するか、[AddComponent](http://docs.unity3d.com/Documentation/ScriptReference/GameObject.AddComponent.html)で新たに追加生成する。
+    4. BGMなら[Play](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.Play.html)、SEなら[PlayOneShot](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.PlayOneShot.html)で再生する
+        - 更に色々と設定を行い場合は[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を参照
+    5. 再生自体は上記で可能だが、このままではシーンを変更するとBGM/SEがすぐに終了してしまう。シーンが破棄される際に一緒にAudioSource類も破棄されてしまうからだ。これが嫌な場合は、以下のような感じで対応を行えばよい。
+        - [http://forum.unity3d.com/threads/21690-Application-load-level-and-Sound-problem]()
+        - [http://zyyxlabo.blogspot.jp/2013/03/unitysoundmanager-ver.html]()
 - モーダルダイアログ的操作を行うには
     - [GUI.ModalWindow](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.ModalWindow.html)を使う。ダイアログ内にボタン等の他のパーツを含めたい場合は、引数の`func:WindowFunction`内で描画するようにする。
 - 重なったGUIオブジェクト同士での描画順序を制御するには
