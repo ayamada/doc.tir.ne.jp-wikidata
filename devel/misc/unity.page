@@ -181,10 +181,16 @@ function OnGUI () {
 ~~~
 import UnityEngine
 
-class SE ():
+class SE:
   static private go as GameObject
   static private clips = {}
   static public masterVol = 0.5
+
+  static private def setup ():
+    if not go:
+      go = GameObject("SE")
+      Object.DontDestroyOnLoad(go)
+      go.AddComponent('AudioSource')
 
   static public def Load (path as string) as AudioClip:
     setup()
