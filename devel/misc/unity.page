@@ -152,9 +152,10 @@ function OnGUI () {
 
 - 上記での例ではJSを選んではいるものの、UnityのJavaScriptは標準的なECMAScriptではなく独自の方言になっており、これを選択する場合は、通常のJSよりも苦労する事を理解しておく事。
     - 「UnityのJSを選ぶとどのように苦労するのか」を知りたければ [http://wiki.unity3d.com/index.php/Head_First_into_Unity_with_UnityScript]() でも読んでください。
-- 。この三つの中ではBooが一番言語仕様が真っ当に出来ているので、Python大嫌いとかでなければBooを選ぶとよい。
+- この三つの中ではBooが一番言語仕様が真っ当に出来ているので、Python大嫌いとかでなければBooを選ぶとよい。
     - この文書のタイトルを見て読み進めるようなプログラマなら、 [http://www.atsuhiro-me.net/unity/dev/boo-basic]() と [http://www.asahi-net.or.jp/~sy7a-ht/diary/tut_boo.html]() を読めば問題なくBooを書けるだろう。
     - 公式リファレンスにはJSとC#のコードサンプルはあるが、Booのコードサンプルは無い事が多い。が、これも上記のようなプログラマならば問題なくJS/C#のコードサンプルから読み替えができるだろう。
+
 
 ## How to
 
