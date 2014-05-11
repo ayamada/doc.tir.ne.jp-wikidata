@@ -238,7 +238,7 @@ class SE:
             - clojureCLRほどではないが、これも起動するまでに結構時間がかかる。
     - 試してはいないが、[TameScheme](http://tamescheme.sourceforge.net/) を利用した事例が [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() にある。実行できる形式のファイルは公開されてないようだ。
         - TameScheme自体は、プロジェクトページを見る限り、未完成のようだが…
-    - [http://jorgetavares.com/2013/01/20/common-lisp-on-net/]() に、Mono/.NET上で動くLisp処理系が紹介されていた。気が向いたらまた試したい。
+    - [http://jorgetavares.com/2013/01/20/common-lisp-on-net/]() に、Mono/.NET上で動くLisp処理系が紹介されている。
 
 - [Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/) を使い、Schemeコードから `*.dll` を生成する
     - これは可能な筈だが、筆者はBiglooでdllを生成するところでつまづいたので確認できてない。検索してみたが、他にUnity+Biglooをやってみた人を見付ける事はできなかった。
