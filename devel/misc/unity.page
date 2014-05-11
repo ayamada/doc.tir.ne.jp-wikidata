@@ -227,7 +227,7 @@ class SE:
     - C#もしくはBoo経由で `*.dll` になっているLisp処理系を実行し、Lispスクリプトをread/evalする。
     - Lisp処理系自体の初期化とスクリプトのロードに結構コストがかかる。
         - スクリプトをdllにコンパイルするタイプであれば初期化コストを抑えられるが、後述のBigloo以外には見付からなかった。
-    - 候補になりそうなのは以下。
+    - 試す事ができたのは以下。
         - [clojureCLR](https://github.com/clojure/clojure-clr)
             - [https://github.com/nasser/clojure-unity]() に、C#経由で実行しているプロジェクトファイル一式が公開されている。
             - 上記からgit cloneしてそのままunityでプロジェクトとして開けば動作確認できる。実行開始するまでの待ち時間が結構ある。
@@ -236,8 +236,9 @@ class SE:
             - 上記ページの一番下にあるファイルをダウンロードし、unityのプロジェクトにimportし、importされた中の「SchemeTest」シーンを開き、「Maximize on Play」ボタンを押してから実行する(最大化しとかないとスクリーン最下段の入力欄が隠れて分からなくなる)。これでREPLが起動するので、あとは上記ページにあるように色々と試せる。
                 - 色々試してたら、REPLが起動しなくなってしまう事があった。安定していないのか、それとも古いunity用だからなのか。
             - clojureCLRほどではないが、これも起動するまでに結構時間がかかる。
-    - 候補ではないが、[TameScheme](http://tamescheme.sourceforge.net/) を利用した事例が [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() にある。実行できる形式のファイルは公開されてないようだ。
+    - 試してはいないが、[TameScheme](http://tamescheme.sourceforge.net/) を利用した事例が [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() にある。実行できる形式のファイルは公開されてないようだ。
         - TameScheme自体は、プロジェクトページを見る限り、未完成のようだが…
+    - [http://jorgetavares.com/2013/01/20/common-lisp-on-net/]() に、Mono/.NET上で動くLisp処理系が紹介されていた。気が向いたらまた試したい。
 
 - [Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/) を使い、Schemeコードから `*.dll` を生成する
     - これは可能な筈だが、筆者はBiglooでdllを生成するところでつまづいたので確認できてない。検索してみたが、他にUnity+Biglooをやってみた人を見付ける事はできなかった。
