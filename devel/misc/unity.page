@@ -154,7 +154,7 @@ function OnGUI () {
     - 「UnityのJSを選ぶとどのように苦労するのか」を知りたければ [http://wiki.unity3d.com/index.php/Head_First_into_Unity_with_UnityScript]() でも読んでください。
 - この三つの中ではBooが一番言語仕様が真っ当に出来ているので、Python大嫌いとかでなければBooを選ぶとよい。
     - この文書のタイトルを見て読み進めるようなプログラマならBooを知らなくても、 [http://www.atsuhiro-me.net/unity/dev/boo-basic]() と [http://www.asahi-net.or.jp/~sy7a-ht/diary/tut_boo.html]() を読めば、問題ない程度にはBooを書けるだろう。
-        - Boo言語自体のリファレンスは[http://docs.codehaus.org/display/BOO/Language+Guide]()にある(英語)。
+        - Boo言語自体の公式サイトは[http://boo.codehaus.org/]()にある。ここの左メニューからある程度のドキュメントを見れる。
     - 公式リファレンスにはJSとC#のコードサンプルはあるが、Booのコードサンプルは無い事がある。が、これも上記のようなプログラマならば問題なくJS/C#のコードサンプルから読み替えができるだろう。
 
 
