@@ -164,19 +164,21 @@ function OnGUI () {
 
 - ゲームデータを保存するには
     - [PlayerPrefs](http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html)を使う。
-    - [http://www.previewlabs.com/writing-playerprefs-fast/]()に、改善版がPublic Domainで置いてある。
+    - [http://www.previewlabs.com/writing-playerprefs-fast/]()に、改善版がPublic Domainで置いてある(詳細は未確認)。
+
 - 画像を表示するには
     1. テクスチャ画像ファイルを`Assets/Resouces/`に追加する。pngが無難
     2. [Resources.Load](http://docs-jp.unity3d.com/Documentation/ScriptReference/Resources.Load.html)で`Texture2D`型としてロードする
         - pathは`Assets/Resources/`からの相対path指定。また元ファイルについていた拡張子は消して指定する事(unityが勝手に内部でファイルをコンバートする為)
             - 要は`Assets/Resources/hoge.png`を置いたら、`Resources.Load("hoge")`でロードできる
     3. [Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す
+
 - BGM/効果音を鳴らすには
     1. 音源ファイルを`Assets/Resouces/`に追加する。oggが無難
     2. [Resources.Load](http://docs-jp.unity3d.com/Documentation/ScriptReference/Resources.Load.html)で`AudioClip`型としてロードする
         - 上記テクスチャロード時の注意点も参照
     3. シーン内に[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を確保しておく。guiから作成したものを参照するか、[AddComponent](http://docs.unity3d.com/Documentation/ScriptReference/GameObject.AddComponent.html)で新たに追加生成する。
-    4. BGMなら[Play](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.Play.html)、SEなら[PlayOneShot](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.PlayOneShot.html)で再生する
+    4. BGMは上記AudioSourceの`clip`にロードした`AudioClip`設定してから[Play](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.Play.html)を実行、SEなら直に[PlayOneShot](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.PlayOneShot.html)の引数に渡して再生できる
         - 細かい再生パラメータは[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を参照
     5. 再生自体は上記で可能だが、このままではシーンを変更するとBGM/SEがすぐに終了してしまう。シーンが破棄される際に一緒にAudioSource類も破棄されてしまうからだ。これが嫌な場合は、現在のシーンとは別に、管理用の[GameObject](http://docs-jp.unity3d.com/Documentation/ScriptReference/GameObject.html)を生成し、[DontDestroyOnLoad](http://docs-jp.unity3d.com/Documentation/ScriptReference/Object.DontDestroyOnLoad.html)を設定した上で、[AddComponent](http://docs-jp.unity3d.com/Documentation/ScriptReference/GameObject.AddComponent.html)で[AudioSource](http://docs-jp.unity3d.com/Documentation/ScriptReference/AudioSource.html)を追加し、そっちで再生すればよい。これは各シーンから独立したオブジェクトになるので、ファイルも分けた方がよい。
         - つまり [http://zyyxlabo.blogspot.jp/2013/03/unitysoundmanager-ver.html]() みたいなのを作る事になる。「これでよい」と思う人であれば、これをそのまま使ってもよいと思う。
@@ -218,9 +220,13 @@ class SE:
 
 - モーダルダイアログ的操作を行うには
     - [GUI.ModalWindow](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.ModalWindow.html)を使う。ダイアログ内にボタン等の他のパーツを含めたい場合は、引数の`func:WindowFunction`内で描画するようにする。
+
 - 重なったGUIオブジェクト同士での描画順序を制御するには
     - [GUI.depth](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI-depth.html)を設定する。ただし上記モーダルダイアログは常に最前面。
 
+- 背景色を変更するには
+    - [Camera.main](http://docs-jp.unity3d.com/Documentation/ScriptReference/Camera-main.html).[backgroundColor](http://docs-jp.unity3d.com/Documentation/ScriptReference/Camera-backgroundColor.html)に好きな色を設定する
+    - もしくはUnityのIDEより、シーン内に最初から入ってるカメラの設定をいじってもよい
 
 ## Unity上でLispを動かすには
 
