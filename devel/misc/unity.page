@@ -231,6 +231,10 @@ class SE:
     - [Camera.main](http://docs-jp.unity3d.com/Documentation/ScriptReference/Camera-main.html).[backgroundColor](http://docs-jp.unity3d.com/Documentation/ScriptReference/Camera-backgroundColor.html)に好きな色を設定する
     - もしくはUnityのIDEより、シーン内に最初から入ってるカメラの設定をいじってもよい
 
+- ゲーム画面領域のリサイズイベントの検知方法
+    - 標準では提供されていないので、毎フレーム、`Screen.width`と`Screen.height`が変化してないかどうかをチェックする事で、自前で実装する。
+
+
 ## Unity上でLispを動かすには
 
 何種類かの選択肢がある。
