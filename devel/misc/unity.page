@@ -31,6 +31,7 @@ title: マウスを極力さわりたくないプログラマの為のUnity入�
     - 「3D」「2D」の選択肢があるが、どちらでも問題ない(デフォルト値をどっちにするかという項目)
 3. プロジェクトの保存形式をバイナリベースではなくテキストベースに変更し、git等で扱いやすくする。
     - 上メニューより「Edit」→「Project Settings」→「Editor」→「Asset Serialization」→「Mode」を「Force Text」にする。
+        - これでyaml形式でデータが保存される。yaml形式といっても直編集は絶望的だが、mergeとかが一応可能になる。
 
 引き続き、「タイトル画面」→「ゲーム開始」→「タイトル画面」というシーン遷移の最小構成を作る。OPデモ、エンディング、ゲームオーバー等の追加は後回し。
 
@@ -172,6 +173,7 @@ function OnGUI () {
         - pathは`Assets/Resources/`からの相対path指定。また元ファイルについていた拡張子は消して指定する事(unityが勝手に内部でファイルをコンバートする為)
             - 要は`Assets/Resources/hoge.png`を置いたら、`Resources.Load("hoge")`でロードできる
     3. [Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す
+        - 拡大縮小や回転はGUIでは無理っぽい。普通に3D/2Dとして扱う必要がある…
 
 - BGM/効果音を鳴らすには
     1. 音源ファイルを`Assets/Resouces/`に追加する。oggが無難
