@@ -165,6 +165,7 @@ function OnGUI () {
 
 - ゲームデータを保存するには
     - [PlayerPrefs](http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html)を使う。
+        - ブラウザ版には最大保存サイズ1Mまでの制約があるので、1Mを越える可能性がある場合は別の手段も考える事(サーバにPOSTする等)。
     - [http://www.previewlabs.com/writing-playerprefs-fast/]()に、改善版がPublic Domainで置いてある(詳細は未確認)。
 
 - 画像を表示するには
