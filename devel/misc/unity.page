@@ -250,7 +250,7 @@ class SE:
     - 標準では提供されていないので、毎フレーム、`Screen.width`と`Screen.height`が変化してないかどうかをチェックする事で、自前で実装する。
 
 - リリース版と開発版で処理を分ける
-    - [Debug.isDebugBuild](http://docs-jp.unity3d.com/Documentation/ScriptReference/Debug-isDebugBuild.html) で分岐させるのが一番楽。「Build Settinsg」ダイアログ内の「Development Build」項目と連動している。
+    - [Debug.isDebugBuild](http://docs-jp.unity3d.com/Documentation/ScriptReference/Debug-isDebugBuild.html) で分岐させるのが一番楽。「Build Setting」ダイアログ内の「Development Build」項目と連動している。
 
 
 ## Unity上でLispを動かすには
