@@ -172,6 +172,15 @@ function OnGUI () {
     - [PlayerPrefs](http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html)を使う。
         - ブラウザ版には最大保存サイズ1Mまでの制約があるので、1Mを越える可能性がある場合は別の手段も考える事(サーバにPOSTする等)。
     - [http://www.previewlabs.com/writing-playerprefs-fast/]()に、改善版がPublic Domainで置いてある(詳細は未確認)。
+    - これらのPlayerPrefs系は数値と文字列しか保存できないので、保存したいデータをまとめて一つのハッシュテーブルに収め、[BinaryFormatter](http://msdn.microsoft.com/ja-jp/library/system.runtime.serialization.formatters.binary.binaryformatter.aspx)→圧縮→base64、と加工した上でPlayerPrefsに保存するのがよいと思う。
+        - BinaryFormatterはネストしたハッシュテーブル等も問題なくシリアライズできている。
+            - きちんと[同一オブジェクトの共有構造](http://practical-scheme.net/wiliki/wiliki.cgi?Scheme:ReadWriteInvariance)も維持されている。素晴らしい。
+        - BinaryFormatterはiOSでは正常に動かないらしい(未確認)。しかしWeb Playerではちゃんと動くのを確認した。
+        - 圧縮は[LZMA](http://forum.unity3d.com/threads/lzma-compression-and-decompression-for-unity.239285/)がベストだと思う。ライセンスはpublic domain。
+            - 標準付属の[DeflateStream](http://msdn.microsoft.com/en-us/library/system.io.compression.deflatestream.aspx)が動けばベストだったが、IDE上では動くものの、Web Playerではどうもクラス内でセキュリティサンドボックスの何かに引っかかって動かなかった。
+            - 他にもunityで動く圧縮ライブラリを大量に検討したが、どれもライセンス面で問題があった(GPLだったり条文表示義務があったり。通常のアプリなら問題ないが、ブラゲ用では面倒すぎる)。
+            - LZMAの特性は「高圧縮率」「展開速度高速」「圧縮速度低速」であり、最後の圧縮速度が問題になるケースがある。これは圧縮レベルを変更すれば十分高速になる。しかし上記配布の`LZMAtools`経由では圧縮レベルを変更できないので、直にLZMAを叩く必要がある(面倒ではあるが難しい箇所はない)。
+        - base64は[Convert.FromBase64String](http://msdn.microsoft.com/ja-jp/library/system.convert.frombase64string.aspx)と[Convert.ToBase64String](http://msdn.microsoft.com/ja-jp/library/system.convert.tobase64string.aspx)で扱える。
 
 - 画像を表示するには
     1. テクスチャ画像ファイルを`Assets/Resouces/`に追加する。pngが無難
