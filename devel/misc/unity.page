@@ -179,7 +179,7 @@ function OnGUI () {
         - 圧縮は[LZMA](http://forum.unity3d.com/threads/lzma-compression-and-decompression-for-unity.239285/)がベストだと思う。ライセンスはpublic domain。
             - 標準付属の[DeflateStream](http://msdn.microsoft.com/en-us/library/system.io.compression.deflatestream.aspx)が動けばベストだったが、IDE上では動くものの、Web Playerではどうもクラス内でセキュリティサンドボックスの何かに引っかかって動かなかった。
             - 他にもunityで動く圧縮ライブラリを大量に検討したが、どれもライセンス面で問題があった(GPLだったり条文表示義務があったり。通常のアプリなら問題ないが、ブラゲ用では面倒すぎる)。
-            - LZMAの特性は「高圧縮率」「展開速度高速」「圧縮速度低速」であり、最後の圧縮速度が問題になるケースがある。これは圧縮レベルを変更すれば十分高速になる。しかし上記配布の`LZMAtools`経由では圧縮レベルを変更できないので、直にLZMAを叩く必要がある(面倒ではあるが難しい箇所はない)。
+            - LZMAの特性は「高圧縮率」「展開速度高速」「圧縮速度低速」であり、最後の圧縮速度が問題になるケースがある。これは圧縮レベルを変更すれば十分高速になる。しかし上記配布の`LZMAtools`経由では圧縮レベルを変更できないので、直にLZMAを叩く必要がある(これは面倒ではあるが難しい箇所はない)。
         - base64は[Convert.FromBase64String](http://msdn.microsoft.com/ja-jp/library/system.convert.frombase64string.aspx)と[Convert.ToBase64String](http://msdn.microsoft.com/ja-jp/library/system.convert.tobase64string.aspx)で扱える。
 
 - 画像を表示するには
