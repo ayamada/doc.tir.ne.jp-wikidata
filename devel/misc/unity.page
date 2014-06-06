@@ -252,6 +252,9 @@ class SE:
 - リリース版と開発版で処理を分ける
     - [Debug.isDebugBuild](http://docs-jp.unity3d.com/Documentation/ScriptReference/Debug-isDebugBuild.html) で分岐させるのが一番楽。「Build Setting」ダイアログ内の「Development Build」項目と連動している。
 
+- プロジェクトに対する詳細設定項目一覧
+    - [http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerSettings.html]() にある。これらを直に叩く手段があれば、メニューのどこにあるか探し回らなくても直設定できそうだが…
+
 
 ## Unity上でLispを動かすには
 
