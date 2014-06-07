@@ -250,8 +250,9 @@ class SE:
     - 標準では提供されていないので、毎フレーム、`Screen.width`と`Screen.height`が変化してないかどうかをチェックする事で、自前で実装する。
 
 - リリース版と開発版で処理を分ける
-    - 単に「UnityのIDE上での動作確認」かどうかを判定したいだけなら、[Application.isEditor](http://docs-jp.unity3d.com/Documentation/ScriptReference/Application-isEditor.html)を見る。
-        - 「IDE上で動作確認するときだけキャラを強くする」みたいにしておくと便利。
+    - 単に「UnityのIDE上での動作確認」かどうかを判定したいだけなら、[Application.isEditor](http://docs-jp.unity3d.com/Documentation/ScriptReference/Application-isEditor.html)を見るのが手軽。
+        - ただし`UnityEditor`名前空間内クラスにアクセスしたい等の場合は、 [http://docs-jp.unity3d.com/Documentation/Manual/PlatformDependentCompilation.html]() を見てマクロ化しないとビルドが通らなくなってしまう(`UnityEditor`名前空間内クラスはUnityのIDE上でのみアクセス可能な為)。またApplication.isEditorと比べると判定処理をしなくてすむので軽量である。代わりにめんどい。
+        - どちらにするにしても、これを使って「IDE上で動作確認するときだけキャラを強くする」みたいにしておくと開発中の確認が楽になる。
     - 「他の人にテストプレイしてもらう為に、リリース版ビルドではないデバッグ版ビルドを作り、この時だけ詳細ログを出したい」等の場合は、[Debug.isDebugBuild](http://docs-jp.unity3d.com/Documentation/ScriptReference/Debug-isDebugBuild.html) で分岐させるのがよい。この変数は「Build Setting」ダイアログ内の「Development Build」項目と連動している。
         - このチェックボックスを入れると、画面右下に「Development Build」と常時表示されるようになるのですぐ分かる
 
