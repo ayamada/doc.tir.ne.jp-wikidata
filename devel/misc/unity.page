@@ -191,7 +191,7 @@ function OnGUI () {
         - pathは`Assets/Resources/`からの相対path指定。また元ファイルについていた拡張子は消して指定する事(unityが勝手に内部でファイルをコンバートする為)
             - 要は`Assets/Resources/hoge.png`を置いたら、`Resources.Load("hoge")`でロードできる
     3. [Label](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Label.html)や[Button](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Button.html)の引数として渡す
-        - 拡大縮小はLabelやButtonに渡す引数のRectに応じて、自動的に行われる。ただし[GUIStyle](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUIStyle.html)によっては拡大縮小が行われない事があるっぽい。その場合は別のGUIStyleに変更したりしてみる。
+        - 拡大縮小はLabelやButtonに渡す引数のRectに応じて、自動的に行われる(アスペクト比は維持されるようだ)。ただし[GUIStyle](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUIStyle.html)によっては拡大縮小が行われない事があるっぽい。その場合は別のGUIStyleに変更したりしてみる。
         - 回転などはGUIでは無理っぽい。普通に3D/2Dとして扱う必要がある…
 
 - BGM/効果音を鳴らすには
