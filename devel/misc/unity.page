@@ -245,8 +245,8 @@ class SE:
 - 重なったGUIオブジェクト同士での描画順序を制御するには
     - とりあえず上記モーダルダイアログは常に最前面。
     - 通常は、実行した順に、奥から手前へと描画される。
-    - [GUI.Window](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Window.html)は奥/手前判定が重要なので、これ専用に[GUI.BringWindowToBack](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.BringWindowToBack.html)と[GUI.BringWindowToFront](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.BringWindowToFront.html)が用意されている。
-    - `OnGUI()`を持つ複数のオブジェクトが存在する場合は、[GUI.depth](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI-depth.html)を設定する事で、オブジェクト単位での描画順を設定できる。
+    - [GUI.Window](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.Window.html)は、複数のWindow同士の奥/手前設定を手軽に行えるようにする為に、[GUI.BringWindowToBack](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.BringWindowToBack.html)と[GUI.BringWindowToFront](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI.BringWindowToFront.html)が用意されている。
+    - `OnGUI()`を持つ複数のオブジェクトが存在する場合は、[GUI.depth](http://docs-jp.unity3d.com/Documentation/ScriptReference/GUI-depth.html)を設定する事で、`OnGUI()`単位での描画順を設定できる。
 
 - 背景色を変更するには
     - [Camera.main](http://docs-jp.unity3d.com/Documentation/ScriptReference/Camera-main.html).[backgroundColor](http://docs-jp.unity3d.com/Documentation/ScriptReference/Camera-backgroundColor.html)に好きな色を設定する
