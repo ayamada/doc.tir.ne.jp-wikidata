@@ -154,6 +154,22 @@ function OnGUI () {
 - とにかく[GUI スクリプティング ガイド](http://docs-jp.unity3d.com/Documentation/Components/GUIScriptingGuide.html)は全部目を通すべき。
 
 
+## 更なる先へ
+
+以下を検討する。
+
+1. このままUnity標準GUIモジュールを使い続ける
+    - Unity4.6にて、[uGUI](http://terasur.blog.fc2.com/blog-entry-813.html)という奴に進化するらしい
+2. [NGUI](http://u3d.as/content/tasharen-entertainment/ngui-next-gen-ui/2vh)へ移行する
+    - 詳しく調べてはいないが、便利らしい
+    - NGUI自体は有償だが、[旧版](http://terasur.blog.fc2.com/blog-entry-740.html)なら無償利用可能らしい
+    - [FNT形式のビットマップフォント](/devel/clan/libgdx#bitmapfont)が標準で扱えるらしい
+3. 普通に3D/2Dの機能の使い方を調べて、そっちでゲーム本体を作る
+4. Mono/.NETに見切りをつけて、他のもっと良い環境を求めて、探求の旅に出る
+    - 筆者によるMono/.NETのVMとしての評価は「JVMよりはマシなレベル」。JVMがJavaのヘドロを含んでしまっているように、Mono/.NETも色々とよろしくない仕様を含んでしまっている。
+    - とは言え、もっと良い仕様を持つVMがあったとして、そのVM向けのコードを「windows, mac, android, iOS, ブラウザの全部に簡単にデプロイできる」という機能を持たない限り、Unityの方が有利であろう。これが現実である。
+
+
 # その他のメモ
 
 ## JSとC#とBoo、どの言語を選ぶべきか
