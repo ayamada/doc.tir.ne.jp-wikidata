@@ -293,6 +293,7 @@ class SE:
         - [clojureCLR](https://github.com/clojure/clojure-clr)
             - [https://github.com/nasser/clojure-unity]() に、C#経由で実行しているプロジェクトファイル一式が公開されている。
             - 上記からgit cloneしてそのままunityでプロジェクトとして開けば動作確認できる。実行開始するまでの待ち時間が結構ある。
+                - まだ開発途上につき、HEADでは動かない事も多いようだ。とりあえず `c0207892457ad35c00b6ccadae2965dc71ad0be4` をcheckoutすればIDE内実行は動くと思う(起動までかなり待たされるので注意)。
         - [IronScheme](http://ironscheme.codeplex.com/)
             - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() にREPL実行できるサンプルがある。
             - 上記ページの一番下にあるファイルをダウンロードし、unityのプロジェクトにimportし、importされた中の「SchemeTest」シーンを開き、「Maximize on Play」ボタンを押してから実行する(最大化しとかないとスクリーン最下段の入力欄が隠れて分からなくなる)。これでREPLが起動するので、あとは上記ページにあるように色々と試せる。
