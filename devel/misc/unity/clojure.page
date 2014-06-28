@@ -4,8 +4,12 @@ categories: unity
 title: Unity内でClojureCLRを動かす
 ...
 
+# 関連リンク
+
 - [親ページ(Unityメモ)](../unity)
-- [スライド](http://vnctst.tir.jp/ccrou-test/) ([大阪でClojure交流会](http://atnd.org/events/52421)にて発表したもの)
+- [スライド](http://vnctst.tir.jp/ccrou-test/) - [大阪でClojure交流会](http://atnd.org/events/52421)にて発表したもの
+- [https://github.com/ayamada/ccrou-test]() - サンプルREPLのソース
+
 
 # 一時メモ
 
