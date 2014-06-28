@@ -16,15 +16,13 @@ title: Unity内でClojureCLRを動かす
         - この中の `test` シーン がIDE実行できる。 `Assets/Clojure/clojure/moves.clj` をいじる事で、実行時の動作をその通りに変更できる。
 
 
-- 書くべき内容
+- 書くべき内容/書いておいた方がいいメモ
     - ClojureCLRのソース取得
     - ClojureCLRのコンパイル手順
         - 3.5リリース版を選択するという事
-
-
-- 書いておいた方がいいメモ
     - http://docs-jp.unity3d.com/Documentation/ScriptReference/MonoCompatibility.html へのリンク
     - ILSpyについて
+    - PCのみの対応。ブラウザ、Android、iOSにはデプロイできない
 
 - 事前コンパイルした`hoge.clj.dll`の正式な実行方法
     - `RT.load('hoge')`してからVar取得して実行はできるが、これが正式なやり方かは不明
