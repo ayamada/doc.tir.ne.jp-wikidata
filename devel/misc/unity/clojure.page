@@ -1,0 +1,44 @@
+---
+toc: yes
+categories: unity
+title: Unity内でClojureCLRを動かす
+...
+
+[親ページ](..)
+
+
+# 一時メモ
+
+あとできちんとまとめる。
+
+- [https://github.com/nasser/clojure-unity]() に、C#経由で実行しているプロジェクトファイル一式が公開されている。
+    - まだ開発途上につき、HEADでは動かない事も多いようだ。とりあえず `c0207892457ad35c00b6ccadae2965dc71ad0be4` をcheckoutすればIDE内実行は動くと思う(起動までかなり待たされるので注意)。
+        - この中の `test` シーン がIDE実行できる。 `Assets/Clojure/clojure/moves.clj` をいじる事で、実行時の動作をその通りに変更できる。
+
+
+- 書くべき内容
+    - ClojureCLRのソース取得
+    - ClojureCLRのコンパイル手順
+        - 3.5リリース版を選択するという事
+
+
+- 書いておいた方がいいメモ
+    - http://docs-jp.unity3d.com/Documentation/ScriptReference/MonoCompatibility.html へのリンク
+    - ILSpyについて
+
+- 事前コンパイルした`hoge.clj.dll`の正式な実行方法
+    - `RT.load('hoge')`してからVar取得して実行はできるが、これが正式なやり方かは不明
+
+- faq
+    - `System.ArgumentNullException: Argument cannot be null` で動かない
+        - きちんとUnity向けClojureCLRになってない。
+        - unityでは `System.AppDomain.CurrentDomain.BaseDirectory` がnullを返すのが原因。Unity向けブランチなら対応コードが入れられている。
+    - IDEでは動くが、デプロイすると `The assembly for default symbol writer cannot be loaded` で動かない
+        - ClojureCLRがデバッグビルドになっている。リリースビルドでないとデプロイしたら動かなくなる
+        - デバッグ版ClojureCLRだと、`DefineDynamicModule`実行時にデバッグ情報シンボルを埋め込みフラグを有効にしようとするが、この機能がデプロイ後環境にはない為。ここのフラグ値はデバッグフラグと直結している。
+    - 含まれてる `Microsoft.*.dll` ってどこ由来？ライセンス大丈夫？
+        - [http://dlr.codeplex.com/]() 由来。ライセンスはApache2.0と書いてあるので大丈夫
+
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
