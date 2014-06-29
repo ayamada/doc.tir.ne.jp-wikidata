@@ -41,6 +41,7 @@ title: Unity内でClojureCLRを動かす
     - 含まれてる `Microsoft.*.dll` ってどこ由来？ライセンス大丈夫？
         - [http://dlr.codeplex.com/]() 由来。ライセンスはApache2.0と書いてあるので大丈夫
 
+- clojure-unityリポジトリにフィードバックできるように、英語化する事を考慮する？
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
