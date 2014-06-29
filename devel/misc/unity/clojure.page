@@ -11,7 +11,7 @@ title: Unity内でClojureCLRを動かす
 
 - [スライド](http://vnctst.tir.jp/ccrou-test/) - [大阪でClojure交流会](http://atnd.org/events/52421)にて発表したもの
 - [https://github.com/ayamada/ccrou-test]() - 上記スライドで公開したサンプルREPLのソース。Unityから開く。
-- [https://github.com/nasser/clojure-unity]() - nasserさんによる先行プロジェクト。きちんとしたUnityプラグインとしての開発。
+- [https://github.com/nasser/clojure-unity]() - nasserさん達による先行プロジェクト。きちんとしたUnityプラグインとしての開発。
     - まだ開発途上につき、HEADでは動かない事も多いようだ。とりあえず `c0207892457ad35c00b6ccadae2965dc71ad0be4` をcheckoutすればIDE内実行は動くと思う(起動までかなり待たされるので注意)。
         - この中の `test` シーン がIDE実行できる。 `Assets/Clojure/clojure/moves.clj` をいじる事で、実行時の動作をその通りに変更できる。
 - [https://github.com/nasser/clojure-clr/tree/unity]() - nasserさんによる、ClojureCLRのUnity向けブランチ。これが心臓部。ありがたい。
