@@ -53,7 +53,7 @@ title: Unity内でClojureCLRを動かす
 1. 適当に既存のプロジェクトを開くか、新規プロジェクトを作成する。忘れずに、適切に設定を行っておく事(詳細は[Unityメモ](../unity)参照)
     - 既存プロジェクトの場合、[Player Settings](http://docs-jp.unity3d.com/Documentation/Manual/class-PlayerSettings40.html)の「API Compatibility Level」が「.NET 2.0」になっている事を確認。「.NET 2.0 Subset」の方だと動かない。
 2. 上で作った `*.dll` を、プロジェクト内の `Assets/` 配下のどこかに適当に入れておく
-3. スクリプト内から `clojure.lang.RT.var('clojure.core', 'read-string').invoke('[1 2 3]')` とかでvarを取り出して実行したり、 `clojure.lang.RT.load('path/to/hoge.clj')` とかで直にロードしたりする
+3. スクリプト内から `clojure.lang.RT.var('clojure.core', 'read-string').invoke('[1 2 3]')` とかでvarを取り出して実行したり、 `clojure.lang.RT.load('clojure.string')` みたいに直にロードしたりする
     - このへんは[サンプルREPL](https://github.com/ayamada/ccrou-test)内の`ClojureTest.boo`あたりを見てください。
 
 つづきはあとで。
