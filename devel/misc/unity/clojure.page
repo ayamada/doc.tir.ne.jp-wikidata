@@ -59,7 +59,16 @@ title: Unity内でClojureCLRを動かす
 3. スクリプト内から `clojure.lang.RT.var('clojure.core', 'read-string').invoke('[1 2 3]')` とかでvarを取り出して実行したり、 `clojure.lang.RT.load('clojure.string')` みたいに直にロードしたりする
     - このへんは[サンプルREPL](https://github.com/ayamada/ccrou-test)内の`ClojureTest.boo`あたりを見てください。
 
-つづきはあとで。
+
+## デプロイ
+
+- 普通にWin/Mac向けとしてビルドして、動く事を確認する。
+    - IDE内では動くのに、ビルドして動かしたらエラーが出る場合は、ClojureCLRのバイナリがちゃんとリリース版になってるかを確認する。
+
+
+## そして
+
+- ゲームつくる!
 
 
 # FAQっぽそうな項目
