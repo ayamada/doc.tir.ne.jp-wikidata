@@ -1,6 +1,6 @@
 ---
 toc: yes
-categories: unity
+categories: unity clojure
 title: Unity内でClojureCLRを動かす
 ...
 
