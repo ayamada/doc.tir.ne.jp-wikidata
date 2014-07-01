@@ -82,7 +82,7 @@ title: Unity内でClojureCLRを動かす
     - デバッグ版ClojureCLRだと、`DefineDynamicModule`実行時にデバッグ情報シンボルを埋め込みフラグを有効にしようとするが、この機能がデプロイ後環境にはない為。ここのフラグ値はデバッグフラグと直結している。
 
 - 含まれてる `Microsoft.*.dll` ってどこ由来？ライセンス大丈夫？
-    - [http://dlr.codeplex.com/]() 由来。ライセンスはApache2.0と書いてあるので大丈夫
+    - [http://dlr.codeplex.com/]() 由来。ライセンスは昔はMs-PLだったが今はApache2.0になったので大丈夫
 
 - Unity内にて、どの機能が利用できて、どの機能が利用できないのかの判定について
     - [http://docs-jp.unity3d.com/Documentation/ScriptReference/MonoCompatibility.html]() にAPIの対応状況があるので、ここを見てみると参考になるかも(ならないかも)
@@ -93,6 +93,13 @@ title: Unity内でClojureCLRを動かす
 - 事前コンパイルした`hoge.clj.dll`の実行方法
     - `RT.load('hoge')`してからVar取得してinvoke()する
     - これが正式なやり方かはかなり怪しい。JVMみたいに`:gen-class`する方法があるのでは?
+
+- どうにかしてWeb player上で動かしたい
+    - .NET上の動的言語は大体、内部で[DLR](http://dlr.codeplex.com/)を使って動いており、ClojureCLRもDLRを使っている。が、このDLRが内部で呼んでいるモジュール(具体的には`System.Configuration`あたり)がUnityのWeb playerの対応外なので動かないようだ。
+        - つまりWeb player上で動かしたければ、まずDLRを動くようにするのが第一歩、という事になる
+    - 調査してみたが、IronPython等の、DLRを利用した他の動的言語もWeb player上で動かせるという情報が見当たらないので、非常に困難な道だと思われる。
+
+
 
 
 <!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
