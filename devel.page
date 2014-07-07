@@ -1,18 +1,24 @@
 ---
 toc: no
-categories: postponed
 title: 技情研ネットの技術情報
 ...
 
-- [gititメモ](devel/gitit) - 当サイト(doc.tir.ne.jp)は[gitit](devel/gitit)を使って構築しています。
+このサイトで公開している技術系ドキュメントの内、ある程度以上の分量があるもののリストです。
 
-- [gitメモ](devel/git)
+- [マウスを極力さわりたくないプログラマの為のUnity入門](devel/misc/unity) - Unity入門記事です。
 
-- androidアプリ開発
+- [libgdxメモ](devel/clan/libgdx) - [libgdx](http://libgdx.badlogicgames.com/)の雑多なノウハウ集です。
+
+- [gititメモ](devel/gitit) - 当サイト(doc.tir.ne.jp)は[gitit](devel/gitit)を使って構築しています。ちょっと古くなっています。
+
+- androidアプリ開発 - 今やちょっと古くなっているかもしれません。
     - [環境構築](devel/env)
     - [CLAN解説ページ](devel/clan)
 
-- 古い技術情報はこちらにもあります。
-    - [http://legacy.e.tir.jp/wiliki]()
+上記以外にもページがあります。左メニューの検索ボックスから発見できるかもしれません。
+
+また、古い技術情報が以下にあります。
+
+- [http://legacy.e.tir.jp/wiliki]()
 
 <!-- vim:set ft=markdown ts=4 sts=4 sw=4 et: -->
