@@ -280,6 +280,16 @@ class SE:
 - プロジェクトに対する詳細設定項目一覧
     - [http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerSettings.html]() にある。これらを直に叩く手段があれば、メニューのどこにあるか探し回らなくても直設定できそうだが…
 
+- 外部URLを開きたい / tweet機能を付けたい
+    - web player以外の場合は、普通に [Application.OpenURL](http://docs-jp.unity3d.com/Documentation/ScriptReference/Application.OpenURL.html) を使えばよい
+    - web playerの場合は非常に困難。
+        - 上記のApplication.OpenURLを普通に使うと、元ページからの遷移になってしまいゲーム設置ページが閉じてしまう。
+        - [Application.ExternalCall](http://docs-jp.unity3d.com/Documentation/ScriptReference/Application.ExternalCall.html)もしくは[Application.ExternalEval](http://docs-jp.unity3d.com/Documentation/ScriptReference/Application.ExternalEval.html)から`window.open`等を使うと、ポップアップブロックが作動してしまう。
+            - これは要は「JavaScriptから(ポップアップブロックに引っかからずに)新しいタブでリンクを開くにはどうすればいいか」という問題。少し調べれば分かるが「無理」という結論。
+        - 抜け道として「タイトル画面にのみtweetボタンを付け、tweetパラメータとして`original_referer`を指定した上でApplication.OpenURLで開き、tweet後はリンクを辿って元ページに戻ってきてもらう」というのを考えた。
+            - historyに戻り履歴が残ってしまう欠点はあるものの、今のところはこれしかないと思う。
+            - 通常のページには応用できない。
+
 
 ## Unity上でLispを動かすには
 
