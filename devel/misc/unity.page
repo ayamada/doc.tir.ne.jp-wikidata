@@ -320,10 +320,7 @@ class SE:
 何種類かの選択肢がある。
 
 - Mono/.NET系のLisp処理系を動かす
-    - C#もしくはBoo経由で `*.dll` になっているLisp処理系を実行し、Lispスクリプトをread/evalする。
-    - Lisp処理系自体の初期化とスクリプトのロードに結構コストがかかる。
-        - スクリプトをdllにコンパイルするタイプであれば初期化コストを抑えられるが、後述のBigloo以外には見付からなかった。
-    - 試す事ができたのは以下。
+    - 試したのは以下。
         - clojureCLR
             - 別ページにまとめた→[Unity内でClojureCLRを動かす](unity/clojure)
         - [IronScheme](http://ironscheme.codeplex.com/)
@@ -331,18 +328,15 @@ class SE:
             - 上記ページの一番下にあるファイルをダウンロードし、unityのプロジェクトにimportし、importされた中の「SchemeTest」シーンを開き、「Maximize on Play」ボタンを押してから実行する(最大化しとかないとスクリーン最下段の入力欄が隠れて分からなくなる)。これでREPLが起動するので、あとは上記ページにあるように色々と試せる。
                 - 色々試してたら、REPLが起動しなくなってしまう事があった。安定していないのか、それとも古いunity用だからなのか。
             - clojureCLRほどではないが、これも起動するまでに結構時間がかかる。
+        - Bigloo
+            - 別ページにまとめた→[UnityでBiglooを動かす](unity/bigloo)
     - 試してはいないが、[TameScheme](http://tamescheme.sourceforge.net/) を利用した事例が [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() にある。実行できる形式のファイルは公開されてないようだ。
         - TameScheme自体は、プロジェクトページを見る限り、未完成のようだが…
-    - [http://jorgetavares.com/2013/01/20/common-lisp-on-net/]() に、Mono/.NET上で動くLisp処理系が紹介されている。
-
-- [Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/) を使い、Schemeコードから `*.dll` を生成する
-    - これは可能な筈だが、筆者はBiglooでdllを生成するところでつまづいたので確認できてない。検索してみたが、他にUnity+Biglooをやってみた人を見付ける事はできなかった。
-    - 直に `*.dll` を生成できるので、実現できれば、他のdll系Lisp処理系と比べて初期化コストがかなり抑えられる筈だが…
+    - 他にも [http://jorgetavares.com/2013/01/20/common-lisp-on-net/]() に、Mono/.NET上で動くLisp処理系が紹介されている。
 
 - Lisp->JavaScriptコンパイラ/トランスレータを動かす
     - 上記の通り、UnityのJSは「UnityScript」という方言なので、既存のLisp->JavaScriptコンパイラ/トランスレータはそのままではまず動かないと思う。自分で改修するか、一から作るかする必要がある。
     - もし一から作る場合、コンパイル結果はJavaScriptにするのではなく、C#かBooのソースに変換する方が楽だと思う。
-    - 前述の[Bigloo](http://www-sop.inria.fr/indes/fp/Bigloo/)には、SchemeコードからC#のソースを生成する機能があるっぽそうな感じだが、自分にはよく分からなかった
 
 
 ## 判明している問題点
