@@ -323,13 +323,12 @@ class SE:
     - 試したのは以下。
         - clojureCLR
             - 別ページにまとめた→[Unity内でClojureCLRを動かす](unity/clojure)
+        - Bigloo
+            - 別ページにまとめた→[UnityでBiglooを動かす](unity/bigloo)
         - [IronScheme](http://ironscheme.codeplex.com/)
             - [http://forum.unity3d.com/threads/76266-Facilities-for-script-languages-Scheme-in-particular]() にREPL実行できるサンプルがある。
             - 上記ページの一番下にあるファイルをダウンロードし、unityのプロジェクトにimportし、importされた中の「SchemeTest」シーンを開き、「Maximize on Play」ボタンを押してから実行する(最大化しとかないとスクリーン最下段の入力欄が隠れて分からなくなる)。これでREPLが起動するので、あとは上記ページにあるように色々と試せる。
                 - 色々試してたら、REPLが起動しなくなってしまう事があった。安定していないのか、それとも古いunity用だからなのか。
-            - clojureCLRほどではないが、これも起動するまでに結構時間がかかる。
-        - Bigloo
-            - 別ページにまとめた→[UnityでBiglooを動かす](unity/bigloo)
     - 試してはいないが、[TameScheme](http://tamescheme.sourceforge.net/) を利用した事例が [https://docs.google.com/document/d/13kocjneV_tprPBXm6q63QQnCqmofRMBCJ8qjzHmxvgk/pub]() にある。実行できる形式のファイルは公開されてないようだ。
         - TameScheme自体は、プロジェクトページを見る限り、未完成のようだが…
     - 他にも [http://jorgetavares.com/2013/01/20/common-lisp-on-net/]() に、Mono/.NET上で動くLisp処理系が紹介されている。
