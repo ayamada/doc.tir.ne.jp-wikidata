@@ -1,0 +1,68 @@
+---
+toc: yes
+categories: unity scheme bigloo
+title: UnityでBiglooを動かす
+...
+
+- [親ページ(Unityメモ)](../unity)
+
+
+# 概要
+
+- まだ動きません。また後で再挑戦する時の為のメモです。
+- 方針としては、以下のように実現します。
+    1. BiglooでSchemeコードを.NETの`*.dll`にする
+    2. Unity側から上記のdll内の関数を呼び出す
+
+
+# 注意点
+
+- Biglooのライセンスは、本体がGPL、ランタイム部がLGPL。
+    - Unityは、WindowsおよびMacではdll形式が保持されるのでLGPL扱いで問題ないが、それ以外(WebPlayer, Android, iOS)では一つのバイナリになってしまうので全体がGPL汚染される、という解釈になると思う、多分
+
+- Windows必須
+    - どうも、Windows向け以外のBiglooでは`-dotnet`オプションが非表示/無効化されているようだ。
+    - 今回は [Bigloo for Windows](http://www.yaya.fr/Bigloo/) を選択した
+        - windows向けは他にも、[winbigloo](https://code.google.com/p/winbigloo/)と[mingw-bigloo](http://jwd.sandjsite.net/projects/mingw-bigloo)があるが、winbiglooはインストーラの出来がよくなく(インストール先が固定かつアンインストーラなし)、mingw-biglooは`-dotnet`オプションがついていない。
+        - Bigloo for Windowsはバージョンが結構古いが、Unity側もmonoバージョンが新しくはないので、そこは許容範囲だと思う
+            - SchemeがR5RSベースである点だけ注意
+
+
+# 手順
+
+前述の通り、まだ動きません。
+
+1. Microsoft .NET Framework 2.0 SDK(日本語版)をインストール
+    - ぐぐってmicrosoftのところから適当にダウンロードとインストールを行う
+2. [Bigloo for Windows](http://www.yaya.fr/Bigloo/) をインストール
+    - インストールには同梱の`Setup.Exe`を実行。`Installer.msi`を直実行すると権限のせいか上手くインストールされないようだ。
+    - インストール時には「Register Bigloo .NET runtime libraries in Global Assembly Cache (needs Administrator rights)」をオフにしておく。この操作は必須ではあるが、ここで有効にしていてもエラーになる為、後で手動でGAC登録する
+    - インストールが完了したら、上記の通り、手動でGAC登録を行う。
+        - 登録する必要のあるdllは、インストール先のbinに入っている以下のファイル。
+            - bigloo_u-2.8c.dll
+            - bigloo_s-2.8c.dll
+            - bigloopth_u-2.8c.dll
+            - bigloopth_s-2.8c.dll
+            - bigloofth_u-2.8c.dll
+            - bigloofth_s-2.8c.dll
+        - 管理者権限のある状態で `/path/to/Microsoft.NET/SDK/v2.0/Bin/gacutil.exe -i ???.dll` のように実行し、順に登録していけばok
+            - gacutil.exeは上でインストールしたSDKに含まれている
+            - 管理者権限でないと登録に失敗するので注意
+3. `bigloo -dotnet -il foo.scm` のように実行する事で、 `foo.scm` から `foo.il` が生成される
+    - これは「`foo.scm`のあるディレクトリ」で実行しなくてはならない。何故かというと、この引数指定がそのまま名前空間に採用されるようで、path付きで指定すると名前空間がおかしくなる為。
+4. `ilasm.exe`によって、上記で生成したilからdllを生成する
+    - `ilasm.exe` は、通常は`c:\Windows\Microsoft.NET\Framework\v2.0.50727\`に入っているもの。上でインストールしたSDKのディレクトリではない点に注意。
+    - `/c/Windows/Microsoft.NET/Framework/v2.0.50727/ilasm.exe -DLL foo.il` を実行する
+        - しかしここで「bigloo.*クラスが未定義」というエラーが出てしまう。これを解決しないと先には進めない…
+            - GAC登録だけでは駄目なのか？
+                - `-INCLUDE=...` で前述のGAC登録したdllのあるbinを指定等してみたが駄目。これではないようだ。
+            - biglooでのil出力時にオプション指定を追加する必要があるのか？
+                - `bigloo --help|less` 等で.NET系オプションを一通り見て試してみたりしたが、改善しなかった
+5. 上で生成したdllをUnityから使う
+    - (4)が解決するまでは進展せず
+
+
+
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
