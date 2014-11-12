@@ -1,0 +1,114 @@
+---
+toc: yes
+title: project.cljの書き方
+...
+
+[http://vnctst.tir.jp/karasumaclj/](http://vnctst.tir.jp/karasumaclj/) より
+
+# project.cljの書き方
+
+## 実際のproject.clj
+
+以下は、トミーパトロールで使った実際のproject.cljです。
+
+~~~ { .clojure }
+(defproject jp.tir.vnctst/op0008 "0.1.2"
+  :title "トミーパトロール"
+  :description "TODO: write later"
+  :url "http://vnctst.tir.jp/ja/games/op0008.html"
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojurescript "0.0-2371"]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
+                 [crate "0.2.5"]
+                 [domina "1.0.3-SNAPSHOT"]
+                 [hiccup "1.0.5"]
+                 [ring "1.3.1"]]
+  :plugins [[lein-cljsbuild "1.0.3"]
+            [lein-ring "0.8.11"]
+            [com.keminglabs/cljx "0.4.0" :exclusions [org.clojure/clojure]]
+            [lein-exec "0.3.1"]]
+  :cljx {:builds [{:source-paths ["src/cljx"]
+                   :output-path "target/gen-src/clj"
+                   :rules :clj}
+                  {:source-paths ["src/cljx"]
+                   :output-path "target/gen-src/cljs"
+                   :rules :cljs}]}
+  :hooks [cljx.hooks
+          leiningen.cljsbuild]
+  :profiles {:dev {:source-paths ["src/clj" "target/gen-src/clj" "src/dev"]}
+             :prod {:source-paths ["src/clj" "target/gen-src/clj" "src/prod"]}}
+  :cljsbuild {:builds {:dev {:id "dev"
+                             :source-paths ["src/cljs" "target/gen-src/cljs" "src/dev"]
+                             :compiler {:output-to "resources/public/cljs.js"
+                                        ;:output-dir "resources/public/out"
+                                        ;:source-map "resources/public/cljs.js.map"
+                                        ;:preamble ["src/js/license.js"]
+                                        :foreign-libs [
+                                                       {:file "src/js/howler_.js", :provides ["Howl" "Howler"]}
+                                                       {:file "src/js/lz-string-1.3.3-min.js", :provides ["LZString"]}
+                                                       {:file "src/js/md5.js", :provides ["CybozuLabs"]}
+                                                       {:file "src/js/webfont.js", :provides ["WebFont"]}
+                                                       {:file "src/js/pixi.js", :provides ["PIXI"]}
+                                                       ]
+                                        :language-in :ecmascript5
+                                        :language-out :ecmascript5
+                                        :optimizations :whitespace
+                                        :pretty-print true}
+                              :jar true}
+                       :prod {:id "prod"
+                              :source-paths ["src/cljs" "target/gen-src/cljs" "src/prod"]
+                              :compiler {:output-to "resources/public/cljs.js"
+                                         ;:externs ["externs/zlib_externs.js"]
+                                         ;:preamble ["src/js/license.js"]
+                                         :foreign-libs [
+                                                        {:file "src/js/howler_.js", :provides ["Howl" "Howler"]}
+                                                        {:file "src/js/lz-string-1.3.3-min.js", :provides ["LZString"]}
+                                                        {:file "src/js/md5.js", :provides ["CybozuLabs"]}
+                                                        {:file "src/js/webfont.js", :provides ["WebFont"]}
+                                                        {:file "src/js/pixi.js", :provides ["PIXI"]}
+                                                        ]
+                                         :language-in :ecmascript5
+                                         :language-out :ecmascript5
+                                         :optimizations :simple ;:advanced
+                                         :pretty-print false}
+                              :jar true}
+                       }}
+  ;:main vnctst-server.core
+  :ring {:handler vnctst-server.core/app
+         :init vnctst-server.core/init
+         :port 8008
+         }
+  ;; 以下の指定はリソース指定の為に必須
+  :resource-paths ["resources"] ; これは今のところ、一個だけにする必要あり
+  :docroot-in-resource "public"
+  :asset-dir-in-docroot "assets"
+  :bgm-dir-in-asset-dir "bgm"
+  :se-dir-in-asset-dir "se"
+  :tex-dir-in-asset-dir "tex"
+  )
+~~~
+
+## 解説
+
+- マクロ展開時にはproject.cljが読める事を利用して、各種の設定項目をproject.cljに勝手に含めています。衝突さえしなければ、特に問題はないようです。
+- ringを利用して、httpdを起動するように指定しています。これで動作確認を取ります。
+- ここでは`:hooks`を設定していますが、[cljs]()の方で書いた通り、これが問題になるケースがあります。その時はコメントアウトした方がいいでしょう。
+- cljとcljsのコードを共有する為にcljxを組み込んでいますが、別に使いませんでした。
+    - 今回はサーバと通信するようなゲームではないので当然なのですが、サーバと通信するような内容であってもcljxを使うケースは、どうも、そんなにないようです。AstroCatsでもcljxは使いませんでした。本当に必要になってからcljxをproject.cljに追記するようにした方がよいかも。
+- `:cljsbuild` の `:source-paths` に `"src/dev"` や `"src/prod"` というのが設定されていますが、ここには `(def dev? true)` もしくは `(def dev? false)` だけが入ったモジュールが置いてあります。この真偽値で「開発ビルドか、リリースビルドか」を判断できるようにしています。
+    - cljsでのビルド情報の埋め込み方法が分からなかったので、とりあえずこの手法で実装した状態です。
+- 「`:preamble`で指定したファイルが、生成されるjsファイルの先頭にヘッダとして埋め込まれる」らしいのですが、指定するとエラーが出てjsファイルを生成できなくなってしまう為、コメントアウト状態にしてあります。
+- `:foreign-libs` で指定したjsライブラリは、cljsのコードと同様に、google closure compilerにかけられ、生成されるjsファイル内に含まれるようになります。
+    - また、ここで`:provides`で指定した名前でrequireできるようになります。
+        - 具体的には、 `{:file "src/js/pixi.js", :provides ["PIXI"]}` であれば、cljs内にて `(ns name.space (:require [PIXI]))` と書いて、 `(PIXI.Texture.fromImage "path/to/hoge.png")` のように実行できるようになります。
+- `:language-in` `:language-out` は、入力するjsおよび出力するjsのバージョンを指定します。よく分からないエラーが出る時にいじる候補です。通常は `:ecmascript5` を指定しておくとよいようです。
+- `:optimizations` は `:whitespace` `:simple` `:advanced` の三種類があります。
+    - 最適化には時間がかかるので、普段は `:whitespace` にしておくとよいでしょう。
+    - `:advanced` にするとプロパティ名等の短縮化も行われる為、 `:externs` ファイルの指定が必要になります。これが面倒なら、リリースビルドでも最適化は `:simple` までにしておいてもよいです。
+        - ゲームは速度が重要ではあるものの、大体のケースではcanvasにテクスチャを貼るコストの方がずっと高いので、 `:simple` でも問題はなかったようです。これまでのところは。
+- `:source-map` や `:output-dir` を指定すると `*.js.map` 類が生成されますが、これらのファイルを出力する為にかなり時間がかかるようになる為、普段はコメントアウトしておき、必要な時だけコメントアウトを解除した方がよいでしょう。
+
+
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
