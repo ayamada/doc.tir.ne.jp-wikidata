@@ -1,0 +1,54 @@
+---
+toc: yes
+title: ClojureScriptの問題点
+...
+
+[http://vnctst.tir.jp/karasumaclj/](http://vnctst.tir.jp/karasumaclj/) より
+
+# ClojureScriptの問題点
+
+以下は `[org.clojure/clojurescript "0.0-2371"]` の話です。
+
+未来になれば改善されている事が期待されます。
+
+
+## 正規表現
+
+- `#"\/"` という正規表現は、cljなら正常に扱えるが、cljsだと `ERROR - Parse error. primary expression expected ...` というコンパイルエラーを google closure compiler が出す
+    - なんでかというと、正規表現中に出現した `/` は、問答無用で `\/` に置換する実装になっている為。
+    - cljおよびcljsの正規表現の仕様として、 `/` の前には `\` は不要なので、付けないようにすれば回避はできる。
+
+## keyword
+
+- cljにて、以下のコードは普通に動く
+    - `(clojure.edn/read-string ":1abc")` => `:1abc`
+- cljsでは、以下のコードは動かない！
+    - `(cljs.reader/read-string ":1abc")` => 謎の `TypeError: a is null` が投げられる
+- とりあえず、数値はじまりのkeywordを使わないようにすればok。動的に生成しているとうっかりしやすいが…
+
+## core.async
+
+- core.asyncの一部の関数/マクロはcljs版には存在しない。
+    - 具体的にどれが存在しないのかは特にドキュメント化されていないようなので、ソースを見るしかないようだ。
+
+## プロパティへのアクセス
+
+- `(let [foo (js/Foo.)] (set! foo.bar.x 1) (foo.hoge.fuga) ...)` みたいに書きたい
+    - 実は書ける。しかしコンパイル結果が、きちんと動くコードになる時とならない時とがある。どうもマクロ展開状況によるようだ。
+    - もちろん `(set! (.. foo -bar -x) 1)` や `(.. foo -hoge fuga)` のように書けば普通に動く。でも前者みたいに書きたい…書きたくない？
+    - 多分、 `(js/hoge.fuge.mage)` のような`js/`プレフィクスのものだけがこう書ける想定で、cljs空間にあるものもこう書くのは想定されてない？
+
+## lein cljsbuild
+
+- `:hooks` を設定していると `lein install` が動かなくなる
+- `:preamble` がコンパイルオプションによっては上手く動かない
+- その他色々と上手く動かない
+- 現状では「そういうもの」と思って、とにかく動く最小限の設定から試行錯誤していくしかなさげ
+
+## マクロ
+
+- 「quasiquote展開時に、シンボルに名前空間名が自動的に付与される」というClojureのマクロの便利機能が裏目に出て、cljsのdefmacro内で普通にquasiquote式を書くと、中のシンボルにclj側の名前空間が付与されて動かなくなってしまう。
+    - この問題を避ける為に、明示的にシンボルに名前空間を指定しなくてはならない。めんどい
+
+
+<!-- vim:set ft=pandoc ts=4 sts=4 sw=4 et: -->
