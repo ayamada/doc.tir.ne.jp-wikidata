@@ -11,6 +11,8 @@ title: project.cljの書き方
 
 以下は、トミーパトロールで使った実際のproject.cljです。
 
+(なんか`:source-paths`を重複設定してたりしてるが、その辺はまあ気にしない事)
+
 ~~~ { .clojure }
 (defproject jp.tir.vnctst/op0008 "0.1.2"
   :title "トミーパトロール"
