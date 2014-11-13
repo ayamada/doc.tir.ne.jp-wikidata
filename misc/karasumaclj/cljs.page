@@ -24,7 +24,7 @@ title: ClojureScriptの問題点
     - `(clojure.edn/read-string ":1abc")` => `:1abc`
 - cljsでは、以下のコードは動かない！
     - `(cljs.reader/read-string ":1abc")` => 謎の `TypeError: a is null` が投げられる
-- とりあえず、数値はじまりのkeywordを使わないようにすればok。動的に生成しているとうっかりしやすいが…
+- とりあえず、数値はじまりのkeywordを使わないようにすればok。動的に生成していると見逃すかもしれないが
 
 ## core.async
 
