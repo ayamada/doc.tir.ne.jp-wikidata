@@ -100,7 +100,7 @@ title: project.cljの書き方
 - 「`:preamble`で指定したファイルが、生成されるjsファイルの先頭にヘッダとして埋め込まれる」らしいのですが、指定するとエラーが出てjsファイルを生成できなくなってしまう為、コメントアウト状態にしてあります。
 - `:foreign-libs` で指定したjsライブラリは、cljsのコードと同様に、google closure compilerにかけられ、生成されるjsファイル内に含まれるようになります。
     - また、ここで`:provides`で指定した名前でrequireできるようになります。
-        - 具体的には、 `{:file "src/js/pixi.js", :provides ["PIXI"]}` であれば、cljs内にて `(ns name.space (:require [PIXI]))` と書いて、 `(PIXI.Texture.fromImage "path/to/hoge.png")` のように実行できるようになります。
+        - 具体的には、 `{:file "src/js/pixi.js", :provides ["PIXI"]}` であれば、cljs内にて `(ns name.space (:require [PIXI]))` と書いて、 `(PIXI/Texture.fromImage "path/to/hoge.png")` のように実行できるようになります。
 - `:language-in` `:language-out` は、入力するjsおよび出力するjsのバージョンを指定します。よく分からないエラーが出る時にいじる候補です。通常は `:ecmascript5` を指定しておくとよいようです。
 - `:optimizations` は `:whitespace` `:simple` `:advanced` の三種類があります。
     - 最適化には時間がかかるので、普段は `:whitespace` にしておくとよいでしょう。
