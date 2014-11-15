@@ -100,9 +100,10 @@ title: project.cljの書き方
 - 「`:preamble`で指定したファイルが、生成されるjsファイルの先頭にヘッダとして埋め込まれる」らしいのですが、指定するとエラーが出てjsファイルを生成できなくなってしまう為、コメントアウト状態にしてあります。
 - `:foreign-libs` で指定したjsライブラリは、cljsのコードと同様に、google closure compilerにかけられ、生成されるjsファイル内に含まれるようになります。
     - また、ここで`:provides`で指定した名前でrequireできるようになります。
-        - 具体的には、 `{:file "src/js/pixi.js", :provides ["PIXI"]}` であれば、cljs内にて `(ns name.space (:require [PIXI]))` と書いて、 `(PIXI/Texture.fromImage "path/to/hoge.png")` のように実行できるようになります。
+        - 具体的には、 `{:file "src/js/pixi.js", :provides ["PIXI"]}` であれば、cljs内にて `(ns name.space (:require [PIXI]))` と書いてから `(PIXI.Texture.fromImage "path/to/hoge.png")` もしくは `(PIXI/Texture.fromImage "path/to/hoge.png")` のように実行でき、それなりにcljs風に記述できるようになります。
+            - ただし例によって、この辺りは[cljs](cljs)の仕様のあやふやな点を含んでいるので、もし上記コードのように書いても上手く動かない場合は上記のようにではなく、明示的に`(.. PIXI -Texture (fromImage "path/to/hoge.png"))`のように書く必要があるかもしれません
 - `:language-in` `:language-out` は、入力するjsおよび出力するjsのバージョンを指定します。よく分からないエラーが出る時にいじる候補です。通常は `:ecmascript5` を指定しておくとよいようです。
-- `:optimizations` は `:whitespace` `:simple` `:advanced` の三種類があります。
+- `:optimizations` は `:whitespace` `:simple` `:advanced` あたりがあります。
     - 最適化には時間がかかるので、普段は `:whitespace` にしておくとよいでしょう。
     - `:advanced` にするとプロパティ名等の短縮化も行われる為、 `:externs` ファイルの指定が必要になります。これが面倒なら、リリースビルドでも最適化は `:simple` までにしておいてもよいです。
         - ゲームは速度が重要ではあるものの、大体のケースではcanvasにテクスチャを貼るコストの方がずっと高いので、 `:simple` でも問題はなかったようです。これまでのところは。
